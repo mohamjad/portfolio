@@ -28,9 +28,10 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
     background: var(--sys-bg);
     color: var(--sys-text-primary);
-    line-height: 1.6;
+    line-height: 1.7;
     overflow-x: hidden;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 400;
 }
 
 .cyberpunk-container {
@@ -56,9 +57,9 @@ body {
 
 /* Header */
 .cyber-header {
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid var(--sys-border);
-    background: var(--sys-surface);
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: none;
+    background: transparent;
     position: relative;
 }
 
@@ -78,8 +79,9 @@ body {
 
 .terminal-line {
     font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     color: var(--sys-text-muted);
+    font-weight: 400;
 }
 
 .terminal-prompt {
@@ -92,10 +94,11 @@ body {
 }
 
 .cyber-title {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 400;
     color: var(--sys-text-primary);
     letter-spacing: -0.01em;
+    margin: 0.5rem 0;
 }
 
 .header-right {
@@ -108,8 +111,9 @@ body {
     align-items: center;
     gap: 0.5rem;
     font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-    font-size: 0.8125rem;
-    color: var(--sys-text-secondary);
+    font-size: 0.75rem;
+    color: var(--sys-text-muted);
+    font-weight: 400;
 }
 
 .status-dot {
@@ -121,21 +125,20 @@ body {
 
 /* Main Content */
 .cyber-main {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 2rem 2rem 4rem;
     position: relative;
 }
 
 /* Hero Section */
 .cyber-hero {
     position: relative;
-    padding: 3rem 2rem;
-    text-align: center;
-    border: 1px solid var(--sys-border);
-    background: var(--sys-surface);
-    margin-bottom: 3rem;
-    border-radius: 6px;
+    padding: 0;
+    text-align: left;
+    border: none;
+    background: transparent;
+    margin-bottom: 4rem;
 }
 
 .hero-content {
@@ -147,16 +150,17 @@ body {
     font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
     font-size: 0.75rem;
     color: var(--sys-text-muted);
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    margin-bottom: 1rem;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 400;
 }
 
 .hero-title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
     letter-spacing: -0.02em;
     color: var(--sys-text-primary);
 }
@@ -168,11 +172,12 @@ body {
 }
 
 .hero-subtitle {
-    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: var(--sys-text-secondary);
     letter-spacing: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
 .hero-lines {
@@ -188,23 +193,24 @@ body {
 .disclaimer-content {
     display: flex;
     align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem 1.5rem;
-    border: 1px solid var(--sys-border);
-    background: var(--sys-surface);
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border: none;
+    background: transparent;
     position: relative;
-    border-radius: 6px;
-    border-left: 3px solid var(--sys-warning);
+    border-left: 2px solid var(--sys-border);
+    padding-left: 1rem;
+    margin-bottom: 3rem;
 }
 
 .disclaimer-icon {
     flex-shrink: 0;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--sys-warning);
+    color: var(--sys-text-muted);
     margin-top: 0.125rem;
 }
 
@@ -219,38 +225,38 @@ body {
     font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
     font-size: 0.75rem;
     color: var(--sys-text-muted);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
 }
 
 .disclaimer-message {
     font-size: 0.875rem;
     color: var(--sys-text-secondary);
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 /* Section Header */
 .section-header {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    align-items: baseline;
+    gap: 0.75rem;
     margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--sys-border);
+    padding-bottom: 0;
+    border-bottom: none;
     position: relative;
 }
 
 .section-number {
     font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     color: var(--sys-text-muted);
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .section-title {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 400;
     color: var(--sys-text-primary);
     letter-spacing: -0.01em;
 }
@@ -268,27 +274,27 @@ body {
 }
 
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
 .cyber-card {
     position: relative;
-    border: 1px solid var(--sys-border);
-    background: var(--sys-surface);
-    padding: 1.5rem;
-    transition: all 0.2s ease;
+    border: none;
+    border-bottom: 1px solid var(--sys-border);
+    background: transparent;
+    padding: 1.5rem 0;
+    transition: none;
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
     height: 100%;
-    border-radius: 6px;
 }
 
 .cyber-card:hover {
-    border-color: var(--sys-accent);
-    box-shadow: 0 0 0 1px var(--sys-accent);
+    border-color: var(--sys-border);
+    box-shadow: none;
 }
 
 .card-content {
@@ -300,10 +306,10 @@ body {
 .card-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--sys-border);
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
 .card-id {
@@ -315,43 +321,43 @@ body {
 .card-status {
     font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
     font-size: 0.75rem;
-    color: var(--sys-success);
-    padding: 0.125rem 0.5rem;
-    background: rgba(63, 185, 80, 0.1);
-    border-radius: 3px;
+    color: var(--sys-text-muted);
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
 }
 
 .card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.125rem;
+    font-weight: 400;
     color: var(--sys-text-primary);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     letter-spacing: -0.01em;
 }
 
 .card-description {
     color: var(--sys-text-secondary);
-    margin-bottom: 1rem;
-    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
     flex: 1;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
 }
 
 .card-tech {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .tech-tag {
     font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
     font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    border: 1px solid var(--sys-border);
-    color: var(--sys-text-secondary);
-    background: var(--sys-surface-elevated);
-    border-radius: 3px;
+    padding: 0;
+    border: none;
+    color: var(--sys-text-muted);
+    background: transparent;
+    border-radius: 0;
 }
 
 .card-footer {
@@ -390,30 +396,29 @@ body {
 }
 
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
 }
 
 .stat-box {
-    border: 1px solid var(--sys-border);
-    background: var(--sys-surface);
-    padding: 1.5rem;
-    text-align: center;
+    border: none;
+    background: transparent;
+    padding: 0;
+    text-align: left;
     position: relative;
-    min-height: 120px;
+    min-height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    border-radius: 6px;
+    justify-content: flex-start;
 }
 
 .stat-value {
-    font-size: 1.75rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 400;
     color: var(--sys-text-primary);
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
 }
 
 .stat-label {
@@ -431,10 +436,9 @@ body {
 }
 
 .about-content {
-    border: 1px solid var(--sys-border);
-    background: var(--sys-surface);
-    padding: 2rem;
-    border-radius: 6px;
+    border: none;
+    background: transparent;
+    padding: 0;
 }
 
 .about-text {
@@ -473,11 +477,11 @@ body {
 .tech-items span {
     font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
     font-size: 0.8125rem;
-    padding: 0.375rem 0.75rem;
-    border: 1px solid var(--sys-border);
-    color: var(--sys-text-secondary);
-    background: var(--sys-surface-elevated);
-    border-radius: 3px;
+    padding: 0;
+    border: none;
+    color: var(--sys-text-muted);
+    background: transparent;
+    border-radius: 0;
 }
 
 /* Contact Section */
@@ -487,18 +491,17 @@ body {
 }
 
 .contact-content {
-    border: 1px solid var(--sys-border);
-    background: var(--sys-surface);
-    padding: 2rem;
-    border-radius: 6px;
+    border: none;
+    background: transparent;
+    padding: 0;
 }
 
 .contact-item {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--sys-border);
+    padding: 0.5rem 0;
+    border-bottom: none;
 }
 
 .contact-item:last-child {
@@ -528,10 +531,10 @@ body {
 
 /* Footer */
 .cyber-footer {
-    padding: 2rem;
-    text-align: center;
-    border-top: 1px solid var(--sys-border);
-    background: var(--sys-surface);
+    padding: 2rem 2rem 3rem;
+    text-align: left;
+    border-top: none;
+    background: transparent;
 }
 
 .footer-line {
