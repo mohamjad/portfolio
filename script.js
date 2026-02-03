@@ -2,46 +2,45 @@
 const projects = {
     1: {
         title: 'E-commerce Reporting Dashboard',
-        description: 'A comprehensive e-commerce analytics automation built with n8n that aggregates sales data, tracks revenue trends, monitors order metrics, and provides real-time insights into business performance.',
+        description: 'Revenue drops went unnoticed for weeks. Refund spikes caught management by surprise. Daily performance was invisible until month-end reports.',
         features: [
-            'Real-time sales dashboard with 30-day performance metrics',
-            'Automated data aggregation and reporting',
-            'Revenue trend analysis and visualization',
-            'Daily sales data tracking with comprehensive metrics',
-            'Refund rate monitoring and analysis'
+            'Revenue drops detected within hours, not weeks',
+            'Refund spikes trigger immediate alerts',
+            'Daily performance visible without manual reporting',
+            'Trends identified before they become problems',
+            'Early warning system prevents revenue loss'
         ],
-        technologies: ['n8n', 'API Integration', 'Data Analytics', 'Dashboard'],
+        technologies: ['Real-time visibility', 'Early warning system', 'Zero manual reporting'],
         github: 'https://github.com/mohamjad/n8n-ecommerce-reporting',
         demo: 'https://n8n-ecommerce-reporting.vercel.app/'
     },
     2: {
         title: 'Social Media Sentiment Analysis',
-        description: 'An AI-powered sentiment analysis automation that monitors social media platforms in real-time. The system fetches posts from Twitter and Reddit, performs AI-powered sentiment analysis, enriches data with engagement metrics, and triggers alerts based on sentiment thresholds.',
+        description: 'Brand crises exploded before anyone noticed. Negative sentiment spread unchecked. Customer complaints went viral while teams were blind.',
         features: [
-            'Real-time social media monitoring (Twitter & Reddit)',
-            'AI-powered sentiment analysis and scoring',
-            'Automated alert system for negative sentiment',
-            'PostgreSQL data storage and historical tracking',
-            'Engagement metrics and trend analysis',
-            'Multi-platform data normalization'
+            'Threats detected before they escalate',
+            'Negative sentiment triggers instant alerts',
+            'Crises prevented through early intervention',
+            'Brand reputation protected proactively',
+            'Viral complaints caught before spread',
+            'Historical tracking reveals patterns'
         ],
-        technologies: ['n8n', 'AI/ML', 'PostgreSQL', 'Twitter API', 'Reddit API'],
+        technologies: ['Threat detection', 'Instant alerts', 'Crisis prevention'],
         github: 'https://github.com/mohamjad/n8n-workflow-portfolio',
         demo: 'https://n8n-workflow-portfolio.vercel.app/'
     },
     3: {
         title: 'Client Health Monitoring Dashboard',
-        description: 'A production-ready n8n automation that monitors client health signals across revenue, usage, and support metrics. The system computes risk scores, identifies churn risks, tracks expansion opportunities, and routes alerts to Slack and Notion.',
+        description: 'Customers churned without warning. Revenue disappeared before intervention. Account managers learned about problems from cancellation emails.',
         features: [
-            'Multi-source client health monitoring (Revenue, Usage, Support)',
-            'Automated churn risk detection and scoring',
-            'Health score computation and risk distribution',
-            'Integration with Stripe, HubSpot, Zendesk/Intercom',
-            'Automated alerts to Slack and Notion',
-            'Expansion opportunity identification',
-            'MRR tracking and risk assessment'
+            'Churn risk identified weeks before cancellation',
+            'Revenue protected through proactive intervention',
+            'Account managers alerted before problems escalate',
+            'Health signals tracked across all touchpoints',
+            'Expansion opportunities surfaced automatically',
+            'MRR protected through early warning system'
         ],
-        technologies: ['n8n', 'Stripe', 'HubSpot CRM', 'Zendesk', 'Intercom', 'Slack', 'Notion', 'API'],
+        technologies: ['Churn prevention', 'Proactive intervention', 'Revenue protection'],
         github: 'https://github.com/mohamjad/n8n-crm-lime',
         demo: 'https://n8n-crm-lime.vercel.app/'
     }
