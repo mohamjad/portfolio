@@ -786,11 +786,12 @@ body::after {
 }
 
 .stat-value {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--cyber-green);
     text-shadow: 0 0 5px rgba(5, 150, 105, 0.4);
     margin-bottom: 0.5rem;
+    line-height: 1.2;
 }
 
 .stat-label {
