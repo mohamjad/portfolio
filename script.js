@@ -67,14 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="card-description" style="margin-top: 1rem;">${project.description}</p>
             
             <div style="margin-top: 2rem; padding: 1rem; border: 1px solid var(--cyber-green); background: rgba(5, 150, 105, 0.1);">
-                <h3 style="color: var(--cyber-green); margin-bottom: 1rem; font-family: 'Share Tech Mono', monospace;">FEATURES:</h3>
+                <h3 style="color: var(--cyber-green); margin-bottom: 1rem; font-family: 'Share Tech Mono', monospace;">OUTCOMES:</h3>
                 <ul style="list-style: none; padding: 0;">
                     ${project.features.map(feature => `<li style="padding: 0.5rem 0; color: var(--cyber-text); border-bottom: 1px solid var(--cyber-border-dim);">• ${feature}</li>`).join('')}
                 </ul>
             </div>
             
             <div style="margin-top: 2rem;">
-                <div class="tech-label">TECHNOLOGIES:</div>
+                <div class="tech-label">FAILURE MODES PREVENTED:</div>
                 <div class="tech-items" style="margin-top: 1rem;">
                     ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
                 </div>
