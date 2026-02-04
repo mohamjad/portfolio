@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Portfolio website showcasing automation projects",
   "scripts": {
-    "dev": "npx http-server . -p 3000 -o",
-    "start": "npx http-server . -p 3000 -o"
+    "dev": "npx http-server . -p 8080 -o",
+    "start": "npx http-server . -p 8080 -o"
   },
   "keywords": [
     "portfolio",

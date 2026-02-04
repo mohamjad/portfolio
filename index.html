@@ -20,7 +20,7 @@
                         <span class="terminal-prompt">$</span>
                         <span class="terminal-text">system status</span>
                     </div>
-                    <h1 class="cyber-title">Setta</h1>
+                    <h1 class="cyber-title">Mohammed's Work</h1>
                     <div class="terminal-line">
                         <span class="terminal-prompt">$</span>
                         <span class="terminal-text">restoring signal and reliability</span>
@@ -63,10 +63,96 @@
                 </div>
             </section>
 
+            <!-- System Health Evaluation Section -->
+            <section class="cyber-system-health">
+                <div class="section-header">
+                    <div class="section-number">01</div>
+                    <h3 class="section-title">System Health Evaluation</h3>
+                    <div class="section-line"></div>
+                </div>
+                <div class="system-health-content">
+                    <div class="system-health-main">
+                        <p class="system-health-opening">
+                            A lot of systems don't fail all at once. They look fine, numbers are green, and then something breaks in a way nobody saw coming.
+                        </p>
+                        <p class="system-health-opening">
+                            I kept running into this while fixing broken automation and pipelines, so I built a way to reason about whether systems are actually healthy, not just passing checks on the surface.
+                        </p>
+                    </div>
+                    
+                    <div class="system-health-details" id="systemHealthDetails" style="display: none;">
+                        <div class="system-health-item">
+                            <h4 class="system-health-subtitle">What this helps with</h4>
+                            <p class="system-health-text">
+                                This helps answer questions like:
+                            </p>
+                            <ul class="system-health-list">
+                                <li>Are things actually stable right now, or just not obviously broken?</li>
+                                <li>What would fail next if usage or conditions change?</li>
+                                <li>What signals would have caught the last incident earlier?</li>
+                            </ul>
+                            <p class="system-health-text">
+                                Instead of waiting for alerts after something breaks, it focuses on signals that change before the failure shows up.
+                            </p>
+                        </div>
+
+                        <div class="system-health-item">
+                            <h4 class="system-health-subtitle">How I approach it</h4>
+                            <p class="system-health-text">
+                                I break systems down into:
+                            </p>
+                            <ul class="system-health-list">
+                                <li>signals that change early</li>
+                                <li>failure modes that actually matter</li>
+                                <li>incidents that already happened</li>
+                            </ul>
+                            <p class="system-health-text">
+                                When something breaks, I don't just fix it. I look at what should have caught it earlier and update the signals so the same thing doesn't happen again.
+                            </p>
+                        </div>
+
+                        <div class="system-health-item">
+                            <h4 class="system-health-subtitle">The part I care about most</h4>
+                            <p class="system-health-text">
+                                The most useful part is being able to take a past incident and ask, "what would have caught this sooner?"
+                            </p>
+                            <p class="system-health-text">
+                                The demo lets you see which signals fired too late, which ones were missing entirely, and what to change so the system would've noticed earlier next time.
+                            </p>
+                        </div>
+
+                        <div class="system-health-item">
+                            <h4 class="system-health-subtitle">Why this exists</h4>
+                            <p class="system-health-text">
+                                This grew out of fixing real systems. Revenue pipelines, monitoring setups, automation that quietly stopped working.
+                            </p>
+                            <p class="system-health-text">
+                                The other projects on this site are specific fixes. This is the way I think about preventing the same kinds of failures from happening again.
+                            </p>
+                        </div>
+
+                        <div class="system-health-item">
+                            <p class="system-health-text">
+                                This isn't meant to be a finished product. It's how I reason about systems when I'm trying to figure out what's going to break next.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="system-health-footer">
+                        <button type="button" class="system-health-btn system-health-expand-btn" id="expandExplanationBtn">
+                            READ FULL EXPLANATION →
+                        </button>
+                        <button type="button" class="system-health-btn preview-btn" data-url="https://system1-phi.vercel.app/" data-project="4">
+                            VIEW_DEMO →
+                        </button>
+                    </div>
+                </div>
+            </section>
+
             <!-- What I Work On -->
             <section class="cyber-projects">
                 <div class="section-header">
-                    <div class="section-number">01</div>
+                    <div class="section-number">02</div>
                     <h3 class="section-title">What I work on</h3>
                     <div class="section-line"></div>
                 </div>
@@ -170,7 +256,7 @@
             <!-- Contact Section -->
             <section class="cyber-contact">
                 <div class="section-header">
-                    <div class="section-number">02</div>
+                    <div class="section-number">03</div>
                     <h3 class="section-title">Contact</h3>
                     <div class="section-line"></div>
                 </div>
@@ -214,7 +300,7 @@
                 <span class="modal-close">&times;</span>
             </div>
             <div class="modal-iframe-container">
-                <iframe id="previewIframe" class="modal-iframe" src=""></iframe>
+                <iframe id="previewIframe" class="modal-iframe" src="" allow="fullscreen" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
             </div>
             <div class="modal-info" id="modalInfo"></div>
         </div>

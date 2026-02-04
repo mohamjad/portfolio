@@ -226,6 +226,156 @@ body {
     margin-bottom: 0;
 }
 
+/* System Health Evaluation Section */
+.cyber-system-health {
+    margin-bottom: 4rem;
+    padding-top: 0;
+}
+
+.system-health-content {
+    border: 1px solid var(--sys-border);
+    background: var(--sys-surface);
+    padding: 2.5rem;
+    border-radius: 8px;
+    position: relative;
+}
+
+.system-health-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--sys-accent), transparent);
+    opacity: 0.6;
+}
+
+.system-health-main {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--sys-border);
+}
+
+.system-health-opening {
+    color: var(--sys-text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.system-health-opening:last-child {
+    margin-bottom: 0;
+}
+
+.system-health-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.system-health-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.system-health-subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--sys-accent);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.system-health-text {
+    color: var(--sys-text-primary);
+    line-height: 1.7;
+    font-size: 0.9375rem;
+}
+
+.system-health-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.system-health-list li {
+    color: var(--sys-text-secondary);
+    line-height: 1.7;
+    font-size: 0.9375rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.system-health-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--sys-accent);
+}
+
+.system-health-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--sys-border);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.system-health-btn {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    border: 1px solid var(--sys-accent);
+    background: transparent;
+    color: var(--sys-accent);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.system-health-btn:hover {
+    background: rgba(88, 166, 255, 0.1);
+    border-color: var(--sys-accent-hover);
+    color: var(--sys-accent-hover);
+    transform: translateY(-1px);
+}
+
+.system-health-expand-btn {
+    border-color: var(--sys-border);
+    color: var(--sys-text-primary);
+}
+
+.system-health-expand-btn:hover {
+    border-color: var(--sys-accent);
+    color: var(--sys-accent);
+    background: rgba(88, 166, 255, 0.05);
+}
+
+.system-health-details {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Section Header */
 .section-header {
     display: flex;
@@ -796,5 +946,17 @@ body {
 
     .section-header {
         flex-wrap: wrap;
+    }
+
+    .system-health-content {
+        padding: 1.5rem;
+    }
+
+    .system-health-opening {
+        font-size: 0.9375rem;
+    }
+
+    .system-health-details {
+        gap: 2rem;
     }
 }
