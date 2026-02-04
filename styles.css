@@ -624,6 +624,24 @@ body {
     opacity: 1;
 }
 
+.cyber-card-featured {
+    border: 2px solid var(--sys-warning);
+    background: linear-gradient(135deg, rgba(210, 153, 34, 0.05) 0%, var(--sys-surface) 100%);
+    box-shadow: 0 4px 16px rgba(210, 153, 34, 0.1);
+}
+
+.cyber-card-featured::before {
+    background: linear-gradient(90deg, transparent, var(--sys-warning), transparent);
+    opacity: 0.8;
+    height: 3px;
+}
+
+.cyber-card-featured .card-status {
+    background: rgba(210, 153, 34, 0.2);
+    color: var(--sys-warning);
+    border: 1px solid var(--sys-warning);
+}
+
 .card-content {
     display: flex;
     flex-direction: column;

@@ -318,7 +318,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailsSection = document.getElementById('systemHealthDetails');
     
     if (expandBtn && detailsSection) {
-        expandBtn.addEventListener('click', () => {
+        expandBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             const isExpanded = detailsSection.style.display === 'block';
             
             if (isExpanded) {
