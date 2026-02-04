@@ -104,6 +104,42 @@ body {
 .header-right {
     display: flex;
     align-items: center;
+    gap: 2rem;
+}
+
+.header-nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-link {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    font-size: 0.8125rem;
+    color: var(--sys-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--sys-accent);
+    border-bottom-color: var(--sys-accent);
+}
+
+.nav-link-featured {
+    color: var(--sys-accent);
+    font-weight: 500;
+    border-bottom-color: var(--sys-accent);
+    position: relative;
+}
+
+.nav-link-featured::before {
+    content: '★';
+    margin-right: 0.25rem;
+    color: var(--sys-warning);
 }
 
 .status-indicator {
@@ -226,6 +262,62 @@ body {
     margin-bottom: 0;
 }
 
+/* Expand Section */
+.expand-section {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.expand-main-btn {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 2rem 4rem;
+    border: 2px solid var(--sys-accent);
+    background: transparent;
+    color: var(--sys-accent);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 300px;
+    justify-content: center;
+}
+
+.expand-main-btn:hover {
+    background: rgba(88, 166, 255, 0.1);
+    border-color: var(--sys-accent-hover);
+    color: var(--sys-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(88, 166, 255, 0.2);
+}
+
+.expand-main-btn.expanded {
+    border-color: var(--sys-border);
+    color: var(--sys-text-secondary);
+}
+
+.expand-main-btn.expanded:hover {
+    border-color: var(--sys-accent);
+    color: var(--sys-accent);
+}
+
+.expand-btn-icon {
+    transition: transform 0.3s ease;
+    font-size: 1.5rem;
+}
+
+.expand-main-btn.expanded .expand-btn-icon {
+    transform: rotate(180deg);
+}
+
+.collapsible-content {
+    animation: fadeIn 0.5s ease;
+}
+
 /* System Health Evaluation Section */
 .cyber-system-health {
     margin-bottom: 4rem;
@@ -233,11 +325,12 @@ body {
 }
 
 .system-health-content {
-    border: 1px solid var(--sys-border);
-    background: var(--sys-surface);
+    border: 2px solid var(--sys-warning);
+    background: linear-gradient(135deg, rgba(210, 153, 34, 0.05) 0%, var(--sys-surface) 100%);
     padding: 2.5rem;
     border-radius: 8px;
     position: relative;
+    box-shadow: 0 4px 16px rgba(210, 153, 34, 0.1);
 }
 
 .system-health-content::before {
@@ -246,9 +339,17 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--sys-accent), transparent);
-    opacity: 0.6;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--sys-warning), transparent);
+    opacity: 0.8;
+}
+
+.system-health-content .section-title {
+    color: var(--sys-warning);
+}
+
+.system-health-content .section-number {
+    color: var(--sys-warning);
 }
 
 .system-health-main {
@@ -932,6 +1033,16 @@ body {
         grid-template-columns: 1fr;
     }
 
+    .header-nav {
+        display: none;
+    }
+
+    .expand-main-btn {
+        font-size: 1rem;
+        padding: 1.5rem 2rem;
+        min-width: auto;
+        width: 100%;
+    }
 
     .modal-content {
         max-width: 95vw;

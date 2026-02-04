@@ -289,6 +289,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Main content expand/collapse
+    const expandMainBtn = document.getElementById('expandMainBtn');
+    const collapsibleContent = document.getElementById('collapsibleContent');
+    
+    if (expandMainBtn && collapsibleContent) {
+        expandMainBtn.addEventListener('click', () => {
+            const isExpanded = collapsibleContent.style.display === 'block';
+            
+            if (isExpanded) {
+                collapsibleContent.style.display = 'none';
+                expandMainBtn.classList.remove('expanded');
+                expandMainBtn.querySelector('.expand-btn-text').textContent = 'EXPLORE MY WORK →';
+            } else {
+                collapsibleContent.style.display = 'block';
+                expandMainBtn.classList.add('expanded');
+                expandMainBtn.querySelector('.expand-btn-text').textContent = 'COLLAPSE →';
+                // Smooth scroll to content
+                setTimeout(() => {
+                    collapsibleContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        });
+    }
+
     // System Health Evaluation expand/collapse
     const expandBtn = document.getElementById('expandExplanationBtn');
     const detailsSection = document.getElementById('systemHealthDetails');
@@ -310,4 +334,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                // Expand content if collapsed
+                if (collapsibleContent && collapsibleContent.style.display === 'none') {
+                    collapsibleContent.style.display = 'block';
+                    expandMainBtn.classList.add('expanded');
+                    expandMainBtn.querySelector('.expand-btn-text').textContent = 'COLLAPSE →';
+                }
+                const target = document.querySelector(href);
+                if (target) {
+                    setTimeout(() => {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            }
+        });
+    });
 });
