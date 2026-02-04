@@ -130,10 +130,15 @@ body {
 }
 
 .nav-link-featured {
-    color: var(--sys-accent);
-    font-weight: 500;
-    border-bottom-color: var(--sys-accent);
+    color: var(--sys-text-secondary);
+    font-weight: 600;
+    border-bottom-color: transparent;
     position: relative;
+}
+
+.nav-link-featured:hover {
+    color: var(--sys-accent);
+    border-bottom-color: var(--sys-accent);
 }
 
 .nav-link-featured::before {
