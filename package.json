@@ -1,0 +1,16 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website showcasing automation projects",
+  "scripts": {
+    "dev": "npx http-server . -p 3000 -o",
+    "start": "npx http-server . -p 3000 -o"
+  },
+  "keywords": [
+    "portfolio",
+    "automation",
+    "projects"
+  ],
+  "author": "",
+  "license": "MIT"
+}

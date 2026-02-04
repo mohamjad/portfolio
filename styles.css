@@ -202,56 +202,28 @@ body {
     display: none;
 }
 
-/* Disclaimer Section */
-.cyber-disclaimer {
-    margin-bottom: 3rem;
+/* How I Approach Section */
+.cyber-approach {
+    margin-bottom: 4rem;
     padding-top: 0;
 }
 
-.disclaimer-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.25rem 1.5rem;
+.approach-content {
     border: 1px solid var(--sys-border);
     background: var(--sys-surface);
-    position: relative;
-    border-left: 3px solid var(--sys-warning);
-    border-radius: 6px;
-    margin-bottom: 3rem;
+    padding: 2.5rem;
+    border-radius: 8px;
 }
 
-.disclaimer-icon {
-    flex-shrink: 0;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--sys-warning);
-    margin-top: 0.125rem;
+.approach-text {
+    color: var(--sys-text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    font-size: 0.9375rem;
 }
 
-.disclaimer-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    flex: 1;
-}
-
-.disclaimer-label {
-    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--sys-warning);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.disclaimer-message {
-    font-size: 0.875rem;
-    color: var(--sys-text-secondary);
-    line-height: 1.6;
+.approach-text:last-child {
+    margin-bottom: 0;
 }
 
 /* Section Header */
@@ -302,10 +274,32 @@ body {
     padding-top: 0;
 }
 
+.category-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--sys-border);
+}
+
+.category-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--sys-text-primary);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.category-description {
+    color: var(--sys-text-secondary);
+    line-height: 1.7;
+    font-size: 0.9375rem;
+    max-width: 800px;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
+    margin-top: 2rem;
 }
 
 .cyber-card {
@@ -394,6 +388,13 @@ body {
     line-height: 1.7;
     flex: 1;
     font-size: 0.9375rem;
+}
+
+.card-description strong {
+    color: var(--sys-accent);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.25rem;
 }
 
 .card-tech {
@@ -781,9 +782,6 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .disclaimer-content {
-        flex-direction: column;
-    }
 
     .modal-content {
         max-width: 95vw;

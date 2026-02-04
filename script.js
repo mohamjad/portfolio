@@ -1,46 +1,29 @@
 // Project data
 const projects = {
     1: {
-        title: 'E-commerce Reporting Dashboard',
-        description: 'Revenue drops went unnoticed for weeks. Refund spikes caught management by surprise. Daily performance was invisible until month-end reports.',
-        features: [
-            'Revenue drops detected within hours, not weeks',
-            'Refund spikes trigger immediate alerts',
-            'Daily performance visible without manual reporting',
-            'Trends identified before they become problems',
-            'Early warning system prevents revenue loss'
-        ],
-        technologies: ['Real-time visibility', 'Early warning system', 'Zero manual reporting'],
+        title: 'E-commerce Reporting',
+        category: 'Repairing Broken Systems',
+        problem: 'Revenue and refund issues were only discovered weeks later through manual reports. Daily performance was invisible until month-end reviews.',
+        solution: 'A real-time reporting and alerting system that surfaced anomalies automatically instead of relying on end-of-month reviews.',
+        result: 'Teams regained day-to-day visibility and could intervene before losses compounded.',
         github: 'https://github.com/mohamjad/n8n-ecommerce-reporting',
         demo: 'https://n8n-ecommerce-reporting.vercel.app/'
     },
     2: {
-        title: 'Social Media Sentiment Analysis',
-        description: 'Brand crises exploded before anyone noticed. Negative sentiment spread unchecked. Customer complaints went viral while teams were blind.',
-        features: [
-            'Threats detected before they escalate',
-            'Negative sentiment triggers instant alerts',
-            'Crises prevented through early intervention',
-            'Brand reputation protected proactively',
-            'Viral complaints caught before spread',
-            'Historical tracking reveals patterns'
-        ],
-        technologies: ['Threat detection', 'Instant alerts', 'Crisis prevention'],
+        title: 'Sentiment Analysis',
+        category: 'Early Failure Detection',
+        problem: 'Brand crises exploded before anyone noticed. Negative sentiment spread unchecked while teams were blind.',
+        solution: 'A monitoring system that tracks sentiment signals and alerts teams when threats emerge before they escalate.',
+        result: 'Teams regained visibility into brand health and could intervene before problems went viral.',
         github: 'https://github.com/mohamjad/n8n-workflow-portfolio',
         demo: 'https://n8n-workflow-portfolio.vercel.app/'
     },
     3: {
-        title: 'Client Health Monitoring Dashboard',
-        description: 'Customers churned without warning. Revenue disappeared before intervention. Account managers learned about problems from cancellation emails.',
-        features: [
-            'Churn risk identified weeks before cancellation',
-            'Revenue protected through proactive intervention',
-            'Account managers alerted before problems escalate',
-            'Health signals tracked across all touchpoints',
-            'Expansion opportunities surfaced automatically',
-            'MRR protected through early warning system'
-        ],
-        technologies: ['Churn prevention', 'Proactive intervention', 'Revenue protection'],
+        title: 'Client Health Monitoring',
+        category: 'Early Failure Detection',
+        problem: 'Customers churned without warning. Revenue disappeared before intervention. Account managers learned about problems from cancellation emails.',
+        solution: 'A health monitoring system that tracks signals across touchpoints and surfaces churn risk before cancellation.',
+        result: 'Account managers regained visibility into client health and could intervene before revenue was lost.',
         github: 'https://github.com/mohamjad/n8n-crm-lime',
         demo: 'https://n8n-crm-lime.vercel.app/'
     }
@@ -64,20 +47,21 @@ document.addEventListener('DOMContentLoaded', () => {
         
         modalBody.innerHTML = `
             <h2 class="card-title">${project.title}</h2>
-            <p class="card-description" style="margin-top: 1rem;">${project.description}</p>
-            
-            <div style="margin-top: 2rem; padding: 1rem; border: 1px solid var(--cyber-green); background: rgba(5, 150, 105, 0.1);">
-                <h3 style="color: var(--cyber-green); margin-bottom: 1rem; font-family: 'Share Tech Mono', monospace;">OUTCOMES:</h3>
-                <ul style="list-style: none; padding: 0;">
-                    ${project.features.map(feature => `<li style="padding: 0.5rem 0; color: var(--cyber-text); border-bottom: 1px solid var(--cyber-border-dim);">• ${feature}</li>`).join('')}
-                </ul>
-            </div>
+            <p style="margin-top: 0.5rem; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace; font-size: 0.75rem; color: var(--sys-text-muted);">${project.category}</p>
             
             <div style="margin-top: 2rem;">
-                <div class="tech-label">FAILURE MODES PREVENTED:</div>
-                <div class="tech-items" style="margin-top: 1rem;">
-                    ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
-                </div>
+                <p class="card-description" style="margin-bottom: 1rem;">
+                    <strong style="color: var(--sys-accent);">What was broken:</strong><br>
+                    ${project.problem}
+                </p>
+                <p class="card-description" style="margin-bottom: 1rem;">
+                    <strong style="color: var(--sys-accent);">What I built:</strong><br>
+                    ${project.solution}
+                </p>
+                <p class="card-description">
+                    <strong style="color: var(--sys-accent);">Result:</strong><br>
+                    ${project.result}
+                </p>
             </div>
             
             <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
