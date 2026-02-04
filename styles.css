@@ -109,6 +109,33 @@ body {
 
 .header-nav {
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.nav-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--sys-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nav-arrow {
+    color: var(--sys-accent);
+    font-size: 0.875rem;
+}
+
+.nav-label-text {
+    font-weight: 500;
+}
+
+.nav-links {
+    display: flex;
     gap: 1.5rem;
     align-items: center;
 }
