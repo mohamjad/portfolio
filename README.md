@@ -2,42 +2,8 @@
 
 A modern, responsive portfolio website showcasing three automation projects.
 
-## Features
 
-- 🎨 Modern and beautiful UI design
-- 📱 Fully responsive (mobile, tablet, desktop)
-- ⚡ Smooth animations and transitions
-- 🎯 Interactive project showcase with modals
-- 🔍 SEO-friendly structure
-- 🚀 Fast loading and optimized
 
-## Getting Started
-
-### Prerequisites
-
-- A modern web browser
-- A web server (optional, for local development)
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/mohamjad/portfolio.git
-cd portfolio
-```
-
-2. Open `index.html` in your web browser, or use a local server:
-
-```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js (http-server)
-npx http-server
-
-# Using PHP
-php -S localhost:8000
-```
 
 3. Navigate to `http://localhost:8000` in your browser
 
@@ -138,6 +104,4 @@ This project is open source and available under the MIT License.
 
 For questions or suggestions, please open an issue on GitHub or contact me directly.
 
----
 
-Made with ❤️ for showcasing automation projects
