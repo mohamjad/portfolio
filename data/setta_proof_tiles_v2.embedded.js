@@ -1,0 +1,1020 @@
+// Auto-generated fallback proof tiles dataset
+window.SETTA_PROOF_TILES_V2 = [
+    {
+        "tile_id":  "disc-video-01",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "video_proof",
+        "product_type":  "mascara",
+        "cluster_key":  "ck_424040894",
+        "cluster_label":  "faces when putting mascara (general)",
+        "creator_handle":  "spam.secretacc27",
+        "video_url":  "https://www.tiktok.com/@spam.secretacc27/video/7607579437864963342",
+        "metrics":  {
+                        "views":  2628744,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.035,
+                        "accel_score":  0.003988262229574541,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "faces when putting mascara — 2,628,744 views",
+        "subhead":  "Hook: general | Claim: other | Creator: @spam.secretacc27",
+        "recommended_tests":  [
+                                  "Hook with outcome first, then show the steps with captions.",
+                                  "End with a single CTA: ‘save this’ or ‘comment for shade/name’ to drive intent."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T04-59-20-044Z"
+    },
+    {
+        "tile_id":  "disc-video-02",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "video_proof",
+        "product_type":  "concealer",
+        "cluster_key":  "ck_1424797873",
+        "cluster_label":  "faced born way concealer (general)",
+        "creator_handle":  "aolanymorie",
+        "video_url":  "https://www.tiktok.com/@aolanymorie/video/7606976516596960526",
+        "metrics":  {
+                        "views":  1987823,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.029,
+                        "accel_score":  0.0033081726741962816,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "social_proof"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "faced born way concealer — 1,987,823 views",
+        "subhead":  "Hook: general | Claim: social_proof | Creator: @aolanymorie",
+        "recommended_tests":  [
+                                  "‘Everyone asked me…’ / ‘this sold out’ social proof framing.",
+                                  "End with a single CTA: ‘save this’ or ‘comment for shade/name’ to drive intent."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T04-59-20-044Z"
+    },
+    {
+        "tile_id":  "disc-video-03",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "video_proof",
+        "product_type":  "lip",
+        "cluster_key":  "ck_615873096",
+        "cluster_label":  "lipcombo (general)",
+        "creator_handle":  "adelaide_isabella",
+        "video_url":  "https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142",
+        "metrics":  {
+                        "views":  1953883,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.146,
+                        "accel_score":  0.016653997295644315,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "lipcombo — 1,953,883 views",
+        "subhead":  "Hook: general | Claim: other | Creator: @adelaide_isabella",
+        "recommended_tests":  [
+                                  "Hook with outcome first, then show the steps with captions.",
+                                  "End with a single CTA: ‘save this’ or ‘comment for shade/name’ to drive intent."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T04-59-20-044Z"
+    },
+    {
+        "tile_id":  "disc-video-04",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "video_proof",
+        "product_type":  "sunscreen",
+        "cluster_key":  "ck_880898712",
+        "cluster_label":  "aquasunscreen (general)",
+        "creator_handle":  "febisola_iris",
+        "video_url":  "https://www.tiktok.com/@febisola_iris/video/7608164113642016018",
+        "metrics":  {
+                        "views":  1194669,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.038,
+                        "accel_score":  0.004332425614345468,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "aquasunscreen — 1,194,669 views",
+        "subhead":  "Hook: general | Claim: other | Creator: @febisola_iris",
+        "recommended_tests":  [
+                                  "Hook with outcome first, then show the steps with captions.",
+                                  "End with a single CTA: ‘save this’ or ‘comment for shade/name’ to drive intent."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T04-59-20-044Z"
+    },
+    {
+        "tile_id":  "disc-video-05",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "video_proof",
+        "product_type":  "mascara",
+        "cluster_key":  "ck_63556594",
+        "cluster_label":  "princess lash mascara laila (general)",
+        "creator_handle":  "l1ttlebigocean",
+        "video_url":  "https://www.tiktok.com/@l1ttlebigocean/video/7607806080411864351",
+        "metrics":  {
+                        "views":  993488,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.066,
+                        "accel_score":  0.007571771058501611,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "princess lash mascara laila — 993,488 views",
+        "subhead":  "Hook: general | Claim: other | Creator: @l1ttlebigocean",
+        "recommended_tests":  [
+                                  "Hook with outcome first, then show the steps with captions.",
+                                  "End with a single CTA: ‘save this’ or ‘comment for shade/name’ to drive intent."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T04-59-20-044Z"
+    },
+    {
+        "tile_id":  "disc-video-06",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "video_proof",
+        "product_type":  "concealer",
+        "cluster_key":  "ck_1759365243",
+        "cluster_label":  "concealers patrick ta beauty (general)",
+        "creator_handle":  "roseandben",
+        "video_url":  "https://www.tiktok.com/@roseandben/video/7607911454565534990",
+        "metrics":  {
+                        "views":  991071,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.054,
+                        "accel_score":  0.006149928457433626,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "concealers patrick ta beauty — 991,071 views",
+        "subhead":  "Hook: general | Claim: other | Creator: @roseandben",
+        "recommended_tests":  [
+                                  "Hook with outcome first, then show the steps with captions.",
+                                  "End with a single CTA: ‘save this’ or ‘comment for shade/name’ to drive intent."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T04-59-20-044Z"
+    },
+    {
+        "tile_id":  "exp-video-01",
+        "market":  "US",
+        "mode":  "exploit",
+        "tile_type":  "video_proof",
+        "product_type":  "bronzer",
+        "cluster_label":  "sign put bronzer down (general)",
+        "creator_handle":  "itsbabykelz",
+        "video_url":  "https://www.tiktok.com/@itsbabykelz/video/7607253206166441229",
+        "metrics":  {
+                        "views":  2137821,
+                        "likes":  201364,
+                        "shares":  758,
+                        "comments":  736,
+                        "saves":  0,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.025
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "sign put bronzer down — 2,137,821 views",
+        "subhead":  "Engagement: 201,364 likes · 758 shares · 736 comments",
+        "recommended_tests":  [
+                                  "Hook with outcome first, then show the steps with captions.",
+                                  "End with a single CTA: ‘save this’ or ‘comment for shade/name’ to drive intent."
+                              ],
+        "source_pack":  "proof-pack-US-exploit-2026-02-21T04-57-43-619Z"
+    },
+    {
+        "tile_id":  "exp-video-02",
+        "market":  "US",
+        "mode":  "exploit",
+        "tile_type":  "video_proof",
+        "product_type":  "serum",
+        "cluster_label":  "clarins official double serum (general)",
+        "creator_handle":  "jeffreestar",
+        "video_url":  "https://www.tiktok.com/@jeffreestar/video/7607938932092734733",
+        "metrics":  {
+                        "views":  1113704,
+                        "likes":  72277,
+                        "shares":  3798,
+                        "comments":  955,
+                        "saves":  0,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.091
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "clarins official double serum — 1,113,704 views",
+        "subhead":  "Engagement: 72,277 likes · 3,798 shares · 955 comments",
+        "recommended_tests":  [
+                                  "Hook with outcome first, then show the steps with captions.",
+                                  "End with a single CTA: ‘save this’ or ‘comment for shade/name’ to drive intent."
+                              ],
+        "source_pack":  "proof-pack-US-exploit-2026-02-21T04-57-43-619Z"
+    },
+    {
+        "tile_id":  "exp-video-03",
+        "market":  "US",
+        "mode":  "exploit",
+        "tile_type":  "video_proof",
+        "product_type":  "eyeshadow",
+        "cluster_label":  "easy min eyeshadow makeup (general)",
+        "creator_handle":  "alexxandra.makeup",
+        "video_url":  "https://www.tiktok.com/@alexxandra.makeup/video/7607897961703492886",
+        "metrics":  {
+                        "views":  338116,
+                        "likes":  6130,
+                        "shares":  809,
+                        "comments":  16,
+                        "saves":  0,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.327
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "easy min eyeshadow makeup — 338,116 views",
+        "subhead":  "Engagement: 6,130 likes · 809 shares · 16 comments",
+        "recommended_tests":  [
+                                  "Hook with outcome first, then show the steps with captions.",
+                                  "End with a single CTA: ‘save this’ or ‘comment for shade/name’ to drive intent."
+                              ],
+        "source_pack":  "proof-pack-US-exploit-2026-02-21T04-57-43-619Z"
+    },
+    {
+        "tile_id":  "disc-momentum-01",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "cluster_momentum",
+        "product_type":  "blush",
+        "cluster_key":  "ck_1286890643",
+        "cluster_label":  "blushblindness (general)",
+        "metrics":  {
+                        "score_total":  49.402,
+                        "latest_delta_total":  2.044,
+                        "posts_24h_all":  4,
+                        "posts_24h_gate_passed":  3,
+                        "score_confidence":  44.614
+                    },
+        "headline":  "Momentum spike: blushblindness",
+        "subhead":  "Trajectory: accelerating | Δscore: +2.044 | 24h posts: 4 (gate-passed: 3)",
+        "recommended_tests":  [
+                                  "Cut 3 creatives from in-cluster videos; vary the first 2 seconds only.",
+                                  "Brief 5 creators with the same hook + 1 proof claim; keep captions native.",
+                                  "Scale only if next 24h keeps accelerating and gate-pass rate rises."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T04-59-20-044Z"
+    },
+    {
+        "tile_id":  "disc-momentum-02",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "cluster_momentum",
+        "product_type":  "mascara",
+        "cluster_key":  "ck_279240805",
+        "cluster_label":  "off end brown mascara (general)",
+        "metrics":  {
+                        "score_total":  39.721,
+                        "latest_delta_total":  1.963,
+                        "posts_24h_all":  1,
+                        "posts_24h_gate_passed":  0,
+                        "score_confidence":  33.461
+                    },
+        "headline":  "Momentum spike: off end brown mascara",
+        "subhead":  "Trajectory: accelerating | Δscore: +1.963 | 24h posts: 1 (gate-passed: 0)",
+        "recommended_tests":  [
+                                  "Cut 3 creatives from in-cluster videos; vary the first 2 seconds only.",
+                                  "Brief 5 creators with the same hook + 1 proof claim; keep captions native.",
+                                  "Scale only if next 24h keeps accelerating and gate-pass rate rises."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T04-59-20-044Z"
+    },
+    {
+        "tile_id":  "disc-decision-01",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "llm_brief_decision",
+        "cluster_key":  "ck_279240805",
+        "cluster_label":  "off end brown mascara (general)",
+        "verdict":  "do_not_shoot",
+        "signal_strength_score":  45.245,
+        "do_not_shoot_checks":  [
+                                    "low_gate_pass_rate",
+                                    "context_reference_alignment_absent",
+                                    "context_transfer_absent"
+                                ],
+        "hook_takeaways":  [
+                               "micro_recapture_coverage_lt_25pct",
+                               "macro_gate_passed_posts_lt_10",
+                               "low_gate_pass_rate",
+                               "weak_score_total",
+                               "novelty_signal_present"
+                           ],
+        "caption_patterns":  [
+
+                             ],
+        "next_tests":  [
+                           "Hold launch and gather additional evidence"
+                       ],
+        "why":  null,
+        "headline":  "Decision: do_not_shoot — off end brown mascara",
+        "subhead":  "Signal strength score: 45.245 | Why: None",
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T04-59-20-044Z"
+    },
+    {
+        "tile_id":  "disc-dns-01",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "do_not_shoot",
+        "product_type":  "mascara",
+        "cluster_key":  "ck_279240805",
+        "cluster_label":  "off end brown mascara (general)",
+        "sample_creator_handle":  "katiejanehughes",
+        "sample_video_url":  "https://www.tiktok.com/@katiejanehughes/video/7607817343778950414",
+        "sample_views":  336436,
+        "llm_confidence":  0.85,
+        "do_not_shoot_reasons":  [
+                                     "low_gate_pass_rate",
+                                     "weak_score_total"
+                                 ],
+        "missing_signal_reasons":  [
+                                       "macro_score_total_lt_62",
+                                       "macro_gate_passed_posts_lt_10",
+                                       "macro_creators_48h_lt_3",
+                                       "micro_outlier_velocity_lt_4x",
+                                       "micro_engagement_quality_lt_0_01",
+                                       "micro_recapture_coverage_lt_25pct",
+                                       "context_transfer_absent",
+                                       "context_reference_alignment_absent"
+                                   ],
+        "headline":  "Do not shoot: off end brown mascara",
+        "subhead":  "Filtered out to prevent wasted spend/briefs until the signal improves.",
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T04-59-20-044Z"
+    },
+    {
+        "tile_id":  "disc-dns-02",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "do_not_shoot",
+        "product_type":  "blush",
+        "cluster_key":  "ck_1865946696",
+        "cluster_label":  "el blush blindness es (general)",
+        "sample_creator_handle":  "michiiimiau",
+        "sample_video_url":  "https://www.tiktok.com/@michiiimiau/video/7606449907439799573",
+        "sample_views":  823739,
+        "llm_confidence":  0.85,
+        "do_not_shoot_reasons":  [
+                                     "low_gate_pass_rate",
+                                     "weak_score_total"
+                                 ],
+        "missing_signal_reasons":  [
+                                       "macro_score_total_lt_62",
+                                       "macro_gate_passed_posts_lt_10",
+                                       "macro_creators_48h_lt_3",
+                                       "micro_outlier_velocity_lt_4x",
+                                       "micro_engagement_quality_lt_0_01",
+                                       "micro_recapture_coverage_lt_25pct",
+                                       "context_transfer_absent",
+                                       "context_reference_alignment_absent"
+                                   ],
+        "headline":  "Do not shoot: el blush blindness es",
+        "subhead":  "Filtered out to prevent wasted spend/briefs until the signal improves.",
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T04-59-20-044Z"
+    },
+    {
+        "tile_id":  "system-scale-01",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "system_scale",
+        "product_type":  "system",
+        "cluster_key":  null,
+        "cluster_label":  "72-hour scan window",
+        "creator_handle":  null,
+        "video_url":  null,
+        "metrics":  {
+                        "as_of_ts":  "2026-02-21T04:40:00.219012+00:00",
+                        "window_hours":  72,
+                        "candidates_count":  7249,
+                        "selected_signals":  10,
+                        "briefs_generated":  0
+                    },
+        "labels":  {
+                       "hook_pattern":  null,
+                       "claim_type":  null
+                   },
+        "why_post_matters":  "scale_proof",
+        "headline":  "7,249 candidates → 10 selected signals",
+        "subhead":  "Scan window: 72h (Feb 18–20, 2026) • as_of: 2026-02-21T04:40:00.219012+00:00",
+        "recommended_tests":  [
+                                  "Use this tile as the hero stat line above the proof grid."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-jp-video-01",
+        "market":  "JP",
+        "mode":  "discovery",
+        "tile_type":  "intl_video_proof",
+        "product_type":  "makeup",
+        "cluster_key":  "ck_453003693",
+        "cluster_label":  "when doing eye makeup (general)",
+        "creator_handle":  "trevorbarrett",
+        "video_url":  "https://www.tiktok.com/@trevorbarrett/video/7607564272511618318",
+        "metrics":  {
+                        "views":  4212838,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.057,
+                        "accel_score":  0.006501731165960996,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "when doing eye makeup (general) — 4,212,838 views (JP)",
+        "subhead":  "Hook: general | Claim: other | Creator: @trevorbarrett",
+        "recommended_tests":  [
+                                  "Open with the result in the first 1–2 seconds, then show the steps.",
+                                  "Use on-screen labels for product/shade + one clear CTA (save/comment)."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-jp-video-02",
+        "market":  "JP",
+        "mode":  "discovery",
+        "tile_type":  "intl_video_proof",
+        "product_type":  "grwm",
+        "cluster_key":  "ck_1536375331",
+        "cluster_label":  "grwm (grwm)",
+        "creator_handle":  "makeupcoquette",
+        "video_url":  "https://www.tiktok.com/@makeupcoquette/video/7607208143340293398",
+        "metrics":  {
+                        "views":  3314406,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.012,
+                        "accel_score":  0.0013925105768389223,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "grwm (grwm) — 3,314,406 views (JP)",
+        "subhead":  "Hook: general | Claim: other | Creator: @makeupcoquette",
+        "recommended_tests":  [
+                                  "Open with the result in the first 1–2 seconds, then show the steps.",
+                                  "Use on-screen labels for product/shade + one clear CTA (save/comment)."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-jp-video-03",
+        "market":  "JP",
+        "mode":  "discovery",
+        "tile_type":  "intl_video_proof",
+        "product_type":  "foundation",
+        "cluster_key":  "ck_1485926175",
+        "cluster_label":  "summer covermax cushion foundation (general)",
+        "creator_handle":  "letishavelasco",
+        "video_url":  "https://www.tiktok.com/@letishavelasco/video/7606215255735323922",
+        "metrics":  {
+                        "views":  3232342,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.0,
+                        "accel_score":  2.0826218905586458E-05,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "summer covermax cushion foundation (general) — 3,232,342 views (JP)",
+        "subhead":  "Hook: general | Claim: other | Creator: @letishavelasco",
+        "recommended_tests":  [
+                                  "Lead with a before/after split-screen; keep the application steps tight.",
+                                  "Call out shade + finish (matte/dewy) in captions; end with “shade match?” CTA."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-jp-video-04",
+        "market":  "JP",
+        "mode":  "discovery",
+        "tile_type":  "intl_video_proof",
+        "product_type":  "blush",
+        "cluster_key":  "ck_693749701",
+        "cluster_label":  "taught only put blush (general)",
+        "creator_handle":  "selenamup",
+        "video_url":  "https://www.tiktok.com/@selenamup/video/7607920372192677140",
+        "metrics":  {
+                        "views":  2179648,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.061,
+                        "accel_score":  0.0069489806991120465,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "taught only put blush (general) — 2,179,648 views (JP)",
+        "subhead":  "Hook: general | Claim: other | Creator: @selenamup",
+        "recommended_tests":  [
+                                  "Show the transformation first; then demonstrate placement + brush/tool.",
+                                  "Add a quick ‘common mistake’ callout; end with “save this placement” CTA."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-kr-video-01",
+        "market":  "KR",
+        "mode":  "discovery",
+        "tile_type":  "intl_video_proof",
+        "product_type":  "grwm",
+        "cluster_key":  "ck_2141054560",
+        "cluster_label":  "grwm (grwm)",
+        "creator_handle":  "makeupcoquette",
+        "video_url":  "https://www.tiktok.com/@makeupcoquette/video/7607208143340293398",
+        "metrics":  {
+                        "views":  3336153,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.005,
+                        "accel_score":  0.0006012572544281737,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "grwm (grwm) — 3,336,153 views (KR)",
+        "subhead":  "Hook: general | Claim: other | Creator: @makeupcoquette",
+        "recommended_tests":  [
+                                  "Open with the result in the first 1–2 seconds, then show the steps.",
+                                  "Use on-screen labels for product/shade + one clear CTA (save/comment)."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-kr-video-02",
+        "market":  "KR",
+        "mode":  "discovery",
+        "tile_type":  "intl_video_proof",
+        "product_type":  "foundation",
+        "cluster_key":  "ck_820651204",
+        "cluster_label":  "summer covermax cushion foundation (general)",
+        "creator_handle":  "letishavelasco",
+        "video_url":  "https://www.tiktok.com/@letishavelasco/video/7606215255735323922",
+        "metrics":  {
+                        "views":  3232318,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.0,
+                        "accel_score":  2.710753435611936E-05,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "summer covermax cushion foundation (general) — 3,232,318 views (KR)",
+        "subhead":  "Hook: general | Claim: other | Creator: @letishavelasco",
+        "recommended_tests":  [
+                                  "Lead with a before/after split-screen; keep the application steps tight.",
+                                  "Call out shade + finish (matte/dewy) in captions; end with “shade match?” CTA."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-kr-video-03",
+        "market":  "KR",
+        "mode":  "discovery",
+        "tile_type":  "intl_video_proof",
+        "product_type":  "blush",
+        "cluster_key":  "ck_1424152408",
+        "cluster_label":  "taught only put blush (general)",
+        "creator_handle":  "selenamup",
+        "video_url":  "https://www.tiktok.com/@selenamup/video/7607920372192677140",
+        "metrics":  {
+                        "views":  3145929,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.084,
+                        "accel_score":  0.00958015698392519,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "taught only put blush (general) — 3,145,929 views (KR)",
+        "subhead":  "Hook: general | Claim: other | Creator: @selenamup",
+        "recommended_tests":  [
+                                  "Show the transformation first; then demonstrate placement + brush/tool.",
+                                  "Add a quick ‘common mistake’ callout; end with “save this placement” CTA."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-kr-video-04",
+        "market":  "KR",
+        "mode":  "discovery",
+        "tile_type":  "intl_video_proof",
+        "product_type":  "makeup",
+        "cluster_key":  "ck_1360857869",
+        "cluster_label":  "quick makeup tut grwm (grwm)",
+        "creator_handle":  "mayanagy",
+        "video_url":  "https://www.tiktok.com/@mayanagy/video/7606467281530506517",
+        "metrics":  {
+                        "views":  1957898,
+                        "ugc_quality_percentile":  0.0,
+                        "post_signal_score":  20.019,
+                        "accel_score":  0.0022283455983713486,
+                        "rank_in_cluster":  1
+                    },
+        "labels":  {
+                       "hook_pattern":  "general",
+                       "claim_type":  "other"
+                   },
+        "why_post_matters":  "velocity_validated",
+        "headline":  "quick makeup tut grwm (grwm) — 1,957,898 views (KR)",
+        "subhead":  "Hook: general | Claim: other | Creator: @mayanagy",
+        "recommended_tests":  [
+                                  "Open with the result in the first 1–2 seconds, then show the steps.",
+                                  "Use on-screen labels for product/shade + one clear CTA (save/comment)."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-intensity-01",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "intl_intensity",
+        "product_type":  "blush",
+        "cluster_key":  null,
+        "cluster_label":  "blush blindness (grwm)",
+        "creator_handle":  null,
+        "video_url":  null,
+        "metrics":  {
+                        "intl_market":  "JP",
+                        "us_first_score":  30.151,
+                        "intl_first_score":  39.245,
+                        "score_diff":  9.093999999999998,
+                        "lead_hours":  0.0,
+                        "propagation_direction":  "US-\u003eJP",
+                        "join_method":  "cluster_label_normalized",
+                        "join_score":  0.0
+                    },
+        "labels":  {
+                       "hook_pattern":  null,
+                       "claim_type":  null
+                   },
+        "why_post_matters":  "cross_market_intensity",
+        "headline":  "blush blindness (grwm): stronger in JP (+9.1 score vs US)",
+        "subhead":  "Cross-market snapshot • direction: US-\u003eJP • join_score: 0.00",
+        "recommended_tests":  [
+                                  "Use the JP creative angle variants as your first US test batch.",
+                                  "Translate the hook mechanics, not the language: pacing, shot order, and proof beats."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-intensity-02",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "intl_intensity",
+        "product_type":  "makeup",
+        "cluster_key":  null,
+        "cluster_label":  "douyinmakeup (general)",
+        "creator_handle":  null,
+        "video_url":  null,
+        "metrics":  {
+                        "intl_market":  "JP",
+                        "us_first_score":  30.576,
+                        "intl_first_score":  37.076,
+                        "score_diff":  6.5,
+                        "lead_hours":  0.0,
+                        "propagation_direction":  "US-\u003eJP",
+                        "join_method":  "cluster_label_normalized",
+                        "join_score":  0.0
+                    },
+        "labels":  {
+                       "hook_pattern":  null,
+                       "claim_type":  null
+                   },
+        "why_post_matters":  "cross_market_intensity",
+        "headline":  "douyinmakeup (general): stronger in JP (+6.5 score vs US)",
+        "subhead":  "Cross-market snapshot • direction: US-\u003eJP • join_score: 0.00",
+        "recommended_tests":  [
+                                  "Use the JP creative angle variants as your first US test batch.",
+                                  "Translate the hook mechanics, not the language: pacing, shot order, and proof beats."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-intensity-03",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "intl_intensity",
+        "product_type":  "makeup",
+        "cluster_key":  null,
+        "cluster_label":  "eyemakeup (general)",
+        "creator_handle":  null,
+        "video_url":  null,
+        "metrics":  {
+                        "intl_market":  "JP",
+                        "us_first_score":  35.895,
+                        "intl_first_score":  42.258,
+                        "score_diff":  6.3629999999999995,
+                        "lead_hours":  0.0,
+                        "propagation_direction":  "US-\u003eJP",
+                        "join_method":  "cluster_label_normalized",
+                        "join_score":  0.0
+                    },
+        "labels":  {
+                       "hook_pattern":  null,
+                       "claim_type":  null
+                   },
+        "why_post_matters":  "cross_market_intensity",
+        "headline":  "eyemakeup (general): stronger in JP (+6.4 score vs US)",
+        "subhead":  "Cross-market snapshot • direction: US-\u003eJP • join_score: 0.00",
+        "recommended_tests":  [
+                                  "Use the JP creative angle variants as your first US test batch.",
+                                  "Translate the hook mechanics, not the language: pacing, shot order, and proof beats."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-intensity-04",
+        "market":  "US",
+        "mode":  "discovery",
+        "tile_type":  "intl_intensity",
+        "product_type":  "foundation",
+        "cluster_key":  null,
+        "cluster_label":  "cushionfoundation (general)",
+        "creator_handle":  null,
+        "video_url":  null,
+        "metrics":  {
+                        "intl_market":  "JP",
+                        "us_first_score":  35.183,
+                        "intl_first_score":  39.795,
+                        "score_diff":  4.612000000000002,
+                        "lead_hours":  0.0,
+                        "propagation_direction":  "US-\u003eJP",
+                        "join_method":  "cluster_label_normalized",
+                        "join_score":  0.0
+                    },
+        "labels":  {
+                       "hook_pattern":  null,
+                       "claim_type":  null
+                   },
+        "why_post_matters":  "cross_market_intensity",
+        "headline":  "cushionfoundation (general): stronger in JP (+4.6 score vs US)",
+        "subhead":  "Cross-market snapshot • direction: US-\u003eJP • join_score: 0.00",
+        "recommended_tests":  [
+                                  "Use the JP creative angle variants as your first US test batch.",
+                                  "Translate the hook mechanics, not the language: pacing, shot order, and proof beats."
+                              ],
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "intl-jp-dns-01",
+        "market":  "JP",
+        "mode":  "discovery",
+        "tile_type":  "do_not_shoot",
+        "product_type":  "mascara",
+        "cluster_key":  "ck_717017148",
+        "cluster_label":  "extreme lengthening volume mascara (general)",
+        "creator_handle":  null,
+        "video_url":  null,
+        "metrics":  {
+                        "score_total":  41.158,
+                        "shootability_score":  0.0,
+                        "posts_24h_all":  1,
+                        "posts_24h_gate_passed":  0,
+                        "gate_pass_rate_24h":  0.0,
+                        "llm_confidence":  0.95
+                    },
+        "labels":  {
+                       "hook_pattern":  "unknown",
+                       "claim_type":  null
+                   },
+        "why_post_matters":  "gated_out",
+        "headline":  "Do not shoot (JP): extreme lengthening volume mascara (general) — gated out (0/1 pass)",
+        "subhead":  "Reason: low_gate_pass_rate; weak_score_total • LLM confidence: 0.95",
+        "recommended_tests":  [
+                                  "Hold spend until multiple posts pass the gate (velocity_validated) in a 24h window.",
+                                  "If you test anyway: treat as low-budget exploration, not a scaling signal."
+                              ],
+        "verdict":  "do_not_shoot",
+        "do_not_shoot_checks":  "low_gate_pass_rate; weak_score_total",
+        "do_not_shoot_reasons":  "low_gate_pass_rate; weak_score_total",
+        "missing_signal_reasons":  "macro_score_total_lt_62; macro_gate_passed_posts_lt_10; macro_creators_48h_lt_3; micro_outlier_velocity_lt_4x; micro_engagement_quality_lt_0_01; micro_recapture_coverage_lt_25pct; context_transfer_absent; context_reference_alignment_absent",
+        "source_pack":  "proof-pack-US-discovery-2026-02-21T05-37-10-167Z"
+    },
+    {
+        "tile_id":  "vt-hero-001",
+        "market":  "US",
+        "mode":  "demo",
+        "tile_type":  "system_scale",
+        "headline":  "VT Reedle Shot quant and qual campaign-intel pack",
+        "source_pack":  "client-pack-vt-reedle-2026-02-21",
+        "subhead":  "Mechanic transfer, objection mapping, and creator lane planning",
+        "metrics":  {
+                        "candidates_count":  1200,
+                        "selected_signals":  14,
+                        "window_hours":  72,
+                        "as_of_ts":  "2026-02-21T00:00:00Z"
+                    }
+    },
+    {
+        "tile_id":  "vt-intl-vid-001",
+        "market":  "KR",
+        "mode":  "demo",
+        "tile_type":  "intl_video_proof",
+        "headline":  "Diary-style skincare proof pacing (KR proxy)",
+        "source_pack":  "client-pack-vt-reedle-2026-02-21",
+        "video_url":  "https://www.tiktok.com/@linsmakeuplooks/video/7606535528639644970",
+        "author_handle":  "linsmakeuplooks",
+        "hook_pattern_label":  "story",
+        "claim_type":  "benefit",
+        "why_post_matters":  "texture proof, calm tone, and routine normalization",
+        "metrics":  {
+                        "views":  574000,
+                        "er_percent":  7.2
+                    }
+    },
+    {
+        "tile_id":  "vt-intl-vid-002",
+        "market":  "KR",
+        "mode":  "demo",
+        "tile_type":  "intl_video_proof",
+        "headline":  "Routine normalization and low ad-feel (KR proxy)",
+        "source_pack":  "client-pack-vt-reedle-2026-02-21",
+        "video_url":  "https://www.tiktok.com/@aileen.song/video/7570021588175744289",
+        "author_handle":  "aileen.song",
+        "hook_pattern_label":  "grwm",
+        "claim_type":  "other",
+        "why_post_matters":  "trusted voice, simple sequencing, and save triggers",
+        "metrics":  {
+                        "views":  440000,
+                        "er_percent":  6.5
+                    }
+    },
+    {
+        "tile_id":  "vt-intl-vid-003",
+        "market":  "KR",
+        "mode":  "demo",
+        "tile_type":  "intl_video_proof",
+        "headline":  "Texture-first closeups (KR proxy)",
+        "source_pack":  "client-pack-vt-reedle-2026-02-21",
+        "video_url":  "https://www.tiktok.com/@meloshmusc/video/7569020018948545824",
+        "author_handle":  "meloshmusc",
+        "hook_pattern_label":  "general",
+        "claim_type":  "other",
+        "why_post_matters":  "macro proof beats early and improves save probability",
+        "metrics":  {
+                        "views":  370000,
+                        "er_percent":  6.9
+                    }
+    },
+    {
+        "tile_id":  "vt-us-vid-001",
+        "market":  "US",
+        "mode":  "demo",
+        "tile_type":  "video_proof",
+        "headline":  "Skincare baseline proof pacing (US mechanic proxy)",
+        "source_pack":  "client-pack-vt-reedle-2026-02-21",
+        "cluster_key":  "ck_1347669168",
+        "cluster_label":  "skincare (general)",
+        "post_id":  "f5d46181-c363-4413-801f-098a5e528617",
+        "video_url":  "https://www.tiktok.com/@itssephty/video/7606733431220784405",
+        "author_handle":  "itssephty",
+        "metrics":  {
+                        "post_signal_score":  20.042,
+                        "views":  611000
+                    },
+        "hook_pattern_label":  "general",
+        "claim_type":  "other",
+        "why_post_matters":  "UGC-native pacing with proof-first framing"
+    },
+    {
+        "tile_id":  "vt-us-vid-002",
+        "market":  "US",
+        "mode":  "demo",
+        "tile_type":  "video_proof",
+        "headline":  "Reply-to-comment objection handling (US mechanic proxy)",
+        "source_pack":  "client-pack-vt-reedle-2026-02-21",
+        "cluster_key":  "ck_1989409533",
+        "cluster_label":  "replying skin prep medicube (general)",
+        "post_id":  "ec655d68-4620-40be-9e18-aa53e46ac30a",
+        "video_url":  "https://www.tiktok.com/@loveatfirstinternet08/video/7606100381097004301",
+        "author_handle":  "loveatfirstinternet08",
+        "metrics":  {
+                        "post_signal_score":  20.016,
+                        "views":  403000
+                    },
+        "hook_pattern_label":  "general",
+        "claim_type":  "other",
+        "why_post_matters":  "turns skepticism into structured answers"
+    },
+    {
+        "tile_id":  "vt-us-vid-003",
+        "market":  "US",
+        "mode":  "demo",
+        "tile_type":  "video_proof",
+        "headline":  "Social proof hook mechanic (US proxy)",
+        "source_pack":  "client-pack-vt-reedle-2026-02-21",
+        "cluster_key":  "ck_300206893",
+        "cluster_label":  "reviewing most talked concealer (general)",
+        "post_id":  "ce12b6aa-a01b-484b-a6d8-1664758134d1",
+        "video_url":  "https://www.tiktok.com/@soniiyaxx/video/7608319526140136726",
+        "author_handle":  "soniiyaxx",
+        "metrics":  {
+                        "post_signal_score":  20.35,
+                        "views":  734000
+                    },
+        "hook_pattern_label":  "general",
+        "claim_type":  "other",
+        "why_post_matters":  "most-talked framing builds instant relevance"
+    },
+    {
+        "tile_id":  "vt-us-vid-004",
+        "market":  "US",
+        "mode":  "demo",
+        "tile_type":  "video_proof",
+        "headline":  "Take me best demand hook (US proxy)",
+        "source_pack":  "client-pack-vt-reedle-2026-02-21",
+        "cluster_key":  "ck_564784878",
+        "cluster_label":  "take me best sunscreen (general)",
+        "post_id":  "0c121b10-3d0e-4560-9727-16d29b9e864a",
+        "video_url":  "https://www.tiktok.com/@martinaglez_/video/7608468026618301718",
+        "author_handle":  "martinaglez_",
+        "metrics":  {
+                        "post_signal_score":  20.953,
+                        "views":  529000
+                    },
+        "hook_pattern_label":  "general",
+        "claim_type":  "other",
+        "why_post_matters":  "command-style hooks increase watch completion"
+    },
+    {
+        "tile_id":  "vt-dns-001",
+        "market":  "US",
+        "mode":  "demo",
+        "tile_type":  "llm_brief_decision",
+        "headline":  "Do Not Shoot: pain-challenge framing",
+        "source_pack":  "client-pack-vt-reedle-2026-02-21",
+        "cluster_label":  "pain challenge / extreme reaction",
+        "verdict":  "do_not_shoot",
+        "signal_strength_score":  0.91,
+        "llm_confidence":  0.91,
+        "do_not_shoot_reasons":  [
+                                     "Backlash dominates comments and suppresses conversion",
+                                     "Triggers unsafe interpretation and raises CPM",
+                                     "Damages trust for follow-on concepts"
+                                 ],
+        "do_not_shoot_checks":  [
+                                    "Stop spend if negative comment ratio is above 12% in first 24h",
+                                    "Shift to value normalization or reply-objection formats"
+                                ]
+    }
+];
+

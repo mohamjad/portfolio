@@ -3,349 +3,1034 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Systems that restore signal, reliability, and visibility in real operations">
-    <title>Setta</title>
+    <meta name="description" content="Setta is a US-forward custom campaign intelligence service. Send your brief and get what to shoot, what to avoid, and who to use.">
+    <title>Setta | Custom Campaign Intelligence</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Single Page Container -->
-    <div class="cyberpunk-container">
-        <!-- Header -->
-        <header class="cyber-header">
-            <div class="header-grid">
-                <div class="header-left">
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span>
-                        <span class="terminal-text">system status</span>
-                    </div>
-                    <h1 class="cyber-title">Mohammed's Work</h1>
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span>
-                        <span class="terminal-text">restoring signal and reliability</span>
-                    </div>
-                </div>
-                <div class="header-right">
-                    <nav class="header-nav">
-                        <div class="nav-label">
-                            <span class="nav-arrow">→</span>
-                            <span class="nav-label-text">My Work</span>
-                        </div>
-                        <div class="nav-links">
-                            <a href="#system-health" class="nav-link nav-link-featured">System Health</a>
-                            <a href="#ecommerce" class="nav-link">E-commerce</a>
-                            <a href="#sentiment" class="nav-link">Sentiment</a>
-                            <a href="#client-health" class="nav-link">Client Health</a>
-                        </div>
-                    </nav>
-                    <div class="status-indicator">
-                        <span class="status-dot"></span>
-                        <span>operational</span>
-                    </div>
-                </div>
+    <nav class="side-rail" id="sideRailNav" aria-label="Section navigation">
+        <p class="side-rail-label">Navigation</p>
+        <a class="side-nav-link" data-site-nav-link data-nav-target="deliverablesPanel" href="#deliverablesPanel">Deliverables</a>
+        <a class="side-nav-link" data-site-nav-link data-nav-target="sampleBriefSection" href="#sampleBriefSection">Briefs</a>
+        <a class="side-nav-link" data-site-nav-link data-nav-target="sampleBriefSection" href="#sampleBriefSection">Samples</a>
+        <a class="side-nav-link" data-site-nav-link data-nav-target="proofTiles" href="#proofTiles">Proof Tiles</a>
+        <a class="side-nav-link" data-site-nav-link data-nav-target="contactSection" href="#contactSection">Contact</a>
+    </nav>
+
+    <div class="container">
+        <header class="site-topbar">
+            <div class="brand-block">
+                <p class="brand-name">Setta</p>
+                <p class="brand-tagline">US-forward custom campaign intelligence</p>
+            </div>
+            <div class="topbar-actions">
+                <button class="mobile-nav-toggle" id="mobileNavToggle" type="button" aria-expanded="false" aria-controls="mobileNavPanel">Menu</button>
+                <button class="autopsy-launch-btn" id="showAutopsyBtn" type="button">View Systems Autopsy</button>
             </div>
         </header>
 
-        <!-- Main Content -->
-        <main class="cyber-main">
-            <!-- Collapsible Content Wrapper -->
-            <div class="main-content-wrapper">
-                <!-- Hero Section (Always Visible) -->
-                <section class="cyber-hero">
-                    <div class="grid-overlay"></div>
-                    <div class="hero-content">
-                        <h2 class="hero-title">I build systems that catch problems early and fix what's already broken.</h2>
-                        <p class="hero-subtitle">From missing revenue signals to brittle automation and silent failures, I help teams regain visibility and control before small issues turn into expensive ones.</p>
-                    </div>
-                </section>
+        <nav class="mobile-nav-panel" id="mobileNavPanel" aria-label="Mobile navigation" aria-hidden="true">
+            <a class="mobile-nav-link" data-site-nav-link data-nav-target="deliverablesPanel" href="#deliverablesPanel">Deliverables</a>
+            <a class="mobile-nav-link" data-site-nav-link data-nav-target="sampleBriefSection" href="#sampleBriefSection">Briefs</a>
+            <a class="mobile-nav-link" data-site-nav-link data-nav-target="sampleBriefSection" href="#sampleBriefSection">Samples</a>
+            <a class="mobile-nav-link" data-site-nav-link data-nav-target="proofTiles" href="#proofTiles">Proof Tiles</a>
+            <a class="mobile-nav-link" data-site-nav-link data-nav-target="contactSection" href="#contactSection">Contact</a>
+        </nav>
 
-                <!-- Expand Button (Always Visible) -->
-                <div class="expand-section">
-                    <button type="button" class="expand-main-btn" id="expandMainBtn">
-                        <span class="expand-btn-text">EXPLORE MY WORK →</span>
-                        <span class="expand-btn-icon">↓</span>
+        <section class="hero-panel">
+            <p class="hero-kicker">Brief in. Decisions out.</p>
+            <h1 class="hero-title">Send your campaign brief. Get what to shoot, what to avoid, and who can execute it.</h1>
+            <p class="hero-subtitle">Setta maps campaign briefs to a US and Western signal engine (US, CA, UK, AU) and uses JP and KR as directional signal inputs for US planning. You get action-ready creative decisions, not generic trend reports.</p>
+            <div class="hero-meta-row">
+                <a class="hero-cta" href="#pricingSection">View Pricing</a>
+                <a class="hero-cta ghost" href="#sampleBriefSection">View Sample Brief</a>
+                <p class="hero-meta">For teams testing 10+ concepts per month.</p>
+            </div>
+        </section>
+
+        <section class="content-section active" id="ugcSection">
+            <div class="ugc-header">
+                <h2 class="section-title">What You Get Per Brief</h2>
+                <p class="section-description">Brief-in, decision-out intelligence for teams that need clear action paths fast.</p>
+            </div>
+
+            <details class="deliverables-fold" id="deliverablesPanel">
+                <summary>Deliverables</summary>
+                <div class="deliverables-wrap">
+                    <p class="deliverables-intro">Custom campaign intelligence for in-house creative teams and agencies that move on evidence.</p>
+
+                    <div class="deliverables-grid">
+                        <article class="deliverable-card">
+                            <h3>What to Shoot</h3>
+                            <p>4-6 format recommendations matched to your campaign with confidence and timing windows.</p>
+                        </article>
+                        <article class="deliverable-card">
+                            <h3>Do Not Shoot</h3>
+                            <p>3-5 saturated or weak formats flagged early so you avoid wasted creator and media spend.</p>
+                        </article>
+                        <article class="deliverable-card">
+                            <h3>Creator Intel</h3>
+                            <p>5-10 fit-matched creator examples with outreach notes and execution relevance.</p>
+                        </article>
+                        <article class="deliverable-card">
+                            <h3>Tactical Notes</h3>
+                            <p>Specific execution details like hook order, objection handling, and first-five-second guidance.</p>
+                        </article>
+                        <article class="deliverable-card">
+                            <h3>Cross-Market Transfer</h3>
+                            <p>JP and KR directional shifts translated into likely US movement with adaptation notes.</p>
+                        </article>
+                    </div>
+
+                    <div class="at-a-glance">
+                        <article class="at-a-glance-card">
+                            <h3>Fast process</h3>
+                            <p>Brief in -> mapped recommendations in 48h (monthly) or 72h (pilot/standalone).</p>
+                        </article>
+                        <article class="at-a-glance-card">
+                            <h3>Decision output</h3>
+                            <p>You get what to shoot, what to avoid, creator examples, and tactical notes.</p>
+                        </article>
+                        <article class="at-a-glance-card">
+                            <h3>Execution-ready</h3>
+                            <p>Built so teams can brief creators and launch tests immediately.</p>
+                        </article>
+                        <article class="at-a-glance-card">
+                            <h3>Retainer iteration</h3>
+                            <p>Monthly clients get ongoing updates and re-iteration based on live campaign performance and DB benchmarks.</p>
+                        </article>
+                    </div>
+
+                    <div class="deliverables-detail-grid">
+                        <article class="deliverables-detail-card">
+                            <h3>See full process (5 steps)</h3>
+                            <ol class="steps-list">
+                                <li><strong>Step 1:</strong> Send your campaign brief (product, demo, budget, timeline, goal).</li>
+                                <li><strong>Step 2:</strong> We map it to our signal system and build your report (48h for monthly, 72h for pilot/per-brief).</li>
+                                <li><strong>Step 3:</strong> Optional 30-minute review call to prioritize what to test first.</li>
+                                <li><strong>Step 4:</strong> Execute with creators using the recommended formats and constraints.</li>
+                                <li><strong>Step 5:</strong> Monthly retainer includes ongoing updates from your live performance and re-iteration against the existing signal DB.</li>
+                            </ol>
+                        </article>
+                        <article class="deliverables-detail-card">
+                            <h3>See confidence score guide</h3>
+                            <ul class="confidence-list">
+                                <li><strong>9.0-10.0:</strong> Strong bet. Test immediately with 2-3 creators.</li>
+                                <li><strong>7.5-8.9:</strong> Solid opportunity. Test with 1-2 creators and monitor closely.</li>
+                                <li><strong>6.0-7.4:</strong> Emerging signal. Higher variance, run low-risk exploration.</li>
+                                <li><strong>Below 6.0:</strong> Not recommended for active campaign budget.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+            </details>
+
+            <section class="sample-brief-section" id="sampleBriefSection">
+                <div class="sample-header">
+                    <h2 class="section-title">Sample Briefs</h2>
+                    <p class="sample-intro">Open a brief to review the decision pack with objectives, constraints, big bets, do-not-shoot calls, explainability, and linked creator shortlist types.</p>
+                </div>
+
+                <div class="brief-nav-grid">
+                    <button class="brief-nav-card" id="briefCardA" data-brief-id="A" type="button">
+                        <h3>Brief A</h3>
+                        <p class="brief-nav-note">LAKA Fruity Glam Tint US launch. Priority: fast concept velocity with spend protection.</p>
+                    </button>
+                    <button class="brief-nav-card" id="briefCardB" data-brief-id="B" type="button">
+                        <h3>Brief B</h3>
+                        <p class="brief-nav-note">VT CICA Reedle Shot 100 US scale. Priority: trust-safe growth and explainable risk controls.</p>
                     </button>
                 </div>
+                <p class="sample-disclaimer">Illustrative benchmark ranges for planning; final performance varies by creative quality, offer, and media setup.</p>
+            </section>
 
-                <!-- Collapsible Content -->
-                <div class="collapsible-content" id="collapsibleContent" style="display: none;">
-
-                    <!-- How I Approach Section -->
-                    <section class="cyber-approach">
-                <div class="section-header">
-                    <div class="section-number">00</div>
-                    <h3 class="section-title">How I approach systems</h3>
-                    <div class="section-line"></div>
+            <div class="brief-popup" id="briefPopup" aria-hidden="true">
+                <div class="brief-popup-content" role="dialog" aria-modal="true" aria-labelledby="briefPopupTitle">
+                    <div class="brief-popup-header">
+                        <p class="brief-popup-kicker" id="briefPopupKicker">Brief</p>
+                        <h3 class="brief-popup-title" id="briefPopupTitle">Campaign Brief</h3>
+                        <button class="brief-popup-close" id="briefPopupClose" type="button" aria-label="Close brief">&times;</button>
+                    </div>
+                    <div class="brief-popup-body" id="briefPopupBody"></div>
                 </div>
-                <div class="approach-content">
-                    <p class="approach-text">
-                        Most failures don't happen all at once. They creep in quietly through missing signal, brittle assumptions, and systems that look fine on the surface.
-                    </p>
-                    <p class="approach-text">
-                        I focus on restoring signal first. Once you can see what's actually happening, preventing or fixing failures becomes straightforward.
-                    </p>
+            </div>
+
+            <template id="briefTemplateA">
+                <div class="brief-sheet">
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">Executive Summary</h3>
+                        <p><strong>Campaign:</strong> LAKA Fruity Glam Tint, US paid launch. <strong>Goal:</strong> 15 UGC concepts in 21 days, then 3 scalable winners.</p>
+                        <p><strong>Primary KPI:</strong> CPA with guardrails. <strong>Secondary KPI:</strong> save rate and CTR.</p>
+                        <p><strong>Creative constraints:</strong> proof in first 2 seconds, low ad feel, shade clarity on screen, and 15 to 22 second runtime when possible.</p>
+                        <div class="brief-metric-row">
+                            <span class="brief-pill">Priority: Speed + save intent</span>
+                            <span class="brief-pill">Window: 21 days</span>
+                            <span class="brief-pill">Target: 3 winners</span>
+                            <span class="brief-pill">Platform: TikTok first</span>
+                        </div>
+                    </section>
+
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">0) Quant Snapshot</h3>
+                        <div class="brief-snapshot-grid">
+                            <article class="brief-stat-card">
+                                <p class="brief-stat-label">Scan Window</p>
+                                <p class="brief-stat-value">72 hours</p>
+                                <p class="brief-stat-sub">Feb 18 to Feb 20, 2026</p>
+                            </article>
+                            <article class="brief-stat-card">
+                                <p class="brief-stat-label">Candidates</p>
+                                <p class="brief-stat-value">7,249</p>
+                                <p class="brief-stat-sub">Raw pattern candidates</p>
+                            </article>
+                            <article class="brief-stat-card">
+                                <p class="brief-stat-label">Selected</p>
+                                <p class="brief-stat-value">10</p>
+                                <p class="brief-stat-sub">Velocity validated signals</p>
+                            </article>
+                            <article class="brief-stat-card">
+                                <p class="brief-stat-label">Anchor Cluster</p>
+                                <p class="brief-stat-value">ck_615873096</p>
+                                <p class="brief-stat-sub">lipcombo (general)</p>
+                            </article>
+                        </div>
+                        <p><strong>Primary anchor proof:</strong> <a href="https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142" target="_blank" rel="noopener noreferrer">@adelaide_isabella</a> at 1,953,883 views with velocity_validated tag.</p>
+                        <details class="brief-quant-drop">
+                            <summary>See proof cluster links used for this brief</summary>
+                            <ul>
+                                <li><code>ck_615873096</code> lipcombo - <a href="https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142" target="_blank" rel="noopener noreferrer">@adelaide_isabella</a></li>
+                                <li><code>ck_1419652632</code> updated lip combo - <a href="https://www.tiktok.com/@gabbymccarthyyy/video/7608452758030650631" target="_blank" rel="noopener noreferrer">@gabbymccarthyyy</a></li>
+                                <li><code>ck_84937765</code> lip combo heads turning - <a href="https://www.tiktok.com/@jadenfamilo/video/7608263635655200031" target="_blank" rel="noopener noreferrer">@jadenfamilo</a></li>
+                                <li><code>ck_871832671</code> random lip combo nyx - <a href="https://www.tiktok.com/@glambyaddie/video/7608062548331564318" target="_blank" rel="noopener noreferrer">@glambyaddie</a></li>
+                                <li><code>ck_1692649478</code> lips comparison - <a href="https://www.tiktok.com/@carlyrivlin/video/7608304910160956703" target="_blank" rel="noopener noreferrer">@carlyrivlin</a></li>
+                                <li><code>ck_1828427312</code> lipliner - <a href="https://www.tiktok.com/@sabrinahobeauty/video/7608323902896442642" target="_blank" rel="noopener noreferrer">@sabrinahobeauty</a></li>
+                            </ul>
+                        </details>
+                    </section>
+
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">1) Decision Layer: What to Shoot</h3>
+                        <article class="brief-solution-card">
+                            <h4>Big Bet A: Lip Combo Recipe</h4>
+                            <div class="brief-metric-row">
+                                <span class="brief-pill">Confidence: 9.6/10</span>
+                                <span class="brief-pill">Week 1</span>
+                                <span class="brief-pill">3.5-5.0% CTR</span>
+                            </div>
+                            <p><strong>Objective:</strong> maximize saves and "which shade?" comments as purchase intent proxy.</p>
+                            <p><strong>Execution rules:</strong> finished lips in first 1 to 2 seconds, shade names plus undertones, 3 steps max, one CTA only.</p>
+                            <p><strong>Why it should work:</strong> repeatable structure across multiple posts and creators, not a one-off outlier.</p>
+                            <ul class="concept-list">
+                                <li><strong>Extracted hook:</strong> "people keep asking what is on my lips" paired with immediate result close-up.</li>
+                                <li><strong>Lighting profile:</strong> soft daylight or window-side neutral light. Avoid high-contrast studio glam.</li>
+                                <li><strong>Camera profile:</strong> front camera close-up for hook, then handheld mid-shot for steps.</li>
+                                <li><strong>Editing profile:</strong> quick cut pacing, label overlays, no heavy transitions.</li>
+                                <li><strong>If variable:</strong> default to primary @adelaide_isabella production profile.</li>
+                            </ul>
+                            <p><strong>Real example:</strong> <a href="https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142" target="_blank" rel="noopener noreferrer">@adelaide_isabella proof clip</a></p>
+                            <details class="brief-quant-drop">
+                                <summary>Explainability: quant rationale</summary>
+                                <ul>
+                                    <li>Anchor post hit 1,953,883 views in this scan set.</li>
+                                    <li>Cluster marked velocity_validated in current 72h selection flow.</li>
+                                    <li>Step-labeled recipe hooks show stronger save behavior than reveal-only hooks.</li>
+                                </ul>
+                            </details>
+                        </article>
+                        <article class="brief-solution-card">
+                            <h4>Big Bet B: Non-Sticky Texture and Transfer Proof</h4>
+                            <div class="brief-metric-row">
+                                <span class="brief-pill">Confidence: 9.1/10</span>
+                                <span class="brief-pill">Week 1-2</span>
+                                <span class="brief-pill">7-9% ER</span>
+                            </div>
+                            <p><strong>Objective:</strong> kill the comfort objection early.</p>
+                            <p><strong>Execution rules:</strong> one tactile proof beat per video, no clinical overclaims, no stacked CTAs.</p>
+                            <ul class="concept-list">
+                                <li><strong>Extracted hook:</strong> tactile claim at second one, such as "not sticky" or "no transfer."</li>
+                                <li><strong>Lighting profile:</strong> even bathroom or vanity light that shows texture honestly.</li>
+                                <li><strong>Camera profile:</strong> macro lip pass, then static framing for tactile test beat.</li>
+                                <li><strong>Editing profile:</strong> one proof beat only, then short method and CTA.</li>
+                                <li><strong>If variable:</strong> keep shot order from primary proof and change only hook text.</li>
+                            </ul>
+                            <p><strong>Real example:</strong> <a href="https://www.tiktok.com/@aolanymorie/video/7606976516596960526" target="_blank" rel="noopener noreferrer">@aolanymorie proof clip</a></p>
+                        </article>
+                        <article class="brief-solution-card">
+                            <h4>Big Bet C: Undertone Shade Finder</h4>
+                            <div class="brief-metric-row">
+                                <span class="brief-pill">Confidence: 8.7/10</span>
+                                <span class="brief-pill">Week 2</span>
+                                <span class="brief-pill">Comment intent focus</span>
+                            </div>
+                            <p><strong>Objective:</strong> resolve shade confusion quickly.</p>
+                            <p><strong>Execution rules:</strong> undertone rule in first 5 to 7 seconds, show 3 shades only, force self-identification in CTA.</p>
+                            <ul class="concept-list">
+                                <li><strong>Extracted hook:</strong> direct identity call-out, for example "warm undertone, use this."</li>
+                                <li><strong>Lighting profile:</strong> consistent neutral daylight so undertone is readable.</li>
+                                <li><strong>Camera profile:</strong> split-screen or sequential swatch-to-lip cut with stable framing.</li>
+                                <li><strong>If variable:</strong> keep primary label style and only rotate shade set.</li>
+                            </ul>
+                            <p><strong>Real example:</strong> <a href="https://www.tiktok.com/@glambyaddie/video/7608062548331564318" target="_blank" rel="noopener noreferrer">@glambyaddie undertone-style clip</a></p>
+                        </article>
+                        <article class="brief-solution-card">
+                            <h4>Big Bet D: Controlled Comparison Hook</h4>
+                            <div class="brief-metric-row">
+                                <span class="brief-pill">Confidence: 7.8/10</span>
+                                <span class="brief-pill">Selective use</span>
+                                <span class="brief-pill">Finish and feel only</span>
+                            </div>
+                            <p><strong>Objective:</strong> add clarity without triggering brand-war tone.</p>
+                            <p><strong>Execution rules:</strong> compare finish and feel, never compare brands directly.</p>
+                            <ul class="concept-list">
+                                <li><strong>Extracted hook:</strong> "finish difference in 10 seconds" not "brand x vs brand y."</li>
+                                <li><strong>Lighting profile:</strong> matched lighting for both comparison states.</li>
+                                <li><strong>Camera profile:</strong> static split or same-angle A/B cut to avoid perceived manipulation.</li>
+                                <li><strong>If variable:</strong> anchor framing to primary comparison example and keep copy neutral.</li>
+                            </ul>
+                            <p><strong>Real example:</strong> <a href="https://www.tiktok.com/@carlyrivlin/video/7608304910160956703" target="_blank" rel="noopener noreferrer">@carlyrivlin comparison clip</a></p>
+                        </article>
+                    </section>
+
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">2) Cross-Market Transfer: JP/KR to US</h3>
+                        <ul>
+                            <li><strong>Transfer sequencing, not polish:</strong> keep shot order and proof beats, avoid polished ad look.</li>
+                            <li><strong>Translate shade language:</strong> JP/KR number style becomes US undertone style.</li>
+                            <li><strong>Keep universal proof order:</strong> result, proof beat, steps, payoff, CTA.</li>
+                        </ul>
+                        <p><strong>US adaptation call:</strong> open with finished result and specific claim, not brand intro.</p>
+                    </section>
+
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">3) Synthetic Sentiment Layer (Demo Safe)</h3>
+                        <p>This layer is synthetic and representative. It is included for explainability in public-facing materials.</p>
+                        <div class="brief-metric-row">
+                            <span class="brief-pill">Positive intent: 46%</span>
+                            <span class="brief-pill">Curious neutral: 34%</span>
+                            <span class="brief-pill">Skeptical: 15%</span>
+                            <span class="brief-pill">Negative: 5%</span>
+                        </div>
+                        <details class="brief-quant-drop">
+                            <summary>Top friction themes and what to answer in first 10 seconds</summary>
+                            <ul>
+                                <li>Shade confusion: "which undertone fits me?"</li>
+                                <li>Comfort and transfer: "is it sticky or messy?"</li>
+                                <li>Fade pattern: "does gloss fade while tint stays?"</li>
+                                <li>Ad-feel detection: "this looks filtered or scripted."</li>
+                            </ul>
+                        </details>
+                    </section>
+
+                    <section class="brief-section brief-risk-box">
+                        <h3 class="brief-section-title">4) What Not to Shoot</h3>
+                        <article class="brief-risk-item">
+                            <p><strong>Luxury empties flex:</strong> estimated waste $2,400-$3,200 per concept, likely weak CTR around 1.0-1.8%.</p>
+                            <p><strong>Why it fails:</strong> affiliate or flex read on launch assets lowers trust.</p>
+                            <p><strong>Context:</strong> this format performs better for loyalty or restock narratives, not first-touch paid acquisition.</p>
+                            <p><strong>Failure pattern:</strong> comments shift from shade intent to sponsorship suspicion, which lowers click quality.</p>
+                            <p><strong>Replacement:</strong> Big Bet A with same budget.</p>
+                            <details class="brief-quant-drop">
+                                <summary>Explainability: quant rationale</summary>
+                                <ul>
+                                    <li>Low gate pass behavior in similar weak clusters.</li>
+                                    <li>Weak score totals align with early paid inefficiency.</li>
+                                </ul>
+                            </details>
+                        </article>
+                        <article class="brief-risk-item">
+                            <p><strong>Polished KR ad recreation:</strong> triggers ad-feel comments in US paid environments.</p>
+                            <p><strong>Context:</strong> KR polish mechanics can still be useful, but direct aesthetic carryover hurts US trust signals.</p>
+                            <p><strong>Failure pattern:</strong> viewers read the asset as brand ad before proof appears, which causes early hold drop.</p>
+                            <p><strong>Replacement:</strong> same sequence, but handheld UGC pacing and imperfect application.</p>
+                            <details class="brief-quant-drop">
+                                <summary>Explainability: qual rationale</summary>
+                                <ul>
+                                    <li>US paid viewers penalize assets that look pre-produced before value proof appears.</li>
+                                    <li>This pattern usually reduces hold before CTA and lowers click quality.</li>
+                                </ul>
+                            </details>
+                        </article>
+                        <article class="brief-risk-item">
+                            <p><strong>45-60 second GRWM opens:</strong> payoff is too late for paid distribution.</p>
+                            <p><strong>Context:</strong> GRWM can work for organic depth, but launch-phase paid requires immediate proof.</p>
+                            <p><strong>Failure pattern:</strong> first-hook dilution produces high skip before product value is established.</p>
+                            <p><strong>Replacement:</strong> compress to 15-22 seconds with payoff first.</p>
+                            <details class="brief-quant-drop">
+                                <summary>Explainability: timing rationale</summary>
+                                <ul>
+                                    <li>Late payoffs reduce usable watch depth in paid delivery windows.</li>
+                                    <li>Compressed proof-first edits preserve more qualified viewers for CTA steps.</li>
+                                </ul>
+                            </details>
+                        </article>
+                    </section>
+
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">5) Creator Shortlist (Contact Ready)</h3>
+                        <p>Each creator is mapped to a role in the testing plan. Grouped as Early Adopter, Fast Mover, and Foundation.</p>
+                        <div class="creator-list-grid">
+                            <article class="creator-card">
+                                <p><span class="creator-type-pill">Early Adopter</span> <a href="https://www.tiktok.com/@adelaide_isabella" target="_blank" rel="noopener noreferrer">@adelaide_isabella</a></p>
+                                <p>Best fit: combo mechanic anchor.</p>
+                                <p><a href="https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
+                            </article>
+                            <article class="creator-card">
+                                <p><span class="creator-type-pill">Fast Mover</span> <a href="https://www.tiktok.com/@glambyaddie" target="_blank" rel="noopener noreferrer">@glambyaddie</a></p>
+                                <p>Best fit: undertone explainer lane.</p>
+                                <p><a href="https://www.tiktok.com/@glambyaddie/video/7608062548331564318" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
+                            </article>
+                            <article class="creator-card">
+                                <p><span class="creator-type-pill">Foundation</span> <a href="https://www.tiktok.com/@gabbymccarthyyy" target="_blank" rel="noopener noreferrer">@gabbymccarthyyy</a></p>
+                                <p>Best fit: updated combo trust framing.</p>
+                                <p><a href="https://www.tiktok.com/@gabbymccarthyyy/video/7608452758030650631" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
+                            </article>
+                            <article class="creator-card">
+                                <p><span class="creator-type-pill">Fast Mover</span> <a href="https://www.tiktok.com/@jadenfamilo" target="_blank" rel="noopener noreferrer">@jadenfamilo</a></p>
+                                <p>Best fit: emotional social proof hook.</p>
+                                <p><a href="https://www.tiktok.com/@jadenfamilo/video/7608263635655200031" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
+                            </article>
+                            <article class="creator-card">
+                                <p><span class="creator-type-pill">Foundation</span> <a href="https://www.tiktok.com/@carlyrivlin" target="_blank" rel="noopener noreferrer">@carlyrivlin</a></p>
+                                <p>Best fit: controlled finish comparison.</p>
+                                <p><a href="https://www.tiktok.com/@carlyrivlin/video/7608304910160956703" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
+                            </article>
+                            <article class="creator-card">
+                                <p><span class="creator-type-pill">Foundation</span> <a href="https://www.tiktok.com/@sabrinahobeauty" target="_blank" rel="noopener noreferrer">@sabrinahobeauty</a></p>
+                                <p>Best fit: liner structure clarity.</p>
+                                <p><a href="https://www.tiktok.com/@sabrinahobeauty/video/7608323902896442642" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
+                            </article>
+                        </div>
+                        <details class="brief-quant-drop">
+                            <summary>Outreach line (copy and use)</summary>
+                            <p>"Your recent clip nailed result-first pacing plus labeled steps. We are launching LAKA Fruity Glam Tint in the US and want this same structure with 2-3 shade combos. Paid partnership. What is your rate and turnaround?"</p>
+                        </details>
+                    </section>
+
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">6) 15-Concept Slate (21 Days)</h3>
+                        <p>All concepts follow one rule: hook, proof beat, steps, CTA.</p>
+                        <details class="brief-quant-drop" open>
+                            <summary>Open concept slate</summary>
+                            <div class="concept-lane-grid">
+                                <article class="concept-lane">
+                                    <h4>Format A: Lip Combo Recipe (6)</h4>
+                                    <ul class="concept-list">
+                                        <li><strong>A1:</strong> This combo makes everyone stare.</li>
+                                        <li><strong>A2:</strong> Warm undertones: stop choosing the wrong rose.</li>
+                                        <li><strong>A3:</strong> Updated combo: fixed my old orange pull.</li>
+                                        <li><strong>A4:</strong> Two products, one blur-gloss look.</li>
+                                        <li><strong>A5:</strong> Daylight reveal: real shade behavior.</li>
+                                        <li><strong>A6:</strong> Three shades that do not wash you out.</li>
+                                    </ul>
+                                </article>
+                                <article class="concept-lane">
+                                    <h4>Format B: Texture and Transfer Proof (4)</h4>
+                                    <ul class="concept-list">
+                                        <li><strong>B1:</strong> Hair test.</li>
+                                        <li><strong>B2:</strong> Cup ring test.</li>
+                                        <li><strong>B3:</strong> Kiss test on hand.</li>
+                                        <li><strong>B4:</strong> Sticky vs non-sticky in same light.</li>
+                                    </ul>
+                                </article>
+                                <article class="concept-lane">
+                                    <h4>Format C: Undertone Finder (3)</h4>
+                                    <ul class="concept-list">
+                                        <li><strong>C1:</strong> Foundation undertone to lip shade map.</li>
+                                        <li><strong>C2:</strong> Olive skin quick picks.</li>
+                                        <li><strong>C3:</strong> One universal shade and why.</li>
+                                    </ul>
+                                </article>
+                                <article class="concept-lane">
+                                    <h4>Format D: Controlled Comparison (2)</h4>
+                                    <ul class="concept-list">
+                                        <li><strong>D1:</strong> Gloss vs tint vs stain guide.</li>
+                                        <li><strong>D2:</strong> High shine without lip oil slip.</li>
+                                    </ul>
+                                </article>
+                            </div>
+                        </details>
+                    </section>
+
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">7) Testing and Scale Plan</h3>
+                        <div class="brief-week-grid">
+                            <article class="brief-week-card">
+                                <h4>Week 1</h4>
+                                <p>Run 8 videos to find first 2 winners quickly.</p>
+                                <ul class="concept-list">
+                                    <li>Scale gate: CTR at or above 3.5%.</li>
+                                    <li>Scale gate: save rate at or above 6%.</li>
+                                    <li>Kill gate: CTR under 2% with ad-feel comments.</li>
+                                </ul>
+                            </article>
+                            <article class="brief-week-card">
+                                <h4>Week 2</h4>
+                                <p>Run 5 videos to exploit winners and add variants.</p>
+                                <ul class="concept-list">
+                                    <li>Carry best hooks from Week 1.</li>
+                                    <li>Expand creator mix with same structure.</li>
+                                </ul>
+                            </article>
+                            <article class="brief-week-card">
+                                <h4>Week 3</h4>
+                                <p>Run 2 videos plus one best-performer variant.</p>
+                                <ul class="concept-list">
+                                    <li>Lock winner #3 or validate winner #2.</li>
+                                    <li>Prepare scale bundle for paid team handoff.</li>
+                                </ul>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">8) Creative Rules and Proof Receipts</h3>
+                        <ul class="concept-list">
+                            <li>Show result in first 2 seconds.</li>
+                            <li>Use one proof beat before steps.</li>
+                            <li>Keep shade and undertone labels visible.</li>
+                            <li>Do not open with brand monologue.</li>
+                        </ul>
+                        <details class="brief-quant-drop">
+                            <summary>Proof receipts used in this brief</summary>
+                            <ul>
+                                <li><a href="https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142" target="_blank" rel="noopener noreferrer">@adelaide_isabella</a></li>
+                                <li><a href="https://www.tiktok.com/@gabbymccarthyyy/video/7608452758030650631" target="_blank" rel="noopener noreferrer">@gabbymccarthyyy</a></li>
+                                <li><a href="https://www.tiktok.com/@jadenfamilo/video/7608263635655200031" target="_blank" rel="noopener noreferrer">@jadenfamilo</a></li>
+                                <li><a href="https://www.tiktok.com/@glambyaddie/video/7608062548331564318" target="_blank" rel="noopener noreferrer">@glambyaddie</a></li>
+                                <li><a href="https://www.tiktok.com/@carlyrivlin/video/7608304910160956703" target="_blank" rel="noopener noreferrer">@carlyrivlin</a></li>
+                                <li><a href="https://www.tiktok.com/@sabrinahobeauty/video/7608323902896442642" target="_blank" rel="noopener noreferrer">@sabrinahobeauty</a></li>
+                            </ul>
+                        </details>
+                    </section>
+                </div>
+            </template>
+
+            <template id="briefTemplateB">
+                <div class="brief-sheet">
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">Executive Summary</h3>
+                        <p><strong>Campaign:</strong> VT CICA Reedle Shot 100, US paid scale plan. <strong>Goal:</strong> 12-18 concepts in 6 weeks, then lock 3-4 scalable winners.</p>
+                        <p><strong>Primary KPI:</strong> stable CPA with controlled negative-sentiment ratio. <strong>Secondary KPI:</strong> save rate, CTR, and comment intent quality.</p>
+                        <p><strong>Creative constraints:</strong> no pain-stunt framing, no overnight miracle claims, and objection-handling in the first 5 to 10 seconds.</p>
+                        <div class="brief-metric-row">
+                            <span class="brief-pill">Priority: Trust-safe scale</span>
+                            <span class="brief-pill">Window: 6 weeks</span>
+                            <span class="brief-pill">Target: 3-4 winners</span>
+                            <span class="brief-pill">US paid first</span>
+                        </div>
+                    </section>
+
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">0) Client Brief Snapshot</h3>
+                        <ul class="concept-list">
+                            <li><strong>Product:</strong> VT CICA Reedle Shot 100 (spicule sensation booster).</li>
+                            <li><strong>Objective:</strong> scale paid while keeping backlash controllable.</li>
+                            <li><strong>Budget context:</strong> $5M media in 2026, $70K initial content plus test spend.</li>
+                            <li><strong>Required output:</strong> concept slate, creator lanes, do-not-shoot list, explainable quant and qual rationale.</li>
+                        </ul>
+                    </section>
+
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">1) Quant Snapshot</h3>
+                        <div class="brief-snapshot-grid">
+                            <article class="brief-stat-card">
+                                <p class="brief-stat-label">Window</p>
+                                <p class="brief-stat-value">72 hours</p>
+                                <p class="brief-stat-sub">Latest exploit plus discovery run</p>
+                            </article>
+                            <article class="brief-stat-card">
+                                <p class="brief-stat-label">Reference Proof</p>
+                                <p class="brief-stat-value">1,113,704</p>
+                                <p class="brief-stat-sub">@jeffreestar serum clip views</p>
+                            </article>
+                            <article class="brief-stat-card">
+                                <p class="brief-stat-label">Supporting Proof</p>
+                                <p class="brief-stat-value">1,194,669</p>
+                                <p class="brief-stat-sub">@febisola_iris texture clip views</p>
+                            </article>
+                            <article class="brief-stat-card">
+                                <p class="brief-stat-label">Signal Style</p>
+                                <p class="brief-stat-value">Proof-led</p>
+                                <p class="brief-stat-sub">Educational and controlled expectation</p>
+                            </article>
+                        </div>
+                        <p><strong>Core read:</strong> category failure mode is not low CTR alone. It is CTR plus rising hate ratio and trust collapse.</p>
+                        <details class="brief-quant-drop">
+                            <summary>Evidence links used in this brief</summary>
+                            <ul>
+                                <li><a href="https://www.tiktok.com/@itssephty/video/7606733431220784405" target="_blank" rel="noopener noreferrer">@itssephty skincare baseline</a></li>
+                                <li><a href="https://www.tiktok.com/@loveatfirstinternet08/video/7606100381097004301" target="_blank" rel="noopener noreferrer">@loveatfirstinternet08 reply-to-comment mechanic</a></li>
+                                <li><a href="https://www.tiktok.com/@soniiyaxx/video/7608319526140136726" target="_blank" rel="noopener noreferrer">@soniiyaxx social proof hook mechanic</a></li>
+                                <li><a href="https://www.tiktok.com/@martinaglez_/video/7608468026618301718" target="_blank" rel="noopener noreferrer">@martinaglez_ shortlist demand hook</a></li>
+                            </ul>
+                        </details>
+                    </section>
+
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">2) Decision Layer: What to Shoot</h3>
+                        <p>Illustrative benchmark ranges for planning only. Final performance depends on creative quality, offer, and media setup.</p>
+                        <article class="brief-solution-card">
+                            <h4>Format A: Value + Normalization</h4>
+                            <div class="brief-metric-row">
+                                <span class="brief-pill">Confidence: 9.1/10</span>
+                                <span class="brief-pill">Week 1</span>
+                                <span class="brief-pill">1.6-3.2% CTR target</span>
+                            </div>
+                            <p><strong>Objective:</strong> make Reedle Shot feel routine-compatible, not extreme skincare.</p>
+                            <p><strong>First 5 seconds:</strong> "If you are curious but nervous, start like this."</p>
+                            <p><strong>Execution constraints:</strong> clear cadence (2 nights per week start), pairing warning (no acids or retinol same night), and one proof beat only.</p>
+                            <p><strong>Primary example:</strong> <a href="https://www.tiktok.com/@itssephty/video/7606733431220784405" target="_blank" rel="noopener noreferrer">@itssephty pacing reference</a></p>
+                            <details class="brief-quant-drop">
+                                <summary>Concepts (A1-A5)</summary>
+                                <ul>
+                                    <li>A1: Curious but scared start protocol.</li>
+                                    <li>A2: 3 reasons for repurchase behavior.</li>
+                                    <li>A3: "Is this needles?" fear defuse format.</li>
+                                    <li>A4: Beginner vs experienced laddering.</li>
+                                    <li>A5: Routine slot card (cleanse -> Reedle -> moisturizer).</li>
+                                </ul>
+                            </details>
+                        </article>
+                        <article class="brief-solution-card">
+                            <h4>Format B: Diary Progression (Trust Through Time)</h4>
+                            <div class="brief-metric-row">
+                                <span class="brief-pill">Confidence: 8.6/10</span>
+                                <span class="brief-pill">Week 1-2</span>
+                                <span class="brief-pill">Save-rate objective</span>
+                            </div>
+                            <p><strong>Objective:</strong> answer "is this real" without overclaiming.</p>
+                            <p><strong>First 5 seconds:</strong> checkpoint framing (Day 1 vs Day 7 vs Day 21).</p>
+                            <p><strong>Execution constraints:</strong> same lighting, same camera distance, emphasize tolerance ramp and aftercare.</p>
+                            <p><strong>Primary example:</strong> <a href="https://www.tiktok.com/@febisola_iris/video/7608164113642016018" target="_blank" rel="noopener noreferrer">@febisola_iris texture diary proxy</a></p>
+                            <details class="brief-quant-drop">
+                                <summary>Concepts (B1-B4)</summary>
+                                <ul>
+                                    <li>B1: Day 1, Day 7, Day 21 progression.</li>
+                                    <li>B2: Sensitive skin start protocol.</li>
+                                    <li>B3: Stopped over-layering actives narrative.</li>
+                                    <li>B4: Exact amount and frequency guardrail.</li>
+                                </ul>
+                            </details>
+                        </article>
+                        <article class="brief-solution-card">
+                            <h4>Format C: Reply-to-Comment Objection Handling</h4>
+                            <div class="brief-metric-row">
+                                <span class="brief-pill">Confidence: 8.2/10</span>
+                                <span class="brief-pill">Week 2</span>
+                                <span class="brief-pill">Backlash control lane</span>
+                            </div>
+                            <p><strong>Objective:</strong> turn skepticism into structured Q and A assets.</p>
+                            <p><strong>First 5 seconds:</strong> show real comment prompt (retinol pairing, sting level, start version).</p>
+                            <p><strong>Execution constraints:</strong> simple answer language, no authority posturing, clear stop conditions.</p>
+                            <p><strong>Primary example:</strong> <a href="https://www.tiktok.com/@loveatfirstinternet08/video/7606100381097004301" target="_blank" rel="noopener noreferrer">@loveatfirstinternet08 reply mechanic</a></p>
+                            <details class="brief-quant-drop">
+                                <summary>Concepts (C1-C4)</summary>
+                                <ul>
+                                    <li>C1: Can I use this with retinol?</li>
+                                    <li>C2: Is this damaging?</li>
+                                    <li>C3: Why does it sting?</li>
+                                    <li>C4: Which version should I start with?</li>
+                                </ul>
+                            </details>
+                        </article>
+                        <article class="brief-solution-card">
+                            <h4>Format D: Non-Clinical Expert Lane</h4>
+                            <div class="brief-metric-row">
+                                <span class="brief-pill">Confidence: 7.7/10</span>
+                                <span class="brief-pill">Week 2-3</span>
+                                <span class="brief-pill">Credibility support lane</span>
+                            </div>
+                            <p><strong>Objective:</strong> provide trust support for skeptical buyers without ad-feel.</p>
+                            <p><strong>First 5 seconds:</strong> "Here is what this does in plain English."</p>
+                            <p><strong>Execution constraints:</strong> plain-language explainers, no doctor cosplay, no medical claims.</p>
+                            <p><strong>Primary example:</strong> <a href="https://www.tiktok.com/@soniiyaxx/video/7608319526140136726" target="_blank" rel="noopener noreferrer">@soniiyaxx social-proof explainer proxy</a></p>
+                            <details class="brief-quant-drop">
+                                <summary>Concepts (D1-D3)</summary>
+                                <ul>
+                                    <li>D1: What it is in plain English.</li>
+                                    <li>D2: 3 mistakes that create bad experience.</li>
+                                    <li>D3: Who should skip for now.</li>
+                                </ul>
+                            </details>
+                        </article>
+                    </section>
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">3) Cross-Market Transfer: JP/KR to US</h3>
+                        <ul>
+                            <li><strong>Transfer sequencing, not polish:</strong> keep proof order from KR/JP, but shoot in US-native UGC style.</li>
+                            <li><strong>Reframe sensation:</strong> expected, bounded, and optional. No pain theatrics.</li>
+                            <li><strong>Translate language:</strong> mechanism details stay simple and user-first.</li>
+                            <li><strong>Constraint:</strong> if the creative opens like treatment advertising, trust drops before proof appears.</li>
+                        </ul>
+                    </section>
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">4) Qual Layer and Confidence Calibration</h3>
+                        <div class="brief-metric-row">
+                            <span class="brief-pill">Safety fear: ~30%</span>
+                            <span class="brief-pill">Start protocol: ~22%</span>
+                            <span class="brief-pill">Pairing conflicts: ~18%</span>
+                            <span class="brief-pill">Result timeline: ~15%</span>
+                        </div>
+                        <p>Sentiment mix above is synthetic for public-safe explainability. It mirrors common friction in tingle-active launches.</p>
+                        <ul class="concept-list">
+                            <li><strong>9.0-10.0:</strong> strong bet, multi-market durability with low backlash risk when scripted correctly.</li>
+                            <li><strong>7.5-8.9:</strong> solid, validated mechanic with guardrails required.</li>
+                            <li><strong>6.0-7.4:</strong> speculative, test in smaller budget lanes.</li>
+                            <li><strong>Below 6.0:</strong> not worth paid test allocation.</li>
+                        </ul>
+                    </section>
+                    <section class="brief-section brief-risk-box">
+                        <h3 class="brief-section-title">5) What Not to Shoot</h3>
+                        <article class="brief-risk-item">
+                            <p><strong>Pain challenge or shock framing:</strong> estimated waste $2,400-$3,200 per concept.</p>
+                            <p><strong>Failure mode:</strong> comment threads shift into safety warnings, then CPM rises and CPA degrades.</p>
+                            <p><strong>Kill rule:</strong> stop if negative-comment ratio exceeds 12% in first 24h.</p>
+                            <p><strong>Replacement:</strong> Format A value plus normalization or Format C reply handling.</p>
+                            <details class="brief-quant-drop">
+                                <summary>Explainability: quant rationale</summary>
+                                <ul>
+                                    <li>Weak gate-pass behavior in high-fear creative clusters.</li>
+                                    <li>Comment sentiment drift predicts paid inefficiency before CTR fully collapses.</li>
+                                </ul>
+                            </details>
+                        </article>
+                        <article class="brief-risk-item">
+                            <p><strong>Miracle claims or instant transformation:</strong> estimated waste $2,300-$3,100 with compliance risk.</p>
+                            <p><strong>Failure mode:</strong> disbelief comments dominate, trust score drops, and conversion quality falls.</p>
+                            <p><strong>Kill rule:</strong> stop if fake or sponsored comments become dominant.</p>
+                            <p><strong>Replacement:</strong> Format B diary checkpoint proof.</p>
+                        </article>
+                        <article class="brief-risk-item">
+                            <p><strong>Polished KR-ad mimicry:</strong> raises ad-feel detection and weakens US trust.</p>
+                            <p><strong>Failure mode:</strong> perceived sponsored polish suppresses hold rate in first seconds.</p>
+                            <p><strong>Kill rule:</strong> stop if hold and comment quality both under baseline after first spend gate.</p>
+                            <p><strong>Replacement:</strong> keep same sequence but shoot handheld with real-room lighting.</p>
+                        </article>
+                    </section>
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">6) Creator Lanes and Shortlist</h3>
+                        <p>Creator assignment is lane-based so each format has a job and a matching creator style.</p>
+                        <div class="creator-list-grid">
+                            <article class="creator-card">
+                                <p><span class="creator-type-pill">Diary Lane</span> <a href="https://www.tiktok.com/@linsmakeuplooks" target="_blank" rel="noopener noreferrer">@linsmakeuplooks</a></p>
+                                <p>Why: consistent progression capture and low-drama trust format.</p>
+                                <p><a href="https://www.tiktok.com/@linsmakeuplooks/video/7606535528639644970" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
+                            </article>
+                            <article class="creator-card">
+                                <p><span class="creator-type-pill">Reply Lane</span> <a href="https://www.tiktok.com/@loveatfirstinternet08" target="_blank" rel="noopener noreferrer">@loveatfirstinternet08</a></p>
+                                <p>Why: objection-handling tone that feels like normal user support.</p>
+                                <p><a href="https://www.tiktok.com/@loveatfirstinternet08/video/7606100381097004301" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
+                            </article>
+                            <article class="creator-card">
+                                <p><span class="creator-type-pill">Texture Lane</span> <a href="https://www.tiktok.com/@meloshmusc" target="_blank" rel="noopener noreferrer">@meloshmusc</a></p>
+                                <p>Why: strong macro texture shots and routine framing.</p>
+                                <p><a href="https://www.tiktok.com/@meloshmusc/video/7569020018948545824" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
+                            </article>
+                            <article class="creator-card">
+                                <p><span class="creator-type-pill">Educator Lane</span> <a href="https://www.tiktok.com/@aileen.song" target="_blank" rel="noopener noreferrer">@aileen.song</a></p>
+                                <p>Why: plain-language instruction and low ad-feel delivery.</p>
+                                <p><a href="https://www.tiktok.com/@aileen.song/video/7570021588175744289" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
+                            </article>
+                        </div>
+                        <details class="brief-quant-drop">
+                            <summary>Outreach templates (copy and use)</summary>
+                            <p><strong>Diary lane DM:</strong> "We need a 21-day trust-safe series for a tingle booster. Focus on amount, cadence, and what not to pair. Paid partnership. Rate and turnaround?"</p>
+                            <p><strong>Reply lane DM:</strong> "We need 3 reply-style videos for retinol pairing, sting expectations, and first-use protocol. Paid partnership. Rate and availability?"</p>
+                        </details>
+                    </section>
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">7) Paid Testing Plan (6 Weeks)</h3>
+                        <div class="brief-week-grid">
+                            <article class="brief-week-card">
+                                <h4>Week 1</h4>
+                                <p>Hook and fear-defuse sprint. Test 8 concepts from A, C, and B entry assets.</p>
+                                <ul class="concept-list">
+                                    <li>Scale gate: CTR at or above 1.6% and negative comments at or below 8%.</li>
+                                    <li>Hold and iterate: CTR 1.2-1.6% with strong saves.</li>
+                                    <li>Kill: CTR under 1.2% or negative comments over 12%.</li>
+                                </ul>
+                            </article>
+                            <article class="brief-week-card">
+                                <h4>Week 2-3</h4>
+                                <p>Launch diary lane with 4-6 creators and build trust inventory for whitelisting.</p>
+                                <ul class="concept-list">
+                                    <li>Carry forward scripts that pass backlash controls.</li>
+                                    <li>Expand creators inside same lane logic.</li>
+                                </ul>
+                            </article>
+                            <article class="brief-week-card">
+                                <h4>Week 4-6</h4>
+                                <p>Scale top 2 lanes with 70% budget. Keep 30% for fatigue prevention tests.</p>
+                                <ul class="concept-list">
+                                    <li>Lock 3-4 winners with durable comment quality.</li>
+                                    <li>Handoff winning script structure to media team.</li>
+                                </ul>
+                            </article>
+                        </div>
+                    </section>
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">8) Why This Decision Path</h3>
+                        <ul class="concept-list">
+                            <li>Quant layer shows high-velocity mechanics in social proof framing, reply handling, and proof-first pacing.</li>
+                            <li>Qual layer shows dominant friction is safety, pairing, and tolerance confusion.</li>
+                            <li>Cross-market layer supports demand durability, so strategy is trust at scale, not cheap-click hunting.</li>
+                        </ul>
+                    </section>
+                    <section class="brief-section">
+                        <h3 class="brief-section-title">9) Proof Receipts</h3>
+                        <ul class="concept-list">
+                            <li><a href="https://www.tiktok.com/@itssephty/video/7606733431220784405" target="_blank" rel="noopener noreferrer">@itssephty</a></li>
+                            <li><a href="https://www.tiktok.com/@loveatfirstinternet08/video/7606100381097004301" target="_blank" rel="noopener noreferrer">@loveatfirstinternet08</a></li>
+                            <li><a href="https://www.tiktok.com/@soniiyaxx/video/7608319526140136726" target="_blank" rel="noopener noreferrer">@soniiyaxx</a></li>
+                            <li><a href="https://www.tiktok.com/@martinaglez_/video/7608468026618301718" target="_blank" rel="noopener noreferrer">@martinaglez_</a></li>
+                            <li><a href="https://www.tiktok.com/@linsmakeuplooks/video/7606535528639644970" target="_blank" rel="noopener noreferrer">@linsmakeuplooks</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </template>
+
+            <section class="pricing-section" id="pricingSection">
+                <h2 class="section-title">Pricing</h2>
+                <p class="section-description">Choose a pilot, monthly retainer, or standalone brief.</p>
+                <div class="pricing-grid">
+                    <article class="pricing-card">
+                        <p class="plan-label">Pilot</p>
+                        <p class="plan-price">$300</p>
+                        <p class="plan-sub">1 brief / 72h turnaround</p>
+                        <ul>
+                            <li>Full brief mapping</li>
+                            <li>What to shoot + do not shoot</li>
+                            <li>Creator examples + tactical notes</li>
+                            <li>Best for first engagement</li>
+                        </ul>
+                    </article>
+                    <article class="pricing-card featured">
+                        <p class="plan-label">Monthly</p>
+                        <p class="plan-price">$1,200<span>/month</span></p>
+                        <p class="plan-sub">Up to 4 briefs / 48h turnaround</p>
+                        <ul>
+                            <li>Real analysis on your live guided campaigns</li>
+                            <li>Ongoing updates and re-iteration by performance</li>
+                            <li>Campaign performance mapped against existing DB baselines</li>
+                            <li>Priority turnaround for active testing teams</li>
+                        </ul>
+                    </article>
+                    <article class="pricing-card">
+                        <p class="plan-label">Standalone</p>
+                        <p class="plan-price">$500</p>
+                        <p class="plan-sub">Per brief / 72h turnaround</p>
+                        <ul>
+                            <li>No monthly commitment</li>
+                            <li>Same core deliverable as retainer</li>
+                            <li>Flexible for sporadic campaigns</li>
+                            <li>Fallback for low-volume teams</li>
+                        </ul>
+                    </article>
                 </div>
             </section>
 
-                    <!-- What I Work On -->
-                    <section class="cyber-projects">
-                        <div class="section-header">
-                            <div class="section-number">01</div>
-                            <h3 class="section-title">What I work on</h3>
-                            <div class="section-line"></div>
+            <div class="scan-summary" id="scanSummary">
+                <p class="scan-kicker">System scale</p>
+                <p class="scan-headline" id="scanHeadline">Loading latest scan summary...</p>
+                <p class="scan-meta" id="scanMeta"></p>
+                <p class="scan-disclaimer" id="scanDisclaimer">Snapshot disclaimer: based on the last 72 hours only.</p>
+                <p class="scan-source" id="dataSourceIndicator">Data source: loading...</p>
+            </div>
+
+            <div class="proof-tiles-grid" id="proofTiles">
+                <div class="proof-tile">
+                    <div class="proof-tile-header">
+                        <span class="proof-label">Loading</span>
+                        <span class="proof-timestamp">Setta</span>
+                    </div>
+                    <h3 class="proof-title">Preparing confidence-scored proof tiles</h3>
+                    <p class="proof-description">Setta proof tiles are loading from the latest report pack.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section secondary-section" id="frameworkSection">
+            <div class="secondary-intro">
+                <p class="secondary-kicker">Secondary capability</p>
+                <h2 class="secondary-title">Systems Autopsy</h2>
+                <p class="secondary-description">The systems side remains available for reliability diagnostics, early failure mapping, and root-cause visibility.</p>
+                <button class="secondary-toggle" id="hideAutopsyBtn" type="button">Hide Systems Autopsy</button>
+            </div>
+
+            <div class="toggle-section">
+                <button type="button" class="toggle-btn" id="toggleBtn">
+                    <span class="toggle-option active" data-state="common">Before</span>
+                    <span class="toggle-divider">/</span>
+                    <span class="toggle-option" data-state="early">After</span>
+                </button>
+            </div>
+
+            <main class="main-content">
+            <div class="projects-grid">
+                <div class="project-section system-reliability-top" id="systemReliability">
+                    <h2 class="project-title">
+                        System reliability *
+                        <button class="dropdown-toggle" id="dropdownToggle" aria-label="Toggle applications">
+                            <span class="dropdown-text">See other examples</span>
+                            <span class="dropdown-icon">v</span>
+                        </button>
+                    </h2>
+
+                    <div class="content-state common-content active" data-project="1">
+                        <div class="project-card">
+                            <p class="card-text">Systems are "running." Nothing paging.</p>
+                            <p class="card-text">Retries rise, latency worsens, partial failures slip through.</p>
                         </div>
-
-                        <!-- Category 1: Early Failure Detection -->
-                        <div class="category-section">
-                            <h4 class="category-title">Early Failure Detection</h4>
-                            <p class="category-description">Systems designed to surface issues early, before they compound. These focus on signal quality, monitoring, and evaluation so teams see what's breaking while there's still time to act.</p>
+                        <div class="visual-container">
+                            <div class="visual-before">
+                                <img src="images/system-health-before.jpg" alt="Before: Systems are running" class="before-image">
+                            </div>
                         </div>
+                    </div>
 
-                        <div class="projects-grid">
-                            <!-- System Health Evaluation -->
-                            <div class="cyber-card cyber-card-featured" data-project="4" id="system-health">
-                                <div class="card-border"></div>
-                                <div class="card-content">
-                                    <div class="card-header">
-                                        <span class="card-id">project-04</span>
-                                        <span class="card-status">featured</span>
-                                    </div>
-                                    <h4 class="card-title">System Health Evaluation</h4>
-                                    <p class="card-description">
-                                        A lot of systems don't fail all at once. They look fine, numbers are green, and then something breaks in a way nobody saw coming.
-                                    </p>
-                                    <p class="card-description">
-                                        I kept running into this while fixing broken automation and pipelines, so I built a way to reason about whether systems are actually healthy, not just passing checks on the surface.
-                                    </p>
-                                    <div class="system-health-details" id="systemHealthDetails" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--sys-border);">
-                                        <div class="system-health-item" style="margin-bottom: 1.5rem;">
-                                            <h4 class="system-health-subtitle">What this helps with</h4>
-                                            <p class="system-health-text">
-                                                This helps answer questions like:
-                                            </p>
-                                            <ul class="system-health-list">
-                                                <li>Are things actually stable right now, or just not obviously broken?</li>
-                                                <li>What would fail next if usage or conditions change?</li>
-                                                <li>What signals would have caught the last incident earlier?</li>
-                                            </ul>
-                                            <p class="system-health-text">
-                                                Instead of waiting for alerts after something breaks, it focuses on signals that change before the failure shows up.
-                                            </p>
-                                        </div>
+                    <div class="content-state early-content" data-project="1">
+                        <div class="project-card">
+                            <p class="card-text">Tracks latency shifts, retry patterns, partial failures.</p>
+                            <p class="card-text">Makes degradation visible before breakage.</p>
+                        </div>
+                        <div class="demo-container">
+                            <iframe
+                                src="https://system1-phi.vercel.app/"
+                                class="demo-iframe"
+                                allow="fullscreen"
+                                sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
 
-                                        <div class="system-health-item" style="margin-bottom: 1.5rem;">
-                                            <h4 class="system-health-subtitle">How I approach it</h4>
-                                            <p class="system-health-text">
-                                                I break systems down into:
-                                            </p>
-                                            <ul class="system-health-list">
-                                                <li>signals that change early</li>
-                                                <li>failure modes that actually matter</li>
-                                                <li>incidents that already happened</li>
-                                            </ul>
-                                            <p class="system-health-text">
-                                                When something breaks, I don't just fix it. I look at what should have caught it earlier and update the signals so the same thing doesn't happen again.
-                                            </p>
-                                        </div>
+                <div class="projects-grid-bottom" id="bottomProjects">
+                    <div class="project-section">
+                        <h2 class="project-title">Client health</h2>
 
-                                        <div class="system-health-item" style="margin-bottom: 1.5rem;">
-                                            <h4 class="system-health-subtitle">The part I care about most</h4>
-                                            <p class="system-health-text">
-                                                The most useful part is being able to take a past incident and ask, "what would have caught this sooner?"
-                                            </p>
-                                            <p class="system-health-text">
-                                                The demo lets you see which signals fired too late, which ones were missing entirely, and what to change so the system would've noticed earlier next time.
-                                            </p>
-                                        </div>
-
-                                        <div class="system-health-item" style="margin-bottom: 1.5rem;">
-                                            <h4 class="system-health-subtitle">Why this exists</h4>
-                                            <p class="system-health-text">
-                                                This grew out of fixing real systems. Revenue pipelines, monitoring setups, automation that quietly stopped working.
-                                            </p>
-                                            <p class="system-health-text">
-                                                The other projects on this site are specific fixes. This is the way I think about preventing the same kinds of failures from happening again.
-                                            </p>
-                                        </div>
-
-                                        <div class="system-health-item">
-                                            <p class="system-health-text">
-                                                This isn't meant to be a finished product. It's how I reason about systems when I'm trying to figure out what's going to break next.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer" style="margin-top: 1.5rem;">
-                                        <button type="button" class="cyber-link preview-btn" data-url="https://system1-phi.vercel.app/" data-project="4" style="margin-right: 1rem;">
-                                            VIEW_DEMO →
-                                        </button>
-                                        <button type="button" class="cyber-link" id="expandExplanationBtn" style="font-size: 0.875rem;">
-                                            READ FULL EXPLANATION →
-                                        </button>
-                                    </div>
+                        <div class="content-state common-content active" data-project="2">
+                            <div class="project-card">
+                                <p class="card-text">CRM says active.</p>
+                                <p class="card-text">Usage and engagement decay long before renewal.</p>
+                            </div>
+                            <div class="visual-container">
+                                <div class="visual-before">
+                                    <img src="images/client-health-before.jpg" alt="Before: CRM says active" class="before-image">
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Project 2: Sentiment Analysis -->
-                            <div class="cyber-card" data-project="2" id="sentiment">
-                        <div class="card-border"></div>
-                        <div class="card-content">
-                            <div class="card-header">
-                                <span class="card-id">project-02</span>
-                                <span class="card-status">active</span>
+                        <div class="content-state early-content" data-project="2">
+                            <div class="project-card">
+                                <p class="card-text">Tracks usage decay, engagement patterns, response drift.</p>
+                                <p class="card-text">Surfaces risk early enough to intervene.</p>
                             </div>
-                            <h4 class="card-title">Sentiment Analysis</h4>
-                            <p class="card-description">
-                                <strong>What was broken:</strong> Brand crises exploded before anyone noticed. Negative sentiment spread unchecked while teams were blind.
-                            </p>
-                            <p class="card-description">
-                                <strong>What I built:</strong> A monitoring system that tracks sentiment signals and alerts teams when threats emerge before they escalate.
-                            </p>
-                            <p class="card-description">
-                                <strong>Result:</strong> Teams regained visibility into brand health and could intervene before problems went viral.
-                            </p>
-                            <div class="card-footer">
-                                <button class="cyber-link preview-btn" data-url="https://n8n-workflow-portfolio.vercel.app/">
-                                    PREVIEW_DEMO →
-                                </button>
+                            <div class="demo-container">
+                                <iframe
+                                    src="https://n8n-crm-lime.vercel.app/"
+                                    class="demo-iframe"
+                                    allow="fullscreen"
+                                    sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+                                </iframe>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 3: Client Health Monitoring -->
-                    <div class="cyber-card" data-project="3" id="client-health">
-                        <div class="card-border"></div>
-                        <div class="card-content">
-                            <div class="card-header">
-                                <span class="card-id">project-03</span>
-                                <span class="card-status">active</span>
+                    <div class="project-section">
+                        <h2 class="project-title">Brand sentiment</h2>
+
+                        <div class="content-state common-content active" data-project="3">
+                            <div class="project-card">
+                                <p class="card-text">Everything looks normal.</p>
+                                <p class="card-text">Complaints cluster and pick up speed before it's obvious.</p>
                             </div>
-                            <h4 class="card-title">Client Health Monitoring</h4>
-                            <p class="card-description">
-                                <strong>What was broken:</strong> Customers churned without warning. Revenue disappeared before intervention. Account managers learned about problems from cancellation emails.
-                            </p>
-                            <p class="card-description">
-                                <strong>What I built:</strong> A health monitoring system that tracks signals across touchpoints and surfaces churn risk before cancellation.
-                            </p>
-                            <p class="card-description">
-                                <strong>Result:</strong> Account managers regained visibility into client health and could intervene before revenue was lost.
-                            </p>
-                            <div class="card-footer">
-                                <button class="cyber-link preview-btn" data-url="https://n8n-crm-lime.vercel.app/">
-                                    PREVIEW_DEMO →
-                                </button>
+                            <div class="visual-container">
+                                <div class="visual-before">
+                                    <img src="images/sentiment-before.jpg" alt="Before: Everything looks normal" class="before-image">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-state early-content" data-project="3">
+                            <div class="project-card">
+                                <p class="card-text">Tracks velocity, clustering, topic shifts.</p>
+                                <p class="card-text">Catches threats before they spread.</p>
+                            </div>
+                            <div class="demo-container">
+                                <iframe
+                                    src="https://n8n-workflow-portfolio.vercel.app/"
+                                    class="demo-iframe"
+                                    allow="fullscreen"
+                                    sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-section">
+                        <h2 class="project-title">Revenue and attribution</h2>
+
+                        <div class="content-state common-content active" data-project="4">
+                            <div class="project-card">
+                                <p class="card-text">Revenue looks fine. ROAS looks stable.</p>
+                                <p class="card-text">Refunds, attribution gaps, and upstream drift compound quietly.</p>
+                            </div>
+                            <div class="visual-container">
+                                <div class="visual-before">
+                                    <img src="images/ecommerce-before.jpg" alt="Before: Revenue looks fine" class="before-image">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-state early-content" data-project="4">
+                            <div class="project-card">
+                                <p class="card-text">Reconciles spend, revenue, refunds, attribution.</p>
+                                <p class="card-text">Flags gaps and drift as they start.</p>
+                            </div>
+                            <div class="demo-container">
+                                <iframe
+                                    src="https://n8n-ecommerce-reporting.vercel.app/"
+                                    class="demo-iframe"
+                                    allow="fullscreen"
+                                    sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+                                </iframe>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Category 2: Repairing Broken Systems -->
-                <div class="category-section" style="margin-top: 4rem;">
-                    <h4 class="category-title">Repairing Broken Systems</h4>
-                    <p class="category-description">Debugging and rebuilding production pipelines that are already failing. This includes automation, reporting, and integrations that stopped working or were never reliable in the first place.</p>
-                </div>
-
-                <div class="projects-grid">
-                    <!-- Project 1: E-commerce Reporting -->
-                    <div class="cyber-card" data-project="1" id="ecommerce">
-                        <div class="card-border"></div>
-                        <div class="card-content">
-                            <div class="card-header">
-                                <span class="card-id">project-01</span>
-                                <span class="card-status">active</span>
-                            </div>
-                            <h4 class="card-title">E-commerce Reporting</h4>
-                            <p class="card-description">
-                                <strong>What was broken:</strong> Revenue and refund issues were only discovered weeks later through manual reports. Daily performance was invisible until month-end reviews.
-                            </p>
-                            <p class="card-description">
-                                <strong>What I built:</strong> A real-time reporting and alerting system that surfaced anomalies automatically instead of relying on end-of-month reviews.
-                            </p>
-                            <p class="card-description">
-                                <strong>Result:</strong> Teams regained day-to-day visibility and could intervene before losses compounded.
-                            </p>
-                            <div class="card-footer">
-                                <button class="cyber-link preview-btn" data-url="https://n8n-ecommerce-reporting.vercel.app/">
-                                    PREVIEW_DEMO<span class="arrow"> →</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-                        <!-- Contact Section -->
-                        <section class="cyber-contact">
-                            <div class="section-header">
-                                <div class="section-number">02</div>
-                                <h3 class="section-title">Contact</h3>
-                                <div class="section-line"></div>
-                            </div>
-
-                            <div class="contact-content">
-                    <div class="contact-item">
-                        <span class="contact-label">Email</span>
-                        <a href="mailto:mohammedamjad526@gmail.com" class="contact-link">mohammedamjad526@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">GITHUB:</span>
-                        <a href="https://github.com/mohamjad" target="_blank" class="contact-link">github.com/mohamjad</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">LinkedIn</span>
-                        <a href="https://www.linkedin.com/in/mohamjad" target="_blank" class="contact-link">linkedin.com/in/mohamjad</a>
-                    </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            </main>
-
-        <!-- Footer -->
-        <footer class="cyber-footer">
-            <div class="footer-line"></div>
-            <div class="footer-text">
-                        <span>© 2026</span>
-                        <span>·</span>
-                        <span>All rights reserved</span>
             </div>
+
+            <div class="comparison-line">
+                <p>Same problems. Different timing.</p>
+            </div>
+
+            <div class="system-reliability-note" id="systemReliabilityNote" style="display: none;">
+                <p>The system reliability work underpins the others. <strong>Same failure patterns, different surfaces.</strong></p>
+            </div>
+            </main>
+        </section>
+
+        <section class="contact-section" id="contactSection">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-links">
+                <a href="mailto:mohammedamjad526@gmail.com" class="contact-link">email</a>
+                <span class="contact-separator">/</span>
+                <a href="https://github.com/mohamjad" target="_blank" class="contact-link">github</a>
+                <span class="contact-separator">/</span>
+                <a href="https://www.linkedin.com/in/mohamjad" target="_blank" class="contact-link">linkedin</a>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <p class="footer-copyright">Copyright 2026 Setta. All rights reserved.</p>
         </footer>
     </div>
 
-    <!-- Project Preview Modal -->
-    <div id="previewModal" class="cyber-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title-bar">
-                    <span class="terminal-prompt">$</span>
-                    <span>preview</span>
-                </div>
-                <span class="modal-close">&times;</span>
-            </div>
-            <div class="modal-iframe-container">
-                <iframe id="previewIframe" class="modal-iframe" src="" allow="fullscreen" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
-            </div>
-            <div class="modal-info" id="modalInfo"></div>
-        </div>
-    </div>
-
-    <!-- Project Details Modal -->
-    <div id="projectModal" class="cyber-modal">
-        <div class="modal-content" style="max-width: 700px; height: auto; max-height: 90vh;">
-            <div class="modal-header">
-                <div class="modal-title-bar">
-                    <span class="terminal-prompt">$</span>
-                    <span>project info</span>
-                </div>
-                <span class="modal-close">&times;</span>
-            </div>
-            <div style="padding: 2rem; overflow-y: auto; max-height: calc(90vh - 100px);">
-                <div id="modalBody"></div>
-            </div>
-        </div>
-    </div>
-
+    <script src="data/setta_proof_tiles_v2.embedded.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
