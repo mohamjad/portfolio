@@ -7,10 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function setAutopsyVisible(isVisible, scrollTarget) {
         if (!frameworkSection) return;
 
+        frameworkSection.hidden = !isVisible;
         frameworkSection.classList.toggle('active', isVisible);
 
         if (showAutopsyBtn) {
-            showAutopsyBtn.textContent = isVisible ? 'Systems Autopsy Open' : 'View Systems Autopsy';
+            showAutopsyBtn.textContent = isVisible ? 'Diagnostics Open' : 'Open Diagnostics';
             showAutopsyBtn.classList.toggle('active', isVisible);
         }
 
@@ -134,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateActiveNavOnScroll();
 
     const briefCards = document.querySelectorAll('.brief-nav-card[data-brief-id]');
+    const briefReferenceButtons = document.querySelectorAll('[data-brief-open]');
     const briefPopup = document.getElementById('briefPopup');
     const briefPopupTitle = document.getElementById('briefPopupTitle');
     const briefPopupKicker = document.getElementById('briefPopupKicker');
@@ -147,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             templateId: 'briefTemplateA'
         },
         B: {
-            kicker: 'Brief B',
+            kicker: 'Reference Brief',
             title: 'VT CICA Reedle Shot 100',
             templateId: 'briefTemplateB'
         }
@@ -188,6 +190,15 @@ document.addEventListener('DOMContentLoaded', () => {
     briefCards.forEach(card => {
         card.addEventListener('click', () => {
             const briefId = card.getAttribute('data-brief-id');
+            if (briefId) {
+                openBriefPopup(briefId);
+            }
+        });
+    });
+
+    briefReferenceButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const briefId = button.getAttribute('data-brief-open');
             if (briefId) {
                 openBriefPopup(briefId);
             }
