@@ -533,6 +533,50 @@ body::after {
     margin-bottom: 0.35rem;
 }
 
+.results-strip {
+    margin-bottom: 1.4rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(17, 30, 52, 0.96) 0%, rgba(10, 22, 39, 0.96) 100%);
+}
+
+.results-grid {
+    margin-top: 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.result-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(17, 30, 52, 0.72);
+    padding: 0.78rem;
+}
+
+.result-label {
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.28rem;
+}
+
+.result-value {
+    color: #9bf6de;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.18rem;
+}
+
+.result-note {
+    color: var(--text-soft);
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+
 .control-layer-section {
     margin-bottom: 1.4rem;
     padding: 1rem;
@@ -2400,6 +2444,7 @@ body::after {
     }
 
     .problem-grid,
+    .results-grid,
     .control-grid,
     .strategy-grid,
     .path-grid,
