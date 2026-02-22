@@ -62,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .map(id => document.getElementById(id))
         .filter(Boolean);
 
+    navTargets.sort((left, right) => left.offsetTop - right.offsetTop);
+
     function setNavActive(targetId) {
         navLinks.forEach(link => {
             link.classList.toggle('active', link.getAttribute('data-nav-target') === targetId);
