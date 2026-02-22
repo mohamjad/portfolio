@@ -141,6 +141,84 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
     updateActiveNavOnScroll();
 
+    function initHeroIllustration() {
+        const heroPanel = document.getElementById('heroPanel');
+        if (!heroPanel) return;
+
+        const lottieLayers = Array.from(heroPanel.querySelectorAll('.hero-lottie-layer[data-lottie-src]'));
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (window.lottie && !prefersReducedMotion) {
+            lottieLayers.forEach(layer => {
+                const path = layer.getAttribute('data-lottie-src');
+                if (!path) return;
+                try {
+                    window.lottie.loadAnimation({
+                        container: layer,
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        path
+                    });
+                } catch (error) {
+                    layer.style.display = 'none';
+                }
+            });
+        } else {
+            lottieLayers.forEach(layer => {
+                layer.style.display = 'none';
+            });
+        }
+
+        if (prefersReducedMotion || window.innerWidth <= 1024) return;
+
+        let targetX = 0;
+        let targetY = 0;
+        let currentX = 0;
+        let currentY = 0;
+        let rafId = null;
+
+        const animateParallax = () => {
+            currentX += (targetX - currentX) * 0.08;
+            currentY += (targetY - currentY) * 0.08;
+
+            heroPanel.style.setProperty('--hero-parallax-x', `${currentX}px`);
+            heroPanel.style.setProperty('--hero-parallax-y', `${currentY}px`);
+
+            if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
+                rafId = window.requestAnimationFrame(animateParallax);
+            } else {
+                rafId = null;
+            }
+        };
+
+        const updateParallax = event => {
+            const rect = heroPanel.getBoundingClientRect();
+            const normalizedX = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+            const normalizedY = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+
+            targetX = normalizedX * 10;
+            targetY = normalizedY * 8;
+
+            if (!rafId) {
+                rafId = window.requestAnimationFrame(animateParallax);
+            }
+        };
+
+        const resetParallax = () => {
+            targetX = 0;
+            targetY = 0;
+            if (!rafId) {
+                rafId = window.requestAnimationFrame(animateParallax);
+            }
+        };
+
+        heroPanel.addEventListener('pointermove', updateParallax);
+        heroPanel.addEventListener('pointerleave', resetParallax);
+    }
+
+    initHeroIllustration();
+
     const briefCards = document.querySelectorAll('.brief-nav-card[data-brief-id]');
     const briefReferenceButtons = document.querySelectorAll('[data-brief-open]');
     const briefPopup = document.getElementById('briefPopup');

@@ -178,12 +178,30 @@ body {
 
 /* Hero */
 .hero-panel {
-    background: linear-gradient(140deg, #ffffff 0%, #f6f2e8 65%, #efe7d7 100%);
-    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 12% 12%, rgba(29, 157, 27, 0.2) 0%, rgba(12, 24, 42, 0) 38%), linear-gradient(140deg, #101c31 0%, #0f1b2d 48%, #1f1f3a 100%);
+    border: 1px solid rgba(148, 167, 204, 0.24);
     border-radius: 22px;
-    padding: 2.4rem 2.3rem;
+    padding: 2.2rem 2.1rem;
     margin-bottom: 3rem;
-    box-shadow: 0 24px 48px rgba(22, 32, 51, 0.08);
+    box-shadow: 0 24px 48px rgba(22, 32, 51, 0.22);
+    min-height: 560px;
+}
+
+.hero-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    align-items: stretch;
+    gap: 1.2rem;
+}
+
+.hero-copy {
+    position: relative;
+    z-index: 3;
+    padding: 0.3rem 0 0.3rem 0.2rem;
 }
 
 .hero-kicker {
@@ -191,7 +209,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.78rem;
-    color: var(--accent);
+    color: #7de5c8;
     margin-bottom: 0.85rem;
 }
 
@@ -201,10 +219,11 @@ body {
     letter-spacing: -0.03em;
     max-width: 980px;
     margin-bottom: 1rem;
+    color: #f3f7ff;
 }
 
 .hero-subtitle {
-    color: var(--text-soft);
+    color: rgba(230, 238, 255, 0.85);
     max-width: 880px;
     font-size: 1.03rem;
     line-height: 1.75;
@@ -214,10 +233,10 @@ body {
     margin-top: 1rem;
     display: inline-flex;
     align-items: center;
-    border: 1px solid rgba(15, 123, 108, 0.32);
+    border: 1px solid rgba(125, 229, 200, 0.42);
     border-radius: 999px;
-    background: rgba(15, 123, 108, 0.1);
-    color: var(--accent);
+    background: rgba(125, 229, 200, 0.12);
+    color: #a8f4df;
     padding: 0.38rem 0.72rem;
     font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
     font-size: 0.74rem;
@@ -242,27 +261,163 @@ body {
 
 .hero-cta {
     text-decoration: none;
-    background: var(--accent);
-    color: #f6fffd;
-    border: 1px solid var(--accent);
+    background: rgba(125, 229, 200, 0.94);
+    color: #0b1b2f;
+    border: 1px solid rgba(125, 229, 200, 0.94);
     border-radius: 10px;
     padding: 0.72rem 1rem;
-    font-weight: 600;
+    font-weight: 700;
     transition: all 0.25s ease;
 }
 
 .hero-cta:hover {
-    background: var(--accent-hover);
-    border-color: var(--accent-hover);
+    background: #9bf6de;
+    border-color: #9bf6de;
 }
 
 .hero-cta.ghost {
     background: transparent;
-    color: var(--accent);
+    color: #d8e3ff;
+    border-color: rgba(216, 227, 255, 0.36);
 }
 
 .hero-cta.ghost:hover {
-    background: rgba(15, 123, 108, 0.08);
+    border-color: rgba(216, 227, 255, 0.6);
+    color: #f1f5ff;
+    background: rgba(216, 227, 255, 0.1);
+}
+
+.hero-visual {
+    position: relative;
+    min-height: 500px;
+    pointer-events: none;
+    transform-style: preserve-3d;
+}
+
+.hero-noise {
+    position: absolute;
+    inset: -30% -36% -30% -36%;
+    width: 172%;
+    height: 172%;
+    opacity: 0.12;
+    mix-blend-mode: screen;
+    animation: heroNoiseShift 20s linear infinite;
+}
+
+.hero-swirls {
+    position: absolute;
+    top: -34%;
+    right: -60%;
+    width: 178%;
+    max-width: none;
+    opacity: 0.98;
+    filter: saturate(1.05) contrast(1.03);
+    transform: translate3d(var(--hero-parallax-x, 0px), var(--hero-parallax-y, 0px), 0);
+}
+
+.hero-building {
+    position: absolute;
+    right: -12%;
+    bottom: -7%;
+    width: min(66vh, 140%);
+    max-width: none;
+    filter: drop-shadow(0 35px 40px rgba(5, 10, 18, 0.65));
+    transform: translate3d(calc(var(--hero-parallax-x, 0px) * 0.6), calc(var(--hero-parallax-y, 0px) * 0.6), 0);
+}
+
+.hero-lottie-layer {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    transform: translate3d(calc(var(--hero-parallax-x, 0px) * 0.5), calc(var(--hero-parallax-y, 0px) * 0.5), 0);
+}
+
+.hero-lottie-layer canvas,
+.hero-lottie-layer svg {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.lottie-extra-spark {
+    top: -10%;
+    left: 51%;
+    width: 23vh;
+    height: 23vh;
+}
+
+.lottie-yellow-spark {
+    top: -7%;
+    left: 58%;
+    width: 25vh;
+    height: 25vh;
+}
+
+.lottie-pink-spark {
+    top: -4%;
+    left: 84%;
+    width: 15vh;
+    height: 15vh;
+}
+
+.lottie-pink-gear {
+    top: 2%;
+    left: 80%;
+    width: 12vh;
+    height: 12vh;
+}
+
+.lottie-green-gear {
+    top: 32%;
+    left: 43%;
+    width: 18vh;
+    height: 18vh;
+}
+
+.lottie-green-blue-star {
+    top: 7%;
+    left: 53%;
+    width: 10vh;
+    height: 10vh;
+}
+
+.lottie-pink-star {
+    top: 2%;
+    left: 44%;
+    width: 9vh;
+    height: 9vh;
+}
+
+.lottie-green-yellow-star {
+    top: 20%;
+    left: 73%;
+    width: 11vh;
+    height: 11vh;
+}
+
+.lottie-green-star {
+    top: -2%;
+    left: -8%;
+    width: 9vh;
+    height: 9vh;
+}
+
+.lottie-small-green-star {
+    top: 65%;
+    left: 33%;
+    width: 7vh;
+    height: 7vh;
+}
+
+@keyframes heroNoiseShift {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        transform: translate3d(-2%, 1%, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 .hero-meta {
@@ -1966,6 +2121,36 @@ body {
         display: inline-flex;
     }
 
+    .hero-panel {
+        min-height: 520px;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+    }
+
+    .hero-copy {
+        padding-right: 0.2rem;
+    }
+
+    .hero-visual {
+        min-height: 340px;
+        margin-top: 0.3rem;
+    }
+
+    .hero-swirls {
+        top: -28%;
+        right: -36%;
+        width: 140%;
+    }
+
+    .hero-building {
+        right: 0;
+        bottom: -12%;
+        width: min(52vh, 100%);
+    }
+
     .proof-tiles-grid {
         grid-template-columns: 1fr;
     }
@@ -2036,6 +2221,46 @@ body {
     .hero-panel {
         padding: 1.35rem 1.1rem;
         border-radius: 14px;
+        min-height: 0;
+    }
+
+    .hero-grid {
+        gap: 0;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.62;
+    }
+
+    .hero-visual {
+        min-height: 255px;
+        margin-top: 0.55rem;
+    }
+
+    .hero-noise {
+        inset: -30%;
+        width: 160%;
+        height: 160%;
+    }
+
+    .hero-swirls {
+        top: -15%;
+        right: -40%;
+        width: 155%;
+    }
+
+    .hero-building {
+        right: -4%;
+        bottom: -16%;
+        width: min(46vh, 105%);
+    }
+
+    .lottie-pink-gear,
+    .lottie-green-star,
+    .lottie-pink-star,
+    .lottie-small-green-star {
+        display: none;
     }
 
     .hero-qualifier {
