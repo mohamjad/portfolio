@@ -225,6 +225,13 @@ body {
     text-transform: uppercase;
 }
 
+.hero-confidence {
+    margin-top: 0.7rem;
+    color: var(--text-muted);
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+
 .hero-meta-row {
     display: flex;
     align-items: center;
@@ -864,6 +871,15 @@ body {
     margin-bottom: 2rem;
 }
 
+.supporting-evidence-section {
+    margin-bottom: 1.1rem;
+}
+
+.supporting-evidence-panel {
+    background: linear-gradient(180deg, #fff 0%, #f8f4ea 100%);
+    border-radius: 14px;
+}
+
 .brief-popup {
     position: fixed;
     inset: 0;
@@ -1168,8 +1184,8 @@ body {
 
 /* Scan summary */
 .scan-summary {
-    background: linear-gradient(120deg, rgba(15, 123, 108, 0.08) 0%, #f8f4ea 88%);
-    border: 1px solid rgba(15, 123, 108, 0.35);
+    background: linear-gradient(120deg, rgba(15, 123, 108, 0.06) 0%, #f8f4ea 88%);
+    border: 1px solid rgba(15, 123, 108, 0.24);
     border-radius: 14px;
     padding: 1.15rem 1.3rem;
     margin-bottom: 1.3rem;
@@ -1225,7 +1241,7 @@ body {
 }
 
 .scan-headline {
-    font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+    font-size: clamp(1rem, 2.2vw, 1.32rem);
     line-height: 1.28;
     margin-bottom: 0.4rem;
 }
@@ -1834,6 +1850,14 @@ body {
 .footer-link:hover {
     color: var(--accent);
     text-decoration: underline;
+}
+
+.footer-link-btn {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
 }
 
 .footer-copyright {

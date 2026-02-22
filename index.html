@@ -17,7 +17,6 @@
         <a class="side-nav-link" data-site-nav-link data-nav-target="problemSection" href="#problemSection">Problem</a>
         <a class="side-nav-link" data-site-nav-link data-nav-target="howItWorks" href="#howItWorks">How It Works</a>
         <a class="side-nav-link" data-site-nav-link data-nav-target="sampleBriefSection" href="#sampleBriefSection">Sample Briefs</a>
-        <a class="side-nav-link" data-site-nav-link data-nav-target="proofTiles" href="#proofTiles">Proof Tiles</a>
         <a class="side-nav-link" data-site-nav-link data-nav-target="pricingSection" href="#pricingSection">Pricing</a>
         <a class="side-nav-link" data-site-nav-link data-nav-target="contactSection" href="#contactSection">Contact</a>
     </nav>
@@ -26,11 +25,10 @@
         <header class="site-topbar">
             <div class="brand-block">
                 <p class="brand-name">Setta</p>
-                <p class="brand-tagline">US-forward custom campaign intelligence</p>
+                <p class="brand-tagline">spend protection for teams running 10+ paid concepts a month</p>
             </div>
             <div class="topbar-actions">
                 <button class="mobile-nav-toggle" id="mobileNavToggle" type="button" aria-expanded="false" aria-controls="mobileNavPanel">Menu</button>
-                <button class="autopsy-launch-btn" id="showAutopsyBtn" type="button" data-nosnippet>Open Diagnostics</button>
             </div>
         </header>
 
@@ -38,16 +36,16 @@
             <a class="mobile-nav-link" data-site-nav-link data-nav-target="problemSection" href="#problemSection">Problem</a>
             <a class="mobile-nav-link" data-site-nav-link data-nav-target="howItWorks" href="#howItWorks">How It Works</a>
             <a class="mobile-nav-link" data-site-nav-link data-nav-target="sampleBriefSection" href="#sampleBriefSection">Sample Briefs</a>
-            <a class="mobile-nav-link" data-site-nav-link data-nav-target="proofTiles" href="#proofTiles">Proof Tiles</a>
             <a class="mobile-nav-link" data-site-nav-link data-nav-target="pricingSection" href="#pricingSection">Pricing</a>
             <a class="mobile-nav-link" data-site-nav-link data-nav-target="contactSection" href="#contactSection">Contact</a>
         </nav>
 
         <section class="hero-panel">
-            <p class="hero-kicker">Paid Creative Decision Infrastructure</p>
+            <p class="hero-kicker">paid creative decision infrastructure</p>
             <h1 class="hero-title">brief in. winners out.</h1>
             <p class="hero-subtitle">we map your campaign brief to live format momentum, saturation risk, and reception signals so you know what to shoot before cost and performance compress.</p>
             <p class="hero-subtitle">you receive campaign-specific decisions, not trend dashboards.</p>
+            <p class="hero-confidence">confidence = momentum + gate health + saturation risk + reception.</p>
             <p class="hero-qualifier">Built for in-house teams and agencies testing 10 or more concepts per month.</p>
             <div class="hero-meta-row">
                 <a class="hero-cta" href="#sampleBriefSection">view sample briefs</a>
@@ -103,6 +101,7 @@
 
             <section class="cross-market-section" id="crossMarketEdge">
                 <h2 class="section-title">pick your path</h2>
+                <p class="section-description">choose brand or agency view.</p>
                 <div class="path-grid">
                     <article class="path-card">
                         <h3>Brand (in-house teams)</h3>
@@ -993,37 +992,42 @@
                 </div>
             </section>
 
-            <div class="live-feed-context" id="liveFeedContext">
-                <p class="live-feed-kicker">Proof and Credibility</p>
-                <p class="live-feed-description">Evidence is supporting context. Product output is still the decision pack.</p>
-                <div class="live-feed-legend">
-                    <p><strong>velocity median:</strong> midline momentum across the current window.</p>
-                    <p><strong>creators_24h:</strong> creator participation over the last 24 hours.</p>
-                    <p><strong>saturation risk:</strong> crowding pressure and likely compression risk.</p>
-                    <p><strong>reception score:</strong> sentiment and objection balance quality.</p>
-                    <p><strong>gate pass rate:</strong> quality-filter pass ratio for recent candidates.</p>
-                </div>
-                <a class="hero-cta ghost spec-cta" href="signal-spec.html">see full signal spec (methodology)</a>
-            </div>
-
-            <div class="scan-summary" id="scanSummary">
-                <p class="scan-kicker">Live signal feed (last 72 hours)</p>
-                <p class="scan-headline" id="scanHeadline">Loading latest scan summary...</p>
-                <p class="scan-meta" id="scanMeta"></p>
-                <p class="scan-disclaimer" id="scanDisclaimer">Snapshot disclaimer: based on the last 72 hours only.</p>
-                <p class="scan-source" id="dataSourceIndicator">Data source: loading...</p>
-            </div>
-
-            <div class="proof-tiles-grid" id="proofTiles">
-                <div class="proof-tile">
-                    <div class="proof-tile-header">
-                        <span class="proof-label">Loading</span>
-                        <span class="proof-timestamp">Setta</span>
+            <section class="supporting-evidence-section" id="supportingEvidenceSection">
+                <details class="fold-panel supporting-evidence-panel">
+                    <summary>supporting evidence that feeds briefs</summary>
+                    <div class="live-feed-context" id="liveFeedContext">
+                        <p class="live-feed-kicker">proof and credibility</p>
+                        <p class="live-feed-description">we keep this light on the homepage. full logic is in the methodology page.</p>
+                        <div class="live-feed-legend">
+                            <p><strong>velocity median:</strong> midline momentum across the current window.</p>
+                            <p><strong>creators_24h:</strong> creator participation over the last 24 hours.</p>
+                            <p><strong>saturation risk:</strong> crowding pressure and likely compression risk.</p>
+                            <p><strong>reception score:</strong> sentiment and objection balance quality.</p>
+                            <p><strong>gate pass rate:</strong> quality-filter pass ratio for recent candidates.</p>
+                        </div>
+                        <a class="hero-cta ghost spec-cta" href="signal-spec.html">see full signal spec</a>
                     </div>
-                    <h3 class="proof-title">Preparing confidence-scored proof tiles</h3>
-                    <p class="proof-description">Setta proof tiles are loading from the latest report pack.</p>
-                </div>
-            </div>
+
+                    <div class="scan-summary" id="scanSummary">
+                        <p class="scan-kicker">live signal feed (last 72 hours)</p>
+                        <p class="scan-headline" id="scanHeadline">Loading latest scan summary...</p>
+                        <p class="scan-meta" id="scanMeta"></p>
+                        <p class="scan-disclaimer" id="scanDisclaimer">Snapshot disclaimer: based on the last 72 hours only.</p>
+                        <p class="scan-source" id="dataSourceIndicator">Data source: loading...</p>
+                    </div>
+
+                    <div class="proof-tiles-grid" id="proofTiles">
+                        <div class="proof-tile">
+                            <div class="proof-tile-header">
+                                <span class="proof-label">Loading</span>
+                                <span class="proof-timestamp">Setta</span>
+                            </div>
+                            <h3 class="proof-title">Preparing confidence-scored proof tiles</h3>
+                            <p class="proof-description">Setta proof tiles are loading from the latest report pack.</p>
+                        </div>
+                    </div>
+                </details>
+            </section>
 
             <section class="spec-preview-section" id="signalSpecSection">
                 <h2 class="section-title">Signal Spec Preview</h2>
@@ -1239,6 +1243,8 @@
                 <a class="footer-link" href="https://www.linkedin.com/in/mohamjad" target="_blank" rel="noopener noreferrer">linkedin</a>
                 <span class="contact-separator">/</span>
                 <a class="footer-link" href="https://github.com/mohamjad" target="_blank" rel="noopener noreferrer">github</a>
+                <span class="contact-separator">/</span>
+                <button class="footer-link footer-link-btn" id="openAutopsyFooter" type="button" data-nosnippet>previous work: diagnostics</button>
             </div>
             <p class="footer-copyright">Copyright 2026 Setta. All rights reserved.</p>
         </footer>

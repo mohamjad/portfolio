@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const frameworkSection = document.getElementById('frameworkSection');
     const showAutopsyBtn = document.getElementById('showAutopsyBtn');
     const hideAutopsyBtn = document.getElementById('hideAutopsyBtn');
+    const openAutopsyFooter = document.getElementById('openAutopsyFooter');
 
     function setAutopsyVisible(isVisible, scrollTarget) {
         if (!frameworkSection) return;
@@ -41,6 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hideAutopsyBtn) {
         hideAutopsyBtn.addEventListener('click', () => {
             setAutopsyVisible(false, 'ugc');
+        });
+    }
+
+    if (openAutopsyFooter) {
+        openAutopsyFooter.addEventListener('click', () => {
+            setAutopsyVisible(true, 'autopsy');
         });
     }
 
