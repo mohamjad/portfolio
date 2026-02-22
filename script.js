@@ -156,8 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
             templateId: 'briefTemplateA'
         },
         B: {
-            kicker: 'Reference Brief',
-            title: 'VT CICA Reedle Shot 100',
+            kicker: 'Brief B',
+            title: 'LAKA Fruity Glam Tint (Agency Lens)',
             templateId: 'briefTemplateB'
         }
     };
