@@ -867,6 +867,26 @@ body {
     margin-top: 0.7rem;
 }
 
+.spec-cta-link {
+    display: inline-flex;
+    margin: 0.8rem 0.9rem 0.95rem;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.44rem 0.68rem;
+    font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    background: rgba(15, 123, 108, 0.08);
+}
+
+.spec-cta-link:hover {
+    background: rgba(15, 123, 108, 0.16);
+    border-color: rgba(15, 123, 108, 0.36);
+}
+
 .spec-preview-section {
     margin-bottom: 2rem;
 }
@@ -878,6 +898,65 @@ body {
 .supporting-evidence-panel {
     background: linear-gradient(180deg, #fff 0%, #f8f4ea 100%);
     border-radius: 14px;
+}
+
+.equation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.85rem;
+}
+
+.equation-card {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 0.85rem;
+}
+
+.equation-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.equation-card p {
+    color: var(--text-soft);
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.equation-block {
+    margin: 0.45rem 0 0.55rem;
+    padding: 0.64rem 0.72rem;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    background: rgba(18, 23, 35, 0.04);
+    overflow-x: auto;
+}
+
+.equation-block code {
+    font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
+    font-size: 0.73rem;
+    line-height: 1.55;
+    color: var(--text);
+    white-space: pre;
+}
+
+.worked-example-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.85rem;
+}
+
+.worked-example-card {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 0.9rem;
+}
+
+.worked-example-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.35rem;
 }
 
 .brief-popup {

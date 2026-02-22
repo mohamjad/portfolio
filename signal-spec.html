@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Setta signal methodology and scoring specification.">
-    <title>Setta | Full Signal Spec</title>
+    <meta name="description" content="Setta methodology: how decisions are scored with momentum, saturation, gate health, and reception modeling.">
+    <title>Setta | How We Score Decisions</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
         <header class="site-topbar">
             <div class="brand-block">
                 <p class="brand-name">Setta</p>
-                <p class="brand-tagline">Full signal methodology</p>
+                <p class="brand-tagline">How we score decisions</p>
             </div>
             <div class="topbar-actions">
                 <a class="hero-cta ghost" href="index.html">back to landing page</a>
@@ -21,140 +21,199 @@
 
         <section class="hero-panel">
             <p class="hero-kicker">Methodology</p>
-            <h1 class="hero-title">full signal spec (methodology)</h1>
-            <p class="hero-subtitle">This page documents scoring logic, reception logic, guardrails, and field definitions used to support campaign decision packs.</p>
+            <h1 class="hero-title">how we score decisions (receipts, not vibes)</h1>
+            <p class="hero-subtitle">This page shows the math behind brief outputs. It is intentionally focused on buyer-facing signals and one worked example.</p>
         </section>
 
         <section class="problem-section">
-            <h2 class="section-title">Versioning + Modes</h2>
-            <ul class="concept-list">
-                <li><strong>config_version:</strong> v1 baseline.</li>
-                <li><strong>modes:</strong> discovery, exploit, creator_watch, recapture.</li>
-                <li><strong>markets:</strong> global defaults with market-level overrides where present.</li>
-                <li><strong>logic_view_version:</strong> v1_actual_logic_linked.</li>
-            </ul>
-        </section>
-
-        <section class="problem-section">
-            <h2 class="section-title">Source Registry Families</h2>
-            <ul class="concept-list">
-                <li><strong>social:</strong> TikTok, Rednote, Douyin, X.</li>
-                <li><strong>ads:</strong> Meta Ads Library context source.</li>
-                <li><strong>owned:</strong> TikTok Creator Centre context source.</li>
-                <li><strong>reviews:</strong> official website reviews.</li>
-            </ul>
-        </section>
-
-        <section class="problem-section">
-            <h2 class="section-title">Core Formula Stack</h2>
+            <h2 class="section-title">The 5 Signals On Briefs</h2>
             <div class="deliverables-grid">
                 <article class="deliverable-card">
-                    <h3>score_total_expected</h3>
-                    <p>Weighted blend of score_velocity, score_breadth, score_novelty, score_reference_alignment, score_creator_quality, and score_confidence.</p>
+                    <h3>momentum</h3>
+                    <p>How fast format performance is moving right now.</p>
                 </article>
                 <article class="deliverable-card">
-                    <h3>signal_strength_expected</h3>
-                    <p>Blend of score_total, signals_met_total, and latest_delta_total with capped delta contribution.</p>
+                    <h3>breadth</h3>
+                    <p>How wide creator adoption is in the active window.</p>
                 </article>
                 <article class="deliverable-card">
-                    <h3>top_post_signal_expected</h3>
-                    <p>Blend of top_post_ugc_quality_percentile, top_post_accel_score, and normalized view pressure.</p>
+                    <h3>saturation risk</h3>
+                    <p>How close a format is to compression from replication density.</p>
                 </article>
                 <article class="deliverable-card">
-                    <h3>reception_score_computed</h3>
-                    <p>Weighted blend of sentiment score, inverse objections, proof demand, and purchase intent with sample and floor penalties.</p>
+                    <h3>gate health</h3>
+                    <p>How many candidates are passing quality and reliability filters.</p>
+                </article>
+                <article class="deliverable-card">
+                    <h3>reception</h3>
+                    <p>How audience response scores on sentiment, objections, proof demand, and purchase intent.</p>
                 </article>
             </div>
         </section>
 
         <section class="problem-section">
-            <h2 class="section-title">Reception Config Defaults</h2>
-            <ul class="concept-list">
-                <li><strong>sentiment_weight:</strong> 0.45 (discovery), 0.40 (exploit), 0.35 (creator_watch/recapture).</li>
-                <li><strong>objections_weight:</strong> 0.20.</li>
-                <li><strong>proof_demand_weight:</strong> 0.15 (discovery/exploit), 0.20 (creator_watch/recapture).</li>
-                <li><strong>purchase_intent_weight:</strong> 0.20 (discovery), 0.25 (other modes).</li>
-                <li><strong>min_comment_sample:</strong> 30 (discovery/exploit), 20 (creator_watch/recapture).</li>
-                <li><strong>min_review_sample:</strong> 10 (discovery/exploit), 8 (creator_watch/recapture).</li>
-                <li><strong>sentiment_floor:</strong> 0.45.</li>
-                <li><strong>reception_watch_threshold:</strong> 55-57 depending mode.</li>
-                <li><strong>reception_strong_threshold:</strong> 66-70 depending mode.</li>
-            </ul>
+            <h2 class="section-title">Core Equations</h2>
+            <p class="section-description">Readable formulas used in production scoring. Variables are standardized per market and time window.</p>
+            <div class="equation-grid">
+                <article class="equation-card">
+                    <h3>velocity and momentum</h3>
+                    <pre class="equation-block"><code>vph_views = (ln(v_t + 1) - ln(v_{t-delta} + 1)) / delta_hours
+accel_score = 0.50*vph_views + 0.30*vph_shares + 0.20*vph_saves
+momentum_score = 100 * sigmoid(1.15*accel_score + 0.35*delta_score)</code></pre>
+                    <p>Velocity rewards acceleration, not only scale.</p>
+                </article>
+                <article class="equation-card">
+                    <h3>breadth and saturation</h3>
+                    <pre class="equation-block"><code>breadth_score = 100 * sigmoid(z(unique_creators_72h) + 0.60*z(unique_posts_72h))
+replication_ratio = posts_72h / max(unique_creators_72h, 1)
+saturation_risk = 100 * sigmoid(0.90*z(replication_ratio) + 0.80*z(format_age_hours) - 0.70*z(novelty_score))
+saturation_eta_hours = clamp((risk_threshold - saturation_risk) / max(d_risk_dt, 0.001), 6, 168)</code></pre>
+                    <p>Saturation is modeled as pressure over time, not a binary label.</p>
+                </article>
+                <article class="equation-card">
+                    <h3>gate health</h3>
+                    <pre class="equation-block"><code>gate_health = 100 * (
+  0.50*gate_pass_rate_24h +
+  0.30*velocity_valid_rate_24h +
+  0.20*source_coverage
+)</code></pre>
+                    <p>Gate health helps prevent false positives from weak or noisy samples.</p>
+                </article>
+                <article class="equation-card">
+                    <h3>reception (NLP + local model)</h3>
+                    <pre class="equation-block"><code>w_i = ln(1 + engagement_i) * exp(-lambda * age_hours_i)
+ratio_k = (sum(w_i * p_{i,k}) + alpha_k) / (sum(w_i) + alpha_total)
+
+sentiment_score = ratio_positive - 0.70*ratio_negative
+reception_raw = 0.38*sentiment_score + 0.24*(1 - objection_ratio) +
+                0.18*proof_demand_ratio + 0.20*purchase_intent_ratio
+penalties = 0.12*I(comment_count &lt; min_comments) +
+            0.08*max(0, sentiment_floor - sentiment_score)
+reception_score = 100 * clamp(reception_raw - penalties, 0, 1)</code></pre>
+                    <p>We use a locally hosted LLM classifier for comment-level probability tags and aggregate with weighted smoothing.</p>
+                </article>
+                <article class="equation-card">
+                    <h3>final shootability</h3>
+                    <pre class="equation-block"><code>shootability_score =
+  0.30*momentum_score +
+  0.20*breadth_score +
+  0.20*(100 - saturation_risk) +
+  0.15*gate_health +
+  0.15*reception_score
+
+if shootability_score &gt;= 64 and saturation_risk &lt; 72 and gate_health &gt;= 50 => what_to_shoot
+if shootability_score in [52,64) => watch
+if shootability_score &lt; 52 => do_not_shoot</code></pre>
+                    <p>The verdict combines opportunity and risk, then enforces guardrails.</p>
+                </article>
+            </div>
         </section>
 
         <section class="problem-section">
-            <h2 class="section-title">Guard Definitions</h2>
-            <ul class="concept-list">
-                <li>Weight sum check enforces score weights sum to 1.0.</li>
-                <li>Ratio bounds checks enforce 0 to 1 for positive, negative, neutral, objections, proof demand, and purchase intent ratios.</li>
-                <li>Sample penalties apply when both comment and review coverage are below minimums.</li>
-                <li>Sentiment floor penalty applies when sentiment score drops below configured floor.</li>
-                <li>Reception band mapping: weak_reception, watch_reception, strong_reception.</li>
-            </ul>
-        </section>
-
-        <section class="problem-section">
-            <h2 class="section-title">Operational Field Inventory</h2>
-            <p class="section-description">Primary field groups used in decision packs and explainability tiles.</p>
-            <div class="deliverables-detail-grid">
-                <article class="deliverables-detail-card">
-                    <h3>Scoring Fields</h3>
+            <h2 class="section-title">Worked Example: Sentiment-Led Decision</h2>
+            <p class="section-description">Illustrative numbers only. This example is intentionally synthetic and safe for public methodology.</p>
+            <div class="worked-example-grid">
+                <article class="worked-example-card">
+                    <h3>input snapshot</h3>
                     <ul class="concept-list">
-                        <li>score_total</li>
-                        <li>score_velocity</li>
-                        <li>score_breadth</li>
-                        <li>score_novelty</li>
-                        <li>score_reference_alignment</li>
-                        <li>score_creator_quality</li>
-                        <li>score_confidence</li>
-                        <li>signal_strength_score</li>
-                        <li>signals_met_total</li>
-                        <li>latest_delta_total</li>
+                        <li>scan window: 72h</li>
+                        <li>comments analyzed: 12,480</li>
+                        <li>review mentions: 1,930</li>
+                        <li>local-model topic tags per comment: sentiment, objection, proof_demand, purchase_intent</li>
                     </ul>
                 </article>
-                <article class="deliverables-detail-card">
-                    <h3>Quality + Gate Fields</h3>
+                <article class="worked-example-card">
+                    <h3>reception calc</h3>
+                    <pre class="equation-block"><code>ratio_positive = 0.68
+ratio_negative = 0.11
+objection_ratio = 0.14
+proof_demand_ratio = 0.64
+purchase_intent_ratio = 0.62
+
+sentiment_score = 0.68 - 0.70*0.11 = 0.603
+reception_raw = 0.38*0.603 + 0.24*(1-0.14) + 0.18*0.64 + 0.20*0.62
+             = 0.675
+penalties = 0.000
+reception_score = 67.5</code></pre>
+                </article>
+                <article class="worked-example-card">
+                    <h3>final decision</h3>
                     <ul class="concept-list">
-                        <li>gate_pass_rate_24h</li>
-                        <li>velocity_valid_rate_24h</li>
-                        <li>posts_24h_all</li>
-                        <li>posts_24h_gate_passed</li>
-                        <li>snapshots_24h</li>
-                        <li>snapshots_velocity_valid_24h</li>
-                        <li>is_saturating</li>
-                        <li>do_not_shoot</li>
+                        <li>momentum_score = 74.0</li>
+                        <li>breadth_score = 66.0</li>
+                        <li>saturation_risk = 38.0</li>
+                        <li>gate_health = 71.0</li>
+                        <li>reception_score = 67.5</li>
+                    </ul>
+                    <pre class="equation-block"><code>shootability_score = 68.6
+verdict = what_to_shoot</code></pre>
+                    <p>Interpretation: strong enough to launch controlled tests while saturation risk is still manageable.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="problem-section">
+            <h2 class="section-title">Mode Defaults</h2>
+            <div class="deliverables-grid">
+                <article class="deliverable-card">
+                    <h3>discovery</h3>
+                    <p>Prioritizes momentum and breadth to catch early movement.</p>
+                </article>
+                <article class="deliverable-card">
+                    <h3>exploit</h3>
+                    <p>Prioritizes reception quality and proof demand so scale does not collapse.</p>
+                </article>
+                <article class="deliverable-card">
+                    <h3>creator_watch</h3>
+                    <p>Prioritizes purchase intent and objection handling for creator selection quality.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="problem-section">
+            <h2 class="section-title">Field Inventory</h2>
+            <p class="section-description">Main brief fields are shown by default. Extended field lists are collapsed.</p>
+            <div class="deliverables-detail-grid">
+                <article class="deliverables-detail-card">
+                    <h3>brief-facing fields</h3>
+                    <ul class="concept-list">
+                        <li>momentum_score</li>
+                        <li>breadth_score</li>
+                        <li>saturation_risk</li>
+                        <li>saturation_eta_hours</li>
+                        <li>gate_health</li>
+                        <li>reception_score</li>
+                        <li>shootability_score</li>
                         <li>signal_verdict</li>
                     </ul>
                 </article>
                 <article class="deliverables-detail-card">
-                    <h3>Reception Fields</h3>
+                    <h3>top-post receipts</h3>
                     <ul class="concept-list">
-                        <li>reception_score</li>
-                        <li>sentiment_score</li>
-                        <li>positive_ratio</li>
-                        <li>negative_ratio</li>
-                        <li>neutral_ratio</li>
-                        <li>objections_ratio</li>
-                        <li>proof_demand_ratio</li>
-                        <li>purchase_intent_ratio</li>
-                        <li>reception_band</li>
-                    </ul>
-                </article>
-                <article class="deliverables-detail-card">
-                    <h3>Context + Delivery Fields</h3>
-                    <ul class="concept-list">
-                        <li>intl_cross_reference_score</li>
-                        <li>intl_matches_count</li>
-                        <li>queue_id / queue_status</li>
-                        <li>winner_caption_id / winner_caption_status</li>
-                        <li>proof_tile_count</li>
-                        <li>top_post_count</li>
-                        <li>top_post_signal_score</li>
-                        <li>reception_source_coverage</li>
-                        <li>intel_drivers_json / reception_drivers_json</li>
+                        <li>post_url</li>
+                        <li>author_handle</li>
+                        <li>views</li>
+                        <li>accel_score</li>
+                        <li>ugc_quality_percentile</li>
+                        <li>post_signal_score</li>
+                        <li>why_post_matters</li>
                     </ul>
                 </article>
             </div>
+
+            <details class="fold-panel">
+                <summary>see full field list</summary>
+                <div class="info-panel">
+                    <h3 class="brief-title">extended scoring fields</h3>
+                    <ul class="concept-list">
+                        <li>score_total, score_velocity, score_breadth, score_novelty, score_reference_alignment, score_creator_quality, score_confidence</li>
+                        <li>signals_met_total, latest_delta_total, gate_pass_rate_24h, velocity_valid_rate_24h, source_coverage</li>
+                        <li>sentiment_score, objections_ratio, proof_demand_ratio, purchase_intent_ratio, reception_band</li>
+                        <li>intl_cross_reference_score, intl_matches_count, top_post_count, proof_tile_count</li>
+                    </ul>
+                    <p class="section-description">Internal job and queue fields are intentionally omitted from this public page.</p>
+                </div>
+            </details>
         </section>
 
         <section class="contact-section">
