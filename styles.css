@@ -351,6 +351,47 @@ body {
     line-height: 1.55;
 }
 
+.strategy-section {
+    margin-bottom: 1.4rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: linear-gradient(180deg, #fff 0%, #f8f4ea 100%);
+}
+
+.strategy-grid {
+    margin-top: 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+}
+
+.strategy-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    padding: 0.85rem;
+}
+
+.strategy-card h3 {
+    font-size: 0.92rem;
+    margin-bottom: 0.32rem;
+}
+
+.strategy-card p {
+    color: var(--text-soft);
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+
+.strategy-note {
+    margin-top: 0.72rem;
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.03em;
+}
+
 .cross-market-section {
     margin-bottom: 1.4rem;
     padding: 1rem;
@@ -359,10 +400,56 @@ body {
     background: linear-gradient(180deg, #fff 0%, #f8f4ea 100%);
 }
 
-.cross-market-cta {
-    display: inline-flex;
-    margin-top: 0.95rem;
-    position: relative;
+.path-grid {
+    margin-top: 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+}
+
+.path-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    padding: 0.95rem;
+}
+
+.path-card h3 {
+    font-size: 0.94rem;
+    margin-bottom: 0.35rem;
+}
+
+.path-card p {
+    color: var(--text-soft);
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+
+.path-highlight {
+    margin-top: 0.45rem;
+    margin-bottom: 0.65rem;
+    color: var(--text);
+    font-size: 0.84rem;
+}
+
+.path-btn {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    background: rgba(15, 123, 108, 0.08);
+    border-radius: 9px;
+    padding: 0.5rem 0.72rem;
+    font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.path-btn:hover,
+.path-btn:focus-visible {
+    background: var(--accent);
+    color: #f6fffd;
 }
 
 .workflow-section {
@@ -726,20 +813,24 @@ body {
     outline-offset: 2px;
 }
 
-.brief-nav-card.pending {
-    cursor: default;
-    opacity: 0.7;
-    border-style: dashed;
+.pricing-cta {
+    margin-top: 0.8rem;
+    display: inline-flex;
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 9px;
+    padding: 0.5rem 0.72rem;
+    font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(15, 123, 108, 0.08);
 }
 
-.brief-nav-card:disabled {
-    cursor: not-allowed;
-}
-
-.brief-nav-card.pending:hover {
-    transform: none;
-    border-color: var(--border);
-    box-shadow: none;
+.pricing-cta:hover {
+    background: var(--accent);
+    color: #f6fffd;
 }
 
 .brief-nav-card h3 {
@@ -758,25 +849,19 @@ body {
     color: var(--text-muted);
 }
 
-.brief-reference-row {
-    margin: 0.2rem 0 0.65rem;
+.brief-actions-row {
+    margin: 0.25rem 0 0.72rem;
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
 }
 
-.brief-reference-link {
-    border: 0;
-    background: transparent;
-    color: var(--text-muted);
-    font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
-    font-size: 0.74rem;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    cursor: pointer;
-    padding: 0;
+.spec-cta {
+    margin-top: 0.7rem;
 }
 
-.brief-reference-link:hover,
-.brief-reference-link:focus-visible {
-    color: var(--accent);
+.spec-preview-section {
+    margin-bottom: 2rem;
 }
 
 .brief-popup {
@@ -1732,6 +1817,25 @@ body {
     text-align: center;
 }
 
+.footer-links {
+    margin-bottom: 0.35rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+}
+
+.footer-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
 .footer-copyright {
     font-size: 0.8rem;
     color: var(--text-muted);
@@ -1784,6 +1888,8 @@ body {
     }
 
     .problem-grid,
+    .strategy-grid,
+    .path-grid,
     .live-feed-legend {
         grid-template-columns: 1fr;
     }
@@ -1841,6 +1947,11 @@ body {
 
     .brief-nav-grid {
         grid-template-columns: 1fr;
+    }
+
+    .brief-actions-row {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .brief-nav-card {

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Setta signal methodology and scoring specification.">
+    <title>Setta | Full Signal Spec</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="site-topbar">
+            <div class="brand-block">
+                <p class="brand-name">Setta</p>
+                <p class="brand-tagline">Full signal methodology</p>
+            </div>
+            <div class="topbar-actions">
+                <a class="hero-cta ghost" href="index.html">back to landing page</a>
+            </div>
+        </header>
+
+        <section class="hero-panel">
+            <p class="hero-kicker">Methodology</p>
+            <h1 class="hero-title">full signal spec (methodology)</h1>
+            <p class="hero-subtitle">This page documents scoring logic, reception logic, guardrails, and field definitions used to support campaign decision packs.</p>
+        </section>
+
+        <section class="problem-section">
+            <h2 class="section-title">Versioning + Modes</h2>
+            <ul class="concept-list">
+                <li><strong>config_version:</strong> v1 baseline.</li>
+                <li><strong>modes:</strong> discovery, exploit, creator_watch, recapture.</li>
+                <li><strong>markets:</strong> global defaults with market-level overrides where present.</li>
+                <li><strong>logic_view_version:</strong> v1_actual_logic_linked.</li>
+            </ul>
+        </section>
+
+        <section class="problem-section">
+            <h2 class="section-title">Source Registry Families</h2>
+            <ul class="concept-list">
+                <li><strong>social:</strong> TikTok, Rednote, Douyin, X.</li>
+                <li><strong>ads:</strong> Meta Ads Library context source.</li>
+                <li><strong>owned:</strong> TikTok Creator Centre context source.</li>
+                <li><strong>reviews:</strong> official website reviews.</li>
+            </ul>
+        </section>
+
+        <section class="problem-section">
+            <h2 class="section-title">Core Formula Stack</h2>
+            <div class="deliverables-grid">
+                <article class="deliverable-card">
+                    <h3>score_total_expected</h3>
+                    <p>Weighted blend of score_velocity, score_breadth, score_novelty, score_reference_alignment, score_creator_quality, and score_confidence.</p>
+                </article>
+                <article class="deliverable-card">
+                    <h3>signal_strength_expected</h3>
+                    <p>Blend of score_total, signals_met_total, and latest_delta_total with capped delta contribution.</p>
+                </article>
+                <article class="deliverable-card">
+                    <h3>top_post_signal_expected</h3>
+                    <p>Blend of top_post_ugc_quality_percentile, top_post_accel_score, and normalized view pressure.</p>
+                </article>
+                <article class="deliverable-card">
+                    <h3>reception_score_computed</h3>
+                    <p>Weighted blend of sentiment score, inverse objections, proof demand, and purchase intent with sample and floor penalties.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="problem-section">
+            <h2 class="section-title">Reception Config Defaults</h2>
+            <ul class="concept-list">
+                <li><strong>sentiment_weight:</strong> 0.45 (discovery), 0.40 (exploit), 0.35 (creator_watch/recapture).</li>
+                <li><strong>objections_weight:</strong> 0.20.</li>
+                <li><strong>proof_demand_weight:</strong> 0.15 (discovery/exploit), 0.20 (creator_watch/recapture).</li>
+                <li><strong>purchase_intent_weight:</strong> 0.20 (discovery), 0.25 (other modes).</li>
+                <li><strong>min_comment_sample:</strong> 30 (discovery/exploit), 20 (creator_watch/recapture).</li>
+                <li><strong>min_review_sample:</strong> 10 (discovery/exploit), 8 (creator_watch/recapture).</li>
+                <li><strong>sentiment_floor:</strong> 0.45.</li>
+                <li><strong>reception_watch_threshold:</strong> 55-57 depending mode.</li>
+                <li><strong>reception_strong_threshold:</strong> 66-70 depending mode.</li>
+            </ul>
+        </section>
+
+        <section class="problem-section">
+            <h2 class="section-title">Guard Definitions</h2>
+            <ul class="concept-list">
+                <li>Weight sum check enforces score weights sum to 1.0.</li>
+                <li>Ratio bounds checks enforce 0 to 1 for positive, negative, neutral, objections, proof demand, and purchase intent ratios.</li>
+                <li>Sample penalties apply when both comment and review coverage are below minimums.</li>
+                <li>Sentiment floor penalty applies when sentiment score drops below configured floor.</li>
+                <li>Reception band mapping: weak_reception, watch_reception, strong_reception.</li>
+            </ul>
+        </section>
+
+        <section class="problem-section">
+            <h2 class="section-title">Operational Field Inventory</h2>
+            <p class="section-description">Primary field groups used in decision packs and explainability tiles.</p>
+            <div class="deliverables-detail-grid">
+                <article class="deliverables-detail-card">
+                    <h3>Scoring Fields</h3>
+                    <ul class="concept-list">
+                        <li>score_total</li>
+                        <li>score_velocity</li>
+                        <li>score_breadth</li>
+                        <li>score_novelty</li>
+                        <li>score_reference_alignment</li>
+                        <li>score_creator_quality</li>
+                        <li>score_confidence</li>
+                        <li>signal_strength_score</li>
+                        <li>signals_met_total</li>
+                        <li>latest_delta_total</li>
+                    </ul>
+                </article>
+                <article class="deliverables-detail-card">
+                    <h3>Quality + Gate Fields</h3>
+                    <ul class="concept-list">
+                        <li>gate_pass_rate_24h</li>
+                        <li>velocity_valid_rate_24h</li>
+                        <li>posts_24h_all</li>
+                        <li>posts_24h_gate_passed</li>
+                        <li>snapshots_24h</li>
+                        <li>snapshots_velocity_valid_24h</li>
+                        <li>is_saturating</li>
+                        <li>do_not_shoot</li>
+                        <li>signal_verdict</li>
+                    </ul>
+                </article>
+                <article class="deliverables-detail-card">
+                    <h3>Reception Fields</h3>
+                    <ul class="concept-list">
+                        <li>reception_score</li>
+                        <li>sentiment_score</li>
+                        <li>positive_ratio</li>
+                        <li>negative_ratio</li>
+                        <li>neutral_ratio</li>
+                        <li>objections_ratio</li>
+                        <li>proof_demand_ratio</li>
+                        <li>purchase_intent_ratio</li>
+                        <li>reception_band</li>
+                    </ul>
+                </article>
+                <article class="deliverables-detail-card">
+                    <h3>Context + Delivery Fields</h3>
+                    <ul class="concept-list">
+                        <li>intl_cross_reference_score</li>
+                        <li>intl_matches_count</li>
+                        <li>queue_id / queue_status</li>
+                        <li>winner_caption_id / winner_caption_status</li>
+                        <li>proof_tile_count</li>
+                        <li>top_post_count</li>
+                        <li>top_post_signal_score</li>
+                        <li>reception_source_coverage</li>
+                        <li>intel_drivers_json / reception_drivers_json</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2 class="section-title">Need Campaign Decisions Instead?</h2>
+            <div class="contact-links">
+                <a href="index.html#sampleBriefSection" class="contact-link">view sample briefs</a>
+                <span class="contact-separator">/</span>
+                <a href="index.html#pricingSection" class="contact-link">view pricing</a>
+                <span class="contact-separator">/</span>
+                <a href="mailto:mohammedamjad526@gmail.com" class="contact-link">email</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
