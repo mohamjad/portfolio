@@ -233,57 +233,19 @@ document.addEventListener('DOMContentLoaded', () => {
         A: {
             kicker: 'Brief A',
             title: 'LAKA Fruity Glam Tint',
-            templateId: 'briefTemplateA',
-            accessCode: '1112'
+            templateId: 'briefTemplateA'
         },
         B: {
             kicker: 'Brief B',
             title: 'LAKA Fruity Glam Tint (Agency Lens)',
-            templateId: 'briefTemplateB',
-            accessCode: '2221'
+            templateId: 'briefTemplateB'
         }
     };
-
-    const briefAccessKeyPrefix = 'setta_brief_access_';
-
-    function hasBriefAccess(briefId) {
-        try {
-            return window.sessionStorage.getItem(`${briefAccessKeyPrefix}${briefId}`) === '1';
-        } catch (error) {
-            return false;
-        }
-    }
-
-    function setBriefAccess(briefId) {
-        try {
-            window.sessionStorage.setItem(`${briefAccessKeyPrefix}${briefId}`, '1');
-        } catch (error) {
-            // no-op: fallback to re-prompt behavior when storage is unavailable
-        }
-    }
-
-    function requestBriefAccess(briefId) {
-        const config = briefConfig[briefId];
-        if (!config || !config.accessCode) return true;
-        if (hasBriefAccess(briefId)) return true;
-
-        const enteredCode = window.prompt(`Enter password for ${config.kicker}`);
-        if (enteredCode === null) return false;
-
-        if (enteredCode.trim() === config.accessCode) {
-            setBriefAccess(briefId);
-            return true;
-        }
-
-        window.alert('Incorrect password.');
-        return false;
-    }
 
     function openBriefPopup(briefId) {
         if (!briefPopup || !briefPopupBody || !briefPopupTitle || !briefPopupKicker) return;
         const config = briefConfig[briefId];
         if (!config) return;
-        if (!requestBriefAccess(briefId)) return;
 
         const template = document.getElementById(config.templateId);
         if (!template || template.tagName !== 'TEMPLATE') return;

@@ -263,6 +263,52 @@ body::after {
     line-height: 1.75;
 }
 
+.hero-lens-block {
+    margin-top: 0.9rem;
+    margin-bottom: 0.7rem;
+}
+
+.hero-lens-label {
+    font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #9eb0d0;
+    margin-bottom: 0.52rem;
+}
+
+.hero-lens-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.62rem;
+}
+
+.hero-lens-card {
+    border: 1px solid rgba(216, 227, 255, 0.22);
+    border-radius: 10px;
+    padding: 0.65rem;
+    background: rgba(13, 24, 43, 0.62);
+}
+
+.hero-lens-card h3 {
+    font-size: 0.88rem;
+    margin-bottom: 0.18rem;
+}
+
+.hero-lens-card p {
+    color: var(--text-soft);
+    font-size: 0.8rem;
+    line-height: 1.45;
+    margin-bottom: 0.48rem;
+}
+
+.hero-brief-btn {
+    width: 100%;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.76rem;
+}
+
 .hero-qualifier {
     margin-top: 1rem;
     display: inline-flex;
@@ -324,6 +370,11 @@ body::after {
     border-color: rgba(216, 227, 255, 0.6);
     color: #f1f5ff;
     background: rgba(216, 227, 255, 0.1);
+}
+
+button.hero-cta {
+    cursor: pointer;
+    font: inherit;
 }
 
 .hero-visual {
@@ -2447,6 +2498,7 @@ body::after {
     .results-grid,
     .control-grid,
     .strategy-grid,
+    .hero-lens-grid,
     .path-grid,
     .live-feed-legend {
         grid-template-columns: 1fr;
