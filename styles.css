@@ -263,6 +263,12 @@ body::after {
     line-height: 1.75;
 }
 
+.hero-signoff {
+    margin-top: 0.42rem;
+    color: #b4c6e6;
+    font-size: 0.88rem;
+}
+
 .hero-confidence {
     margin-top: 0.7rem;
     color: var(--text-muted);
@@ -639,12 +645,6 @@ button.hero-cta {
     color: var(--text-muted);
     font-size: 0.8rem;
     line-height: 1.5;
-}
-
-.flow-signoff {
-    margin-top: 0.55rem;
-    color: #9cb1d8;
-    font-size: 0.82rem;
 }
 
 .problem-section {
