@@ -335,7 +335,7 @@ body::after {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    margin-top: 1.45rem;
+    margin-top: 1rem;
     flex-wrap: wrap;
 }
 
@@ -550,7 +550,7 @@ button.hero-cta {
 .problem-grid {
     margin-top: 0.8rem;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 0.8rem;
 }
 
@@ -582,6 +582,13 @@ button.hero-cta {
     color: var(--text);
     font-weight: 600;
     margin-bottom: 0.35rem;
+}
+
+.problem-signal-note {
+    margin-top: 0.45rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.45;
 }
 
 .results-strip {
