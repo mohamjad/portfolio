@@ -723,21 +723,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (tileList.length === 0) {
             if (scanHeadlineEl) {
-                scanHeadlineEl.textContent = 'Unable to load latest scan summary.';
+                scanHeadlineEl.textContent = 'Live scan unavailable. Showing fallback receipts.';
             }
             if (scanMetaEl) {
                 scanMetaEl.textContent = 'No valid tile data available from JSON or embedded fallback.';
             }
-            proofTilesEl.innerHTML = `
-                <div class="proof-tile">
-                    <div class="proof-tile-header">
-                        <span class="proof-label">Load Error</span>
-                        <span class="proof-timestamp">Setta</span>
-                    </div>
-                    <h3 class="proof-title">Could not load proof tiles</h3>
-                    <p class="proof-description">Check data/setta_proof_tiles_v2.json or data/setta_proof_tiles_v2.embedded.js.</p>
-                </div>
-            `;
+            // Keep static fallback tiles already rendered in index.html.
             return;
         }
 
