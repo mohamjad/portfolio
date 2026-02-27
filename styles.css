@@ -60,6 +60,7 @@ body::after {
 }
 
 .side-rail {
+    display: none;
     position: fixed;
     left: 1.1rem;
     top: 50%;
@@ -125,7 +126,7 @@ body::after {
 }
 
 .mobile-nav-toggle {
-    display: none;
+    display: inline-flex;
     border: 1px solid var(--border);
     background: rgba(17, 30, 52, 0.92);
     color: var(--text-soft);
