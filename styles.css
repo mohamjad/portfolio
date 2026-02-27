@@ -2546,6 +2546,16 @@ button.hero-cta {
 }
 
 /* Responsive */
+@media (max-width: 1360px) {
+    .side-rail {
+        display: none;
+    }
+
+    .mobile-nav-toggle {
+        display: inline-flex;
+    }
+}
+
 @media (max-width: 1024px) {
     .side-rail {
         display: none;
