@@ -612,26 +612,80 @@ button.hero-cta {
 }
 
 .flow-not {
-    margin-top: 0.2rem;
-    padding-top: 0.6rem;
-    border-top: 1px dashed rgba(186, 201, 229, 0.35);
+    margin-top: 0.3rem;
+    padding: 0.68rem 0.8rem;
+    border: 1px solid rgba(136, 188, 241, 0.26);
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(99, 234, 203, 0.08) 0%, rgba(111, 141, 237, 0.07) 100%);
 }
 
 .flow-not-label {
-    font-weight: 600;
-    margin-bottom: 0.2rem;
+    color: #ccf8eb;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.28rem;
 }
 
-.flow-not p {
-    color: var(--text-soft);
-    font-size: 0.9rem;
+.flow-not-copy {
+    color: #dce9ff;
+    font-size: 0.94rem;
+    line-height: 1.58;
+}
+
+.flow-not-copy strong {
+    color: #f2f7ff;
+    font-weight: 700;
 }
 
 .flow-confidence {
-    margin-top: 0.7rem;
-    color: var(--text-muted);
-    font-size: 0.8rem;
+    margin-top: 0.9rem;
+    border-top: 1px solid rgba(99, 234, 203, 0.28);
+    padding-top: 0.72rem;
+}
+
+.flow-confidence-label {
+    color: #c8d8f8;
+    font-size: 0.84rem;
+    line-height: 1.55;
+    margin-bottom: 0.48rem;
+}
+
+.flow-confidence-label a {
+    color: #9bf6de;
+    text-decoration: underline;
+}
+
+.flow-confidence-label code {
+    font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
+    font-size: 0.75rem;
+    color: #a7f5df;
+}
+
+.flow-confidence-scale {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.36rem 0.66rem;
+}
+
+.flow-confidence-scale li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    color: #d7e4ff;
+    font-size: 0.82rem;
     line-height: 1.5;
+}
+
+.flow-confidence-scale span {
+    font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
+    font-size: 0.72rem;
+    color: #a9f8e2;
+    border: 1px solid rgba(99, 234, 203, 0.36);
+    border-radius: 999px;
+    padding: 0.15rem 0.45rem;
+    min-width: 72px;
+    text-align: center;
 }
 
 .problem-section {
@@ -2612,6 +2666,7 @@ button.hero-cta {
     .path-grid,
     .flow-columns,
     .flow-steps,
+    .flow-confidence-scale,
     .live-feed-legend {
         grid-template-columns: 1fr;
     }
