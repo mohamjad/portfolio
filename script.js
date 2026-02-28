@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const trustedTrack = document.getElementById("trustedTrack");
   const proofFeedTrack = document.getElementById("proofFeedTrack");
   const animatedStats = document.getElementById("animatedStats");
+  const lottieAnimations = [
+    { id: "heroAnimPinkSpark", path: "assets/hero/PinkSpark.json" },
+    { id: "heroAnimYellowSpark", path: "assets/hero/YellowSpark.json" },
+    { id: "heroAnimGreenGear", path: "assets/hero/GreenGear.json" },
+    { id: "heroAnimGreenBlueStar", path: "assets/hero/GreenBlueStar.json" },
+  ];
 
   const trustedWords = ["agencies", "brands", "creator teams", "performance teams"];
 
@@ -125,6 +131,29 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     observer.observe(animatedStats);
+  }
+
+  if (window.lottie) {
+    lottieAnimations.forEach((anim) => {
+      const container = document.getElementById(anim.id);
+      if (!container) return;
+      try {
+        window.lottie.loadAnimation({
+          container,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          path: anim.path,
+          rendererSettings: {
+            preserveAspectRatio: "xMidYMid meet",
+            progressiveLoad: true,
+            hideOnTransparent: true,
+          },
+        });
+      } catch (error) {
+        console.error("Failed to load hero animation", anim.id, error);
+      }
+    });
   }
 
   scrollLinks.forEach((link) => {
