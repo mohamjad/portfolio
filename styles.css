@@ -31,21 +31,24 @@ html {
 body {
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
   color: var(--text-high);
-  background:
-    radial-gradient(circle at 18% 8%, rgba(20, 232, 30, 0.18), rgba(20, 232, 30, 0) 38%),
-    radial-gradient(circle at 84% 12%, rgba(239, 99, 196, 0.16), rgba(239, 99, 196, 0) 40%),
-    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 48%, var(--bg-2) 100%);
+  background: linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 48%, var(--bg-2) 100%);
   overflow-x: hidden;
 }
 
 body::before {
   content: "";
   position: fixed;
-  inset: 0;
+  inset: -3vh -3vw;
   z-index: -1;
   pointer-events: none;
-  background: url("assets/hero/hero_noise.png") center/860px 860px repeat;
-  opacity: 0.24;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(20, 232, 30, 0.17), rgba(20, 232, 30, 0) 40%),
+    radial-gradient(circle at 84% 12%, rgba(239, 99, 196, 0.17), rgba(239, 99, 196, 0) 42%),
+    linear-gradient(180deg, rgba(5, 11, 25, 0.82) 0%, rgba(5, 11, 25, 0.66) 48%, rgba(5, 11, 25, 0.7) 100%),
+    url("assets/hero/site_bg_pane.png") center top / cover no-repeat;
+  opacity: 0.98;
+  transform: scale(1.02);
+  transform-origin: center top;
 }
 
 a {
