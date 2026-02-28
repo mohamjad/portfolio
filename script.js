@@ -5,6 +5,7 @@
   const trustedRotate = document.getElementById("trustedRotate");
   const trustedTrack = document.getElementById("trustedTrack");
   const proofGrid = document.getElementById("proofGrid");
+  const evidenceBars = document.getElementById("evidenceBars");
 
   const trustedWords = ["agencies", "brands", "creator teams", "performance teams"];
 
@@ -68,9 +69,38 @@
     { id: "heroAnimGreenBlueStar", path: "assets/hero/GreenBlueStar.json" },
     { id: "heroAnimPinkStar", path: "assets/hero/PinkStar.json" },
     { id: "heroAnimGreenYellowStar", path: "assets/hero/GreenYellowStar.json" },
-    { id: "heroAnimGreenStar", path: "assets/hero/GreenStar.json" },
-    { id: "heroAnimSmallGreenStar", path: "assets/hero/SmallGreenStar.json" },
   ];
+
+  if (evidenceBars) {
+    const bars = evidenceBars.querySelectorAll(".bar");
+
+    bars.forEach((bar, index) => {
+      const height = Number(bar.getAttribute("data-height"));
+      if (!Number.isNaN(height) && height > 0) {
+        bar.style.setProperty("--target-height", `${height}px`);
+      }
+      bar.style.transitionDelay = `${Math.min(index * 70, 420)}ms`;
+    });
+
+    const revealBars = () => evidenceBars.classList.add("is-visible");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries.some((entry) => entry.isIntersecting);
+          if (visible) {
+            revealBars();
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.2 }
+      );
+
+      observer.observe(evidenceBars);
+    } else {
+      revealBars();
+    }
+  }
 
   if (trustedRotate) {
     let wordIndex = 0;
@@ -191,4 +221,3 @@
     }
   });
 });
-

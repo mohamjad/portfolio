@@ -1,14 +1,10 @@
 ﻿:root {
   --bg: #0a1226;
-  --bg-soft: #101a36;
-  --line: rgba(255, 255, 255, 0.18);
+  --line: rgba(255, 255, 255, 0.2);
   --text-high: rgba(245, 249, 255, 0.96);
-  --text-mid: rgba(222, 232, 250, 0.84);
+  --text-mid: rgba(223, 233, 250, 0.86);
   --text-low: rgba(174, 191, 222, 0.82);
   --yellow: #ffe04a;
-  --blue: #43afde;
-  --pink: #fd73c5;
-  --green: #16e912;
 }
 
 * {
@@ -246,8 +242,6 @@ h1 span {
 .hero-anim-blue-star { top: -14%; left: 59%; max-width: 16vh; }
 .hero-anim-pink-star { top: -30%; left: 55%; max-width: 9vh; }
 .hero-anim-green-yellow { top: 3%; left: 74%; max-width: 18vh; }
-.hero-anim-green-star { top: -28%; left: 0%; max-width: 12vh; }
-.hero-anim-small-green { top: 37%; left: 45%; max-width: 5vh; }
 
 @keyframes hero-base-drift {
   0% { transform: translate3d(0, 0, 0) scale(1); }
@@ -261,13 +255,13 @@ h1 span {
   100% { transform: translate3d(0, 0, 0); }
 }
 
+.trusted,
 .section {
-  padding-top: 3.2rem;
+  padding-top: 3rem;
 }
 
 .trusted {
-  margin-top: -2.8rem;
-  padding-top: 0.4rem;
+  margin-top: -2.6rem;
 }
 
 .trusted-line {
@@ -348,114 +342,138 @@ h2 {
   line-height: 1.24;
 }
 
-.results-grid,
-.outputs-grid,
-.case-grid,
-.pricing-grid,
+.memo-grid,
+.process-grid,
+.evidence-bars,
+.offers-grid,
 .proof-grid {
-  margin-top: 1.2rem;
+  margin-top: 1.15rem;
   display: grid;
   gap: 0.88rem;
 }
 
-.results-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.memo-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.result-card {
-  border: 1px solid var(--line);
-  background: rgba(14, 24, 49, 0.6);
-  border-radius: 14px;
-  padding: 1rem;
-}
-
-.result-card strong {
-  display: block;
-  font-family: "Sora", sans-serif;
-  color: #fff;
-  font-size: 1.85rem;
-  line-height: 1;
-}
-
-.result-card span {
-  display: block;
-  margin-top: 0.55rem;
-  color: var(--text-low);
-  line-height: 1.42;
-}
-
-.outputs-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.outputs-grid article,
-.case-grid article,
-.price-card,
+.panel,
+.step,
+.offer,
 .proof-card {
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 0.95rem;
-  background: rgba(14, 24, 49, 0.48);
+  background: rgba(14, 24, 49, 0.5);
 }
 
-.outputs-grid h3,
-.case-grid h3,
-.price-card h3,
+.panel h3,
+.step h3,
+.offer h3,
 .proof-card h3 {
   margin: 0;
   font-family: "Sora", sans-serif;
-  font-size: 1.06rem;
+  font-size: 1.05rem;
 }
 
-.outputs-grid p,
-.case-grid p,
-.price-card p,
-.proof-card p,
-.case-grid ul {
+.panel p,
+.step p,
+.offer p,
+.proof-card p {
   margin: 0.5rem 0 0;
   color: var(--text-low);
   line-height: 1.45;
 }
 
-.case-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.process-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.case-grid ul {
-  padding-left: 1rem;
+.step span {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  background: rgba(255, 224, 74, 0.22);
+  color: #ffe04a;
 }
 
-.case-grid strong {
-  color: #fff;
+.evidence-bars {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: end;
+  min-height: 360px;
 }
 
-.pricing-grid {
+.bar {
+  --target-height: 220px;
+  height: var(--target-height);
+  border-radius: 12px;
+  padding: 1rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transform: translateY(20px) scaleY(0.06);
+  transform-origin: bottom;
+  opacity: 0;
+  transition: transform 620ms cubic-bezier(0.2, 0.75, 0.25, 1), opacity 320ms ease;
+}
+
+.evidence-bars.is-visible .bar {
+  transform: translateY(0) scaleY(1);
+  opacity: 1;
+}
+
+.bar strong {
+  font-family: "Sora", sans-serif;
+  color: #08122b;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.bar span {
+  margin-top: 0.5rem;
+  color: rgba(8, 18, 43, 0.82);
+  line-height: 1.34;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.tone-green { background: #17bf14; }
+.tone-pink { background: #e455bc; }
+.tone-blue { background: #43afde; }
+.tone-yellow { background: #ea9d09; }
+
+.offers-grid,
+.proof-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.offer.featured {
+  border-color: rgba(255, 224, 74, 0.65);
+  background: rgba(26, 34, 63, 0.75);
 }
 
 .price {
   margin: 0;
   font-family: "Sora", sans-serif;
-  color: var(--yellow);
+  color: #ffe04a;
   font-size: 1.36rem;
   font-weight: 700;
 }
 
-.price-card.featured {
-  border-color: rgba(255, 224, 74, 0.65);
-  background: rgba(26, 34, 63, 0.74);
-}
-
-.proof-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .proof-meta {
+  margin: 0;
+  color: var(--text-mid);
   font-family: "IBM Plex Mono", monospace;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   font-size: 0.7rem;
-  color: var(--text-mid);
 }
 
 .intake-form {
@@ -566,16 +584,14 @@ textarea:focus {
   .hero-anim-blue-star { top: 5%; left: 50%; max-width: 13vh; }
   .hero-anim-green-yellow { top: 23%; left: 74%; max-width: 13vh; }
 
-  .hero-anim-green-star,
-  .hero-anim-pink-star,
-  .hero-anim-small-green {
-    display: none;
+  .memo-grid,
+  .offers-grid,
+  .proof-grid,
+  .evidence-bars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .results-grid,
-  .outputs-grid,
-  .pricing-grid,
-  .proof-grid {
+  .process-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -623,13 +639,6 @@ textarea:focus {
   .hero-anim-blue-star { top: 2%; left: -6%; max-width: 11vh; }
   .hero-anim-green-yellow { top: 10%; left: 28%; max-width: 11vh; }
 
-  .hero-anim-pink-gear,
-  .hero-anim-green-star,
-  .hero-anim-pink-star,
-  .hero-anim-small-green {
-    display: none;
-  }
-
   h1 {
     max-width: 10ch;
   }
@@ -647,10 +656,10 @@ textarea:focus {
     margin-top: -1.2rem;
   }
 
-  .results-grid,
-  .outputs-grid,
-  .case-grid,
-  .pricing-grid,
+  .memo-grid,
+  .process-grid,
+  .evidence-bars,
+  .offers-grid,
   .proof-grid,
   .form-grid {
     grid-template-columns: 1fr;
@@ -670,4 +679,3 @@ textarea:focus {
     scroll-behavior: auto !important;
   }
 }
-
