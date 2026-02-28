@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Setta gives paid teams a pre-spend Allocation Memo so budget goes to the right creative structures before production and media launch." />
   <title>Setta | Allocation Memo</title>
+  <link rel="icon" type="image/png" href="assets/logos/10.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -13,10 +14,14 @@
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <a class="brand" href="#top">SETTA</a>
+      <a class="brand" href="#top">
+        <img class="brand-mark" src="assets/logos-white/10.png" alt="Setta mark" />
+        <span>SETTA</span>
+      </a>
       <nav class="top-nav" aria-label="Primary">
         <a href="#outputs">Outputs</a>
         <a href="#evidence">Evidence</a>
+        <a href="#proof-feed">Proof Feed</a>
         <a href="#case-study">Case Study</a>
         <a href="#pricing">Pricing</a>
         <a href="#intake">Free Intake</a>
@@ -63,6 +68,7 @@
           </div>
 
           <div class="hero-visual" aria-hidden="true">
+            <img class="hero-art hero-art-sparks" src="assets/hero/hero_sparks_only.png" alt="" />
             <img class="hero-art hero-art-main" src="assets/hero/hero_ultrawide.png" alt="" />
           </div>
         </div>
@@ -162,6 +168,16 @@
         <p class="hygiene-note">Public proof never includes creator handles, cluster IDs, or competitor links.</p>
       </section>
 
+      <section class="proof-feed" id="proof-feed" aria-labelledby="proof-feed-title">
+        <div class="section-head">
+          <p class="kicker">Proof tile feed</p>
+          <h2 id="proof-feed-title">Recent evidence stream</h2>
+        </div>
+        <div class="proof-feed-shell">
+          <div class="proof-feed-track" id="proofFeedTrack"></div>
+        </div>
+      </section>
+
       <section class="case-study" id="case-study" aria-labelledby="case-title">
         <div class="section-head">
           <p class="kicker">Redacted case study</p>
@@ -255,9 +271,20 @@
               Timeline
               <input type="text" name="timeline" placeholder="e.g. launch in 10 days" />
             </label>
+            <label>
+              Preferred path
+              <select name="engagement_preference">
+                <option value="async_only">Async only</option>
+                <option value="call_optional">Open to a call if useful</option>
+              </select>
+            </label>
             <label class="span-2">
               Constraints (required)
               <textarea name="constraints" rows="3" placeholder="Required: claim limits, ad-feel boundaries, proof requirements" required></textarea>
+            </label>
+            <label class="span-2">
+              If call is helpful (optional)
+              <input type="text" name="call_notes" placeholder="Timezone + windows, e.g. PST weekdays after 2pm" />
             </label>
             <label>
               Contact email
