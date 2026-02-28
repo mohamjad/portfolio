@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       valueLabel: "400K+",
       label: "POSTS INDEXED",
-      height: 300,
+      height: 340,
       offset: -30,
       color: "#17BF14",
       offsetText: true,
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       valueLabel: "210+",
       label: "CONCEPTS ALLOCATED",
-      height: 300,
+      height: 340,
       offset: 70,
       color: "#43AFDE",
       offsetText: true,
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       valueLabel: "56hr",
       label: "AVG TURNAROUND",
-      height: 280,
+      height: 320,
       offset: 20,
       color: "#EA9D09",
       offsetText: true,
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       valueLabel: "800+",
       label: "DEAD FORMATS BLOCKED",
-      height: 260,
+      height: 300,
       offset: 30,
       color: "#E455BC",
       offsetText: true,
@@ -57,15 +57,16 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       valueLabel: "$2.2M+",
       label: "LEARNING TAX PREVENTED",
-      height: 380,
+      height: 420,
       offset: -50,
       color: "#17BF14",
       offsetText: false,
+      compactValue: true,
     },
     {
       valueLabel: "+1.6s",
       label: "AVG HOLD TIME LIFT",
-      height: 380,
+      height: 420,
       offset: 40,
       color: "#E455BC",
       offsetText: true,
@@ -73,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       valueLabel: "124",
       label: "QUANT INPUTS / DECISION",
-      height: 280,
+      height: 320,
       offset: -60,
       color: "#EA9D09",
       offsetText: true,
@@ -142,9 +143,9 @@ document.addEventListener("DOMContentLoaded", () => {
     animatedStats.innerHTML = statBars
       .map(
         (stat) => `
-          <div class="stat-bar" style="height:0px; margin-top:240px; border-radius:8px; --bar-color:${stat.color};">
+          <div class="stat-bar" style="height:0px; margin-top:200px; border-radius:8px; --bar-color:${stat.color};">
             <div class="stat-inner">
-              <h3 class="stat-value">${stat.valueLabel}</h3>
+              <h3 class="stat-value${stat.compactValue ? " stat-value-compact" : ""}">${stat.valueLabel}</h3>
               <p class="stat-label">${stat.label}</p>
             </div>
           </div>
@@ -176,8 +177,8 @@ document.addEventListener("DOMContentLoaded", () => {
             : Math.max(-scrollAmount, stat.offset);
 
         const barOffset = startOffset
-          ? 240 - Math.floor(barHeight / 2) + offsetAmt
-          : 240 - Math.floor(barHeight / 2);
+          ? 200 - Math.floor(barHeight / 2) + offsetAmt
+          : 200 - Math.floor(barHeight / 2);
 
         const valueNode = barNode.querySelector(".stat-value");
         valueNode.style.paddingTop = stat.offsetText
