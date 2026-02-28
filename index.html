@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="page-glow page-glow-green" aria-hidden="true"></div>
+  <div class="page-glow page-glow-pink" aria-hidden="true"></div>
+
   <div class="site-shell">
     <header class="topbar">
       <a class="brand" href="#top">
@@ -19,16 +22,45 @@
         <span>SETTA</span>
       </a>
       <nav class="top-nav" aria-label="Primary">
-        <a href="#outputs">Outputs</a>
-        <a href="#evidence">Evidence</a>
-        <a href="#proof-feed">Proof Feed</a>
-        <a href="#case-study">Case Study</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#intake">Free Intake</a>
+        <a href="#evidence" data-scroll>Stats</a>
+        <a href="#outputs" data-scroll>Outputs</a>
+        <a href="#proof-feed" data-scroll>Proof Feed</a>
+        <a href="#case-study" data-scroll>Case Study</a>
+        <a href="#pricing" data-scroll>Pricing</a>
+        <a href="#intake" data-scroll>Intake</a>
       </nav>
     </header>
 
     <main>
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Allocation Memo for Paid Creative</p>
+          <h1>
+            Pre-spend creative allocation
+            <span>for paid social.</span>
+          </h1>
+          <p class="subheadline">Before production and media launch, you get a ranked memo showing what to fund now, what to hold, and what to cut.</p>
+          <p class="support-line">Most teams only learn after spending. Setta changes the sequence so decisions happen while capital is still flexible.</p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#intake" data-scroll>Start Free Async Intake</a>
+            <a class="btn btn-secondary" href="#case-study" data-scroll>See Redacted Case</a>
+          </div>
+
+          <p class="async-line">Free intake. Async. Zero kickoff friction.</p>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <img class="hero-layer hero-base" src="assets/hero/hero_ultrawide.png" alt="" />
+          <img class="hero-layer hero-sparks" src="assets/hero/hero_sparks_only.png" alt="" />
+          <img class="hero-layer hero-e5" src="assets/hero/hero_e5.png" alt="" />
+          <span class="hero-star star-a"></span>
+          <span class="hero-star star-b"></span>
+          <span class="hero-star star-c"></span>
+          <span class="hero-star star-d"></span>
+        </div>
+      </section>
+
       <section class="trusted-strip" aria-label="Trusted by">
         <p class="trusted-label">Trusted by 20+ <span class="trusted-rotate" id="trustedRotate">agencies</span></p>
         <div class="trusted-scroll">
@@ -36,150 +68,80 @@
         </div>
       </section>
 
-      <section class="hero" id="top">
-        <div class="hero-stage">
-          <div class="hero-copy">
-            <p class="eyebrow">Allocation Memo for Paid Creative</p>
-            <h1>Pre-spend creative allocation for paid social.</h1>
-            <p class="subheadline">Before production and media launch, you get a ranked memo showing what to fund now, what to hold, and what to cut.</p>
-            <p class="support-line">Most teams only learn after spending. This changes the sequence so decisions happen while capital is still flexible.</p>
+      <section class="stats-section" id="evidence" aria-labelledby="stats-title">
+        <div class="section-head">
+          <p class="kicker">Signal depth</p>
+          <h2 id="stats-title">Live and historical coverage that drives the memo</h2>
+        </div>
 
-            <div class="cta-row">
-              <a class="btn btn-primary" href="#intake" data-scroll>Start Free Async Intake</a>
-              <a class="btn btn-secondary" href="#case-study" data-scroll>See Redacted Case</a>
-            </div>
-
-            <p class="async-line">Free intake. Async. Zero kickoff friction.</p>
-
-            <div class="hero-microproof">
-              <article class="micro-stat">
-                <strong>23,859</strong>
-                <span>posts indexed in historical pool</span>
-              </article>
-              <article class="micro-stat">
-                <strong>322</strong>
-                <span>briefs generated in recent export window</span>
-              </article>
-              <article class="micro-stat">
-                <strong>75.0%</strong>
-                <span>72h positive rate in exploit outcomes</span>
-              </article>
-            </div>
-          </div>
-
-          <div class="hero-visual" aria-hidden="true">
-            <img class="hero-art hero-art-sparks" src="assets/hero/hero_sparks_only.png" alt="" />
-            <img class="hero-art hero-art-main" src="assets/hero/hero_ultrawide.png" alt="" />
-          </div>
+        <div class="animated-stats" id="animatedStats">
+          <article class="stat-bar tone-green" data-height="240">
+            <h3>23,859+</h3>
+            <p>posts indexed in system history</p>
+          </article>
+          <article class="stat-bar tone-blue" data-height="300">
+            <h3>3,876</h3>
+            <p>recapture-lane eligible (live 3d)</p>
+          </article>
+          <article class="stat-bar tone-yellow" data-height="270">
+            <h3>1,500</h3>
+            <p>active recapture queue rows</p>
+          </article>
+          <article class="stat-bar tone-pink" data-height="220">
+            <h3>322</h3>
+            <p>briefs generated in export window</p>
+          </article>
+          <article class="stat-bar tone-green" data-height="340">
+            <h3>75.0%</h3>
+            <p>72h positive exploit outcomes</p>
+          </article>
+          <article class="stat-bar tone-pink" data-height="320">
+            <h3>120+</h3>
+            <p>DeepSeek conclusions in feed</p>
+          </article>
+          <article class="stat-bar tone-yellow" data-height="250">
+            <h3>80 / 80</h3>
+            <p>backtests completed in scope</p>
+          </article>
         </div>
       </section>
 
-      <section class="outputs" id="outputs" aria-labelledby="outputs-title">
+      <section class="fold" id="outputs" aria-labelledby="outputs-title">
         <details class="collapse-panel" open>
           <summary class="collapse-summary">
-            <span class="kicker">What you receive</span>
-            <span class="collapse-title" id="outputs-title">One memo. Five decisions.</span>
+            <span class="kicker">System output</span>
+            <span class="collapse-title" id="outputs-title">Allocation Memo, not a long report</span>
           </summary>
-          <div class="collapse-body">
-            <div class="outputs-grid">
-              <article class="output-card">
-                <h3>Greenlight 3</h3>
-                <p>Three priority structures to fund first.</p>
-              </article>
-              <article class="output-card">
-                <h3>Do-Not-Shoot Index</h3>
-                <p>Low-probability concepts blocked before production.</p>
-              </article>
-              <article class="output-card">
-                <h3>Execution Constraints</h3>
-                <p>Non-negotiables for claims, proof order, and pacing.</p>
-              </article>
-              <article class="output-card">
-                <h3>Failure Tree</h3>
-                <p>Likely break points and exact corrective paths.</p>
-              </article>
-              <article class="output-card">
-                <h3>Proof Appendix</h3>
-                <p>De-identified tiles backing each recommendation.</p>
-              </article>
-            </div>
+          <div class="collapse-body split-list">
+            <article>
+              <h3>Greenlight 3</h3>
+              <p>Ranked creative structures to fund first.</p>
+            </article>
+            <article>
+              <h3>Do-Not-Shoot Index</h3>
+              <p>Failure-pattern concepts blocked before production.</p>
+            </article>
+            <article>
+              <h3>Execution Constraints</h3>
+              <p>Non-negotiables for claims, sequencing, and proof format.</p>
+            </article>
+            <article>
+              <h3>Failure Tree</h3>
+              <p>Symptom to root-cause map with direct corrective path.</p>
+            </article>
+            <article>
+              <h3>Proof Appendix</h3>
+              <p>De-identified tiles tied to each decision.</p>
+            </article>
           </div>
         </details>
       </section>
 
-      <section class="evidence" id="evidence" aria-labelledby="evidence-title">
-        <details class="collapse-panel">
+      <section class="fold" id="proof-feed" aria-labelledby="proof-feed-title">
+        <details class="collapse-panel" open>
           <summary class="collapse-summary">
-            <span class="kicker">Quantitative evidence</span>
-            <span class="collapse-title" id="evidence-title">Recent operational signal depth</span>
-          </summary>
-          <div class="collapse-body">
-            <div class="evidence-grid">
-              <article class="evidence-card">
-                <p class="evidence-value">23,859</p>
-                <p class="evidence-label">Total posts retained in system history</p>
-              </article>
-              <article class="evidence-card">
-                <p class="evidence-value">3,876</p>
-                <p class="evidence-label">Recapture-lane eligible snapshots (live 3d)</p>
-              </article>
-              <article class="evidence-card">
-                <p class="evidence-value">1,500</p>
-                <p class="evidence-label">Recapture queue active in latest validated run</p>
-              </article>
-              <article class="evidence-card">
-                <p class="evidence-value">120+</p>
-                <p class="evidence-label">LLM conclusions available in current intelligence feed</p>
-              </article>
-            </div>
-            <p class="evidence-note">Values shown from recent Control Room snapshots and exports (Feb 2026, redacted scope labels).</p>
-          </div>
-        </details>
-      </section>
-
-      <section class="proof" id="proof" aria-labelledby="proof-title">
-        <details class="collapse-panel">
-          <summary class="collapse-summary">
-            <span class="kicker">Receipts</span>
-            <span class="collapse-title" id="proof-title">Proof tiles are de-identified and decision-linked</span>
-          </summary>
-          <div class="collapse-body">
-            <div class="tile-grid">
-              <article class="tile">
-                <h3>Momentum transfer</h3>
-                <p>Cross-market carry detected before scale decisions.</p>
-              </article>
-              <article class="tile">
-                <h3>Saturation warning</h3>
-                <p>Mature hooks flagged before production lock.</p>
-              </article>
-              <article class="tile">
-                <h3>Gate quality</h3>
-                <p>Low-quality candidates filtered before shortlisting.</p>
-              </article>
-              <article class="tile">
-                <h3>Velocity validation</h3>
-                <p>Fast movers separated from one-off spikes.</p>
-              </article>
-              <article class="tile">
-                <h3>Constraint fit</h3>
-                <p>Concepts scored against claim and compliance limits.</p>
-              </article>
-              <article class="tile">
-                <h3>Execution readiness</h3>
-                <p>Only structures with enough evidence are promoted.</p>
-              </article>
-            </div>
-            <p class="hygiene-note">Public proof never includes creator handles, cluster IDs, or competitor links.</p>
-          </div>
-        </details>
-      </section>
-
-      <section class="proof-feed" id="proof-feed" aria-labelledby="proof-feed-title">
-        <details class="collapse-panel">
-          <summary class="collapse-summary">
-            <span class="kicker">Proof tile feed</span>
-            <span class="collapse-title" id="proof-feed-title">Recent evidence stream</span>
+            <span class="kicker">Proof feed</span>
+            <span class="collapse-title" id="proof-feed-title">Recent decision receipts</span>
           </summary>
           <div class="collapse-body">
             <div class="proof-feed-shell">
@@ -189,71 +151,56 @@
         </details>
       </section>
 
-      <section class="case-study" id="case-study" aria-labelledby="case-title">
+      <section class="fold" id="case-study" aria-labelledby="case-title">
         <details class="collapse-panel">
           <summary class="collapse-summary">
             <span class="kicker">Redacted case study</span>
-            <span class="collapse-title" id="case-title">How one launch team reduced wasted concept spend</span>
+            <span class="collapse-title" id="case-title">Pre-spend filtering before media burn</span>
           </summary>
-          <div class="collapse-body">
-            <div class="case-grid">
-              <article class="case-card case-summary">
-                <h3>Context</h3>
-                <p>DTC beauty launch, 10-day timeline, paid social creative refresh.</p>
-                <ul>
-                  <li>11 candidate concepts submitted</li>
-                  <li>3 greenlit for immediate production</li>
-                  <li>5 blocked pre-production via Do-Not-Shoot Index</li>
-                  <li>3 sent to revision with constraints</li>
-                </ul>
-              </article>
-              <article class="case-card case-result">
-                <h3>Result Snapshot</h3>
-                <div class="result-metrics">
-                  <div>
-                    <strong>55%</strong>
-                    <span>concept kill rate before spend</span>
-                  </div>
-                  <div>
-                    <strong>2 weeks</strong>
-                    <span>production churn avoided</span>
-                  </div>
-                  <div>
-                    <strong>72h</strong>
-                    <span>memo turnaround from intake</span>
-                  </div>
-                </div>
-                <p class="case-note">Company name and creative assets redacted; logic and operating pattern preserved.</p>
-              </article>
-            </div>
+          <div class="collapse-body split-list case-grid">
+            <article>
+              <h3>Input</h3>
+              <p>11 concepts submitted for a 10-day paid social launch.</p>
+              <ul>
+                <li>3 immediate greenlights</li>
+                <li>5 pre-production cuts</li>
+                <li>3 revisions with strict constraints</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Outcome</h3>
+              <ul>
+                <li><strong>55%</strong> concept kill-rate before spend</li>
+                <li><strong>2 weeks</strong> production churn avoided</li>
+                <li><strong>72 hours</strong> from intake to memo</li>
+              </ul>
+            </article>
           </div>
         </details>
       </section>
 
-      <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+      <section class="fold" id="pricing" aria-labelledby="pricing-title">
         <details class="collapse-panel">
           <summary class="collapse-summary">
-            <span class="kicker">Pricing</span>
+            <span class="kicker">Commercial model</span>
             <span class="collapse-title" id="pricing-title">Allocation Memo offers</span>
           </summary>
-          <div class="collapse-body">
-            <div class="pricing-grid">
-              <article class="price-card featured">
-                <p class="price">$500</p>
-                <h3>Allocation Memo (72h)</h3>
-                <p>Primary offer with ranked allocation, DNS index, constraints, and failure tree.</p>
-              </article>
-              <article class="price-card">
-                <p class="price">$700</p>
-                <h3>Allocation Brief</h3>
-                <p>Memo plus concise implementation brief for your internal team.</p>
-              </article>
-              <article class="price-card">
-                <p class="price">$1,300/mo</p>
-                <h3>Weekly Allocation Retainer</h3>
-                <p>Ongoing memo refresh with weekly decision support.</p>
-              </article>
-            </div>
+          <div class="collapse-body pricing-list">
+            <article>
+              <p class="price">$500</p>
+              <h3>Allocation Memo (72h)</h3>
+              <p>Ranked allocation, DNS index, constraints, and failure tree.</p>
+            </article>
+            <article>
+              <p class="price">$700</p>
+              <h3>Allocation Brief</h3>
+              <p>Memo plus concise execution handoff for your team.</p>
+            </article>
+            <article>
+              <p class="price">$1,300/mo</p>
+              <h3>Weekly Allocation Retainer</h3>
+              <p>Weekly memo refresh and ongoing decision support.</p>
+            </article>
           </div>
         </details>
       </section>
@@ -261,13 +208,13 @@
       <section class="intake" id="intake" aria-labelledby="intake-title">
         <div class="section-head">
           <p class="kicker">Free async intake</p>
-          <h2 id="intake-title">Submit once, get a decision-ready response in 72h</h2>
+          <h2 id="intake-title">Send one brief, get a decision-ready response in 72 hours</h2>
         </div>
 
         <form id="intakeForm" class="intake-form">
           <div class="form-grid">
             <label>
-              Product
+              Product + price + hero claim
               <input type="text" name="product" required />
             </label>
             <label>
@@ -297,11 +244,11 @@
             </label>
             <label class="span-2">
               Constraints (required)
-              <textarea name="constraints" rows="3" placeholder="Required: claim limits, ad-feel boundaries, proof requirements" required></textarea>
+              <textarea name="constraints" rows="3" placeholder="Required: claims, ad-feel boundaries, proof requirements" required></textarea>
             </label>
             <label class="span-2">
-              If call is helpful (optional)
-              <input type="text" name="call_notes" placeholder="Timezone + windows, e.g. PST weekdays after 2pm" />
+              If a call is useful (optional)
+              <input type="text" name="call_notes" placeholder="Timezone + preferred windows" />
             </label>
             <label>
               Contact email

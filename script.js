@@ -5,8 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const trustedRotate = document.getElementById("trustedRotate");
   const trustedTrack = document.getElementById("trustedTrack");
   const proofFeedTrack = document.getElementById("proofFeedTrack");
+  const animatedStats = document.getElementById("animatedStats");
 
   const trustedWords = ["agencies", "brands", "creator teams", "performance teams"];
+
   const trustedLogos = [
     { name: "Partner 01", src: "assets/logos-white/1.png" },
     { name: "Partner 02", src: "assets/logos-white/2.png" },
@@ -18,35 +20,36 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Partner 08", src: "assets/logos-white/8.png" },
     { name: "Partner 09", src: "assets/logos-white/9.png" },
   ];
+
   const proofFeedItems = [
     {
       scope: "US / Exploit",
-      cluster: "Short-form problem/solution hook",
-      note: "Velocity validated across 3 creators with stable early retention and low saturation risk.",
+      cluster: "Short-form problem-solution hook",
+      note: "Velocity validated across three creators with stable retention and manageable saturation risk.",
       asOf: "72h",
     },
     {
       scope: "US / Discovery",
       cluster: "Demo-first claim sequence",
-      note: "Higher gate quality than control cohort with cleaner conversion intent signals.",
+      note: "Gate quality outran control cohort and produced cleaner purchase-intent signals.",
       asOf: "24h",
     },
     {
       scope: "US / Exploit",
       cluster: "UGC narrative pivot",
-      note: "Acceleration passed threshold after recapture refresh; proof confidence upgraded.",
+      note: "Acceleration crossed threshold after recapture refresh and confidence was upgraded.",
       asOf: "48h",
     },
     {
       scope: "US / Recapture",
       cluster: "Repeat winner reframing",
-      note: "Legacy winner moved to context-watch after saturation score drifted beyond tolerance.",
+      note: "Legacy winner downgraded to context-watch due to saturation drift in live window.",
       asOf: "72h",
     },
     {
       scope: "US / Discovery",
-      cluster: "Authority + social proof opener",
-      note: "Cross-market transfer detected with favorable engagement quality and compliance fit.",
+      cluster: "Authority plus social-proof opener",
+      note: "Cross-market transfer detected with strong engagement quality and compliance fit.",
       asOf: "48h",
     },
   ];
@@ -55,11 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let wordIndex = 0;
     window.setInterval(() => {
       wordIndex = (wordIndex + 1) % trustedWords.length;
-      trustedRotate.style.opacity = "0.25";
+      trustedRotate.style.opacity = "0.2";
       window.setTimeout(() => {
         trustedRotate.textContent = trustedWords[wordIndex];
         trustedRotate.style.opacity = "1";
-      }, 140);
+      }, 130);
     }, 2200);
   }
 
@@ -102,6 +105,28 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("");
   }
 
+  if (animatedStats) {
+    const bars = animatedStats.querySelectorAll(".stat-bar");
+    bars.forEach((bar, index) => {
+      const height = Number(bar.dataset.height || 220);
+      bar.style.setProperty("--target-height", `${height}px`);
+      bar.style.transitionDelay = `${index * 70}ms`;
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          animatedStats.classList.add("is-visible");
+          observer.disconnect();
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(animatedStats);
+  }
+
   scrollLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       const href = link.getAttribute("href") || "";
@@ -136,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lines = [
       "Setta Allocation Memo Intake",
       "",
-      `Product: ${payload.product || "n/a"}`,
+      `Product + claim: ${payload.product || "n/a"}`,
       `Objective: ${payload.objective || "n/a"}`,
       `Spend Band: ${payload.spendBand || "not provided"}`,
       `Timeline: ${payload.timeline || "not provided"}`,
