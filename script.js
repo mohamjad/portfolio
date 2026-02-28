@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const intakeForm = document.getElementById("intakeForm");
   const formStatus = document.getElementById("formStatus");
 
+  const numberFormatter = new Intl.NumberFormat("en-US");
+  const compactFormatter = new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    maximumFractionDigits: 1,
+  });
+
   const heroAnimations = [
     { id: "heroAnimExtraSpark", path: "assets/hero/ExtraSpark.json" },
     { id: "heroAnimPinkSpark", path: "assets/hero/PinkSpark.json" },
@@ -20,6 +26,114 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: "heroAnimSmallGreenStar", path: "assets/hero/SmallGreenStar.json" },
   ];
 
+  const statBars = [
+    {
+      value: 382944,
+      label: "POSTS INDEXED",
+      height: 240,
+      marginTop: 80,
+      color: "#4cf59d",
+    },
+    {
+      value: 41611851,
+      label: "REACH MODELED",
+      height: 240,
+      marginTop: 180,
+      color: "#62b7ff",
+      format: "compact",
+    },
+    {
+      value: 1284,
+      label: "FORCED RESHOOTS CUT",
+      height: 220,
+      marginTop: 140,
+      color: "#ffe156",
+    },
+    {
+      value: 27,
+      label: "AVG ALLOCATION TIME",
+      height: 160,
+      marginTop: 160,
+      color: "#ef63c4",
+      suffix: "m",
+    },
+    {
+      value: 6.9,
+      label: "AVG ENGAGEMENT",
+      height: 320,
+      marginTop: 0,
+      color: "#4cf59d",
+      decimals: 1,
+      suffix: "%",
+    },
+    {
+      value: 45.9,
+      label: "RETENTION PROXY",
+      height: 320,
+      marginTop: 100,
+      color: "#ef63c4",
+      decimals: 1,
+      suffix: "%",
+    },
+    {
+      value: 24.3,
+      label: "RECEPTION COVERAGE",
+      height: 220,
+      marginTop: 68,
+      color: "#62b7ff",
+      decimals: 1,
+      suffix: "%",
+    },
+  ];
+
+  const summaryMetrics = [
+    { value: "1,284", label: "forced reshoots cut" },
+    { value: "41.6M", label: "modeled reach" },
+    { value: "27m", label: "avg allocation time" },
+    { value: "6.9%", label: "avg engagement" },
+    { value: "45.9%", label: "retention proxy" },
+    { value: "24.3%", label: "reception coverage" },
+  ];
+
+  const proofTiles = [
+    {
+      decision: "Fund",
+      title: "Proof-first skincare mechanic",
+      receipt: "2.63M views | signal 20.04",
+      constraint: "Keep first proof beat in the first 3s.",
+    },
+    {
+      decision: "Fund",
+      title: "Social proof concealer framing",
+      receipt: "1.99M views | signal 20.03",
+      constraint: "Anchor claim to one concrete visual outcome.",
+    },
+    {
+      decision: "Hold",
+      title: "Texture close-up transfer",
+      receipt: "370K views | ER 6.9%",
+      constraint: "Confirm second market before scaling budget.",
+    },
+    {
+      decision: "Fund",
+      title: "Reply-objection mechanic",
+      receipt: "403K views | signal 20.02",
+      constraint: "Keep objection-response sequence intact.",
+    },
+    {
+      decision: "DNS",
+      title: "Pain challenge reaction frame",
+      receipt: "Backlash risk elevated",
+      constraint: "Replace with value normalization angle.",
+    },
+    {
+      decision: "Hold",
+      title: "High-view low-proof cluster",
+      receipt: "Velocity mixed | proof depth limited",
+      constraint: "Require one additional validated post.",
+    },
+  ];
+
   const setStatus = (message, type = "") => {
     if (!formStatus) return;
     formStatus.className = "form-status";
@@ -27,333 +141,120 @@ document.addEventListener("DOMContentLoaded", () => {
     formStatus.textContent = message;
   };
 
-  const numberFormatter = new Intl.NumberFormat("en-US");
-
-  const formatCount = (value, decimals = 0, suffix = "") => {
-    const numeric = Number(value);
-    if (!Number.isFinite(numeric)) {
-      return `0${suffix}`;
+  const formatValue = (value, decimals = 0, suffix = "", mode = "plain") => {
+    if (mode === "compact") {
+      return `${compactFormatter.format(value)}${suffix}`;
     }
 
     if (decimals > 0) {
-      return `${numeric.toFixed(decimals)}${suffix}`;
+      return `${Number(value).toFixed(decimals)}${suffix}`;
     }
 
-    return `${numberFormatter.format(Math.round(numeric))}${suffix}`;
+    return `${numberFormatter.format(Math.round(Number(value)))}${suffix}`;
   };
 
-  const compact = (value) => {
-    const numeric = Number(value);
-    if (!Number.isFinite(numeric)) return "0";
-    return new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 }).format(numeric);
-  };
-
-  const truncate = (value, max = 84) => {
-    const text = String(value || "").replace(/\s+/g, " ").trim();
-    if (!text) return "No constraint flagged.";
-    if (text.length <= max) return text;
-    return `${text.slice(0, max - 1)}�`;
-  };
-
-  const normalizeText = (value) =>
-    String(value || "")
-      .replace(/[\u2018\u2019]/g, "'")
-      .replace(/[\u201C\u201D]/g, '"')
-      .replace(/—/g, "-")
-      .replace(/–/g, "-")
-      .replace(/’/g, "'")
-      .replace(/“|�/g, '"')
-      .replace(/\s+/g, " ")
-      .trim();
-
-  const loadProofTiles = async () => {
-    try {
-      const response = await fetch("data/setta_proof_tiles_v2.json", { cache: "no-store" });
-      if (response.ok) {
-        const json = await response.json();
-        if (Array.isArray(json) && json.length) {
-          return json;
-        }
-      }
-    } catch (error) {
-      console.warn("Could not load proof tiles JSON", error);
-    }
-
-    if (Array.isArray(window.SETTA_PROOF_TILES_V2) && window.SETTA_PROOF_TILES_V2.length) {
-      return window.SETTA_PROOF_TILES_V2;
-    }
-
-    return [];
-  };
-
-  const computeMetrics = (tiles) => {
-    const count = tiles.length;
-    const views = tiles
-      .map((tile) => Number(tile?.metrics?.views || 0))
-      .filter((value) => Number.isFinite(value) && value > 0);
-
-    const erValues = tiles
-      .map((tile) => Number(tile?.metrics?.er_percent))
-      .filter((value) => Number.isFinite(value) && value > 0);
-
-    const velocityValidatedCount = tiles.filter((tile) => {
-      const reason = normalizeText(tile?.why_post_matters).toLowerCase();
-      return reason.includes("velocity_validated");
-    }).length;
-
-    const receptionTaggedCount = tiles.filter((tile) => {
-      const joined = [
-        normalizeText(tile?.headline),
-        normalizeText(tile?.subhead),
-        normalizeText(tile?.why_post_matters),
-        Array.isArray(tile?.do_not_shoot_reasons) ? tile.do_not_shoot_reasons.join(" ") : "",
-      ]
-        .join(" ")
-        .toLowerCase();
-
-      return /(reception|objection|reply|backlash|social proof|proof)/.test(joined);
-    }).length;
-
-    const retentionProxy = count ? (velocityValidatedCount / count) * 100 : 0;
-    const avgER = erValues.length
-      ? erValues.reduce((sum, value) => sum + value, 0) / erValues.length
-      : 0;
-
-    const receptionCoverage = count ? (receptionTaggedCount / count) * 100 : 0;
-
-    return {
-      tileCount: count,
-      totalViews: views.reduce((sum, value) => sum + value, 0),
-      avgER,
-      erSamples: erValues.length,
-      retentionProxy,
-      receptionCoverage,
-      velocityValidatedCount,
-    };
-  };
-
-  const decideTileBand = (tile) => {
-    const verdict = normalizeText(tile?.verdict).toLowerCase();
-    if (verdict.includes("do_not_shoot") || verdict === "dns") return "DNS";
-
-    const reason = normalizeText(tile?.why_post_matters).toLowerCase();
-    if (reason.includes("velocity_validated") || reason.includes("scale_proof")) return "Fund";
-
-    return "Hold";
-  };
-
-  const tileReceiptLine = (tile) => {
-    const metrics = tile?.metrics || {};
-    const parts = [];
-
-    if (Number.isFinite(Number(metrics.views)) && Number(metrics.views) > 0) {
-      parts.push(`${compact(metrics.views)} views`);
-    }
-    if (Number.isFinite(Number(metrics.post_signal_score))) {
-      parts.push(`signal ${Number(metrics.post_signal_score).toFixed(2)}`);
-    }
-    if (Number.isFinite(Number(metrics.er_percent))) {
-      parts.push(`ER ${Number(metrics.er_percent).toFixed(1)}%`);
-    }
-
-    if (!parts.length) {
-      const fallback = normalizeText(tile?.why_post_matters) || "evidence loaded";
-      return fallback;
-    }
-
-    return parts.join(" | ");
-  };
-
-  const tileConstraintLine = (tile) => {
-    if (Array.isArray(tile?.do_not_shoot_checks) && tile.do_not_shoot_checks.length) {
-      return truncate(tile.do_not_shoot_checks[0]);
-    }
-
-    if (Array.isArray(tile?.recommended_tests) && tile.recommended_tests.length) {
-      return truncate(tile.recommended_tests[0]);
-    }
-
-    return "Keep hook-to-proof sequence fixed.";
-  };
-
-  const renderProof = (tiles) => {
-    if (!proofGrid) return;
-
-    const sorted = [...tiles].sort((a, b) => {
-      const aViews = Number(a?.metrics?.views || 0);
-      const bViews = Number(b?.metrics?.views || 0);
-      return bViews - aViews;
-    });
-
-    const selected = sorted.slice(0, 12);
-
-    proofGrid.innerHTML = selected
-      .map((tile) => {
-        const decision = decideTileBand(tile);
-        const title = normalizeText(tile?.headline || tile?.cluster_label || "Signal tile");
-        return `
-          <article class="proof-card">
-            <h3 class="decision decision-${decision.toLowerCase()}">${decision}</h3>
-            <p class="proof-title">${title}</p>
-            <p class="receipt">${tileReceiptLine(tile)}</p>
-            <p class="constraint">${tileConstraintLine(tile)}</p>
-          </article>
-        `;
-      })
-      .join("");
-  };
-
-  const renderProofSummary = (metrics) => {
-    if (!proofSummary) return;
-
-    proofSummary.innerHTML = `
-      <article class="proof-metric">
-        <strong>${formatCount(metrics.tileCount)}</strong>
-        <span>proof tiles loaded</span>
-      </article>
-      <article class="proof-metric">
-        <strong>${metrics.avgER ? `${metrics.avgER.toFixed(2)}%` : "n/a"}</strong>
-        <span>engagement (${formatCount(metrics.erSamples)} ER samples)</span>
-      </article>
-      <article class="proof-metric">
-        <strong>${metrics.retentionProxy.toFixed(1)}%</strong>
-        <span>retention proxy (velocity-validated share)</span>
-      </article>
-      <article class="proof-metric">
-        <strong>${metrics.receptionCoverage.toFixed(1)}%</strong>
-        <span>reception signal coverage</span>
-      </article>
-    `;
-  };
-
-  const buildStatsData = (metrics) => [
-    {
-      value: 23859,
-      label: "posts indexed",
-      decimals: 0,
-      suffix: "",
-      height: 88,
-      color: "#4cf59d",
-    },
-    {
-      value: 322,
-      label: "briefs generated",
-      decimals: 0,
-      suffix: "",
-      height: 64,
-      color: "#62b7ff",
-    },
-    {
-      value: 75,
-      label: "72h exploit positive",
-      decimals: 1,
-      suffix: "%",
-      height: 75,
-      color: "#ffe156",
-    },
-    {
-      value: metrics.tileCount,
-      label: "proof tiles",
-      decimals: 0,
-      suffix: "",
-      height: Math.min(92, 36 + metrics.tileCount),
-      color: "#ef63c4",
-    },
-    {
-      value: metrics.avgER,
-      label: "engagement",
-      decimals: 2,
-      suffix: "%",
-      height: Math.min(86, Math.max(34, metrics.avgER * 10)),
-      color: "#4cf59d",
-    },
-    {
-      value: metrics.retentionProxy,
-      label: "retention proxy",
-      decimals: 1,
-      suffix: "%",
-      height: Math.max(28, metrics.retentionProxy),
-      color: "#ffd86a",
-    },
-    {
-      value: metrics.receptionCoverage,
-      label: "reception coverage",
-      decimals: 1,
-      suffix: "%",
-      height: Math.max(24, metrics.receptionCoverage),
-      color: "#7aa8ff",
-    },
-  ];
-
-  const renderAnimatedStats = (stats) => {
+  const renderStats = () => {
     if (!animatedStats) return;
 
-    animatedStats.innerHTML = stats
+    animatedStats.innerHTML = statBars
       .map(
         (stat, index) => `
-          <article class="stat-bar" style="--target:${Math.round(stat.height)}%; --delay:${index * 80}ms; --bar-color:${stat.color};">
-            <div class="stat-fill" aria-hidden="true"></div>
-            <p class="stat-value" data-value="${stat.value}" data-decimals="${stat.decimals}" data-suffix="${stat.suffix}">0${stat.suffix}</p>
-            <p class="stat-label">${stat.label}</p>
-          </article>
+          <div class="stat-bar" style="height:${stat.height}px; margin-top:${stat.marginTop}px; border-radius:8px; --bar-color:${stat.color}; --delay:${index * 70}ms;">
+            <div class="stat-inner">
+              <h3 class="stat-value" data-value="${stat.value}" data-decimals="${stat.decimals || 0}" data-suffix="${stat.suffix || ""}" data-format="${stat.format || "plain"}">0</h3>
+              <p class="stat-label">${stat.label}</p>
+            </div>
+          </div>
         `
       )
       .join("");
 
-    const values = animatedStats.querySelectorAll(".stat-value");
-    const bars = animatedStats.querySelectorAll(".stat-bar");
+    const runCountAnimation = () => {
+      const values = animatedStats.querySelectorAll(".stat-value");
+      const bars = animatedStats.querySelectorAll(".stat-bar");
 
-    const animateValue = (element) => {
-      const end = Number(element.dataset.value || 0);
-      const decimals = Number(element.dataset.decimals || 0);
-      const suffix = element.dataset.suffix || "";
-      const duration = 1000;
-      const startTime = performance.now();
-
-      const frame = (now) => {
-        const progress = Math.min((now - startTime) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = end * eased;
-        element.textContent = formatCount(current, decimals, suffix);
-
-        if (progress < 1) {
-          requestAnimationFrame(frame);
-        }
-      };
-
-      requestAnimationFrame(frame);
-    };
-
-    const runAnimation = () => {
       bars.forEach((bar, index) => {
         window.setTimeout(() => {
           bar.classList.add("is-live");
-        }, index * 80);
+        }, index * 70);
       });
 
-      values.forEach((value) => animateValue(value));
+      values.forEach((element) => {
+        const endValue = Number(element.dataset.value || 0);
+        const decimals = Number(element.dataset.decimals || 0);
+        const suffix = element.dataset.suffix || "";
+        const mode = element.dataset.format || "plain";
+        const duration = 900;
+        const started = performance.now();
+
+        const tick = (now) => {
+          const progress = Math.min((now - started) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = endValue * eased;
+          element.textContent = formatValue(current, decimals, suffix, mode);
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          }
+        };
+
+        requestAnimationFrame(tick);
+      });
     };
 
     if (!("IntersectionObserver" in window)) {
-      runAnimation();
+      runCountAnimation();
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
-          runAnimation();
+          runCountAnimation();
           observer.disconnect();
         }
       },
-      { threshold: 0.22 }
+      { threshold: 0.2 }
     );
 
     observer.observe(animatedStats);
   };
 
+  const renderProofSummary = () => {
+    if (!proofSummary) return;
+
+    proofSummary.innerHTML = summaryMetrics
+      .map(
+        (metric) => `
+          <article class="proof-metric">
+            <strong>${metric.value}</strong>
+            <span>${metric.label}</span>
+          </article>
+        `
+      )
+      .join("");
+  };
+
+  const renderProofTiles = () => {
+    if (!proofGrid) return;
+
+    proofGrid.innerHTML = proofTiles
+      .map(
+        (tile) => `
+          <article class="proof-card">
+            <h3 class="decision decision-${tile.decision.toLowerCase()}">${tile.decision}</h3>
+            <p class="proof-title">${tile.title}</p>
+            <p class="receipt">${tile.receipt}</p>
+            <p class="constraint">${tile.constraint}</p>
+          </article>
+        `
+      )
+      .join("");
+  };
+
   const revealOnView = (element, className = "is-live", threshold = 0.18) => {
     if (!element) return;
+
     if (!("IntersectionObserver" in window)) {
       element.classList.add(className);
       return;
@@ -361,8 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries.some((entry) => entry.isIntersecting);
-        if (visible) {
+        if (entries.some((entry) => entry.isIntersecting)) {
           element.classList.add(className);
           observer.disconnect();
         }
@@ -373,21 +273,24 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(element);
   };
 
-  const interactiveBlocks = document.querySelectorAll(".enemy-card-dynamic, .stat-bar");
-  interactiveBlocks.forEach((card) => {
+  renderStats();
+  renderProofSummary();
+  renderProofTiles();
+  revealOnView(enemyGrid, "is-live", 0.2);
+
+  const interactiveCards = document.querySelectorAll(".enemy-card-dynamic, .stat-bar");
+  interactiveCards.forEach((card) => {
     card.addEventListener("pointermove", (event) => {
       const rect = card.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width - 0.5;
       const y = (event.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `perspective(900px) rotateX(${(-y * 3.2).toFixed(2)}deg) rotateY(${(x * 4.2).toFixed(2)}deg) translateY(-2px)`;
+      card.style.transform = `perspective(900px) rotateX(${(-y * 3).toFixed(2)}deg) rotateY(${(x * 4).toFixed(2)}deg) translateY(-2px)`;
     });
 
     card.addEventListener("pointerleave", () => {
       card.style.transform = "";
     });
   });
-
-  revealOnView(enemyGrid, "is-live", 0.2);
 
   if (window.lottie) {
     heroAnimations.forEach((animation) => {
@@ -424,14 +327,6 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
-  });
-
-  loadProofTiles().then((tiles) => {
-    const metrics = computeMetrics(tiles);
-    const stats = buildStatsData(metrics);
-    renderAnimatedStats(stats);
-    renderProofSummary(metrics);
-    renderProof(tiles);
   });
 
   if (!intakeForm) return;

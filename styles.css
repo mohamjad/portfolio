@@ -212,25 +212,6 @@ h1 span {
   background-clip: text;
 }
 
-.hero-word-wrap {
-  position: relative;
-  display: inline-block;
-  width: fit-content;
-  padding-right: 1.4rem;
-}
-
-.hero-word-blob {
-  position: absolute;
-  right: -0.7rem;
-  top: 48%;
-  width: 2.2rem;
-  height: 2.2rem;
-  opacity: 0.9;
-  transform: translateY(-50%) rotate(-8deg);
-  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.4));
-  pointer-events: none;
-}
-
 .hero-lead {
   margin: 0;
   max-width: 58ch;
@@ -462,108 +443,61 @@ h2 {
 .stats-stage {
   position: relative;
   margin-top: 1.14rem;
-  border: 1px solid var(--line);
-  background: rgba(11, 20, 42, 0.46);
-  padding: 1rem 1rem 0.9rem;
-  overflow: hidden;
-}
-
-.stats-deco {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.65;
-}
-
-.stats-deco-gear {
-  width: 88px;
-  left: -24px;
-  bottom: 14px;
-}
-
-.stats-deco-star {
-  width: 36px;
-  right: 22%;
-  top: 14px;
-}
-
-.stats-deco-star-alt {
-  width: 30px;
-  right: 6%;
-  bottom: 28%;
-}
-
-.stats-deco-blob {
-  width: 190px;
-  right: -26px;
-  bottom: -38px;
-  opacity: 0.32;
+  padding: 0.2rem 0;
+  overflow: visible;
 }
 
 .animated-stats {
   position: relative;
-  z-index: 2;
-  min-height: 236px;
-  display: grid;
-  gap: 0.72rem;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  align-items: end;
+  min-height: 480px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.7rem;
 }
 
 .stat-bar {
   position: relative;
-  min-height: 180px;
+  width: clamp(92px, 10vw, 126px);
   border: 1px solid color-mix(in srgb, var(--bar-color, #7aa8ff) 44%, rgba(196, 218, 255, 0.2));
-  background: rgba(8, 17, 36, 0.5);
-  overflow: hidden;
-  transform: translateY(12px);
-  opacity: 0.72;
-  transition: transform 560ms cubic-bezier(0.2, 0.72, 0.2, 1), opacity 420ms ease;
+  background: color-mix(in srgb, var(--bar-color, #7aa8ff) 70%, #15294c 30%);
+  box-shadow: 0 12px 30px rgba(4, 10, 22, 0.32);
+  transform: translateY(12px) scale(0.98);
+  opacity: 0.86;
+  transition: transform 540ms cubic-bezier(0.2, 0.72, 0.2, 1), opacity 420ms ease;
   transition-delay: var(--delay, 0ms);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0.62rem;
+  padding: 0.54rem 0.62rem;
 }
 
 .stat-bar.is-live {
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   opacity: 1;
 }
 
-.stat-fill {
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 0;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--bar-color, #7aa8ff) 75%, #ffffff 8%) 0%,
-    color-mix(in srgb, var(--bar-color, #7aa8ff) 58%, rgba(11, 20, 42, 0.6)) 100%
-  );
-  transition: height 860ms cubic-bezier(0.2, 0.74, 0.2, 1);
-  transition-delay: var(--delay, 0ms);
-}
-
-.stat-bar.is-live .stat-fill {
-  height: var(--target, 50%);
+.stat-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
 }
 
 .stat-value {
   position: relative;
   margin: 0;
   font-family: "Sora", sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.22rem;
   line-height: 1.03;
   color: #fff;
 }
 
 .stat-label {
   position: relative;
-  margin: 0.25rem 0 0;
+  margin: 0.32rem 0 0;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.67rem;
+  font-size: 0.62rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--text-mid);
+  color: rgba(247, 252, 255, 0.88);
 }
 
 .enemy-card,
@@ -638,7 +572,7 @@ h2 {
 }
 
 .proof-summary {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .proof-metric {
@@ -865,7 +799,13 @@ textarea:focus {
   }
 
   .animated-stats {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    min-height: auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .stat-bar {
+    width: calc(25% - 0.56rem);
   }
 }
 
@@ -937,7 +877,14 @@ textarea:focus {
   }
 
   .animated-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: auto;
+    gap: 0.55rem;
+  }
+
+  .stat-bar {
+    width: calc(50% - 0.3rem);
+    margin-top: 0 !important;
+    height: 170px !important;
   }
 
   .trust-track {
