@@ -24,3 +24,7 @@ build/
 # Environment variables
 .env
 .env.local
+
+# Local reference folders (not part of deploy root)
+_ref_hackthenorth_2022/
+portfolio/

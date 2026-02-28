@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Setta installs a pre-spend creative allocation layer for paid social teams." />
-  <title>Setta | Allocation Layer</title>
+  <meta name="description" content="Setta is a pre-spend creative allocation layer for paid social teams." />
+  <title>Setta | Pre-Spend Allocation</title>
   <link rel="icon" type="image/png" href="assets/logos/10.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,130 +12,185 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="topbar" id="top">
-    <a class="brand" href="#top" data-scroll>
-      <img class="brand-mark" src="assets/logos-white/10.png" alt="Setta mark" />
-      <span>SETTA</span>
-    </a>
-    <nav class="top-nav" aria-label="Primary">
-      <a href="#memo" data-scroll>Memo</a>
-      <a href="#process" data-scroll>Process</a>
-      <a href="#evidence" data-scroll>Evidence</a>
-      <a href="#offers" data-scroll>Offers</a>
-      <a href="#proof" data-scroll>Proof</a>
-      <a href="#intake" data-scroll>Intake</a>
-    </nav>
+  <header class="site-header" id="top">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" data-scroll>
+        <img class="brand-mark" src="assets/logos-white/10.png" alt="Setta mark" />
+        <span>SETTA</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#outcomes" data-scroll>Outcomes</a>
+        <a href="#memo" data-scroll>Memo</a>
+        <a href="#proof" data-scroll>Proof</a>
+        <a href="#case" data-scroll>Case Study</a>
+        <a href="#pricing" data-scroll>Pricing</a>
+        <a href="#intake" data-scroll>Intake</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="hero" aria-label="Hero">
-      <div class="hero-content shell">
-        <div class="hero-copy">
-          <p class="eyebrow">Allocation Layer for Paid Creative</p>
-          <h1>
-            Decide what to fund
-            <span>before you shoot.</span>
-          </h1>
-          <p class="lead">Setta delivers an Allocation Memo that ranks what to greenlight, what to hold, and what to cut before production and media spend.</p>
-          <p class="lead-sub">This replaces post-spend guesswork with pre-spend allocation logic backed by momentum, decay, and transfer receipts.</p>
-
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#intake" data-scroll>Start Free Async Intake</a>
-            <a class="btn btn-secondary" href="#memo" data-scroll>See Memo Structure</a>
-          </div>
-
-          <p class="hero-note">Free intake. Async. Zero kickoff friction.</p>
-        </div>
+    <section class="hero-stage" aria-label="Hero">
+      <div class="hero-scene" aria-hidden="true">
+        <img class="scene-base" src="assets/hero/hero_ultrawide.png" alt="" />
+        <img class="scene-building" src="assets/hero/hero_e5.png" alt="" />
+        <div class="scene-anim scene-anim-extra" id="heroAnimExtraSpark"></div>
+        <div class="scene-anim scene-anim-pink" id="heroAnimPinkSpark"></div>
+        <div class="scene-anim scene-anim-yellow" id="heroAnimYellowSpark"></div>
+        <div class="scene-anim scene-anim-pink-gear" id="heroAnimPinkGear"></div>
+        <div class="scene-anim scene-anim-green-gear" id="heroAnimGreenGear"></div>
+        <div class="scene-anim scene-anim-blue-star" id="heroAnimGreenBlueStar"></div>
+        <div class="scene-anim scene-anim-pink-star" id="heroAnimPinkStar"></div>
+        <div class="scene-anim scene-anim-green-yellow" id="heroAnimGreenYellowStar"></div>
+        <div class="scene-anim scene-anim-green-star" id="heroAnimGreenStar"></div>
+        <div class="scene-anim scene-anim-small-green" id="heroAnimSmallGreenStar"></div>
       </div>
+      <div class="hero-shade" aria-hidden="true"></div>
 
-      <div class="hero-art" aria-hidden="true">
-        <img class="hero-base" src="assets/hero/hero_ultrawide.png" alt="" />
-        <img class="hero-e5" src="assets/hero/hero_e5.png" alt="" />
-        <div class="hero-anim hero-anim-extra" id="heroAnimExtraSpark"></div>
-        <div class="hero-anim hero-anim-pink" id="heroAnimPinkSpark"></div>
-        <div class="hero-anim hero-anim-yellow" id="heroAnimYellowSpark"></div>
-        <div class="hero-anim hero-anim-pink-gear" id="heroAnimPinkGear"></div>
-        <div class="hero-anim hero-anim-green-gear" id="heroAnimGreenGear"></div>
-        <div class="hero-anim hero-anim-blue-star" id="heroAnimGreenBlueStar"></div>
-        <div class="hero-anim hero-anim-pink-star" id="heroAnimPinkStar"></div>
-        <div class="hero-anim hero-anim-green-yellow" id="heroAnimGreenYellowStar"></div>
+      <div class="shell hero-layout">
+        <p class="eyebrow">Allocation Memo for Paid Creative</p>
+        <h1>
+          Pre-spend creative allocation
+          <span>for paid social.</span>
+        </h1>
+        <p class="hero-lead">Most teams brief formats after they peak, then spend to learn what should have been filtered before production.</p>
+        <p class="hero-sub">Setta installs a decision layer that allocates budget before you shoot: Greenlight 3, Do-Not-Shoot Index, constraints, and failure tree with proof receipts.</p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#intake" data-scroll>Start Free Async Intake</a>
+          <a class="btn btn-secondary" href="#memo" data-scroll>See Allocation Memo</a>
+        </div>
+
+        <p class="hero-note">No kickoff call required. Optional call path is available in intake.</p>
+
+        <div class="hero-kpis" id="outcomes">
+          <article class="kpi-chip">
+            <strong>75.0%</strong>
+            <span>72h positive rate in exploit outcomes</span>
+          </article>
+          <article class="kpi-chip">
+            <strong>23,859</strong>
+            <span>posts indexed across live + historical windows</span>
+          </article>
+          <article class="kpi-chip">
+            <strong>322</strong>
+            <span>allocation briefs generated in recent export windows</span>
+          </article>
+          <article class="kpi-chip">
+            <strong>20+</strong>
+            <span>agencies, brands, and creator teams served</span>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="trusted shell" aria-label="Trusted by">
-      <p class="trusted-line">Trusted by 20+ <span id="trustedRotate">agencies</span></p>
-      <div class="trusted-scroll">
-        <div class="trusted-track" id="trustedTrack"></div>
+    <section class="trust-band shell" aria-label="Trusted by">
+      <p class="trust-title">Trusted by 20+ <span id="trustedRotate">agencies</span></p>
+      <div class="logo-marquee" aria-hidden="true">
+        <div class="logo-track" id="trustedTrack"></div>
       </div>
     </section>
 
     <section class="section shell" id="memo">
-      <p class="section-kicker">Memo</p>
-      <h2>What the Allocation Memo contains</h2>
-      <div class="memo-grid">
-        <article class="panel">
-          <h3>Greenlight 3</h3>
-          <p>Three ranked structures to fund first, with context and confidence.</p>
+      <p class="section-kicker">What You Get</p>
+      <h2>Allocation Memo output structure</h2>
+
+      <div class="memo-layout">
+        <article class="memo-snapshot">
+          <h3>Decision Snapshot (redacted)</h3>
+          <ul>
+            <li><span>Greenlight 3</span><strong>3 ranked structures</strong></li>
+            <li><span>Do-Not-Shoot Index</span><strong>5 failure modes + replacements</strong></li>
+            <li><span>Constraints</span><strong>claim boundaries, pacing, proof order</strong></li>
+            <li><span>Failure Tree</span><strong>symptom to fix path</strong></li>
+            <li><span>Receipts</span><strong>proof tiles with rationale</strong></li>
+          </ul>
         </article>
-        <article class="panel">
-          <h3>Do-Not-Shoot Index</h3>
-          <p>Failure patterns filtered out before production lock.</p>
-        </article>
-        <article class="panel">
-          <h3>Execution Constraints</h3>
-          <p>Non-negotiables for claims, pacing, and proof ordering.</p>
-        </article>
-        <article class="panel">
-          <h3>Failure Tree</h3>
-          <p>Symptom-to-cause path with concrete corrective moves.</p>
+
+        <article class="memo-detail">
+          <h3>How briefs map to timing and saturation risk</h3>
+          <p>Every candidate is scored for velocity quality, gate quality, and transfer context before it is allowed into a funded recommendation. Saturation-sensitive patterns are demoted before production.</p>
+          <div class="detail-grid">
+            <div>
+              <h4>Timing Signal</h4>
+              <p>Acceleration and live trajectory determine whether to fund now, watch, or hold.</p>
+            </div>
+            <div>
+              <h4>Saturation Signal</h4>
+              <p>Recency and repeated motif pressure control over-deployed structures.</p>
+            </div>
+            <div>
+              <h4>Transfer Signal</h4>
+              <p>Cross-market context decides if a winner travels or stays local.</p>
+            </div>
+          </div>
         </article>
       </div>
+
+      <details class="fold">
+        <summary>Open full decision schema</summary>
+        <div class="fold-content">
+          <p>Inputs include brief constraints, indexed post history, cluster trajectories, gate outcomes, and recapture diagnostics. Outputs include ranked funding decisions, exclusions, and evidence-linked rationale suitable for production handoff.</p>
+        </div>
+      </details>
     </section>
 
-    <section class="section shell" id="process">
-      <p class="section-kicker">Process</p>
-      <h2>Simple operating sequence</h2>
-      <div class="process-grid">
-        <article class="step"><span>1</span><h3>Ingest</h3><p>Ingest brief context, constraints, and spend reality.</p></article>
-        <article class="step"><span>2</span><h3>Score</h3><p>Score candidate structures using internal performance signals.</p></article>
-        <article class="step"><span>3</span><h3>Decide</h3><p>Map outputs into Greenlight / Hold / Do-Not-Shoot decisions.</p></article>
-        <article class="step"><span>4</span><h3>Ship</h3><p>Deliver memo and proof receipts for production handoff.</p></article>
-      </div>
-    </section>
-
-    <section class="section shell" id="evidence">
-      <p class="section-kicker">Evidence</p>
-      <h2>Outcome metrics, not vanity metrics</h2>
+    <section class="section shell" id="case">
+      <p class="section-kicker">Case Study</p>
+      <h2>What changed when allocation moved pre-spend</h2>
       <div class="evidence-bars" id="evidenceBars">
-        <article class="bar tone-green" data-height="280"><strong>75.0%</strong><span>72h positive exploit outcome rate</span></article>
-        <article class="bar tone-pink" data-height="230"><strong>55%</strong><span>concepts cut before spend in redacted case</span></article>
-        <article class="bar tone-blue" data-height="320"><strong>23,859+</strong><span>posts indexed across historical and live windows</span></article>
-        <article class="bar tone-yellow" data-height="290"><strong>322</strong><span>allocation briefs generated in export windows</span></article>
-        <article class="bar tone-green" data-height="260"><strong>20+</strong><span>agencies, brands, and creator teams supported</span></article>
-        <article class="bar tone-pink" data-height="340"><strong>47M+</strong><span>peak observed single-post reach in tracked surfaces</span></article>
+        <article class="bar tone-green" data-height="310"><strong>55%</strong><span>concepts cut before production in redacted launch cycle</span></article>
+        <article class="bar tone-pink" data-height="250"><strong>72h</strong><span>from intake to memo delivery</span></article>
+        <article class="bar tone-blue" data-height="340"><strong>2 weeks</strong><span>production churn avoided in sample cycle</span></article>
+        <article class="bar tone-yellow" data-height="295"><strong>0</strong><span>forced re-shoots on DNS concepts after memo adoption</span></article>
+        <article class="bar tone-green" data-height="275"><strong>3/11</strong><span>concepts funded immediately (rest revised or cut)</span></article>
+        <article class="bar tone-pink" data-height="325"><strong>47M+</strong><span>top observed reach in tracked winning structure set</span></article>
       </div>
     </section>
 
-    <section class="section shell" id="offers">
-      <p class="section-kicker">Offers</p>
+    <section class="section shell" id="pricing">
+      <p class="section-kicker">Pricing</p>
       <h2>Commercial options</h2>
-      <div class="offers-grid">
-        <article class="offer featured"><p class="price">$500</p><h3>Allocation Memo (72h)</h3><p>Ranked allocation + DNS index + constraints + failure tree.</p></article>
-        <article class="offer"><p class="price">$700</p><h3>Allocation Brief</h3><p>Memo plus concise implementation handoff for your team.</p></article>
-        <article class="offer"><p class="price">$1,300/mo</p><h3>Weekly Retainer</h3><p>Weekly refresh, continuous tracking, and decision updates.</p></article>
+      <div class="pricing-grid">
+        <article class="price-card featured">
+          <p class="price">$500</p>
+          <h3>Allocation Memo (72h)</h3>
+          <p>Greenlight 3, Do-Not-Shoot Index, constraints, and failure tree with proof receipts.</p>
+        </article>
+        <article class="price-card">
+          <p class="price">$700</p>
+          <h3>Allocation Brief</h3>
+          <p>Memo plus implementation handoff for paid + creative operators.</p>
+        </article>
+        <article class="price-card">
+          <p class="price">$1,300/mo</p>
+          <h3>Weekly Retainer</h3>
+          <p>Weekly refreshes, recapture-aware updates, and iterative decision snapshots.</p>
+        </article>
       </div>
     </section>
 
     <section class="section shell" id="proof">
-      <p class="section-kicker">Proof</p>
-      <h2>Receipts layer (de-identified)</h2>
+      <p class="section-kicker">Proof Receipts</p>
+      <h2>De-identified proof tile feed</h2>
       <div class="proof-grid" id="proofGrid"></div>
+      <details class="fold">
+        <summary>Why proof tiles are redacted</summary>
+        <div class="fold-content">
+          <p>Public proof tiles intentionally remove creator handles, cluster IDs, and direct competitor links. The memo still provides sufficient decision backing through rule-level evidence and measurable rationale.</p>
+        </div>
+      </details>
     </section>
 
     <section class="section shell" id="intake">
       <p class="section-kicker">Free Async Intake</p>
-      <h2>Send one brief. Get a decision-ready response in 72 hours.</h2>
-      <form id="intakeForm" class="intake-form">
+      <h2>Send your next brief. Get a decision snapshot in 72 hours.</h2>
+
+      <form id="intakeForm" class="intake-form" novalidate>
+        <input type="hidden" name="_subject" value="Setta Allocation Memo Intake" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+
         <div class="form-grid">
           <label>
             Product + price + hero claim
@@ -143,11 +198,11 @@
           </label>
           <label>
             Objective
-            <input type="text" name="objective" placeholder="e.g. lower CPA, higher purchase rate" required />
+            <input type="text" name="objective" placeholder="e.g. reduce CPA, improve purchase rate" required />
           </label>
           <label>
             Spend band
-            <select name="spend_band">
+            <select name="spend_band" required>
               <option value="">Select</option>
               <option value="0-10k">$0-$10k/mo</option>
               <option value="10k-50k">$10k-$50k/mo</option>
@@ -157,35 +212,40 @@
           </label>
           <label>
             Timeline
-            <input type="text" name="timeline" placeholder="e.g. launch in 10 days" />
+            <input type="text" name="timeline" placeholder="e.g. launch in 10 days" required />
           </label>
           <label>
-            Preferred path
+            Service path
             <select name="engagement_preference">
-              <option value="async_only">Async only</option>
-              <option value="call_optional">Open to a call if useful</option>
+              <option value="async_only">Async delivery only</option>
+              <option value="call_optional">Open to optional call</option>
+              <option value="call_requested">Request a call first</option>
             </select>
-          </label>
-          <label class="span-2">
-            Constraints (required)
-            <textarea name="constraints" rows="3" required placeholder="Claims, ad-feel boundaries, proof requirements"></textarea>
-          </label>
-          <label class="span-2">
-            If call is useful (optional)
-            <input type="text" name="call_notes" placeholder="Timezone + preferred windows" />
           </label>
           <label>
             Contact email
             <input type="email" name="contact_email" required />
           </label>
+          <label class="span-2">
+            Constraints (required)
+            <textarea name="constraints" rows="4" placeholder="Claims, ad-feel, mandatory proof requirements" required></textarea>
+          </label>
+          <label class="span-2">
+            Call windows (optional)
+            <input type="text" name="call_notes" placeholder="Timezone + preferred windows" />
+          </label>
         </div>
-        <button class="btn btn-primary" type="submit">Submit Free Intake</button>
-        <p class="form-status" id="formStatus"></p>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Submit Free Intake</button>
+          <a class="btn btn-secondary" href="mailto:mohammed@setta.ca?subject=Setta%20Call%20Request">Request Call by Email</a>
+        </div>
+        <p class="form-status" id="formStatus" aria-live="polite"></p>
       </form>
     </section>
   </main>
 
-  <footer class="footer shell">
+  <footer class="site-footer shell">
     <p>Built and operated by Mohammed Amjad.</p>
     <p>
       <a href="mailto:mohammed@setta.ca">mohammed@setta.ca</a>
