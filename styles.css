@@ -38,16 +38,16 @@ body {
 body::before {
   content: "";
   position: fixed;
-  inset: -3vh -3vw;
+  inset: -2vh -2vw;
   z-index: -1;
   pointer-events: none;
   background:
     radial-gradient(circle at 18% 8%, rgba(20, 232, 30, 0.17), rgba(20, 232, 30, 0) 40%),
     radial-gradient(circle at 84% 12%, rgba(239, 99, 196, 0.17), rgba(239, 99, 196, 0) 42%),
     linear-gradient(180deg, rgba(5, 11, 25, 0.82) 0%, rgba(5, 11, 25, 0.66) 48%, rgba(5, 11, 25, 0.7) 100%),
-    url("assets/hero/site_bg_pane.png") center top / cover no-repeat;
-  opacity: 0.98;
-  transform: scale(1.02);
+    url("assets/hero/site_grain.svg") center / cover no-repeat;
+  opacity: 1;
+  transform: scale(1.01);
   transform-origin: center top;
 }
 
@@ -297,7 +297,23 @@ h1 span {
 }
 
 .trust-band {
-  padding-top: 1.8rem;
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 1.5rem 0 0.35rem;
+}
+
+.trust-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 15, 33, 0.08) 0%, rgba(8, 35, 39, 0.28) 58%, rgba(6, 15, 33, 0.08) 100%);
+  pointer-events: none;
+}
+
+.trust-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .trust-title {
@@ -314,8 +330,6 @@ h1 span {
 
 .logo-marquee {
   overflow: hidden;
-  border-top: 1px solid var(--line-soft);
-  border-bottom: 1px solid var(--line-soft);
   mask-image: linear-gradient(to right, transparent, #fff 8%, #fff 92%, transparent);
 }
 
