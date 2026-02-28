@@ -1,925 +1,315 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Setta is a paid creative modeling layer for Beauty and DTC teams. Send your brief and get what to shoot, what to avoid, and who to use.">
-    <meta name="robots" content="index,follow,max-snippet:160,max-image-preview:large,max-video-preview:-1">
-    <title>Setta | Paid Creative Modeling Layer</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Setta installs a pre-spend creative allocation layer for paid social. Buy an Allocation Memo with Greenlight 3, Do-Not-Shoot Index, Failure Tree, and proof receipts." />
+  <title>Setta | Pre-Spend Creative Allocation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="container">
-        <header class="site-topbar">
-            <div class="brand-block">
-                <p class="brand-name">Setta</p>
-                <p class="brand-tagline">Pre-spend paid creative decision layer for Beauty, DTC, and agencies running 10+ paid concepts per month.</p>
-            </div>
-            <div class="topbar-actions">
-                <nav class="top-nav" aria-label="Primary navigation">
-                    <a class="top-nav-link" data-site-nav-link data-nav-target="sampleBriefSection" href="#sampleBriefSection">Samples</a>
-                    <a class="top-nav-link" data-site-nav-link data-nav-target="pricingSection" href="#pricingSection">Pricing</a>
-                    <a class="top-nav-link" data-site-nav-link data-nav-target="contactSection" href="#contactSection">Contact</a>
-                </nav>
-                <button class="mobile-nav-toggle" id="mobileNavToggle" type="button" aria-expanded="false" aria-controls="mobileNavPanel">Menu</button>
-            </div>
-        </header>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <span class="brand-name">SETTA</span>
+        <span class="brand-tag">Creative Allocation Layer</span>
+      </div>
+      <nav class="top-nav">
+        <a href="#sample">Sample</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#intake">Intake</a>
+      </nav>
+    </header>
 
-        <nav class="mobile-nav-panel" id="mobileNavPanel" aria-label="Mobile navigation" aria-hidden="true">
-            <a class="mobile-nav-link" data-site-nav-link data-nav-target="sampleBriefSection" href="#sampleBriefSection">Samples</a>
-            <a class="mobile-nav-link" data-site-nav-link data-nav-target="pricingSection" href="#pricingSection">Pricing</a>
-            <a class="mobile-nav-link" data-site-nav-link data-nav-target="contactSection" href="#contactSection">Contact</a>
-        </nav>
+    <main>
+      <section class="trusted-strip" aria-label="Trusted by">
+        <p class="trusted-label">
+          Trusted by 20+ <span class="trusted-rotate" id="trustedRotate">agencies</span>
+        </p>
+        <div class="trusted-scroll">
+          <div class="trusted-track" id="trustedTrack"></div>
+        </div>
+      </section>
 
-        <section class="hero-panel" id="heroPanel">
-            <div class="hero-grid">
-                <div class="hero-copy">
-                    <p class="hero-kicker">Setta - Pre-Spend Creative Risk Layer</p>
-                    <h1 class="hero-title"><span class="hero-accent-text">Send your campaign brief.</span> <span class="hero-accent-text-alt">Get what to shoot, what to avoid, and who can execute it.</span></h1>
-                    <p class="hero-subtitle">Campaign mapping and risk controls before production and media spend.</p>
-                    <p class="hero-signoff">Built and operated by Mohammed Amjad.</p>
-                </div>
-                <div class="hero-visual" aria-hidden="true">
-                    <img class="hero-noise" src="assets/hero/hero_noise.png" alt="">
-                    <img class="hero-swirls" src="assets/hero/hero_ultrawide.png" alt="">
-                    <img class="hero-building" src="assets/hero/hero_e5.png" alt="">
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Allocation Memo, Not Creative Roulette</p>
+          <h1>Pre-spend creative allocation for paid social.</h1>
+          <p class="subheadline">
+            We install a decision layer that decides what creative structures deserve capital before you shoot and spend.
+          </p>
+          <p class="support-line">
+            Deliverable: Allocation Memo: Greenlight 3, Do-Not-Shoot Index, constraints, and a failure tree - backed by momentum, decay, and reception receipts.
+          </p>
 
-                    <div class="hero-lottie-layer lottie-extra-spark" data-lottie-src="assets/hero/ExtraSpark.json"></div>
-                    <div class="hero-lottie-layer lottie-pink-spark" data-lottie-src="assets/hero/PinkSpark.json"></div>
-                    <div class="hero-lottie-layer lottie-yellow-spark" data-lottie-src="assets/hero/YellowSpark.json"></div>
-                    <div class="hero-lottie-layer lottie-pink-gear" data-lottie-src="assets/hero/PinkGear.json"></div>
-                    <div class="hero-lottie-layer lottie-green-gear" data-lottie-src="assets/hero/GreenGear.json"></div>
-                    <div class="hero-lottie-layer lottie-green-blue-star" data-lottie-src="assets/hero/GreenBlueStar.json"></div>
-                    <div class="hero-lottie-layer lottie-pink-star" data-lottie-src="assets/hero/PinkStar.json"></div>
-                    <div class="hero-lottie-layer lottie-green-yellow-star" data-lottie-src="assets/hero/GreenYellowStar.json"></div>
-                    <div class="hero-lottie-layer lottie-green-star" data-lottie-src="assets/hero/GreenStar.json"></div>
-                    <div class="hero-lottie-layer lottie-small-green-star" data-lottie-src="assets/hero/SmallGreenStar.json"></div>
-                </div>
-            </div>
-        </section>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#pricing" data-scroll>Buy an Allocation Memo</a>
+            <a class="btn btn-secondary" href="#sample" data-scroll>View Sanitized Sample</a>
+          </div>
 
-        <section class="content-section active" id="ugcSection">
-            <section class="flow-surface" id="whatSettaDoes">
-                <p class="flow-kicker">Campaign Mapping Layer</p>
-                <h2 class="flow-title">One brief in. Clear execution decisions out.</h2>
-                <p class="flow-lead">Setta maps client goals against a live UGC and campaign database, then returns what to shoot, what to avoid, and how to execute before performance compresses.</p>
-                <div class="signal-ribbon" role="list" aria-label="Key operating metrics">
-                    <span class="signal-chip" role="listitem">Failure cost reference: $2,800/test</span>
-                    <span class="signal-chip" role="listitem">Decision turnaround: 48h-72h</span>
-                    <span class="signal-chip" role="listitem">Target sprint: 3 winners in 21 days</span>
-                    <span class="signal-chip" role="listitem">Built for teams testing 10+ concepts/month</span>
-                </div>
-                <div class="flow-columns">
-                    <article class="flow-column">
-                        <h3>Why teams miss</h3>
-                        <ul class="flow-list">
-                            <li>Formats are often briefed after their velocity window has already peaked.</li>
-                            <li>Production lag delays launch while replication density keeps rising.</li>
-                            <li>By launch, CPM and hold efficiency are already working against scale.</li>
-                        </ul>
-                    </article>
-                    <article class="flow-column">
-                        <h3>What Setta returns</h3>
-                        <ul class="flow-list">
-                            <li>Format velocity and saturation scoring (7/14/30-day movement).</li>
-                            <li>Reception risk mapping from objection and sentiment clusters.</li>
-                            <li>Brief-to-market fit scoring from prior winning campaign patterns.</li>
-                            <li>Creator lane confidence and scale/kill thresholds.</li>
-                        </ul>
-                    </article>
-                </div>
-                <div class="flow-process">
-                    <p class="flow-process-title">How it runs</p>
-                    <ol class="flow-steps">
-                        <li>Send campaign brief and constraints.</li>
-                        <li>Setta maps your brief to live and historical signals.</li>
-                        <li>You receive execution calls in 48h (retainer) or 72h (pilot/standalone).</li>
-                        <li>Launch with guardrails and iterate from live outcomes.</li>
-                    </ol>
-                </div>
-                <div class="flow-not">
-                    <p class="flow-not-label">What this is not</p>
-                    <p class="flow-not-copy"><strong>Not a trend newsletter.</strong> <strong>Not a UGC agency.</strong> <strong>Not a dashboard.</strong> <strong>Not open-ended creative consulting.</strong></p>
-                </div>
+          <p class="async-line">Async purchase. No kickoff call required.</p>
+
+          <div class="audience-grid">
+            <article class="audience-card">
+              <h3>For Brands</h3>
+              <p>Stop burning test budget on weak structures. Allocate spend into the 3 concepts with the best pre-spend signal strength.</p>
+            </article>
+            <article class="audience-card">
+              <h3>For Agencies</h3>
+              <p>Ship strategic decisions with receipts. Replace subjective creative debate with memo-backed allocation calls clients can defend.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="memo-panel" aria-label="Sanitized allocation memo preview">
+          <div class="memo-header">
+            <span>Allocation Memo</span>
+            <span>Sanitized</span>
+          </div>
+          <div class="memo-body">
+            <section>
+              <h4>Greenlight 3</h4>
+              <ol>
+                <li>Direct problem-first voiceover + hard visual contrast</li>
+                <li>Split-screen before/after sequence with constrained claim</li>
+                <li>Proof-led testimonial structure with timeline cue</li>
+              </ol>
             </section>
-
-            <section class="sample-brief-section" id="sampleBriefSection">
-                <div class="sample-header">
-                    <h2 class="section-title">full decision packs, real examples</h2>
-                    <p class="sample-intro">Each sample includes campaign snapshot, big bets, do-not-shoot calls, creator lanes, failure tree, and risk register.</p>
-                    <div class="flow-confidence" aria-label="Confidence scoring legend">
-                        <p class="flow-confidence-label">Confidence score legend for every <code>Confidence: X/10</code> value in the Big Bet cards below.</p>
-                        <ul class="flow-confidence-scale">
-                            <li><span>9.0-10.0</span>Strong bet</li>
-                            <li><span>7.5-8.9</span>Solid opportunity</li>
-                            <li><span>6.0-7.4</span>Exploration</li>
-                            <li><span>&lt; 6.0</span>Not recommended</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="brief-nav-grid">
-                    <button class="brief-nav-card" id="briefCardA" data-brief-id="A" type="button">
-                        <h3>Brief A: Brand</h3>
-                        <p class="brief-nav-note">In-house beauty and DTC decision pack with spend-protection constraints and winner sequencing.</p>
-                    </button>
-                    <button class="brief-nav-card" id="briefCardB" data-brief-id="B" type="button">
-                        <h3>Brief B: Agency</h3>
-                        <p class="brief-nav-note">Same LAKA campaign in an agency lens with client-facing explainability, proof receipts, and rollout controls.</p>
-                    </button>
-                </div>
-                <div class="brief-actions-row">
-                    <button class="path-btn" data-brief-open="A" type="button">open full brief (brand)</button>
-                    <button class="path-btn" data-brief-open="B" type="button">open full brief (agency)</button>
-                </div>
-                <p class="sample-disclaimer">Illustrative benchmark ranges for planning; final performance varies by creative quality, offer, and media setup.</p>
+            <section>
+              <h4>Do-Not-Shoot Index</h4>
+              <ul>
+                <li>Hook delay over 1.5s in first scene</li>
+                <li>Claim stack without proof anchor</li>
+                <li>Format saturation in active lane</li>
+              </ul>
             </section>
-
-            <div class="brief-popup" id="briefPopup" aria-hidden="true">
-                <div class="brief-popup-content" role="dialog" aria-modal="true" aria-labelledby="briefPopupTitle">
-                    <div class="brief-popup-header">
-                        <p class="brief-popup-kicker" id="briefPopupKicker">Brief</p>
-                        <h3 class="brief-popup-title" id="briefPopupTitle">Campaign Brief</h3>
-                        <button class="brief-popup-close" id="briefPopupClose" type="button" aria-label="Close brief">&times;</button>
-                    </div>
-                    <div class="brief-popup-body" id="briefPopupBody"></div>
-                </div>
-            </div>
-
-            <template id="briefTemplateA">
-                <div class="brief-sheet">
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">1) Campaign Snapshot (Decision-ready)</h3>
-                        <p><strong>Client and product:</strong> LAKA Fruity Glam Tint for US paid launch.</p>
-                        <p><strong>Goal:</strong> 15 concepts in 21 days to produce 3 scalable winners.</p>
-                        <p><strong>KPI stack:</strong> save rate, hold rate, and thumbstop first. CTR to PDP, ATC, and CPA as guardrails.</p>
-                        <p><strong>Hard constraints:</strong> proof in first 2 seconds, low ad-feel pacing, shade labels on screen, no clinical overclaims, and 30 second max runtime.</p>
-                        <p><strong>Operating rule:</strong> the first 3 to 6 seconds must establish proof structure or performance compresses fast.</p>
-                        <div class="brief-metric-row">
-                            <span class="brief-pill">Window: 21 days</span>
-                            <span class="brief-pill">Concepts: 15</span>
-                            <span class="brief-pill">Target: 3 winners</span>
-                            <span class="brief-pill">Platform: TikTok first</span>
-                        </div>
-                    </section>
-
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">2) Market Mechanism</h3>
-                        <p>This campaign is selling a copyable result loop, not only a product feature list.</p>
-                        <ul class="concept-list">
-                            <li><strong>What people save:</strong> recipe-style lips with clear shade mapping.</li>
-                            <li><strong>Main friction:</strong> sticky feel, drying fear, uneven fade, and shade mismatch.</li>
-                            <li><strong>US adaptation rule:</strong> use undertone language, not number-only shade naming.</li>
-                            <li><strong>Modeling flow:</strong> format -> proof loop -> friction answer -> creator fit -> iteration gate.</li>
-                        </ul>
-                    </section>
-
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">3) Evidence Inputs (Quant + Sentiment + Transfer)</h3>
-                        <div class="brief-snapshot-grid">
-                            <article class="brief-stat-card">
-                                <p class="brief-stat-label">Scan Window</p>
-                                <p class="brief-stat-value">72 hours</p>
-                                <p class="brief-stat-sub">Feb 18 to Feb 20, 2026</p>
-                            </article>
-                            <article class="brief-stat-card">
-                                <p class="brief-stat-label">Candidates</p>
-                                <p class="brief-stat-value">7,249</p>
-                                <p class="brief-stat-sub">Raw pattern candidates</p>
-                            </article>
-                            <article class="brief-stat-card">
-                                <p class="brief-stat-label">Selected</p>
-                                <p class="brief-stat-value">10</p>
-                                <p class="brief-stat-sub">Velocity validated signals</p>
-                            </article>
-                            <article class="brief-stat-card">
-                                <p class="brief-stat-label">Anchor Cluster</p>
-                                <p class="brief-stat-value">ck_615873096</p>
-                                <p class="brief-stat-sub">lipcombo (general)</p>
-                            </article>
-                        </div>
-                        <p><strong>Primary anchor proof:</strong> <a href="https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142" target="_blank" rel="noopener noreferrer">@adelaide_isabella</a> at 1,953,883 views with velocity_validated tag.</p>
-                        <p><strong>Input layers:</strong> quant signal velocity, synthetic sentiment model for friction explainability, and JP/KR to US transfer rules.</p>
-                        <p><strong>Public-safe disclaimer:</strong> sentiment examples are synthetic paraphrases and not direct comment quotes.</p>
-                        <details class="brief-quant-drop">
-                            <summary>See proof cluster links used for this brief</summary>
-                            <ul>
-                                <li><code>ck_615873096</code> lipcombo - <a href="https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142" target="_blank" rel="noopener noreferrer">@adelaide_isabella</a></li>
-                                <li><code>ck_1419652632</code> updated lip combo - <a href="https://www.tiktok.com/@gabbymccarthyyy/video/7608452758030650631" target="_blank" rel="noopener noreferrer">@gabbymccarthyyy</a></li>
-                                <li><code>ck_84937765</code> lip combo heads turning - <a href="https://www.tiktok.com/@jadenfamilo/video/7608263635655200031" target="_blank" rel="noopener noreferrer">@jadenfamilo</a></li>
-                                <li><code>ck_871832671</code> random lip combo nyx - <a href="https://www.tiktok.com/@glambyaddie/video/7608062548331564318" target="_blank" rel="noopener noreferrer">@glambyaddie</a></li>
-                                <li><code>ck_1692649478</code> lips comparison - <a href="https://www.tiktok.com/@carlyrivlin/video/7608304910160956703" target="_blank" rel="noopener noreferrer">@carlyrivlin</a></li>
-                                <li><code>ck_1828427312</code> lipliner - <a href="https://www.tiktok.com/@sabrinahobeauty/video/7608323902896442642" target="_blank" rel="noopener noreferrer">@sabrinahobeauty</a></li>
-                            </ul>
-                        </details>
-                    </section>
-
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">4) Big Bets Portfolio (Ranked)</h3>
-                        <p>Illustrative benchmark ranges for planning. Final performance varies by creative quality, offer, and media setup.</p>
-                        <article class="brief-solution-card">
-                            <h4>Big Bet #1: Lip Combo Recipe</h4>
-                            <div class="brief-metric-row">
-                                <span class="brief-pill">Confidence: 9.6/10</span>
-                                <span class="brief-pill">Week 1</span>
-                                <span class="brief-pill">3.5-5.0% CTR</span>
-                            </div>
-                            <p><strong>Objective:</strong> maximize saves and "which shade?" comments as purchase intent proxy.</p>
-                            <p><strong>Execution spec:</strong> 0.0 to 1.2s finished lips and hook, 1.2 to 6s recipe steps, 6 to 14s undertone mapping, 14 to 18s proof close and CTA.</p>
-                            <p><strong>Variants:</strong> neutral MLBB, berry gloss stain, warm brown-pink, and two-tone gradient.</p>
-                            <p><strong>Why it should work:</strong> repeatable structure across multiple posts and creators, not a one-off outlier.</p>
-                            <ul class="concept-list">
-                                <li><strong>Extracted hook:</strong> "people keep asking what is on my lips" paired with immediate result close-up.</li>
-                                <li><strong>Lighting profile:</strong> soft daylight or window-side neutral light. Avoid high-contrast studio glam.</li>
-                                <li><strong>Camera profile:</strong> front camera close-up for hook, then handheld mid-shot for steps.</li>
-                                <li><strong>Editing profile:</strong> quick cut pacing, label overlays, no heavy transitions.</li>
-                                <li><strong>If variable:</strong> default to primary @adelaide_isabella production profile.</li>
-                            </ul>
-                            <p><strong>Real example:</strong> <a href="https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142" target="_blank" rel="noopener noreferrer">@adelaide_isabella proof clip</a></p>
-                            <details class="brief-quant-drop">
-                                <summary>Explainability: quant rationale</summary>
-                                <ul>
-                                    <li>Anchor post hit 1,953,883 views in this scan set.</li>
-                                    <li>Cluster marked velocity_validated in current 72h selection flow.</li>
-                                    <li>Step-labeled recipe hooks show stronger save behavior than reveal-only hooks.</li>
-                                    <li><strong>Failure mode:</strong> low hold when intro delays the result frame.</li>
-                                    <li><strong>Fix:</strong> swap to final-lips first frame and jump-cut the step sequence.</li>
-                                </ul>
-                            </details>
-                        </article>
-                        <article class="brief-solution-card">
-                            <h4>Big Bet #2: Non-Sticky Texture and Transfer Proof</h4>
-                            <div class="brief-metric-row">
-                                <span class="brief-pill">Confidence: 9.1/10</span>
-                                <span class="brief-pill">Week 1-2</span>
-                                <span class="brief-pill">7-9% ER</span>
-                            </div>
-                            <p><strong>Objective:</strong> kill the comfort objection early.</p>
-                            <p><strong>Why it wins:</strong> comfort skepticism is a major blocker in glossy tint conversion.</p>
-                            <p><strong>Execution spec:</strong> 0 to 1s macro setup, 1 to 4s tap test, 4 to 8s hair or cup test, 8 to 14s simple comfort claim and CTA.</p>
-                            <p><strong>Execution rules:</strong> one tactile proof beat per video, no clinical overclaims, no stacked CTAs.</p>
-                            <p><strong>Variants:</strong> tap test, hair test, cup test, and one-take texture proof.</p>
-                            <ul class="concept-list">
-                                <li><strong>Extracted hook:</strong> tactile claim at second one, such as "not sticky" or "no transfer."</li>
-                                <li><strong>Lighting profile:</strong> even bathroom or vanity light that shows texture honestly.</li>
-                                <li><strong>Camera profile:</strong> macro lip pass, then static framing for tactile test beat.</li>
-                                <li><strong>Editing profile:</strong> one proof beat only, then short method and CTA.</li>
-                                <li><strong>If variable:</strong> keep shot order from primary proof and change only hook text.</li>
-                            </ul>
-                            <p><strong>Real example:</strong> <a href="https://www.tiktok.com/@jadenfamilo/video/7608263635655200031" target="_blank" rel="noopener noreferrer">@jadenfamilo proof clip</a></p>
-                            <details class="brief-quant-drop">
-                                <summary>Sentiment and failure handling</summary>
-                                <ul>
-                                    <li><strong>Likely objections:</strong> "that test is fake" or "looks filtered."</li>
-                                    <li><strong>Failure mode:</strong> trust drops when edits hide tactile behavior.</li>
-                                    <li><strong>Fix:</strong> use one-take daylight proof with no cut during the test beat.</li>
-                                </ul>
-                            </details>
-                        </article>
-                        <article class="brief-solution-card">
-                            <h4>Big Bet #3: Undertone Shade Finder</h4>
-                            <div class="brief-metric-row">
-                                <span class="brief-pill">Confidence: 8.7/10</span>
-                                <span class="brief-pill">Week 2</span>
-                                <span class="brief-pill">Comment intent focus</span>
-                            </div>
-                            <p><strong>Objective:</strong> resolve shade confusion quickly.</p>
-                            <p><strong>Why it wins:</strong> shade confusion is a common return and regret driver.</p>
-                            <p><strong>Execution spec:</strong> 0 to 2s mismatch hook, 2 to 8s three undertone buckets, 8 to 14s pigmented-lip guidance and CTA.</p>
-                            <p><strong>Execution rules:</strong> undertone rule in first 5 to 7 seconds, show 3 shades only, force self-identification in CTA.</p>
-                            <p><strong>Variants:</strong> warm, cool, neutral branches plus pigmented-lip adaptation.</p>
-                            <ul class="concept-list">
-                                <li><strong>Extracted hook:</strong> direct identity call-out, for example "warm undertone, use this."</li>
-                                <li><strong>Lighting profile:</strong> consistent neutral daylight so undertone is readable.</li>
-                                <li><strong>Camera profile:</strong> split-screen or sequential swatch-to-lip cut with stable framing.</li>
-                                <li><strong>If variable:</strong> keep primary label style and only rotate shade set.</li>
-                            </ul>
-                            <p><strong>Real example:</strong> <a href="https://www.tiktok.com/@glambyaddie/video/7608062548331564318" target="_blank" rel="noopener noreferrer">@glambyaddie undertone-style clip</a></p>
-                            <details class="brief-quant-drop">
-                                <summary>Sentiment and failure handling</summary>
-                                <ul>
-                                    <li><strong>Likely objections:</strong> "this shade never looks like that on me."</li>
-                                    <li><strong>Failure mode:</strong> comments skew to mismatch when shade labels are vague.</li>
-                                    <li><strong>Fix:</strong> add undertone labels and pigmented-lip variant in next test cycle.</li>
-                                </ul>
-                            </details>
-                        </article>
-                        <article class="brief-solution-card">
-                            <h4>Big Bet #4: Controlled Comparison Hook</h4>
-                            <div class="brief-metric-row">
-                                <span class="brief-pill">Confidence: 7.8/10</span>
-                                <span class="brief-pill">Selective use</span>
-                                <span class="brief-pill">Finish and feel only</span>
-                            </div>
-                            <p><strong>Objective:</strong> add clarity without triggering brand-war tone.</p>
-                            <p><strong>Why it wins:</strong> comparison can anchor value quickly when it stays on finish and feel.</p>
-                            <p><strong>Execution spec:</strong> one short comparison frame, then immediate proof sequence and single CTA.</p>
-                            <p><strong>Execution rules:</strong> compare finish and feel, never compare brands directly.</p>
-                            <p><strong>Variants:</strong> gloss vs tint vs stain, or finish longevity check.</p>
-                            <ul class="concept-list">
-                                <li><strong>Extracted hook:</strong> "finish difference in 10 seconds" not "brand x vs brand y."</li>
-                                <li><strong>Lighting profile:</strong> matched lighting for both comparison states.</li>
-                                <li><strong>Camera profile:</strong> static split or same-angle A/B cut to avoid perceived manipulation.</li>
-                                <li><strong>If variable:</strong> anchor framing to primary comparison example and keep copy neutral.</li>
-                            </ul>
-                            <p><strong>Real example:</strong> <a href="https://www.tiktok.com/@carlyrivlin/video/7608304910160956703" target="_blank" rel="noopener noreferrer">@carlyrivlin comparison clip</a></p>
-                            <details class="brief-quant-drop">
-                                <summary>Sentiment and failure handling</summary>
-                                <ul>
-                                    <li><strong>Likely risk:</strong> debate threads if it reads as brand fight content.</li>
-                                    <li><strong>Failure mode:</strong> ad-like framing causes sponsorship skepticism.</li>
-                                    <li><strong>Fix:</strong> use neutral product-behavior framing and pivot back to single-product proof if needed.</li>
-                                </ul>
-                            </details>
-                        </article>
-                        <article class="brief-solution-card">
-                            <h4>Big Bet #5: Wear and Fade Pattern</h4>
-                            <div class="brief-metric-row">
-                                <span class="brief-pill">Confidence: 8.4/10</span>
-                                <span class="brief-pill">Trust asset</span>
-                                <span class="brief-pill">Week 2 build</span>
-                            </div>
-                            <p><strong>Objective:</strong> show how tint behaves over time, not just at first application.</p>
-                            <p><strong>Why it wins:</strong> buyers care about fade quality and reapply behavior before purchase.</p>
-                            <p><strong>Execution spec:</strong> 0 to 2s "hours later" hook, 2 to 6s fresh vs later split, 6 to 10s edge close-up, 10 to 14s reapply pass.</p>
-                            <ul class="concept-list">
-                                <li><strong>Extracted hook:</strong> "4 hours later, here is the fade pattern."</li>
-                                <li><strong>Lighting profile:</strong> same location and exposure for before/after frames.</li>
-                                <li><strong>Camera profile:</strong> matched lip framing to make the fade readable.</li>
-                                <li><strong>If variable:</strong> keep timestamp overlays and no-beauty-filter framing.</li>
-                            </ul>
-                            <p><strong>Real example:</strong> <a href="https://www.tiktok.com/@gabbymccarthyyy/video/7608452758030650631" target="_blank" rel="noopener noreferrer">@gabbymccarthyyy update-style clip</a></p>
-                            <details class="brief-quant-drop">
-                                <summary>Sentiment and failure handling</summary>
-                                <ul>
-                                    <li><strong>Likely objections:</strong> uneven fade, dry-patch cling, short wear claims.</li>
-                                    <li><strong>Failure mode:</strong> deception comments if timestamp and lighting are inconsistent.</li>
-                                    <li><strong>Fix:</strong> timestamp overlay, daylight checks, and one reapply demonstration.</li>
-                                </ul>
-                            </details>
-                        </article>
-                    </section>
-
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">Evidence Layer: Cross-Market Transfer (JP/KR -> US)</h3>
-                        <ul>
-                            <li><strong>Transfer sequencing, not polish:</strong> keep shot order and proof beats, avoid polished ad look.</li>
-                            <li><strong>Translate shade language:</strong> JP/KR number style becomes US undertone style.</li>
-                            <li><strong>Keep universal proof order:</strong> result, proof beat, steps, payoff, CTA.</li>
-                        </ul>
-                        <p><strong>US adaptation call:</strong> open with finished result and specific claim, not brand intro.</p>
-                    </section>
-
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">Evidence Layer: Synthetic Sentiment (Demo Safe)</h3>
-                        <p>This layer is synthetic and representative. It is included for explainability in public-facing materials.</p>
-                        <div class="brief-metric-row">
-                            <span class="brief-pill">Positive intent: 46%</span>
-                            <span class="brief-pill">Curious neutral: 34%</span>
-                            <span class="brief-pill">Skeptical: 15%</span>
-                            <span class="brief-pill">Negative: 5%</span>
-                        </div>
-                        <details class="brief-quant-drop">
-                            <summary>Top friction themes and what to answer in first 10 seconds</summary>
-                            <ul>
-                                <li>Shade confusion: "which undertone fits me?"</li>
-                                <li>Comfort and transfer: "is it sticky or messy?"</li>
-                                <li>Fade pattern: "does gloss fade while tint stays?"</li>
-                                <li>Ad-feel detection: "this looks filtered or scripted."</li>
-                            </ul>
-                        </details>
-                    </section>
-
-                    <section class="brief-section brief-risk-box">
-                        <h3 class="brief-section-title">5) What Not To Shoot</h3>
-                        <article class="brief-risk-item">
-                            <p><strong>Luxury empties flex:</strong> estimated waste $2,400-$3,200 per concept, likely weak CTR around 1.0-1.8%.</p>
-                            <p><strong>Why it fails:</strong> affiliate or flex read on launch assets lowers trust.</p>
-                            <p><strong>Context:</strong> this format performs better for loyalty or restock narratives, not first-touch paid acquisition.</p>
-                            <p><strong>Failure pattern:</strong> comments shift from shade intent to sponsorship suspicion, which lowers click quality.</p>
-                            <p><strong>Replacement:</strong> Big Bet A with same budget.</p>
-                            <details class="brief-quant-drop">
-                                <summary>Explainability: quant rationale</summary>
-                                <ul>
-                                    <li>Low gate pass behavior in similar weak clusters.</li>
-                                    <li>Weak score totals align with early paid inefficiency.</li>
-                                </ul>
-                            </details>
-                        </article>
-                        <article class="brief-risk-item">
-                            <p><strong>Polished KR ad recreation:</strong> triggers ad-feel comments in US paid environments.</p>
-                            <p><strong>Context:</strong> KR polish mechanics can still be useful, but direct aesthetic carryover hurts US trust signals.</p>
-                            <p><strong>Failure pattern:</strong> viewers read the asset as brand ad before proof appears, which causes early hold drop.</p>
-                            <p><strong>Replacement:</strong> same sequence, but handheld UGC pacing and imperfect application.</p>
-                            <details class="brief-quant-drop">
-                                <summary>Explainability: qual rationale</summary>
-                                <ul>
-                                    <li>US paid viewers penalize assets that look pre-produced before value proof appears.</li>
-                                    <li>This pattern usually reduces hold before CTA and lowers click quality.</li>
-                                </ul>
-                            </details>
-                        </article>
-                        <article class="brief-risk-item">
-                            <p><strong>45-60 second GRWM opens:</strong> payoff is too late for paid distribution.</p>
-                            <p><strong>Context:</strong> GRWM can work for organic depth, but launch-phase paid requires immediate proof.</p>
-                            <p><strong>Failure pattern:</strong> first-hook dilution produces high skip before product value is established.</p>
-                            <p><strong>Replacement:</strong> compress to 15-22 seconds with payoff first.</p>
-                            <details class="brief-quant-drop">
-                                <summary>Explainability: timing rationale</summary>
-                                <ul>
-                                    <li>Late payoffs reduce usable watch depth in paid delivery windows.</li>
-                                    <li>Compressed proof-first edits preserve more qualified viewers for CTA steps.</li>
-                                </ul>
-                            </details>
-                        </article>
-                    </section>
-
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">6) Creator Shortlist by Function</h3>
-                        <p>Each creator is mapped to execution function, not follower count. Tier labels reflect role fit for this campaign.</p>
-                        <div class="creator-list-grid">
-                            <article class="creator-card">
-                                <p><span class="creator-type-pill">Tier A</span> <a href="https://www.tiktok.com/@adelaide_isabella" target="_blank" rel="noopener noreferrer">@adelaide_isabella</a></p>
-                                <p>Best fit: combo mechanic anchor and recipe utility lane.</p>
-                                <p><a href="https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
-                            </article>
-                            <article class="creator-card">
-                                <p><span class="creator-type-pill">Tier B</span> <a href="https://www.tiktok.com/@glambyaddie" target="_blank" rel="noopener noreferrer">@glambyaddie</a></p>
-                                <p>Best fit: undertone explainer lane.</p>
-                                <p><a href="https://www.tiktok.com/@glambyaddie/video/7608062548331564318" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
-                            </article>
-                            <article class="creator-card">
-                                <p><span class="creator-type-pill">Tier C</span> <a href="https://www.tiktok.com/@gabbymccarthyyy" target="_blank" rel="noopener noreferrer">@gabbymccarthyyy</a></p>
-                                <p>Best fit: updated combo trust framing.</p>
-                                <p><a href="https://www.tiktok.com/@gabbymccarthyyy/video/7608452758030650631" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
-                            </article>
-                            <article class="creator-card">
-                                <p><span class="creator-type-pill">Tier C</span> <a href="https://www.tiktok.com/@jadenfamilo" target="_blank" rel="noopener noreferrer">@jadenfamilo</a></p>
-                                <p>Best fit: emotional social proof hook.</p>
-                                <p><a href="https://www.tiktok.com/@jadenfamilo/video/7608263635655200031" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
-                            </article>
-                            <article class="creator-card">
-                                <p><span class="creator-type-pill">Tier C</span> <a href="https://www.tiktok.com/@carlyrivlin" target="_blank" rel="noopener noreferrer">@carlyrivlin</a></p>
-                                <p>Best fit: controlled finish comparison.</p>
-                                <p><a href="https://www.tiktok.com/@carlyrivlin/video/7608304910160956703" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
-                            </article>
-                            <article class="creator-card">
-                                <p><span class="creator-type-pill">Tier C</span> <a href="https://www.tiktok.com/@sabrinahobeauty" target="_blank" rel="noopener noreferrer">@sabrinahobeauty</a></p>
-                                <p>Best fit: liner structure clarity.</p>
-                                <p><a href="https://www.tiktok.com/@sabrinahobeauty/video/7608323902896442642" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
-                            </article>
-                            <article class="creator-card">
-                                <p><span class="creator-type-pill">Tier B</span> <a href="https://www.tiktok.com/@roseandben" target="_blank" rel="noopener noreferrer">@roseandben</a></p>
-                                <p>Best fit: trust-first tutorial cadence with clear application instructions.</p>
-                                <p><a href="https://www.tiktok.com/@roseandben/video/7607911454565534990" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
-                            </article>
-                            <article class="creator-card">
-                                <p><span class="creator-type-pill">Tier C</span> <a href="https://www.tiktok.com/@zainazaytoona" target="_blank" rel="noopener noreferrer">@zainazaytoona</a></p>
-                                <p>Best fit: fast lip result framing for repeatable utility edits.</p>
-                                <p><a href="https://www.tiktok.com/@zainazaytoona/video/7608262235831520542" target="_blank" rel="noopener noreferrer">Proof clip</a></p>
-                            </article>
-                        </div>
-                        <details class="brief-quant-drop">
-                            <summary>Assignment guidance by creator lane</summary>
-                            <ul>
-                                <li>Tier A handles recipe utility and undertone mapping first.</li>
-                                <li>Tier B handles trust-heavy proof formats and fade checks.</li>
-                                <li>Tier C expands volume once the winning format structure is clear.</li>
-                            </ul>
-                        </details>
-                    </section>
-
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">7) Failure Tree (First 48h)</h3>
-                        <ul class="concept-list">
-                            <li><strong>A. CTR low:</strong> hook is too slow or non-visual. Replace first frame with final lips plus utility text.</li>
-                            <li><strong>B. CTR okay but hold drops at 2 to 4 seconds:</strong> proof density is too weak. Move tactile beat earlier and cut dead air.</li>
-                            <li><strong>C. Hold okay but saves low:</strong> format is not copyable enough. Add recipe labels and undertone branch map.</li>
-                            <li><strong>D. Negative comments trend up:</strong> objections were not answered early. Launch texture plus wear/fade proof in next cycle.</li>
-                        </ul>
-                        <details class="brief-quant-drop">
-                            <summary>Corrective sequence</summary>
-                            <ul>
-                                <li>Cycle 1: fix hook and proof order.</li>
-                                <li>Cycle 2: fix shade clarity and sentiment objections.</li>
-                                <li>Cycle 3: re-test with the same creator before replacing creator lane.</li>
-                            </ul>
-                        </details>
-                    </section>
-
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">8) Risk Register</h3>
-                        <div class="brief-week-grid">
-                            <article class="brief-week-card">
-                                <h4>Ad-feel risk</h4>
-                                <p><strong>Early indicator:</strong> "sponsored" comments appear before shade questions.</p>
-                                <p><strong>Mitigation:</strong> handheld framing, daylight, one-take proof, no brand monologue opening.</p>
-                            </article>
-                            <article class="brief-week-card">
-                                <h4>Shade trust gap</h4>
-                                <p><strong>Early indicator:</strong> "will not look like this on me" comment cluster.</p>
-                                <p><strong>Mitigation:</strong> undertone naming, pigmented-lip variants, and clearer branch labels.</p>
-                            </article>
-                            <article class="brief-week-card">
-                                <h4>Comfort skepticism</h4>
-                                <p><strong>Early indicator:</strong> sticky or drying objections outnumber purchase-intent comments.</p>
-                                <p><strong>Mitigation:</strong> texture and transfer proof within first 10 seconds.</p>
-                            </article>
-                            <article class="brief-week-card">
-                                <h4>Saturation timing</h4>
-                                <p><strong>Early indicator:</strong> high replication density with weak differentiation.</p>
-                                <p><strong>Mitigation:</strong> rotate hook angle toward undertone picker or fade-pattern utility.</p>
-                            </article>
-                        </div>
-                    </section>
-
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">9) 21-Day Production + Test Plan</h3>
-                        <div class="brief-week-grid">
-                            <article class="brief-week-card">
-                                <h4>Week 1 (6 concepts)</h4>
-                                <p>3 lip-combo recipe variants, 2 texture tests, and 1 undertone finder.</p>
-                                <p><strong>Gate:</strong> keep assets that clear hook and hold thresholds by 48 hours.</p>
-                            </article>
-                            <article class="brief-week-card">
-                                <h4>Week 2 (6 concepts)</h4>
-                                <p>2 wear/fade assets, 2 faster recipe edits, and 2 pigmented-lip variants.</p>
-                                <p><strong>Goal:</strong> turn early winners into repeatable bundles across creators.</p>
-                            </article>
-                            <article class="brief-week-card">
-                                <h4>Week 3 (3 concepts)</h4>
-                                <p>2 winner replications with fresh creator faces plus 1 hybrid proof format.</p>
-                                <p><strong>Goal:</strong> lock 3 scalable winners for paid scale packaging.</p>
-                            </article>
-                        </div>
-                        <details class="brief-quant-drop">
-                            <summary>Proof receipts used in this brief</summary>
-                            <ul>
-                                <li><a href="https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142" target="_blank" rel="noopener noreferrer">@adelaide_isabella</a></li>
-                                <li><a href="https://www.tiktok.com/@gabbymccarthyyy/video/7608452758030650631" target="_blank" rel="noopener noreferrer">@gabbymccarthyyy</a></li>
-                                <li><a href="https://www.tiktok.com/@jadenfamilo/video/7608263635655200031" target="_blank" rel="noopener noreferrer">@jadenfamilo</a></li>
-                                <li><a href="https://www.tiktok.com/@glambyaddie/video/7608062548331564318" target="_blank" rel="noopener noreferrer">@glambyaddie</a></li>
-                                <li><a href="https://www.tiktok.com/@carlyrivlin/video/7608304910160956703" target="_blank" rel="noopener noreferrer">@carlyrivlin</a></li>
-                                <li><a href="https://www.tiktok.com/@zainazaytoona/video/7608262235831520542" target="_blank" rel="noopener noreferrer">@zainazaytoona</a></li>
-                            </ul>
-                        </details>
-                    </section>
-                </div>
-            </template>
-            <template id="briefTemplateB">
-                <div class="brief-sheet">
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">1) Campaign Snapshot (Agency Lens)</h3>
-                        <p><strong>Campaign:</strong> LAKA Fruity Glam Tint, US paid launch.</p>
-                        <p><strong>Audience:</strong> agency strategy and client services teams delivering a defendable decision pack.</p>
-                        <p><strong>Goal:</strong> 15 concepts in 21 days to lock 3 scalable winners with clear client-facing receipts.</p>
-                        <p><strong>Operating rule:</strong> first 3 to 6 seconds must show proof logic, not product intro.</p>
-                        <div class="brief-metric-row">
-                            <span class="brief-pill">Variant goal: agency delivery</span>
-                            <span class="brief-pill">As of: 2026-02-25 22:33 UTC</span>
-                            <span class="brief-pill">Window: 24h live snapshot</span>
-                            <span class="brief-pill">Market: US exploit</span>
-                        </div>
-                    </section>
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">2) Variant Contract and Measurement Surface</h3>
-                        <p>Brief A and Brief B are the same campaign with two delivery lenses. This version prioritizes client explainability and account-level execution controls.</p>
-                        <ul class="concept-list">
-                            <li><strong>Variant A:</strong> in-house decision speed and production constraints.</li>
-                            <li><strong>Variant B:</strong> agency narrative, receipts, and iteration governance.</li>
-                            <li><strong>Decision traceability:</strong> every recommendation must map to cluster, post receipt, and gate status.</li>
-                            <li><strong>Outcome status:</strong> final winner call remains pending until full ad platform exports are attached.</li>
-                        </ul>
-                        <details class="brief-quant-drop">
-                            <summary>A/B comparison fields used in this brief</summary>
-                            <ul>
-                                <li><strong>generated_at:</strong> 2026-02-25T22:33:25.781371+00:00 (US exploit bundle)</li>
-                                <li><strong>sss_config_version:</strong> v2_default</li>
-                                <li><strong>reception_config_version:</strong> synthetic sentiment only (external sentiment rows: 0)</li>
-                                <li><strong>clusters_selected_total:</strong> 10</li>
-                                <li><strong>clusters_selected_shoot:</strong> 0</li>
-                                <li><strong>clusters_selected_watch:</strong> 0</li>
-                                <li><strong>clusters_selected_do_not_shoot:</strong> 10</li>
-                                <li><strong>outcomes_summary:</strong> backtest primary conversion proxy avg 0.568 | secondary engagement avg 0.076 | backtest confidence avg 0.202 (n=210 rows)</li>
-                            </ul>
-                        </details>
-                    </section>
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">3) Evidence Inputs (Agency Explainability Layer)</h3>
-                        <div class="brief-snapshot-grid">
-                            <article class="brief-stat-card">
-                                <p class="brief-stat-label">US Exploit Scope</p>
-                                <p class="brief-stat-value">ID 7163</p>
-                                <p class="brief-stat-sub">as_of_ts: 2026-02-25T02:29:51Z</p>
-                            </article>
-                            <article class="brief-stat-card">
-                                <p class="brief-stat-label">US Brief Surface</p>
-                                <p class="brief-stat-value">342 -> 10</p>
-                                <p class="brief-stat-sub">es_briefs_count to es_selected_count</p>
-                            </article>
-                            <article class="brief-stat-card">
-                                <p class="brief-stat-label">US Verdict Mix</p>
-                                <p class="brief-stat-value">0 / 0 / 400</p>
-                                <p class="brief-stat-sub">shoot / watch / do_not_shoot rows</p>
-                            </article>
-                            <article class="brief-stat-card">
-                                <p class="brief-stat-label">US Rate Surface</p>
-                                <p class="brief-stat-value">Gate 4.8%</p>
-                                <p class="brief-stat-sub">avg gate_pass_rate_24h (velocity-valid avg: 54.4%)</p>
-                            </article>
-                            <article class="brief-stat-card">
-                                <p class="brief-stat-label">JP Transfer Scope</p>
-                                <p class="brief-stat-value">43 -> 12</p>
-                                <p class="brief-stat-sub">JP discovery briefs to selected set (scope 7178)</p>
-                            </article>
-                            <article class="brief-stat-card">
-                                <p class="brief-stat-label">Model Windows</p>
-                                <p class="brief-stat-value">24h + 3d/180d</p>
-                                <p class="brief-stat-sub">live snapshot + extended intelligence windows</p>
-                            </article>
-                        </div>
-                        <p><strong>Client-facing read:</strong> current US exploit stream is highly conservative (do-not-shoot heavy), so package activation is gated by proof-first execution and cross-market transfer from JP discovery winners.</p>
-                        <details class="brief-quant-drop">
-                            <summary>Top blocked clusters from US exploit bundle</summary>
-                            <ul>
-                                <li><code>ck_90232454</code> saie tower 28 beauty (general) | shootability_score 44.025 | signal_verdict do_not_shoot</li>
-                                <li><code>ck_585702908</code> kbeauty (tutorial) | shootability_score 43.654 | signal_verdict do_not_shoot</li>
-                                <li><code>ck_1287732395</code> makeuptutorials (tutorial) | shootability_score 42.454 | top post: <a href="https://www.tiktok.com/@tomtom_tran/video/7609386024820641046" target="_blank" rel="noopener noreferrer">@tomtom_tran</a></li>
-                            </ul>
-                        </details>
-                    </section>
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">4) What to Shoot (Client-ready Packages)</h3>
-                        <p>Illustrative benchmark ranges for planning. Final performance varies by creative quality, offer, and media setup.</p>
-                        <article class="brief-solution-card">
-                            <h4>Package 1: Lip Combo Recipe Engine</h4>
-                            <div class="brief-metric-row">
-                                <span class="brief-pill">Confidence: 9.6/10</span>
-                                <span class="brief-pill">Use in week 1</span>
-                                <span class="brief-pill">Receipt: ck_615873096</span>
-                            </div>
-                            <p><strong>Why client should buy this:</strong> utility format drives saves and shade-intent comments.</p>
-                            <p><strong>Execution objective:</strong> show final lips first, then labeled steps, then undertone mapping and CTA.</p>
-                            <p><strong>Primary reference:</strong> <a href="https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142" target="_blank" rel="noopener noreferrer">@adelaide_isabella</a></p>
-                        </article>
-                        <article class="brief-solution-card">
-                            <h4>Package 2: Texture and Comfort Proof</h4>
-                            <div class="brief-metric-row">
-                                <span class="brief-pill">Confidence: 9.1/10</span>
-                                <span class="brief-pill">Use in week 1-2</span>
-                                <span class="brief-pill">Focus: objection collapse</span>
-                            </div>
-                            <p><strong>Why client should buy this:</strong> removes sticky and transfer concerns before they block conversion.</p>
-                            <p><strong>Execution objective:</strong> run one tactile test per clip and keep proof in continuous framing.</p>
-                            <p><strong>Primary reference:</strong> <a href="https://www.tiktok.com/@jadenfamilo/video/7608263635655200031" target="_blank" rel="noopener noreferrer">@jadenfamilo</a></p>
-                        </article>
-                        <article class="brief-solution-card">
-                            <h4>Package 3: Undertone Picker</h4>
-                            <div class="brief-metric-row">
-                                <span class="brief-pill">Confidence: 8.7/10</span>
-                                <span class="brief-pill">Use in week 2</span>
-                                <span class="brief-pill">Focus: comment intent</span>
-                            </div>
-                            <p><strong>Why client should buy this:</strong> reduces shade mismatch risk and supports better conversion quality.</p>
-                            <p><strong>Execution objective:</strong> three undertone paths only, with pigmented-lip adaptation.</p>
-                            <p><strong>Primary reference:</strong> <a href="https://www.tiktok.com/@glambyaddie/video/7608062548331564318" target="_blank" rel="noopener noreferrer">@glambyaddie</a></p>
-                        </article>
-                    </section>
-                    <section class="brief-section brief-risk-box">
-                        <h3 class="brief-section-title">5) What Not to Shoot (With Explainability)</h3>
-                        <article class="brief-risk-item">
-                            <p><strong>Luxury empties flex:</strong> weak proof density and low copyability for paid launch creative.</p>
-                            <p><strong>Estimated waste:</strong> about $2,600 to $3,200 per concept after creator fee, media test, and team time.</p>
-                            <p><strong>Failure signal:</strong> hold drops before step sequence appears.</p>
-                            <p><strong>Replacement:</strong> Package 1 with immediate result frame.</p>
-                        </article>
-                        <article class="brief-risk-item">
-                            <p><strong>Over-polished ad recreation:</strong> raises ad-feel comments and reduces trust.</p>
-                            <p><strong>Estimated waste:</strong> about $2,400 to $3,000 per concept.</p>
-                            <p><strong>Failure signal:</strong> sponsored-style comments spike in first 24h.</p>
-                            <p><strong>Replacement:</strong> handheld proof pacing with neutral daylight.</p>
-                        </article>
-                        <article class="brief-risk-item">
-                            <p><strong>Long talking-head intros:</strong> delays payoff and weakens thumbstop rate.</p>
-                            <p><strong>Estimated waste:</strong> about $2,100 to $2,900 per concept.</p>
-                            <p><strong>Failure signal:</strong> early drop-off before first proof beat.</p>
-                            <p><strong>Replacement:</strong> jump-cut structure anchored to final-result hook.</p>
-                        </article>
-                    </section>
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">6) Creator Lanes for Agency Staffing</h3>
-                        <div class="creator-list-grid">
-                            <article class="creator-card">
-                                <p><span class="creator-type-pill">Early adopter</span> <a href="https://www.tiktok.com/@adelaide_isabella" target="_blank" rel="noopener noreferrer">@adelaide_isabella</a></p>
-                                <p>Recipe executor with strong save-loop mechanics.</p>
-                                <p><a href="https://www.tiktok.com/@adelaide_isabella/video/7607997239721594142" target="_blank" rel="noopener noreferrer">Primary proof clip</a></p>
-                            </article>
-                            <article class="creator-card">
-                                <p><span class="creator-type-pill">Fast mover</span> <a href="https://www.tiktok.com/@gabbymccarthyyy" target="_blank" rel="noopener noreferrer">@gabbymccarthyyy</a></p>
-                                <p>Strong update framing that supports paid remix cycles.</p>
-                                <p><a href="https://www.tiktok.com/@gabbymccarthyyy/video/7608452758030650631" target="_blank" rel="noopener noreferrer">Reference clip</a></p>
-                            </article>
-                            <article class="creator-card">
-                                <p><span class="creator-type-pill">Foundation</span> <a href="https://www.tiktok.com/@roseandben" target="_blank" rel="noopener noreferrer">@roseandben</a></p>
-                                <p>Instructional clarity for durable proof and application guidance.</p>
-                                <p><a href="https://www.tiktok.com/@roseandben/video/7607911454565534990" target="_blank" rel="noopener noreferrer">Reference clip</a></p>
-                            </article>
-                        </div>
-                    </section>
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">7) 48h Failure Tree for Account Teams</h3>
-                        <div class="brief-week-grid">
-                            <article class="brief-week-card">
-                                <h4>A) CTR below target</h4>
-                                <p><strong>Likely issue:</strong> outcome not visible fast enough.</p>
-                                <p><strong>Fix:</strong> replace first frame with final result and shorter hook copy.</p>
-                            </article>
-                            <article class="brief-week-card">
-                                <h4>B) Hold drops at 2-4s</h4>
-                                <p><strong>Likely issue:</strong> proof density too low.</p>
-                                <p><strong>Fix:</strong> move tactile proof beat earlier and remove filler transitions.</p>
-                            </article>
-                            <article class="brief-week-card">
-                                <h4>C) Saves low despite hold</h4>
-                                <p><strong>Likely issue:</strong> format is not copy-ready.</p>
-                                <p><strong>Fix:</strong> add explicit recipe card and undertone labels.</p>
-                            </article>
-                            <article class="brief-week-card">
-                                <h4>D) Negative comments rise</h4>
-                                <p><strong>Likely issue:</strong> objections were not answered on screen.</p>
-                                <p><strong>Fix:</strong> ship texture proof and fade-pattern variant in next batch.</p>
-                            </article>
-                        </div>
-                    </section>
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">8) Agency Risk Register (Client Comms)</h3>
-                        <div class="brief-week-grid">
-                            <article class="brief-week-card">
-                                <h4>Signal concentration risk</h4>
-                                <p><strong>Observed:</strong> US exploit verdict mix is currently 100% do_not_shoot (400/400 rows).</p>
-                                <p><strong>Mitigation:</strong> run package activation only when proof-first criteria and transfer checks are both satisfied.</p>
-                            </article>
-                            <article class="brief-week-card">
-                                <h4>Sentiment data coverage risk</h4>
-                                <p><strong>Observed:</strong> external sentiment rows are 0 in this bundle.</p>
-                                <p><strong>Mitigation:</strong> treat sentiment calls as synthetic and mark confidence tier in client deck.</p>
-                            </article>
-                            <article class="brief-week-card">
-                                <h4>Backtest confidence risk</h4>
-                                <p><strong>Observed:</strong> avg backtest confidence is 0.202 across 210 output rows.</p>
-                                <p><strong>Mitigation:</strong> keep spend guardrails tight and require 48h gate pass before scale.</p>
-                            </article>
-                        </div>
-                    </section>
-                    <section class="brief-section">
-                        <h3 class="brief-section-title">9) Delivery and Pending Outcome State</h3>
-                        <p><strong>Delivery package:</strong> concept slate, creator mapping, kill rules, and client readout deck notes.</p>
-                        <p><strong>Pending state:</strong> final A vs B winner call remains pending until ad-platform exports are attached.</p>
-                        <details class="brief-quant-drop">
-                            <summary>Evidence receipt table (client appendix, populated)</summary>
-                            <ul>
-                                <li>C001 | US exploit | verdict surface | 400 rows (shoot: 0 | watch: 0 | do_not_shoot: 400)</li>
-                                <li>C002 | US exploit scope 7163 | selection funnel | es_briefs_count: 342 -> es_selected_count: 10</li>
-                                <li>C003 | JP discovery scope 7178 | transfer monitor | es_briefs_count: 43 -> es_selected_count: 12</li>
-                                <li>C004 | US brief backtest output | KPI proxy surface | n=210 | primary avg: 0.568 | secondary avg: 0.076 | confidence avg: 0.202</li>
-                            </ul>
-                            <p>Each row ties a client statement to source bundle fields (scope id, timestamp, row counts, and metric aggregates).</p>
-                        </details>
-                    </section>
-                </div>
-            </template>
-
-
-            <section class="pricing-section" id="pricingSection">
-                <h2 class="section-title">Pricing</h2>
-                <p class="section-description">Paid creative modeling layer options for different testing volumes.</p>
-                <div class="pricing-grid">
-                    <article class="pricing-card">
-                        <p class="plan-label">Pilot</p>
-                        <p class="plan-price">$500</p>
-                        <p class="plan-sub">1 brief / 72h turnaround</p>
-                        <ul>
-                            <li>Full brief mapping</li>
-                            <li>What to shoot + do not shoot</li>
-                            <li>Creator examples + tactical notes</li>
-                            <li>Best for first engagement</li>
-                        </ul>
-                        <a class="pricing-cta" href="#contactSection">choose pilot</a>
-                    </article>
-                    <article class="pricing-card featured">
-                        <p class="plan-label">Retainer</p>
-                        <p class="plan-price">$1,300<span>/month</span></p>
-                        <p class="plan-sub">Up to 4 briefs / 48h turnaround</p>
-                        <ul>
-                            <li>Real analysis on your live guided campaigns</li>
-                            <li>Ongoing updates and re-iteration by performance</li>
-                            <li>Campaign performance mapped against existing DB baselines</li>
-                            <li>Priority turnaround for active testing teams</li>
-                        </ul>
-                        <a class="pricing-cta" href="#contactSection">choose retainer</a>
-                    </article>
-                    <article class="pricing-card">
-                        <p class="plan-label">Standalone</p>
-                        <p class="plan-price">$700</p>
-                        <p class="plan-sub">Per brief / 72h turnaround</p>
-                        <ul>
-                            <li>No monthly commitment</li>
-                            <li>Same core deliverable as retainer</li>
-                            <li>Flexible for sporadic campaigns</li>
-                            <li>Fallback for low-volume teams</li>
-                        </ul>
-                        <a class="pricing-cta" href="#contactSection">choose standalone</a>
-                    </article>
-                </div>
+            <section>
+              <h4>Failure Tree</h4>
+              <p>Weak hold rate -> wrong hook class -> replace with claim-forward open.</p>
             </section>
+          </div>
+        </div>
+      </section>
 
-                        <section class="supporting-evidence-section" id="supportingEvidenceSection">
-                <details class="fold-panel supporting-evidence-panel">
-                    <summary>Supporting evidence that feeds briefs</summary>
-                    <p class="section-description">Compact receipt view from the last 72 hours. This supports brief decisions and stays secondary on purpose.</p>
-                    <div class="scan-summary" id="scanSummary">
-                        <p class="scan-kicker">Live signal snapshot</p>
-                        <p class="scan-headline" id="scanHeadline">Fallback receipt surface is ready while live scan syncs.</p>
-                        <p class="scan-meta" id="scanMeta"></p>
-                        <p class="scan-disclaimer" id="scanDisclaimer">Snapshot disclaimer: based on the last 72 hours only.</p>
-                        <p class="scan-source" id="dataSourceIndicator">Data source: fallback receipts</p>
-                    </div>
-                    <div class="proof-tiles-grid" id="proofTiles">
-                        <div class="proof-tile">
-                            <div class="proof-tile-header">
-                                <span class="proof-label">Velocity Receipt</span>
-                                <span class="proof-timestamp">US exploit</span>
-                            </div>
-                            <h3 class="proof-title">Selection funnel receipts are attached</h3>
-                            <p class="proof-description">Scope 7163 mapped 342 brief rows to 10 selected decision rows for client review packaging.</p>
-                        </div>
-                        <div class="proof-tile">
-                            <div class="proof-tile-header">
-                                <span class="proof-label">Risk Receipt</span>
-                                <span class="proof-timestamp">US exploit</span>
-                            </div>
-                            <h3 class="proof-title">Current verdict mix is conservative</h3>
-                            <p class="proof-description">Latest bundle shows 0 shoot, 0 watch, 400 do-not-shoot rows, requiring proof-first gating before scale.</p>
-                        </div>
-                        <div class="proof-tile">
-                            <div class="proof-tile-header">
-                                <span class="proof-label">Transfer Receipt</span>
-                                <span class="proof-timestamp">JP discovery -> US</span>
-                            </div>
-                            <h3 class="proof-title">Cross-market transfer lane is active</h3>
-                            <p class="proof-description">JP discovery scope 7178 contributes transfer checks for US package decisions when local exploit is saturated.</p>
-                        </div>
-                    </div>
-                    <a class="spec-cta-link" href="signal-spec.html">how we score decisions</a>
-                </details>
-            </section>
-        </section>
+      <section class="proof-tiles" aria-labelledby="proof-title">
+        <div class="section-head">
+          <p class="kicker">Receipts</p>
+          <h2 id="proof-title">What proves the decision in under 20 seconds</h2>
+        </div>
+        <div class="tile-grid">
+          <article class="tile">
+            <h3>Rule: Hook Class Match</h3>
+            <p>High hold in first 2s when hook promise matches problem awareness stage.</p>
+          </article>
+          <article class="tile">
+            <h3>Rule: Proof Before Claim Stack</h3>
+            <p>Claims convert only when proof appears early, not after narrative drift.</p>
+          </article>
+          <article class="tile">
+            <h3>Rule: Decay Window Guardrail</h3>
+            <p>Formats past decay threshold are blocked from allocation even if prior winners.</p>
+          </article>
+          <article class="tile">
+            <h3>Rule: Saturation Collision</h3>
+            <p>Overused structure in same lane reduces incremental lift and raises spend tax.</p>
+          </article>
+          <article class="tile">
+            <h3>Rule: Reception Stability</h3>
+            <p>Volatile reception without directional consistency triggers watch mode, not greenlight.</p>
+          </article>
+          <article class="tile">
+            <h3>Rule: Constraint Compliance</h3>
+            <p>Concepts violating brand or claim constraints are denied regardless of momentum.</p>
+          </article>
+        </div>
+        <p class="hygiene-note">
+          Public proof is de-identified: no creator handles, no cluster IDs, no competitor links.
+        </p>
+      </section>
 
-                <section class="content-section secondary-section" id="frameworkSection" data-nosnippet hidden aria-hidden="true">
-            <div class="secondary-intro">
-                <p class="secondary-kicker">Previous work</p>
-                <h2 class="secondary-title">Diagnostics Archive</h2>
-                <p class="secondary-description">Systems automation and autopsy examples are intentionally kept out of the main landing flow.</p>
-                <p class="secondary-description">Use this only as a secondary reference when needed.</p>
-                <div class="hero-meta-row">
-                    <a class="hero-cta ghost" href="https://system1-phi.vercel.app/" target="_blank" rel="noopener noreferrer">Open Diagnostics Demo</a>
-                    <button class="secondary-toggle" id="hideAutopsyBtn" type="button">Hide Diagnostics</button>
-                </div>
+      <section class="outputs" aria-labelledby="outputs-title">
+        <div class="section-head">
+          <p class="kicker">Deliverables</p>
+          <h2 id="outputs-title">What you buy</h2>
+        </div>
+        <ul class="outputs-list">
+          <li><strong>Greenlight 3</strong> (ranked)</li>
+          <li><strong>Do-Not-Shoot Index</strong> (5 failure modes + replacements)</li>
+          <li><strong>Constraints</strong> (non-negotiables)</li>
+          <li><strong>Failure Tree</strong> (symptom -> failure mode -> fix)</li>
+          <li><strong>Receipts appendix</strong> (proof tiles)</li>
+        </ul>
+      </section>
+
+      <section class="enemy" aria-labelledby="enemy-title">
+        <div class="section-head">
+          <p class="kicker">Enemy</p>
+          <h2 id="enemy-title">What this replaces</h2>
+        </div>
+        <div class="enemy-grid">
+          <article class="enemy-card">
+            <h3>Creative Roulette</h3>
+            <p>Random concept selection with no pre-spend allocation logic.</p>
+          </article>
+          <article class="enemy-card">
+            <h3>Post-spend learning tax</h3>
+            <p>Paying media budget to discover obvious failure modes too late.</p>
+          </article>
+          <article class="enemy-card">
+            <h3>Meta-as-Allocator</h3>
+            <p>Letting platform delivery decide creative strategy after launch.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="sample" id="sample" aria-labelledby="sample-title">
+        <div class="section-head">
+          <p class="kicker">Sanitized Sample</p>
+          <h2 id="sample-title">Allocation Memo snapshot</h2>
+        </div>
+
+        <div class="sample-grid">
+          <article class="sample-card">
+            <h3>Greenlight 3</h3>
+            <ol>
+              <li>Problem-forward opener with concrete timeline cue</li>
+              <li>Before/after visual proof with single claim focus</li>
+              <li>UGC-style testimonial with hard constraint framing</li>
+            </ol>
+          </article>
+
+          <article class="sample-card">
+            <h3>Do-Not-Shoot Index</h3>
+            <ul>
+              <li>Weak first-frame pattern -> replace with direct contrast open</li>
+              <li>High saturation structure -> rotate into fresh layout variant</li>
+              <li>Claim without receipts -> pair claim with immediate proof tile</li>
+              <li>Narrative overrun -> cut to single-idea format</li>
+              <li>Constraint breach risk -> rewrite for compliance-safe proof</li>
+            </ul>
+          </article>
+
+          <article class="sample-card">
+            <h3>Failure Tree</h3>
+            <div class="tree-row">
+              <div class="tree-node">Symptom: drop in hold rate</div>
+              <div class="tree-node">Failure mode: mismatched hook class</div>
+              <div class="tree-node">Fix: swap to problem-proof open</div>
             </div>
-        </section>
-        <section class="contact-section" id="contactSection">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-links">
-                <a href="mailto:mohammed@setta.ca" class="contact-link" aria-label="Email Mohammed at mohammed@setta.ca">mohammed@setta.ca</a>
-                <span class="contact-separator">/</span>
-                <a href="https://github.com/mohamjad" target="_blank" class="contact-link">github</a>
-                <span class="contact-separator">/</span>
-                <a href="https://www.linkedin.com/in/mohamjad" target="_blank" class="contact-link">linkedin</a>
-            </div>
-        </section>
+          </article>
+        </div>
 
-        <footer class="site-footer">
-            <div class="footer-links">
-                <a class="footer-link" href="privacy.html">privacy</a>
-                <span class="contact-separator">/</span>
-                <a class="footer-link" href="terms.html">terms</a>
-                <span class="contact-separator">/</span>
-                <a class="footer-link" href="https://www.linkedin.com/in/mohamjad" target="_blank" rel="noopener noreferrer">linkedin</a>
-                <span class="contact-separator">/</span>
-                <a class="footer-link" href="https://github.com/mohamjad" target="_blank" rel="noopener noreferrer">github</a>
-                <span class="contact-separator">/</span>
-                <button class="footer-link footer-link-btn" id="openAutopsyFooter" type="button" data-nosnippet>previous work: diagnostics</button>
-            </div>
-            <p class="footer-copyright">Copyright 2026 Setta. All rights reserved.</p>
-        </footer>
-    </div>
+        <details class="method-collapsible">
+          <summary>Show method receipts (optional)</summary>
+          <p>Quant supports the call. It does not lead the page. Decisions remain front-and-center; receipts back each decision with momentum, decay, and reception signals.</p>
+        </details>
+      </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="data/setta_proof_tiles_v2.embedded.js"></script>
-    <script src="script.js"></script>
+      <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+        <div class="section-head">
+          <p class="kicker">Purchase</p>
+          <h2 id="pricing-title">Allocation Memo offers</h2>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card featured">
+            <p class="price">$500</p>
+            <h3>Allocation Memo (72h)</h3>
+            <p>Primary offer. One decision memo with Greenlight 3, Do-Not-Shoot Index, constraints, and failure tree.</p>
+            <a class="btn btn-primary" href="#intake" data-scroll>Buy Allocation Memo</a>
+          </article>
+
+          <article class="price-card">
+            <p class="price">$700</p>
+            <h3>Memo + Failure Tree Workshop</h3>
+            <p>Memo plus implementation session for production team and paid team handoff.</p>
+            <a class="btn btn-secondary" href="#intake" data-scroll>Request $700 Package</a>
+          </article>
+
+          <article class="price-card">
+            <p class="price">$1,300/mo</p>
+            <h3>Retainer (weekly)</h3>
+            <p>Weekly allocation memos, weekly proof tiles refresh, and rolling Do-Not-Shoot protection.</p>
+            <a class="btn btn-secondary" href="#intake" data-scroll>Start Retainer Intake</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="intake" id="intake" aria-labelledby="intake-title">
+        <div class="section-head">
+          <p class="kicker">Async Intake</p>
+          <h2 id="intake-title">Submit your brief inputs</h2>
+        </div>
+
+        <form id="intakeForm" class="intake-form">
+          <div class="form-grid">
+            <label>
+              Product
+              <input type="text" name="product" required />
+            </label>
+            <label>
+              Price Point
+              <input type="text" name="price_point" placeholder="e.g. $49" required />
+            </label>
+            <label class="span-2">
+              Hero Claim
+              <input type="text" name="hero_claim" required />
+            </label>
+            <label>
+              Objective
+              <input type="text" name="objective" placeholder="e.g. CPA drop, trial starts" required />
+            </label>
+            <label>
+              Spend Band
+              <select name="spend_band" required>
+                <option value="">Select</option>
+                <option value="0-10k">$0-$10k/mo</option>
+                <option value="10k-50k">$10k-$50k/mo</option>
+                <option value="50k-200k">$50k-$200k/mo</option>
+                <option value="200k+">$200k+/mo</option>
+              </select>
+            </label>
+            <label>
+              Timeline
+              <input type="text" name="timeline" placeholder="e.g. launch in 10 days" required />
+            </label>
+            <label class="span-2">
+              Constraints (claims, ad-feel, proof requirements)
+              <textarea name="constraints" rows="4" required></textarea>
+            </label>
+            <label>
+              Contact Email
+              <input type="email" name="contact_email" required />
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send Intake (Async)</button>
+          <p id="formStatus" class="form-status"></p>
+        </form>
+      </section>
+
+      <section class="not-this" aria-labelledby="not-this-title">
+        <div class="section-head">
+          <p class="kicker">Scope</p>
+          <h2 id="not-this-title">What this is not</h2>
+        </div>
+        <ul class="not-this-list">
+          <li>Not a full-service creative agency retainer by default</li>
+          <li>Not post-spend reporting sold as strategy</li>
+          <li>Not benchmark theater without allocation decisions</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Built and operated by Mohammed Amjad.</p>
+      <p><a href="mailto:mohammed@setta.ca">mohammed@setta.ca</a> | <a href="https://github.com/mohamjad" target="_blank" rel="noreferrer">github.com/mohamjad</a></p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
