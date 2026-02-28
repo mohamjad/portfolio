@@ -3,32 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Setta installs a pre-spend creative allocation layer for paid social. Buy an Allocation Memo with Greenlight 3, Do-Not-Shoot Index, Failure Tree, and proof receipts." />
-  <title>Setta | Pre-Spend Creative Allocation</title>
+  <meta name="description" content="Setta installs a pre-spend creative allocation layer for paid social. Get a free async intake and receive a decision-ready Allocation Memo." />
+  <title>Setta | Allocation Layer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="brand-block">
-        <span class="brand-name">SETTA</span>
-        <span class="brand-tag">Creative Allocation Layer</span>
-      </div>
-      <nav class="top-nav">
-        <a href="#sample">Sample</a>
+      <a class="brand" href="#top">SETTA</a>
+      <nav class="top-nav" aria-label="Primary">
+        <a href="#outputs">Outputs</a>
+        <a href="#proof">Proof</a>
         <a href="#pricing">Pricing</a>
-        <a href="#intake">Intake</a>
+        <a href="#intake">Free Intake</a>
       </nav>
     </header>
 
     <main>
       <section class="trusted-strip" aria-label="Trusted by">
-        <p class="trusted-label">
-          Trusted by 20+ <span class="trusted-rotate" id="trustedRotate">agencies</span>
-        </p>
+        <p class="trusted-label">Trusted by 20+ <span class="trusted-rotate" id="trustedRotate">agencies</span></p>
         <div class="trusted-scroll">
           <div class="trusted-track" id="trustedTrack"></div>
         </div>
@@ -36,181 +32,136 @@
 
       <section class="hero" id="top">
         <div class="hero-copy">
-          <p class="eyebrow">Allocation Memo, Not Creative Roulette</p>
+          <p class="eyebrow">Allocation Memo, not Creative Roulette</p>
           <h1>Pre-spend creative allocation for paid social.</h1>
-          <p class="subheadline">
-            We install a decision layer that decides what creative structures deserve capital before you shoot and spend.
-          </p>
+          <p class="subheadline">We decide what deserves budget before you shoot and spend.</p>
           <p class="support-line">
-            Deliverable: Allocation Memo: Greenlight 3, Do-Not-Shoot Index, constraints, and a failure tree - backed by momentum, decay, and reception receipts.
+            You get one Allocation Memo with Greenlight 3, Do-Not-Shoot Index, constraints, and a failure tree backed by proof receipts.
           </p>
 
           <div class="cta-row">
-            <a class="btn btn-primary" href="#pricing" data-scroll>Buy an Allocation Memo</a>
-            <a class="btn btn-secondary" href="#sample" data-scroll>View Sanitized Sample</a>
+            <a class="btn btn-primary" href="#intake" data-scroll>Start Free Async Intake</a>
+            <a class="btn btn-secondary" href="#proof" data-scroll>View Sanitized Proof</a>
           </div>
 
-          <p class="async-line">Async purchase. No kickoff call required.</p>
+          <p class="async-line">Free intake. Async. No kickoff call required.</p>
 
           <div class="audience-grid">
             <article class="audience-card">
-              <h3>For Brands</h3>
-              <p>Stop burning test budget on weak structures. Allocate spend into the 3 concepts with the best pre-spend signal strength.</p>
+              <h3>Brands</h3>
+              <p>Stop paying post-spend learning tax.</p>
             </article>
             <article class="audience-card">
-              <h3>For Agencies</h3>
-              <p>Ship strategic decisions with receipts. Replace subjective creative debate with memo-backed allocation calls clients can defend.</p>
+              <h3>Agencies</h3>
+              <p>Ship defensible creative decisions fast.</p>
             </article>
           </div>
         </div>
 
-        <div class="memo-panel" aria-label="Sanitized allocation memo preview">
-          <div class="memo-header">
-            <span>Allocation Memo</span>
-            <span>Sanitized</span>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orb-core">
+            <span>ALLOCATION</span>
+            <strong>MEMO</strong>
           </div>
-          <div class="memo-body">
-            <section>
-              <h4>Greenlight 3</h4>
-              <ol>
-                <li>Direct problem-first voiceover + hard visual contrast</li>
-                <li>Split-screen before/after sequence with constrained claim</li>
-                <li>Proof-led testimonial structure with timeline cue</li>
-              </ol>
-            </section>
-            <section>
-              <h4>Do-Not-Shoot Index</h4>
-              <ul>
-                <li>Hook delay over 1.5s in first scene</li>
-                <li>Claim stack without proof anchor</li>
-                <li>Format saturation in active lane</li>
-              </ul>
-            </section>
-            <section>
-              <h4>Failure Tree</h4>
-              <p>Weak hold rate -> wrong hook class -> replace with claim-forward open.</p>
-            </section>
-          </div>
+          <div class="orb-ring ring-a"></div>
+          <div class="orb-ring ring-b"></div>
+          <div class="visual-card card-a">Greenlight 3</div>
+          <div class="visual-card card-b">Do-Not-Shoot</div>
+          <div class="visual-card card-c">Failure Tree</div>
+          <div class="visual-card card-d">Proof Tiles</div>
         </div>
       </section>
 
-      <section class="proof-tiles" aria-labelledby="proof-title">
+      <section class="outputs" id="outputs" aria-labelledby="outputs-title">
+        <div class="section-head">
+          <p class="kicker">What you buy</p>
+          <h2 id="outputs-title">Decision outputs, not a long thesis</h2>
+        </div>
+
+        <div class="outputs-grid">
+          <article class="output-card">
+            <h3>Greenlight 3</h3>
+            <p>Three ranked structures to fund now.</p>
+          </article>
+          <article class="output-card">
+            <h3>Do-Not-Shoot Index</h3>
+            <p>Five failure modes plus replacements.</p>
+          </article>
+          <article class="output-card">
+            <h3>Constraints</h3>
+            <p>Non-negotiables for claim safety and ad-feel.</p>
+          </article>
+          <article class="output-card">
+            <h3>Failure Tree</h3>
+            <p>Symptom to failure mode to fix path.</p>
+          </article>
+          <article class="output-card">
+            <h3>Proof Tiles</h3>
+            <p>De-identified receipts for every call.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="proof" id="proof" aria-labelledby="proof-title">
         <div class="section-head">
           <p class="kicker">Receipts</p>
-          <h2 id="proof-title">What proves the decision in under 20 seconds</h2>
+          <h2 id="proof-title">Proof in 20 seconds</h2>
         </div>
+
         <div class="tile-grid">
           <article class="tile">
-            <h3>Rule: Hook Class Match</h3>
-            <p>High hold in first 2s when hook promise matches problem awareness stage.</p>
+            <h3>Hook class match</h3>
+            <p>Hold rises when promise matches awareness stage.</p>
           </article>
           <article class="tile">
-            <h3>Rule: Proof Before Claim Stack</h3>
-            <p>Claims convert only when proof appears early, not after narrative drift.</p>
+            <h3>Proof before claim</h3>
+            <p>Claims convert only with early proof anchor.</p>
           </article>
           <article class="tile">
-            <h3>Rule: Decay Window Guardrail</h3>
-            <p>Formats past decay threshold are blocked from allocation even if prior winners.</p>
+            <h3>Decay guardrail</h3>
+            <p>Old formats are blocked despite past wins.</p>
           </article>
           <article class="tile">
-            <h3>Rule: Saturation Collision</h3>
-            <p>Overused structure in same lane reduces incremental lift and raises spend tax.</p>
+            <h3>Saturation collision</h3>
+            <p>Overused structures lose incremental lift.</p>
           </article>
           <article class="tile">
-            <h3>Rule: Reception Stability</h3>
-            <p>Volatile reception without directional consistency triggers watch mode, not greenlight.</p>
+            <h3>Reception stability</h3>
+            <p>Volatility means watch, not greenlight.</p>
           </article>
           <article class="tile">
-            <h3>Rule: Constraint Compliance</h3>
-            <p>Concepts violating brand or claim constraints are denied regardless of momentum.</p>
+            <h3>Constraint compliance</h3>
+            <p>Rule breaches get denied regardless of momentum.</p>
           </article>
         </div>
-        <p class="hygiene-note">
-          Public proof is de-identified: no creator handles, no cluster IDs, no competitor links.
-        </p>
-      </section>
 
-      <section class="outputs" aria-labelledby="outputs-title">
-        <div class="section-head">
-          <p class="kicker">Deliverables</p>
-          <h2 id="outputs-title">What you buy</h2>
-        </div>
-        <ul class="outputs-list">
-          <li><strong>Greenlight 3</strong> (ranked)</li>
-          <li><strong>Do-Not-Shoot Index</strong> (5 failure modes + replacements)</li>
-          <li><strong>Constraints</strong> (non-negotiables)</li>
-          <li><strong>Failure Tree</strong> (symptom -> failure mode -> fix)</li>
-          <li><strong>Receipts appendix</strong> (proof tiles)</li>
-        </ul>
+        <p class="hygiene-note">Public proof is de-identified. No creator handles, cluster IDs, or competitor links.</p>
       </section>
 
       <section class="enemy" aria-labelledby="enemy-title">
         <div class="section-head">
-          <p class="kicker">Enemy</p>
+          <p class="kicker">Enemy framing</p>
           <h2 id="enemy-title">What this replaces</h2>
         </div>
         <div class="enemy-grid">
           <article class="enemy-card">
             <h3>Creative Roulette</h3>
-            <p>Random concept selection with no pre-spend allocation logic.</p>
+            <p>Random concept picks with no allocation logic.</p>
           </article>
           <article class="enemy-card">
             <h3>Post-spend learning tax</h3>
-            <p>Paying media budget to discover obvious failure modes too late.</p>
+            <p>Paying media spend to learn obvious failures.</p>
           </article>
           <article class="enemy-card">
             <h3>Meta-as-Allocator</h3>
-            <p>Letting platform delivery decide creative strategy after launch.</p>
+            <p>Letting delivery systems decide strategy.</p>
           </article>
         </div>
-      </section>
-
-      <section class="sample" id="sample" aria-labelledby="sample-title">
-        <div class="section-head">
-          <p class="kicker">Sanitized Sample</p>
-          <h2 id="sample-title">Allocation Memo snapshot</h2>
-        </div>
-
-        <div class="sample-grid">
-          <article class="sample-card">
-            <h3>Greenlight 3</h3>
-            <ol>
-              <li>Problem-forward opener with concrete timeline cue</li>
-              <li>Before/after visual proof with single claim focus</li>
-              <li>UGC-style testimonial with hard constraint framing</li>
-            </ol>
-          </article>
-
-          <article class="sample-card">
-            <h3>Do-Not-Shoot Index</h3>
-            <ul>
-              <li>Weak first-frame pattern -> replace with direct contrast open</li>
-              <li>High saturation structure -> rotate into fresh layout variant</li>
-              <li>Claim without receipts -> pair claim with immediate proof tile</li>
-              <li>Narrative overrun -> cut to single-idea format</li>
-              <li>Constraint breach risk -> rewrite for compliance-safe proof</li>
-            </ul>
-          </article>
-
-          <article class="sample-card">
-            <h3>Failure Tree</h3>
-            <div class="tree-row">
-              <div class="tree-node">Symptom: drop in hold rate</div>
-              <div class="tree-node">Failure mode: mismatched hook class</div>
-              <div class="tree-node">Fix: swap to problem-proof open</div>
-            </div>
-          </article>
-        </div>
-
-        <details class="method-collapsible">
-          <summary>Show method receipts (optional)</summary>
-          <p>Quant supports the call. It does not lead the page. Decisions remain front-and-center; receipts back each decision with momentum, decay, and reception signals.</p>
-        </details>
       </section>
 
       <section class="pricing" id="pricing" aria-labelledby="pricing-title">
         <div class="section-head">
-          <p class="kicker">Purchase</p>
+          <p class="kicker">Pricing</p>
           <h2 id="pricing-title">Allocation Memo offers</h2>
         </div>
 
@@ -218,30 +169,25 @@
           <article class="price-card featured">
             <p class="price">$500</p>
             <h3>Allocation Memo (72h)</h3>
-            <p>Primary offer. One decision memo with Greenlight 3, Do-Not-Shoot Index, constraints, and failure tree.</p>
-            <a class="btn btn-primary" href="#intake" data-scroll>Buy Allocation Memo</a>
+            <p>Primary offer with Greenlight 3, DNS index, constraints, and failure tree.</p>
           </article>
-
           <article class="price-card">
             <p class="price">$700</p>
             <h3>Memo + Failure Tree Workshop</h3>
-            <p>Memo plus implementation session for production team and paid team handoff.</p>
-            <a class="btn btn-secondary" href="#intake" data-scroll>Request $700 Package</a>
+            <p>Memo plus implementation handoff session.</p>
           </article>
-
           <article class="price-card">
             <p class="price">$1,300/mo</p>
             <h3>Retainer (weekly)</h3>
-            <p>Weekly allocation memos, weekly proof tiles refresh, and rolling Do-Not-Shoot protection.</p>
-            <a class="btn btn-secondary" href="#intake" data-scroll>Start Retainer Intake</a>
+            <p>Weekly memo refresh and rolling DNS protection.</p>
           </article>
         </div>
       </section>
 
       <section class="intake" id="intake" aria-labelledby="intake-title">
         <div class="section-head">
-          <p class="kicker">Async Intake</p>
-          <h2 id="intake-title">Submit your brief inputs</h2>
+          <p class="kicker">Free async intake</p>
+          <h2 id="intake-title">Zero-friction brief intake</h2>
         </div>
 
         <form id="intakeForm" class="intake-form">
@@ -251,19 +197,11 @@
               <input type="text" name="product" required />
             </label>
             <label>
-              Price Point
-              <input type="text" name="price_point" placeholder="e.g. $49" required />
-            </label>
-            <label class="span-2">
-              Hero Claim
-              <input type="text" name="hero_claim" required />
-            </label>
-            <label>
               Objective
-              <input type="text" name="objective" placeholder="e.g. CPA drop, trial starts" required />
+              <input type="text" name="objective" placeholder="e.g. lower CPA, more purchases" required />
             </label>
             <label>
-              Spend Band
+              Spend band
               <select name="spend_band" required>
                 <option value="">Select</option>
                 <option value="0-10k">$0-$10k/mo</option>
@@ -274,39 +212,31 @@
             </label>
             <label>
               Timeline
-              <input type="text" name="timeline" placeholder="e.g. launch in 10 days" required />
+              <input type="text" name="timeline" placeholder="e.g. launch in 10 days" />
             </label>
             <label class="span-2">
-              Constraints (claims, ad-feel, proof requirements)
-              <textarea name="constraints" rows="4" required></textarea>
+              Constraints (optional)
+              <textarea name="constraints" rows="3" placeholder="claims, ad-feel, proof requirements"></textarea>
             </label>
             <label>
-              Contact Email
+              Contact email
               <input type="email" name="contact_email" required />
             </label>
           </div>
 
-          <button type="submit" class="btn btn-primary">Send Intake (Async)</button>
+          <button type="submit" class="btn btn-primary">Submit Free Intake</button>
           <p id="formStatus" class="form-status"></p>
         </form>
-      </section>
-
-      <section class="not-this" aria-labelledby="not-this-title">
-        <div class="section-head">
-          <p class="kicker">Scope</p>
-          <h2 id="not-this-title">What this is not</h2>
-        </div>
-        <ul class="not-this-list">
-          <li>Not a full-service creative agency retainer by default</li>
-          <li>Not post-spend reporting sold as strategy</li>
-          <li>Not benchmark theater without allocation decisions</li>
-        </ul>
       </section>
     </main>
 
     <footer class="footer">
       <p>Built and operated by Mohammed Amjad.</p>
-      <p><a href="mailto:mohammed@setta.ca">mohammed@setta.ca</a> | <a href="https://github.com/mohamjad" target="_blank" rel="noreferrer">github.com/mohamjad</a></p>
+      <p>
+        <a href="mailto:mohammed@setta.ca">mohammed@setta.ca</a>
+        |
+        <a href="https://github.com/mohamjad" target="_blank" rel="noreferrer">github.com/mohamjad</a>
+      </p>
     </footer>
   </div>
 
