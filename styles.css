@@ -277,61 +277,10 @@ h1 span {
 }
 
 .trust-title {
-  margin: 0 0 0.72rem;
-  color: var(--text-mid);
+  margin: 0;
+  color: #d8e7ff;
   font-size: 1rem;
-}
-
-#trustedRotate {
-  color: #fff;
   font-weight: 700;
-  transition: opacity 170ms ease;
-}
-
-.logo-marquee {
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, #fff 8%, #fff 92%, transparent);
-}
-
-.logo-track {
-  display: flex;
-  align-items: center;
-  gap: 1.8rem;
-  width: max-content;
-  padding: 0.8rem 0;
-  animation: logoScroll 24s linear infinite;
-}
-
-.logo-item {
-  width: 140px;
-  height: 46px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.82;
-}
-
-.logo-item img {
-  max-width: 132px;
-  max-height: 34px;
-  object-fit: contain;
-  filter: brightness(1.12) saturate(0) contrast(1.08);
-}
-
-.logo-fallback {
-  display: none;
-  color: var(--text-low);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.logo-item.no-image img {
-  display: none;
-}
-
-.logo-item.no-image .logo-fallback {
-  display: inline;
 }
 
 .section {
@@ -369,6 +318,39 @@ h2 {
 .receipt-chips,
 .mini-metrics {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.memo-unit {
+  margin-top: 1.14rem;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 0.85rem;
+}
+
+.memo-visual {
+  margin: 0;
+  border: 1px solid var(--line);
+  background: rgba(11, 20, 42, 0.58);
+  padding: 0.7rem;
+}
+
+.memo-visual img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--line-soft);
+}
+
+.memo-visual figcaption {
+  margin-top: 0.56rem;
+  color: var(--text-mid);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.receipts-powered {
+  margin: 1.02rem 0 0;
+  color: var(--text-mid);
+  font-weight: 700;
 }
 
 .enemy-grid-dynamic .enemy-card-dynamic {
@@ -606,18 +588,20 @@ h2 {
 }
 
 .proof-card .decision {
-  margin-top: 0.55rem;
+  margin-top: 0;
   color: #fff;
   font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .proof-card .receipt {
-  margin-top: 0.4rem;
+  margin-top: 0.48rem;
 }
 
 .proof-card .constraint {
-  margin-top: 0.35rem;
+  margin-top: 0.4rem;
   font-size: 0.86rem;
+  color: #c8d8f5;
 }
 
 .metric-card strong {
@@ -643,6 +627,20 @@ h2 {
   color: #ffe156;
   font-size: 1.36rem;
   font-weight: 700;
+}
+
+.tier-cta {
+  display: inline-flex;
+  margin-top: 0.78rem;
+  min-height: 2.4rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.48rem 0.84rem;
+  border: 1px solid rgba(230, 239, 255, 0.34);
+  color: #f2f8ff;
+  font-weight: 700;
+  text-decoration: none;
+  background: rgba(12, 21, 43, 0.38);
 }
 
 .intake-form {
@@ -761,6 +759,10 @@ textarea:focus {
 }
 
 @media (max-width: 1180px) {
+  .memo-unit {
+    grid-template-columns: 1fr;
+  }
+
   .enemy-grid,
   .receipt-chips,
   .mini-metrics,
@@ -848,6 +850,7 @@ textarea:focus {
   }
 
   .form-grid,
+  .memo-unit,
   .enemy-grid,
   .receipt-chips,
   .mini-metrics,

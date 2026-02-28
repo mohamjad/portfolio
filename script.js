@@ -1,56 +1,41 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
   const scrollLinks = document.querySelectorAll("[data-scroll]");
-  const trustedRotate = document.getElementById("trustedRotate");
-  const trustedTrack = document.getElementById("trustedTrack");
   const proofGrid = document.getElementById("proofGrid");
   const enemyGrid = document.getElementById("enemyGrid");
   const dynamicBlocks = document.getElementById("dynamicBlocks");
   const intakeForm = document.getElementById("intakeForm");
   const formStatus = document.getElementById("formStatus");
 
-  const trustedWords = ["agencies", "brands", "creator teams", "performance teams"];
-  const trustedLogos = [
-    { name: "Partner 01", src: "assets/logos-white/1.png" },
-    { name: "Partner 02", src: "assets/logos-white/2.png" },
-    { name: "Partner 03", src: "assets/logos-white/3.png" },
-    { name: "Partner 04", src: "assets/logos-white/4.png" },
-    { name: "Partner 05", src: "assets/logos-white/5.png" },
-    { name: "Partner 06", src: "assets/logos-white/6.png" },
-    { name: "Partner 07", src: "assets/logos-white/7.png" },
-    { name: "Partner 08", src: "assets/logos-white/8.png" },
-    { name: "Partner 09", src: "assets/logos-white/9.png" },
-  ];
-
   const proofTiles = [
     {
-      decision: "Fund now",
-      why: "velocity up, decay low, reception clean",
-      constraint: "Keep proof segment in first 3 seconds",
+      decision: "Fund",
+      receipt: "velocity up, decay low, reception clean",
+      constraint: "proof appears within first 3 seconds",
     },
     {
       decision: "Hold",
-      why: "velocity stable, decay medium, reception mixed",
-      constraint: "Recapture one additional cycle before funding",
+      receipt: "velocity stable, decay medium, reception mixed",
+      constraint: "run one recapture cycle before spend",
     },
     {
-      decision: "Do not shoot",
-      why: "velocity flat, decay high, reception weak",
-      constraint: "Replace with problem-solution structure",
+      decision: "DNS",
+      receipt: "velocity flat, decay high, reception weak",
+      constraint: "replace with problem-solution structure",
     },
     {
-      decision: "Fund now",
-      why: "velocity up, decay low, reception clean",
-      constraint: "Preserve hook-to-proof ordering",
+      decision: "Fund",
+      receipt: "velocity up, decay low, reception clean",
+      constraint: "preserve hook-to-proof ordering",
     },
     {
       decision: "Hold",
-      why: "velocity rising, decay medium, reception uncertain",
-      constraint: "Requires transfer check before allocation",
+      receipt: "velocity rising, decay medium, reception uncertain",
+      constraint: "verify transfer before allocation",
     },
     {
-      decision: "Do not shoot",
-      why: "velocity down, decay high, reception unstable",
-      constraint: "Shift to alternate brief variant",
+      decision: "DNS",
+      receipt: "velocity down, decay high, reception unstable",
+      constraint: "shift to alternate brief variant",
     },
   ];
 
@@ -74,47 +59,14 @@
     formStatus.textContent = message;
   };
 
-  if (trustedRotate) {
-    let index = 0;
-    window.setInterval(() => {
-      index = (index + 1) % trustedWords.length;
-      trustedRotate.style.opacity = "0.25";
-      window.setTimeout(() => {
-        trustedRotate.textContent = trustedWords[index];
-        trustedRotate.style.opacity = "1";
-      }, 140);
-    }, 2200);
-  }
-
-  if (trustedTrack) {
-    const repeated = [...trustedLogos, ...trustedLogos, ...trustedLogos];
-    trustedTrack.innerHTML = repeated
-      .map(
-        (logo) => `
-          <span class="logo-item">
-            <img src="${logo.src}" alt="${logo.name} logo" loading="eager" decoding="async" />
-            <span class="logo-fallback">${logo.name}</span>
-          </span>
-        `
-      )
-      .join("");
-
-    trustedTrack.querySelectorAll("img").forEach((img) => {
-      img.addEventListener("error", () => {
-        const parent = img.closest(".logo-item");
-        if (parent) parent.classList.add("no-image");
-      });
-    });
-  }
-
   if (proofGrid) {
     proofGrid.innerHTML = proofTiles
       .map(
         (tile) => `
           <article class="proof-card">
-            <h3 class="decision">Decision: ${tile.decision}</h3>
-            <p class="receipt">Why: ${tile.why}</p>
-            <p class="constraint">Constraint: ${tile.constraint}</p>
+            <h3 class="decision">${tile.decision}</h3>
+            <p class="receipt">${tile.receipt}</p>
+            <p class="constraint">${tile.constraint}</p>
           </article>
         `
       )
@@ -127,6 +79,7 @@
       element.classList.add(className);
       return;
     }
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.some((entry) => entry.isIntersecting);
@@ -137,6 +90,7 @@
       },
       { threshold }
     );
+
     observer.observe(element);
   };
 
@@ -233,12 +187,11 @@
         "",
         `Product + claim: ${payload.get("product") || "n/a"}`,
         `Objective: ${payload.get("objective") || "n/a"}`,
-        `Spend band: ${payload.get("spend_band") || "n/a"}`,
         `Timeline: ${payload.get("timeline") || "n/a"}`,
-        `Service path: ${payload.get("engagement_preference") || "n/a"}`,
+        `Spend band: ${payload.get("spend_band") || "n/a"}`,
         `Constraints: ${payload.get("constraints") || "n/a"}`,
-        `Call notes: ${payload.get("call_notes") || "n/a"}`,
         `Contact email: ${payload.get("contact_email") || "n/a"}`,
+        `Call notes: ${payload.get("call_notes") || "n/a"}`,
       ].join("\n");
 
       window.location.href = `mailto:mohammed@setta.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
