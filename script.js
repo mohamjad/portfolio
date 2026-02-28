@@ -7,15 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const trustedWords = ["agencies", "brands", "creator teams", "performance teams"];
   const trustedLogos = [
-    { name: "Partner 01", src: "assets/logos/1.png" },
-    { name: "Partner 02", src: "assets/logos/2.png" },
-    { name: "Partner 03", src: "assets/logos/3.png" },
-    { name: "Partner 04", src: "assets/logos/4.png" },
-    { name: "Partner 05", src: "assets/logos/5.png" },
-    { name: "Partner 06", src: "assets/logos/6.png" },
-    { name: "Partner 07", src: "assets/logos/7.png" },
-    { name: "Partner 08", src: "assets/logos/8.png" },
-    { name: "Partner 09", src: "assets/logos/9.png" },
+    { name: "Setta", src: "assets/logos-white/10.png" },
+    { name: "Partner 01", src: "assets/logos-white/1.png" },
+    { name: "Partner 02", src: "assets/logos-white/2.png" },
+    { name: "Partner 03", src: "assets/logos-white/3.png" },
+    { name: "Partner 04", src: "assets/logos-white/4.png" },
+    { name: "Partner 05", src: "assets/logos-white/5.png" },
+    { name: "Partner 06", src: "assets/logos-white/6.png" },
+    { name: "Partner 07", src: "assets/logos-white/7.png" },
+    { name: "Partner 08", src: "assets/logos-white/8.png" },
+    { name: "Partner 09", src: "assets/logos-white/9.png" },
   ];
 
   if (trustedRotate) {
