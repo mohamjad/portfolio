@@ -314,11 +314,11 @@ h1 {
 
 .hero-art {
   position: absolute;
-  width: 300vw;
-  max-width: 275vh;
+  width: 205vw;
+  max-width: 220vh;
   height: auto;
-  left: calc(25vw + 50vw - 138vh);
-  top: -58vh;
+  left: calc(50% - 106vh);
+  top: -40vh;
   user-select: none;
   pointer-events: none;
   will-change: transform, opacity;
@@ -694,11 +694,11 @@ textarea:focus {
   }
 
   .hero-art {
-    width: 180vw;
+    width: 150vw;
     max-width: none;
-    left: 50%;
-    top: -26vh;
-    transform: translateX(-50%);
+    left: -20vw;
+    top: -14vh;
+    transform: none;
   }
 
   .hero-art-main {
@@ -747,8 +747,9 @@ textarea:focus {
   }
 
   .hero-art {
-    width: 220vw;
-    top: -18vh;
+    width: 185vw;
+    left: -38vw;
+    top: -10vh;
   }
 
   .trusted-item {
