@@ -28,71 +28,76 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const statBars = [
     {
-      value: 382944,
+      value: 400000,
       label: "POSTS INDEXED",
       height: 240,
       marginTop: 80,
       color: "#4cf59d",
+      format: "compact",
+      suffix: "+",
     },
     {
-      value: 41611851,
-      label: "REACH MODELED",
+      value: 210,
+      label: "CONCEPTS ALLOCATED",
       height: 240,
       marginTop: 180,
       color: "#62b7ff",
-      format: "compact",
+      suffix: "+",
     },
     {
-      value: 1284,
-      label: "FORCED RESHOOTS CUT",
+      value: 20,
+      label: "CLIENTS",
       height: 220,
       marginTop: 140,
       color: "#ffe156",
+      suffix: "+",
     },
     {
-      value: 27,
-      label: "AVG ALLOCATION TIME",
+      value: 800,
+      label: "DEAD FORMATS BLOCKED",
       height: 160,
       marginTop: 160,
       color: "#ef63c4",
-      suffix: "m",
+      suffix: "+",
     },
     {
-      value: 6.9,
-      label: "AVG ENGAGEMENT",
+      value: 2200000,
+      label: "LEARNING TAX PREVENTED",
       height: 320,
       marginTop: 0,
       color: "#4cf59d",
       decimals: 1,
-      suffix: "%",
+      format: "currencyCompact",
+      prefix: "$",
+      suffix: "+",
     },
     {
-      value: 45.9,
-      label: "RETENTION PROXY",
+      value: 1.6,
+      label: "AVG HOLD TIME LIFT",
       height: 320,
       marginTop: 100,
       color: "#ef63c4",
       decimals: 1,
-      suffix: "%",
+      prefix: "+",
+      suffix: "s",
     },
     {
-      value: 24.3,
-      label: "RECEPTION COVERAGE",
+      value: 124,
+      label: "QUANT INPUTS / DECISION",
       height: 220,
       marginTop: 68,
       color: "#62b7ff",
-      decimals: 1,
-      suffix: "%",
     },
   ];
 
   const summaryMetrics = [
-    { value: "1,284", label: "forced reshoots cut" },
-    { value: "41.6M", label: "modeled reach" },
-    { value: "27m", label: "avg allocation time" },
-    { value: "6.9%", label: "avg engagement" },
-    { value: "45.9%", label: "retention proxy" },
-    { value: "24.3%", label: "reception coverage" },
+    { value: "400K+", label: "posts indexed" },
+    { value: "210+", label: "concepts allocated" },
+    { value: "20+", label: "clients" },
+    { value: "800+", label: "dead formats blocked" },
+    { value: "$2.2M+", label: "learning tax prevented" },
+    { value: "+1.6s", label: "avg hold time lift" },
+    { value: "124", label: "quantitative inputs per allocation decision" },
   ];
 
   const proofTiles = [
@@ -141,16 +146,20 @@ document.addEventListener("DOMContentLoaded", () => {
     formStatus.textContent = message;
   };
 
-  const formatValue = (value, decimals = 0, suffix = "", mode = "plain") => {
+  const formatValue = (value, decimals = 0, suffix = "", mode = "plain", prefix = "") => {
     if (mode === "compact") {
-      return `${compactFormatter.format(value)}${suffix}`;
+      return `${prefix}${compactFormatter.format(value)}${suffix}`;
+    }
+
+    if (mode === "currencyCompact") {
+      return `${prefix}${compactFormatter.format(value)}${suffix}`;
     }
 
     if (decimals > 0) {
-      return `${Number(value).toFixed(decimals)}${suffix}`;
+      return `${prefix}${Number(value).toFixed(decimals)}${suffix}`;
     }
 
-    return `${numberFormatter.format(Math.round(Number(value)))}${suffix}`;
+    return `${prefix}${numberFormatter.format(Math.round(Number(value)))}${suffix}`;
   };
 
   const renderStats = () => {
@@ -161,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
         (stat, index) => `
           <div class="stat-bar" style="height:${stat.height}px; margin-top:${stat.marginTop}px; border-radius:8px; --bar-color:${stat.color}; --delay:${index * 70}ms;">
             <div class="stat-inner">
-              <h3 class="stat-value" data-value="${stat.value}" data-decimals="${stat.decimals || 0}" data-suffix="${stat.suffix || ""}" data-format="${stat.format || "plain"}">0</h3>
+              <h3 class="stat-value" data-value="${stat.value}" data-decimals="${stat.decimals || 0}" data-suffix="${stat.suffix || ""}" data-format="${stat.format || "plain"}" data-prefix="${stat.prefix || ""}">0</h3>
               <p class="stat-label">${stat.label}</p>
             </div>
           </div>
@@ -184,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const decimals = Number(element.dataset.decimals || 0);
         const suffix = element.dataset.suffix || "";
         const mode = element.dataset.format || "plain";
+        const prefix = element.dataset.prefix || "";
         const duration = 900;
         const started = performance.now();
 
@@ -191,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const progress = Math.min((now - started) / duration, 1);
           const eased = 1 - Math.pow(1 - progress, 3);
           const current = endValue * eased;
-          element.textContent = formatValue(current, decimals, suffix, mode);
+          element.textContent = formatValue(current, decimals, suffix, mode, prefix);
 
           if (progress < 1) {
             requestAnimationFrame(tick);
