@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const enemyGrid = document.getElementById("enemyGrid");
   const statsSection = document.getElementById("stats");
   const animatedStats = document.getElementById("animatedStats");
+  const memoArtifact = document.getElementById("memoArtifact");
   const intakeForm = document.getElementById("intakeForm");
   const formStatus = document.getElementById("formStatus");
 
@@ -259,9 +260,42 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(element);
   };
 
+  const initMemoArtifact = () => {
+    if (!memoArtifact) return;
+
+    const navItems = memoArtifact.querySelectorAll(".memo-nav-item");
+    const panes = memoArtifact.querySelectorAll("[data-memo-pane]");
+    const receiptStrip = memoArtifact.querySelector(".memo-receipt-strip");
+
+    const activatePane = (target) => {
+      panes.forEach((pane) => {
+        pane.classList.toggle("is-active", pane.dataset.memoPane === target);
+      });
+
+      navItems.forEach((item) => {
+        const isActive = item.dataset.memoTarget === target;
+        item.classList.toggle("is-active", isActive);
+        item.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+    };
+
+    navItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        activatePane(item.dataset.memoTarget);
+      });
+    });
+
+    if (receiptStrip) {
+      receiptStrip.addEventListener("click", () => {
+        activatePane("receipts");
+      });
+    }
+  };
+
   renderStats();
   renderProofSummary();
   renderProofTiles();
+  initMemoArtifact();
   revealOnView(enemyGrid, "is-live", 0.2);
 
   const interactiveCards = document.querySelectorAll(".enemy-card-dynamic");
