@@ -7,10 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const proofFeedTrack = document.getElementById("proofFeedTrack");
   const animatedStats = document.getElementById("animatedStats");
   const lottieAnimations = [
+    { id: "heroAnimExtraSpark", path: "assets/hero/ExtraSpark.json" },
     { id: "heroAnimPinkSpark", path: "assets/hero/PinkSpark.json" },
     { id: "heroAnimYellowSpark", path: "assets/hero/YellowSpark.json" },
+    { id: "heroAnimPinkGear", path: "assets/hero/PinkGear.json" },
     { id: "heroAnimGreenGear", path: "assets/hero/GreenGear.json" },
     { id: "heroAnimGreenBlueStar", path: "assets/hero/GreenBlueStar.json" },
+    { id: "heroAnimPinkStar", path: "assets/hero/PinkStar.json" },
+    { id: "heroAnimGreenYellowStar", path: "assets/hero/GreenYellowStar.json" },
+    { id: "heroAnimGreenStar", path: "assets/hero/GreenStar.json" },
+    { id: "heroAnimSmallGreenStar", path: "assets/hero/SmallGreenStar.json" },
   ];
 
   const trustedWords = ["agencies", "brands", "creator teams", "performance teams"];
