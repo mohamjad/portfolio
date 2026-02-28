@@ -3,7 +3,6 @@
   const trustedRotate = document.getElementById("trustedRotate");
   const trustedTrack = document.getElementById("trustedTrack");
   const proofGrid = document.getElementById("proofGrid");
-  const evidenceBars = document.getElementById("evidenceBars");
   const intakeForm = document.getElementById("intakeForm");
   const formStatus = document.getElementById("formStatus");
 
@@ -22,46 +21,34 @@
 
   const proofTiles = [
     {
-      scope: "US / exploit",
-      verdict: "greenlight",
-      title: "Problem-solution cut with staged reveal",
-      rationale: "Velocity and gate quality aligned in live window while saturation risk remained below threshold.",
-      action: "Fund now",
+      decision: "Fund now",
+      why: "velocity up, decay low, reception clean",
+      constraint: "Keep proof segment in first 3 seconds",
     },
     {
-      scope: "US / exploit",
-      verdict: "watch",
-      title: "Authority-led opener with comparison stack",
-      rationale: "Transfer score is strong but needs one more recapture pass for confidence hardening.",
-      action: "Hold for recapture",
+      decision: "Hold",
+      why: "velocity stable, decay medium, reception mixed",
+      constraint: "Recapture one additional cycle before funding",
     },
     {
-      scope: "US / discovery",
-      verdict: "greenlight",
-      title: "Demo-first benefit framing",
-      rationale: "Outperformed baseline for early retention and downstream purchase intent signals.",
-      action: "Fund now",
+      decision: "Do not shoot",
+      why: "velocity flat, decay high, reception weak",
+      constraint: "Replace with problem-solution structure",
     },
     {
-      scope: "US / recapture",
-      verdict: "dns",
-      title: "Over-deployed winner remix",
-      rationale: "Saturation pressure and declining lift suggest diminishing returns on incremental spend.",
-      action: "Do not shoot",
+      decision: "Fund now",
+      why: "velocity up, decay low, reception clean",
+      constraint: "Preserve hook-to-proof ordering",
     },
     {
-      scope: "US / discovery",
-      verdict: "watch",
-      title: "Creator POV with authority proof bridge",
-      rationale: "Strong engagement quality but moderate transfer reliability in current market context.",
-      action: "Monitor",
+      decision: "Hold",
+      why: "velocity rising, decay medium, reception uncertain",
+      constraint: "Requires transfer check before allocation",
     },
     {
-      scope: "US / exploit",
-      verdict: "greenlight",
-      title: "Constraint-compliant hook + proof cadence",
-      rationale: "Maintained stable acceleration across cohort with clean policy fit and low failure-tree risk.",
-      action: "Fund now",
+      decision: "Do not shoot",
+      why: "velocity down, decay high, reception unstable",
+      constraint: "Shift to alternate brief variant",
     },
   ];
 
@@ -123,43 +110,13 @@
       .map(
         (tile) => `
           <article class="proof-card">
-            <p class="proof-meta">${tile.scope} | ${tile.verdict}</p>
-            <h3>${tile.title}</h3>
-            <p>${tile.rationale}</p>
-            <p><strong>Decision:</strong> ${tile.action}</p>
+            <h3 class="decision">Decision: ${tile.decision}</h3>
+            <p class="receipt">Why: ${tile.why}</p>
+            <p class="constraint">Constraint: ${tile.constraint}</p>
           </article>
         `
       )
       .join("");
-  }
-
-  if (evidenceBars) {
-    const bars = evidenceBars.querySelectorAll(".bar");
-    bars.forEach((bar, index) => {
-      const height = Number(bar.getAttribute("data-height"));
-      if (!Number.isNaN(height) && height > 0) {
-        bar.style.setProperty("--target-height", `${height}px`);
-      }
-      bar.style.transitionDelay = `${Math.min(index * 70, 420)}ms`;
-    });
-
-    const revealBars = () => evidenceBars.classList.add("is-visible");
-
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const visible = entries.some((entry) => entry.isIntersecting);
-          if (visible) {
-            revealBars();
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.2 }
-      );
-      observer.observe(evidenceBars);
-    } else {
-      revealBars();
-    }
   }
 
   if (window.lottie) {

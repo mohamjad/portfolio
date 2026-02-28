@@ -19,10 +19,8 @@
         <span>SETTA</span>
       </a>
       <nav class="site-nav" aria-label="Primary">
-        <a href="#outcomes" data-scroll>Outcomes</a>
         <a href="#memo" data-scroll>Memo</a>
         <a href="#proof" data-scroll>Proof</a>
-        <a href="#case" data-scroll>Case Study</a>
         <a href="#pricing" data-scroll>Pricing</a>
         <a href="#intake" data-scroll>Intake</a>
       </nav>
@@ -53,33 +51,12 @@
           Pre-spend creative allocation
           <span>for paid social.</span>
         </h1>
-        <p class="hero-lead">Most teams brief formats after they peak, then spend to learn what should have been filtered before production.</p>
-        <p class="hero-sub">Setta installs a decision layer that allocates budget before you shoot: Greenlight 3, Do-Not-Shoot Index, constraints, and failure tree with proof receipts.</p>
+        <p class="hero-lead">We install a pre-deployment gate that decides what creative structures deserve capital before you shoot and spend.</p>
+        <p class="hero-sub">One-page Allocation Memo: Greenlight 3, Do-Not-Shoot Index, constraints, failure tree - backed by momentum, decay, reception receipts.</p>
 
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#intake" data-scroll>Start Free Async Intake</a>
-          <a class="btn btn-secondary" href="#memo" data-scroll>See Allocation Memo</a>
-        </div>
-
-        <p class="hero-note">No kickoff call required. Optional call path is available in intake.</p>
-
-        <div class="hero-kpis" id="outcomes">
-          <article class="kpi-chip">
-            <strong>75.0%</strong>
-            <span>72h positive rate in exploit outcomes</span>
-          </article>
-          <article class="kpi-chip">
-            <strong>23,859</strong>
-            <span>posts indexed across live + historical windows</span>
-          </article>
-          <article class="kpi-chip">
-            <strong>322</strong>
-            <span>allocation briefs generated in recent export windows</span>
-          </article>
-          <article class="kpi-chip">
-            <strong>20+</strong>
-            <span>agencies, brands, and creator teams served</span>
-          </article>
+          <a class="btn btn-primary" href="#pricing" data-scroll>Buy Allocation Memo - $500 (72h)</a>
+          <a class="btn btn-secondary" href="#intake" data-scroll>Start Free Async Intake</a>
         </div>
       </div>
     </section>
@@ -93,60 +70,77 @@
       </div>
     </section>
 
-    <section class="section shell" id="memo">
-      <p class="section-kicker">What You Get</p>
-      <h2>Allocation Memo output structure</h2>
-
-      <div class="memo-layout">
-        <article class="memo-snapshot">
-          <h3>Decision Snapshot (redacted)</h3>
-          <ul>
-            <li><span>Greenlight 3</span><strong>3 ranked structures</strong></li>
-            <li><span>Do-Not-Shoot Index</span><strong>5 failure modes + replacements</strong></li>
-            <li><span>Constraints</span><strong>claim boundaries, pacing, proof order</strong></li>
-            <li><span>Failure Tree</span><strong>symptom to fix path</strong></li>
-            <li><span>Receipts</span><strong>proof tiles with rationale</strong></li>
-          </ul>
+    <section class="section shell" id="enemy">
+      <p class="section-kicker">Problem</p>
+      <h2>Name the enemy</h2>
+      <div class="enemy-grid">
+        <article class="enemy-card">
+          <h3>Creative Roulette</h3>
+          <p>Producing and testing without an allocation model.</p>
         </article>
-
-        <article class="memo-detail">
-          <h3>How briefs map to timing and saturation risk</h3>
-          <p>Every candidate is scored for velocity quality, gate quality, and transfer context before it is allowed into a funded recommendation. Saturation-sensitive patterns are demoted before production.</p>
-          <div class="detail-grid">
-            <div>
-              <h4>Timing Signal</h4>
-              <p>Acceleration and live trajectory determine whether to fund now, watch, or hold.</p>
-            </div>
-            <div>
-              <h4>Saturation Signal</h4>
-              <p>Recency and repeated motif pressure control over-deployed structures.</p>
-            </div>
-            <div>
-              <h4>Transfer Signal</h4>
-              <p>Cross-market context decides if a winner travels or stays local.</p>
-            </div>
-          </div>
+        <article class="enemy-card">
+          <h3>Post-spend learning tax</h3>
+          <p>Spending to discover failures that could be gated pre-production.</p>
+        </article>
+        <article class="enemy-card">
+          <h3>Meta-as-Allocator</h3>
+          <p>Letting the auction decide where capital flows after budget and time are already burned.</p>
         </article>
       </div>
+    </section>
 
-      <details class="fold">
-        <summary>Open full decision schema</summary>
-        <div class="fold-content">
-          <p>Inputs include brief constraints, indexed post history, cluster trajectories, gate outcomes, and recapture diagnostics. Outputs include ranked funding decisions, exclusions, and evidence-linked rationale suitable for production handoff.</p>
-        </div>
-      </details>
+    <section class="section shell" id="memo">
+      <p class="section-kicker">What You Get</p>
+      <h2>Allocation Memo</h2>
+
+      <article class="memo-snapshot">
+        <ul>
+          <li><span>Greenlight 3 (ranked)</span><strong>hook + proof order + constraints</strong></li>
+          <li><span>Do-Not-Shoot Index (5)</span><strong>failure mode + replacement</strong></li>
+          <li><span>Constraints</span><strong>non-negotiables</strong></li>
+          <li><span>Failure Tree</span><strong>symptom -> fix path</strong></li>
+          <li><span>Receipts appendix</span><strong>proof tiles justify decisions</strong></li>
+        </ul>
+      </article>
+
+      <div class="receipt-chips">
+        <article class="chip-card">
+          <h3>Momentum</h3>
+          <p>Velocity signal for timing confidence.</p>
+        </article>
+        <article class="chip-card">
+          <h3>Decay</h3>
+          <p>Saturation and half-life risk control.</p>
+        </article>
+        <article class="chip-card">
+          <h3>Reception</h3>
+          <p>Objection mapping for message viability.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" id="proof">
+      <p class="section-kicker">Proof</p>
+      <h2>Decision + receipt tiles</h2>
+      <div class="proof-grid" id="proofGrid"></div>
     </section>
 
     <section class="section shell" id="case">
-      <p class="section-kicker">Case Study</p>
-      <h2>What changed when allocation moved pre-spend</h2>
-      <div class="evidence-bars" id="evidenceBars">
-        <article class="bar tone-green" data-height="310"><strong>55%</strong><span>concepts cut before production in redacted launch cycle</span></article>
-        <article class="bar tone-pink" data-height="250"><strong>72h</strong><span>from intake to memo delivery</span></article>
-        <article class="bar tone-blue" data-height="340"><strong>2 weeks</strong><span>production churn avoided in sample cycle</span></article>
-        <article class="bar tone-yellow" data-height="295"><strong>0</strong><span>forced re-shoots on DNS concepts after memo adoption</span></article>
-        <article class="bar tone-green" data-height="275"><strong>3/11</strong><span>concepts funded immediately (rest revised or cut)</span></article>
-        <article class="bar tone-pink" data-height="325"><strong>47M+</strong><span>top observed reach in tracked winning structure set</span></article>
+      <p class="section-kicker">Before vs After</p>
+      <h2>Three numbers only</h2>
+      <div class="mini-metrics">
+        <article class="metric-card">
+          <strong>55%</strong>
+          <span>concepts cut pre-production</span>
+        </article>
+        <article class="metric-card">
+          <strong>72h</strong>
+          <span>delivery from intake to memo</span>
+        </article>
+        <article class="metric-card">
+          <strong>2 weeks</strong>
+          <span>production churn avoided</span>
+        </article>
       </div>
     </section>
 
@@ -157,31 +151,19 @@
         <article class="price-card featured">
           <p class="price">$500</p>
           <h3>Allocation Memo (72h)</h3>
-          <p>Greenlight 3, Do-Not-Shoot Index, constraints, and failure tree with proof receipts.</p>
+          <p>Primary offer. Decision snapshot + receipts.</p>
         </article>
         <article class="price-card">
           <p class="price">$700</p>
           <h3>Allocation Brief</h3>
-          <p>Memo plus implementation handoff for paid + creative operators.</p>
+          <p>Memo plus implementation handoff for your team.</p>
         </article>
         <article class="price-card">
           <p class="price">$1,300/mo</p>
           <h3>Weekly Retainer</h3>
-          <p>Weekly refreshes, recapture-aware updates, and iterative decision snapshots.</p>
+          <p>Weekly refreshes and decision updates.</p>
         </article>
       </div>
-    </section>
-
-    <section class="section shell" id="proof">
-      <p class="section-kicker">Proof Receipts</p>
-      <h2>De-identified proof tile feed</h2>
-      <div class="proof-grid" id="proofGrid"></div>
-      <details class="fold">
-        <summary>Why proof tiles are redacted</summary>
-        <div class="fold-content">
-          <p>Public proof tiles intentionally remove creator handles, cluster IDs, and direct competitor links. The memo still provides sufficient decision backing through rule-level evidence and measurable rationale.</p>
-        </div>
-      </details>
     </section>
 
     <section class="section shell" id="intake">

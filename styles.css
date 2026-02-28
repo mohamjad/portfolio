@@ -8,9 +8,6 @@
   --text-mid: rgba(214, 227, 247, 0.84);
   --text-low: rgba(177, 196, 226, 0.76);
   --yellow: #ffe156;
-  --pink: #ef63c4;
-  --green: #18d31e;
-  --blue: #42b6e4;
 }
 
 * {
@@ -173,8 +170,8 @@ a {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(5, 11, 25, 0.84) 0%, rgba(5, 11, 25, 0.74) 30%, rgba(5, 11, 25, 0.36) 52%, rgba(5, 11, 25, 0.14) 100%),
-    linear-gradient(180deg, rgba(5, 11, 25, 0.04) 0%, rgba(5, 11, 25, 0.18) 62%, rgba(5, 11, 25, 0.5) 100%);
+    linear-gradient(90deg, rgba(5, 11, 25, 0.86) 0%, rgba(5, 11, 25, 0.78) 32%, rgba(5, 11, 25, 0.38) 52%, rgba(5, 11, 25, 0.14) 100%),
+    linear-gradient(180deg, rgba(5, 11, 25, 0.04) 0%, rgba(5, 11, 25, 0.18) 62%, rgba(5, 11, 25, 0.52) 100%);
 }
 
 .hero-layout {
@@ -185,7 +182,7 @@ a {
   flex-direction: column;
   justify-content: center;
   padding-top: 6rem;
-  padding-bottom: 2.6rem;
+  padding-bottom: 2.4rem;
 }
 
 .eyebrow {
@@ -217,19 +214,19 @@ h1 span {
 .hero-lead,
 .hero-sub {
   margin: 0;
-  max-width: 56ch;
-  font-size: 1.13rem;
+  max-width: 58ch;
+  font-size: 1.08rem;
   line-height: 1.45;
   color: var(--text-mid);
 }
 
 .hero-sub {
-  margin-top: 0.68rem;
+  margin-top: 0.62rem;
   color: var(--text-low);
 }
 
 .hero-cta {
-  margin-top: 1.48rem;
+  margin-top: 1.42rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
@@ -259,55 +256,18 @@ h1 span {
   background: rgba(12, 21, 43, 0.4);
 }
 
-.hero-note {
-  margin: 0.92rem 0 0;
-  font-family: "IBM Plex Mono", monospace;
-  color: #58ff9f;
-  font-size: 0.9rem;
-}
-
-.hero-kpis {
-  margin-top: 1.35rem;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.7rem;
-  max-width: min(900px, 100%);
-}
-
-.kpi-chip {
-  padding: 0.82rem 0.9rem;
-  border: 1px solid var(--line);
-  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%, 12px 50%);
-  background: rgba(10, 19, 40, 0.62);
-}
-
-.kpi-chip strong {
-  display: block;
-  font-family: "Sora", sans-serif;
-  font-size: 1.34rem;
-  line-height: 1;
-}
-
-.kpi-chip span {
-  display: block;
-  margin-top: 0.42rem;
-  color: var(--text-low);
-  font-size: 0.82rem;
-  line-height: 1.35;
-}
-
 .trust-band {
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  padding: 1.5rem 0 0.35rem;
+  padding: 1.4rem 0 0.3rem;
 }
 
 .trust-band::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(6, 15, 33, 0.08) 0%, rgba(8, 35, 39, 0.28) 58%, rgba(6, 15, 33, 0.08) 100%);
+  background: linear-gradient(180deg, rgba(6, 15, 33, 0.06) 0%, rgba(8, 35, 39, 0.24) 58%, rgba(6, 15, 33, 0.06) 100%);
   pointer-events: none;
 }
 
@@ -375,7 +335,7 @@ h1 span {
 }
 
 .section {
-  padding-top: 3.4rem;
+  padding-top: 3.2rem;
 }
 
 .section-kicker {
@@ -390,45 +350,68 @@ h1 span {
 h2 {
   margin: 0.72rem 0 0;
   font-family: "Sora", sans-serif;
-  font-size: clamp(1.72rem, 3.5vw, 2.58rem);
+  font-size: clamp(1.72rem, 3.5vw, 2.45rem);
   line-height: 1.22;
 }
 
-.memo-layout {
-  margin-top: 1.2rem;
+.enemy-grid,
+.receipt-chips,
+.pricing-grid,
+.proof-grid,
+.mini-metrics {
+  margin-top: 1.14rem;
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 0.9rem;
+  gap: 0.85rem;
 }
 
+.enemy-grid,
+.receipt-chips,
+.mini-metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.enemy-card,
 .memo-snapshot,
-.memo-detail,
+.chip-card,
 .price-card,
 .proof-card,
-.fold {
+.metric-card,
+.intake-form {
   border: 1px solid var(--line);
   background: rgba(11, 20, 42, 0.58);
 }
 
+.enemy-card,
 .memo-snapshot,
-.memo-detail,
+.chip-card,
 .price-card,
-.proof-card {
+.proof-card,
+.metric-card {
   padding: 1rem;
 }
 
-.memo-snapshot h3,
-.memo-detail h3,
+.enemy-card h3,
+.chip-card h3,
 .price-card h3,
 .proof-card h3 {
   margin: 0;
   font-family: "Sora", sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.06rem;
+}
+
+.enemy-card p,
+.chip-card p,
+.price-card p,
+.proof-card p,
+.metric-card span {
+  margin: 0.5rem 0 0;
+  color: var(--text-low);
+  line-height: 1.42;
 }
 
 .memo-snapshot ul {
   list-style: none;
-  margin: 0.88rem 0 0;
+  margin: 0;
   padding: 0;
   display: grid;
   gap: 0.55rem;
@@ -438,9 +421,14 @@ h2 {
   display: flex;
   justify-content: space-between;
   gap: 0.7rem;
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   border-top: 1px solid var(--line-soft);
-  padding-top: 0.5rem;
+  padding-top: 0.55rem;
+}
+
+.memo-snapshot li:first-child {
+  border-top: none;
+  padding-top: 0;
 }
 
 .memo-snapshot span {
@@ -452,116 +440,44 @@ h2 {
   text-align: right;
 }
 
-.memo-detail p {
-  margin: 0.62rem 0 0;
-  color: var(--text-low);
-  line-height: 1.45;
-}
-
-.detail-grid {
-  margin-top: 0.8rem;
-  display: grid;
+.proof-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.65rem;
 }
 
-.detail-grid div {
-  border-top: 1px solid var(--line-soft);
-  padding-top: 0.52rem;
-}
-
-.detail-grid h4 {
+.proof-meta {
   margin: 0;
-  font-size: 0.92rem;
-  color: #fff;
-}
-
-.detail-grid p {
-  margin: 0.34rem 0 0;
-  font-size: 0.86rem;
-}
-
-.fold {
-  margin-top: 0.9rem;
-}
-
-.fold summary {
-  list-style: none;
-  cursor: pointer;
-  padding: 0.9rem 1rem;
-  font-weight: 700;
+  font-family: "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
   color: var(--text-mid);
 }
 
-.fold summary::-webkit-details-marker {
-  display: none;
-}
-
-.fold[open] summary {
-  border-bottom: 1px solid var(--line-soft);
-}
-
-.fold-content {
-  padding: 0.86rem 1rem 1rem;
-  color: var(--text-low);
-  line-height: 1.44;
-}
-
-.evidence-bars {
-  margin-top: 1.16rem;
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 0.72rem;
-  align-items: end;
-  min-height: 370px;
-}
-
-.bar {
-  --target-height: 220px;
-  height: var(--target-height);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0.96rem 0.82rem;
-  transform-origin: bottom;
-  transform: translateY(18px) scaleY(0.06);
-  opacity: 0;
-  transition: transform 620ms cubic-bezier(0.2, 0.76, 0.22, 1), opacity 320ms ease;
-}
-
-.evidence-bars.is-visible .bar {
-  transform: translateY(0) scaleY(1);
-  opacity: 1;
-}
-
-.bar strong {
-  font-family: "Sora", sans-serif;
-  font-size: 1.68rem;
-  line-height: 1;
-  color: #08122b;
-}
-
-.bar span {
-  margin-top: 0.45rem;
-  font-size: 0.74rem;
-  line-height: 1.36;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+.proof-card .decision {
+  margin-top: 0.55rem;
+  color: #fff;
   font-weight: 700;
-  color: rgba(8, 18, 43, 0.82);
 }
 
-.tone-green { background: #19c51b; }
-.tone-pink { background: #e75abb; }
-.tone-blue { background: #45b5e1; }
-.tone-yellow { background: #e9a223; }
+.proof-card .receipt {
+  margin-top: 0.4rem;
+}
 
-.pricing-grid,
-.proof-grid {
-  margin-top: 1.18rem;
-  display: grid;
+.proof-card .constraint {
+  margin-top: 0.35rem;
+  font-size: 0.86rem;
+}
+
+.metric-card strong {
+  display: block;
+  font-family: "Sora", sans-serif;
+  font-size: 1.7rem;
+  line-height: 1;
+  color: #fff;
+}
+
+.pricing-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.85rem;
 }
 
 .price-card.featured {
@@ -577,26 +493,8 @@ h2 {
   font-weight: 700;
 }
 
-.price-card p,
-.proof-card p {
-  margin: 0.52rem 0 0;
-  color: var(--text-low);
-  line-height: 1.42;
-}
-
-.proof-meta {
-  margin: 0;
-  font-family: "IBM Plex Mono", monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.72rem;
-  color: var(--text-mid);
-}
-
 .intake-form {
   margin-top: 1.15rem;
-  border: 1px solid var(--line);
-  background: rgba(11, 20, 42, 0.58);
   padding: 1rem;
 }
 
@@ -699,21 +597,11 @@ textarea:focus {
 }
 
 @media (max-width: 1180px) {
-  .hero-kpis {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .memo-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .detail-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .pricing-grid,
+  .enemy-grid,
+  .receipt-chips,
+  .mini-metrics,
   .proof-grid,
-  .evidence-bars {
+  .pricing-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -749,7 +637,7 @@ textarea:focus {
   }
 
   .hero-stage {
-    min-height: 860px;
+    min-height: 840px;
   }
 
   h1 {
@@ -784,10 +672,11 @@ textarea:focus {
   }
 
   .form-grid,
-  .pricing-grid,
+  .enemy-grid,
+  .receipt-chips,
+  .mini-metrics,
   .proof-grid,
-  .evidence-bars,
-  .hero-kpis {
+  .pricing-grid {
     grid-template-columns: 1fr;
   }
 
