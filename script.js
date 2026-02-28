@@ -3,6 +3,8 @@
   const trustedRotate = document.getElementById("trustedRotate");
   const trustedTrack = document.getElementById("trustedTrack");
   const proofGrid = document.getElementById("proofGrid");
+  const enemyGrid = document.getElementById("enemyGrid");
+  const dynamicBlocks = document.getElementById("dynamicBlocks");
   const intakeForm = document.getElementById("intakeForm");
   const formStatus = document.getElementById("formStatus");
 
@@ -118,6 +120,42 @@
       )
       .join("");
   }
+
+  const revealOnView = (element, className = "is-live", threshold = 0.18) => {
+    if (!element) return;
+    if (!("IntersectionObserver" in window)) {
+      element.classList.add(className);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.some((entry) => entry.isIntersecting);
+        if (visible) {
+          element.classList.add(className);
+          observer.disconnect();
+        }
+      },
+      { threshold }
+    );
+    observer.observe(element);
+  };
+
+  revealOnView(enemyGrid, "is-live", 0.2);
+  revealOnView(dynamicBlocks, "is-live", 0.14);
+
+  const interactiveBlocks = document.querySelectorAll(".enemy-card-dynamic, .dyn-block");
+  interactiveBlocks.forEach((card) => {
+    card.addEventListener("pointermove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(900px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg) translateY(-2px)`;
+    });
+
+    card.addEventListener("pointerleave", () => {
+      card.style.transform = "";
+    });
+  });
 
   if (window.lottie) {
     heroAnimations.forEach((animation) => {
