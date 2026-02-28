@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       offsetText: true,
     },
     {
-      valueLabel: "210+",
+      valueLabel: "180+",
       label: "CONCEPTS ALLOCATED",
       height: 340,
       offset: 70,
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       offsetText: true,
     },
     {
-      valueLabel: "$2.2M+",
+      valueLabel: "$1.6M+",
       label: "LEARNING TAX PREVENTED",
       height: 420,
       offset: -50,
@@ -96,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "DNS",
       title: "replying luckylibra blush blindness (general)",
       receipt: "@itslakkam | 8,129 views | strength 50.25 | score 49.40",
+      confidence: 78,
       constraint:
         "DNS triggers: low_velocity_valid_rate + weak_score_total. Missing macro score and gate-depth thresholds.",
     },
@@ -103,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "DNS",
       title: "super quick clean makeup (grwm)",
       receipt: "@fayeknightlyplusmom | 27,955 views | strength 49.90 | accel 0.0204",
+      confidence: 74,
       constraint:
         "DNS triggers: low_gate_pass_rate + low_velocity_valid_rate + weak_score_total.",
     },
@@ -110,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "DNS",
       title: "53 contour method never (general)",
       receipt: "@poppymarchh | 331,229 views | strength 47.14 | score 40.87",
+      confidence: 71,
       constraint:
         "High view volume still failed decision quality: macro_score_total_lt_62 and micro velocity thresholds.",
     },
@@ -117,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "DNS",
       title: "bebot (general)",
       receipt: "@lyrayeyeye | 525,256 views | exploit lane | strength 46.15",
+      confidence: 69,
       constraint:
         "DNS triggers: low_gate_pass_rate + low_velocity_valid_rate + weak_score_total; recapture coverage remains below target.",
     },
@@ -124,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "Hold",
       title: "makeup artist best known (general)",
       receipt: "@voguemagazine | 104,564 views | noise strength 38.31 | readiness 4/12",
+      confidence: 63,
       constraint:
         "Hold until recapture coverage and gate depth clear. Current row is queue-noise, not production-ready.",
     },
@@ -131,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "Hold",
       title: "apply new brightening concealer (tutorial)",
       receipt: "@patricktabeauty | 30,705 views | noise strength 37.27 | readiness 4/12",
+      confidence: 61,
       constraint:
         "Hold pending stronger core score and one additional validated post before scaling spend.",
     },
@@ -232,6 +238,13 @@ document.addEventListener("DOMContentLoaded", () => {
             <h3 class="decision decision-${tile.decision.toLowerCase()}">${tile.decision}</h3>
             <p class="proof-title">${tile.title}</p>
             <p class="receipt">${tile.receipt}</p>
+            <div class="confidence-row confidence-row-proof">
+              <span>Confidence</span>
+              <strong>${tile.confidence}%</strong>
+            </div>
+            <div class="confidence-bar confidence-bar-proof" aria-label="Confidence ${tile.confidence} percent">
+              <span style="--confidence: ${tile.confidence}%"></span>
+            </div>
             <p class="constraint">${tile.constraint}</p>
           </article>
         `

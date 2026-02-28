@@ -548,6 +548,41 @@ h2 {
   font-size: 0.88rem;
 }
 
+.confidence-row {
+  margin-top: 0.45rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.73rem;
+  letter-spacing: 0.03em;
+  color: #c4d8ff;
+}
+
+.confidence-row strong {
+  font-family: "Sora", sans-serif;
+  font-size: 0.82rem;
+  color: #f7fbff;
+}
+
+.confidence-bar {
+  margin-top: 0.28rem;
+  height: 0.52rem;
+  border-radius: 999px;
+  background: rgba(30, 58, 112, 0.65);
+  overflow: hidden;
+}
+
+.confidence-bar span {
+  display: block;
+  height: 100%;
+  width: var(--confidence, 0%);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #4fa7ff 0%, #6b8dff 45%, #9b7cff 100%);
+  animation: confidenceFill 880ms ease-out both;
+}
+
 .memo-greenlight ul {
   margin-top: 0.42rem;
   gap: 0.42rem;
@@ -891,6 +926,15 @@ h2 {
   color: #c8d8f5;
 }
 
+.confidence-row-proof {
+  margin-top: 0.52rem;
+}
+
+.confidence-bar-proof {
+  height: 0.44rem;
+  margin-top: 0.2rem;
+}
+
 .proof-note {
   margin: 0.7rem 0 0;
   color: var(--text-mid);
@@ -1041,6 +1085,15 @@ textarea:focus {
   }
   100% {
     box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@keyframes confidenceFill {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--confidence, 0%);
   }
 }
 
