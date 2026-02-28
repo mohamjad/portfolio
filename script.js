@@ -82,51 +82,56 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const summaryMetrics = [
-    { value: "400K+", label: "posts indexed" },
-    { value: "210+", label: "concepts allocated" },
-    { value: "56hr", label: "avg turnaround" },
-    { value: "800+", label: "dead formats blocked" },
-    { value: "$2.2M+", label: "learning tax prevented" },
-    { value: "+1.6s", label: "avg hold time lift" },
-    { value: "124", label: "quantitative inputs per allocation decision" },
+    { value: "28,313", label: "posts analyzed (full-intel export)" },
+    { value: "11,148", label: "gate-passed posts" },
+    { value: "10,111", label: "velocity-valid posts" },
+    { value: "2,163", label: "general queue decisions" },
+    { value: "1,751", label: "do-not-shoot verdicts" },
+    { value: "532", label: "proof tiles generated" },
   ];
 
   const proofTiles = [
     {
-      decision: "Fund",
-      title: "Proof-first skincare mechanic",
-      receipt: "2.63M views | signal 20.04",
-      constraint: "Keep first proof beat in the first 3s.",
-    },
-    {
-      decision: "Fund",
-      title: "Social proof concealer framing",
-      receipt: "1.99M views | signal 20.03",
-      constraint: "Anchor claim to one concrete visual outcome.",
-    },
-    {
-      decision: "Hold",
-      title: "Texture close-up transfer",
-      receipt: "370K views | ER 6.9%",
-      constraint: "Confirm second market before scaling budget.",
-    },
-    {
-      decision: "Fund",
-      title: "Reply-objection mechanic",
-      receipt: "403K views | signal 20.02",
-      constraint: "Keep objection-response sequence intact.",
+      decision: "DNS",
+      title: "replying luckylibra blush blindness (general)",
+      receipt: "@itslakkam | 8,129 views | strength 50.25 | score 49.40",
+      constraint:
+        "DNS triggers: low_velocity_valid_rate + weak_score_total. Missing macro score and gate-depth thresholds.",
     },
     {
       decision: "DNS",
-      title: "Pain challenge reaction frame",
-      receipt: "Backlash risk elevated",
-      constraint: "Replace with value normalization angle.",
+      title: "super quick clean makeup (grwm)",
+      receipt: "@fayeknightlyplusmom | 27,955 views | strength 49.90 | accel 0.0204",
+      constraint:
+        "DNS triggers: low_gate_pass_rate + low_velocity_valid_rate + weak_score_total.",
+    },
+    {
+      decision: "DNS",
+      title: "53 contour method never (general)",
+      receipt: "@poppymarchh | 331,229 views | strength 47.14 | score 40.87",
+      constraint:
+        "High view volume still failed decision quality: macro_score_total_lt_62 and micro velocity thresholds.",
+    },
+    {
+      decision: "DNS",
+      title: "bebot (general)",
+      receipt: "@lyrayeyeye | 525,256 views | exploit lane | strength 46.15",
+      constraint:
+        "DNS triggers: low_gate_pass_rate + low_velocity_valid_rate + weak_score_total; recapture coverage remains below target.",
     },
     {
       decision: "Hold",
-      title: "High-view low-proof cluster",
-      receipt: "Velocity mixed | proof depth limited",
-      constraint: "Require one additional validated post.",
+      title: "makeup artist best known (general)",
+      receipt: "@voguemagazine | 104,564 views | noise strength 38.31 | readiness 4/12",
+      constraint:
+        "Hold until recapture coverage and gate depth clear. Current row is queue-noise, not production-ready.",
+    },
+    {
+      decision: "Hold",
+      title: "apply new brightening concealer (tutorial)",
+      receipt: "@patricktabeauty | 30,705 views | noise strength 37.27 | readiness 4/12",
+      constraint:
+        "Hold pending stronger core score and one additional validated post before scaling spend.",
     },
   ];
 
