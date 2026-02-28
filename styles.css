@@ -180,24 +180,24 @@ label {
 
 .hero-stage {
   position: relative;
-  min-height: 78vh;
-  max-height: 900px;
+  min-height: 82vh;
+  max-height: 980px;
   display: block;
   border: 1px solid var(--border);
   overflow: hidden;
-  background: rgba(14, 22, 43, 0.45);
+  background: rgba(14, 22, 43, 0.58);
 }
 
 .hero-copy {
   position: relative;
-  z-index: 2;
+  z-index: 5;
   padding: 2.25rem 2.25rem 2.15rem;
-  max-width: 760px;
-  min-height: 78vh;
+  max-width: 700px;
+  min-height: 82vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(90deg, rgba(11, 16, 32, 0.95) 0%, rgba(11, 16, 32, 0.78) 62%, rgba(11, 16, 32, 0) 100%);
+  background: linear-gradient(92deg, rgba(11, 16, 32, 0.96) 0%, rgba(11, 16, 32, 0.86) 60%, rgba(11, 16, 32, 0.08) 100%);
 }
 
 .eyebrow {
@@ -308,27 +308,45 @@ h1 {
 .hero-visual {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
+  overflow: hidden;
 }
 
 .hero-art {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  width: 300vw;
+  max-width: 275vh;
+  height: auto;
+  left: calc(25vw + 50vw - 138vh);
+  top: -58vh;
   user-select: none;
   pointer-events: none;
+  will-change: transform, opacity;
 }
 
 .hero-art-main {
-  opacity: 0.96;
+  opacity: 0.98;
+  z-index: 1;
+  animation: hero-main-drift 16s ease-in-out infinite;
 }
 
 .hero-art-sparks {
-  opacity: 0.45;
+  opacity: 0.62;
+  z-index: 2;
   mix-blend-mode: screen;
+  animation: hero-sparks-drift 11s ease-in-out infinite;
+}
+
+@keyframes hero-main-drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-1.2%, 1.4%, 0) scale(1.02); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes hero-sparks-drift {
+  0% { transform: translate3d(0, 0, 0); opacity: 0.48; }
+  50% { transform: translate3d(1.8%, -1.8%, 0); opacity: 0.72; }
+  100% { transform: translate3d(0, 0, 0); opacity: 0.48; }
 }
 
 .section-head {
@@ -346,6 +364,53 @@ h1 {
 h2 {
   font-family: "Sora", sans-serif;
   font-size: clamp(1.28rem, 2.5vw, 1.96rem);
+}
+
+.collapse-panel {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.collapse-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.45rem 0;
+  display: grid;
+  gap: 0.26rem;
+  position: relative;
+  padding-right: 1.7rem;
+}
+
+.collapse-summary::-webkit-details-marker {
+  display: none;
+}
+
+.collapse-summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "Sora", sans-serif;
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.collapse-panel[open] .collapse-summary::after {
+  content: "−";
+}
+
+.collapse-title {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.2rem, 2.1vw, 1.7rem);
+}
+
+.collapse-body {
+  padding-bottom: 0.6rem;
+}
+
+.collapse-panel .kicker {
+  margin-bottom: 0;
 }
 
 .output-card,
@@ -600,7 +665,6 @@ textarea:focus {
 }
 
 @media (max-width: 1130px) {
-  .hero-stage,
   .outputs-grid,
   .evidence-grid,
   .tile-grid,
@@ -613,6 +677,7 @@ textarea:focus {
 
   .hero-stage {
     min-height: 0;
+    max-height: none;
   }
 
   .hero-copy {
@@ -625,6 +690,23 @@ textarea:focus {
   .hero-visual {
     position: relative;
     min-height: 320px;
+    inset: auto;
+  }
+
+  .hero-art {
+    width: 180vw;
+    max-width: none;
+    left: 50%;
+    top: -26vh;
+    transform: translateX(-50%);
+  }
+
+  .hero-art-main {
+    animation-duration: 13s;
+  }
+
+  .hero-art-sparks {
+    animation-duration: 9s;
   }
 
   .proof-feed-item {
@@ -662,6 +744,11 @@ textarea:focus {
 
   .hero-visual {
     min-height: 280px;
+  }
+
+  .hero-art {
+    width: 220vw;
+    top: -18vh;
   }
 
   .trusted-item {
