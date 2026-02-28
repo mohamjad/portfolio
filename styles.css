@@ -531,6 +531,148 @@ h2 {
   line-height: 1.35;
 }
 
+.exec-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-bottom: 0.7rem;
+}
+
+.exec-metric {
+  border: 1px solid var(--line-soft);
+  background: rgba(13, 30, 63, 0.72);
+  padding: 0.55rem;
+}
+
+.exec-value {
+  margin: 0;
+  font-family: "Castledown", "Sora", sans-serif;
+  font-size: 1.7rem;
+  line-height: 1;
+  color: #f8fbff;
+}
+
+.exec-label {
+  margin: 0.22rem 0 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  line-height: 1.35;
+  color: #b8d0fb;
+}
+
+.quant-table {
+  margin-bottom: 0.72rem;
+  border: 1px solid var(--line-soft);
+  background: rgba(11, 26, 54, 0.7);
+}
+
+.quant-row {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr 1.25fr;
+  gap: 0.6rem;
+  border-top: 1px solid var(--line-soft);
+  padding: 0.46rem 0.55rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: #d8e7ff;
+}
+
+.quant-row span {
+  color: inherit;
+  font-size: inherit;
+}
+
+.quant-head {
+  border-top: none;
+  background: rgba(18, 41, 82, 0.85);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.67rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #b7cef9;
+}
+
+.tree-suite {
+  display: grid;
+  gap: 0.72rem;
+}
+
+.tree-card {
+  border: 1px solid var(--line-soft);
+  background: rgba(11, 26, 54, 0.72);
+  padding: 0.62rem;
+}
+
+.tree-card h4 {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-size: 0.92rem;
+}
+
+.tree-baseline {
+  margin: 0.26rem 0 0.56rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.67rem;
+  line-height: 1.35;
+  color: #b9cff7;
+}
+
+.tree-root {
+  border: 1px solid rgba(121, 165, 255, 0.45);
+  background: rgba(24, 49, 95, 0.68);
+  padding: 0.45rem 0.52rem;
+  font-size: 0.78rem;
+  color: #eef5ff;
+}
+
+.tree-branches {
+  margin-top: 0.58rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.tree-branches::before {
+  content: "";
+  position: absolute;
+  top: -0.34rem;
+  left: 16.7%;
+  right: 16.7%;
+  border-top: 1px solid rgba(123, 168, 255, 0.45);
+}
+
+.tree-branch {
+  position: relative;
+  display: grid;
+  gap: 0.36rem;
+  padding-top: 0.4rem;
+}
+
+.tree-branch::before {
+  content: "";
+  position: absolute;
+  top: -0.34rem;
+  left: 50%;
+  height: 0.34rem;
+  border-left: 1px solid rgba(123, 168, 255, 0.45);
+}
+
+.tree-node {
+  border: 1px solid var(--line-soft);
+  background: rgba(15, 32, 66, 0.76);
+  padding: 0.4rem 0.48rem;
+  font-size: 0.76rem;
+  line-height: 1.35;
+  color: #d9e9ff;
+}
+
+.tree-action {
+  border-color: rgba(255, 225, 86, 0.45);
+  background: rgba(40, 53, 25, 0.32);
+  color: #f6f8d7;
+}
+
 .memo-greenlight-grid {
   display: grid;
   gap: 0.56rem;
@@ -942,6 +1084,55 @@ h2 {
   line-height: 1.45;
 }
 
+.proof-filters {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.44rem;
+}
+
+.proof-filter {
+  border: 1px solid var(--line-soft);
+  background: rgba(12, 21, 43, 0.52);
+  color: var(--text-mid);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.36rem 0.58rem;
+  cursor: pointer;
+}
+
+.proof-filter:hover,
+.proof-filter:focus-visible,
+.proof-filter.is-active {
+  border-color: rgba(155, 194, 255, 0.58);
+  color: #f6fbff;
+  background: rgba(23, 40, 72, 0.86);
+  outline: none;
+}
+
+.proof-tags {
+  margin-top: 0.42rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.32rem;
+}
+
+.proof-tags span {
+  border: 1px solid var(--line-soft);
+  background: rgba(16, 30, 59, 0.66);
+  color: #bcd3fb;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.63rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.14rem 0.34rem;
+}
+
+.proof-empty {
+  grid-column: 1 / -1;
+}
+
 .pricing-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -1130,6 +1321,15 @@ textarea:focus {
     margin: 6px;
     padding: 6px;
   }
+
+  .tree-branches {
+    grid-template-columns: 1fr;
+  }
+
+  .tree-branches::before,
+  .tree-branch::before {
+    display: none;
+  }
 }
 
 @media (max-width: 860px) {
@@ -1197,6 +1397,15 @@ textarea:focus {
   .proof-grid,
   .pricing-grid {
     grid-template-columns: 1fr;
+  }
+
+  .exec-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .quant-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
   }
 
   .animated-stats {

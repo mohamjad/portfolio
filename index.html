@@ -122,7 +122,7 @@
       <p class="section-kicker">Allocation Memo</p>
       <h2>LAKA Fruity Glam Tint (US paid launch, TikTok-first)</h2>
       <p class="memo-meta">
-        Objective: speed + save rate (CPA guardrail) | Constraints: first-5-second proof, low ad-feel, no clinical overclaims, ~30s max | Spend band: mid (15 concepts / 21 days)
+        Objective: speed + save rate (CPA guardrail) | Constraints: first-5-second proof, low ad-feel, no clinical overclaims, ~30s max | Spend band: mid (15 concepts / 21 days) | Saturation mapped via trajectory + delta proxy.
       </p>
 
       <div class="memo-artifact" id="memoArtifact">
@@ -151,10 +151,15 @@
               <span class="memo-nav-track"><span class="memo-nav-fill" style="--fill: 78%"></span></span>
               <span class="memo-nav-note">First-2s proof gate, low ad-feel, no clinical overclaims.</span>
             </button>
+            <button class="memo-nav-item" role="tab" aria-selected="false" data-memo-target="saturation">
+              <span class="memo-nav-title">Saturation Map</span>
+              <span class="memo-nav-track"><span class="memo-nav-fill" style="--fill: 64%"></span></span>
+              <span class="memo-nav-note">Trajectory + delta risk map for timing and spend pacing.</span>
+            </button>
             <button class="memo-nav-item" role="tab" aria-selected="false" data-memo-target="failure">
               <span class="memo-nav-title">Failure Tree</span>
               <span class="memo-nav-track"><span class="memo-nav-fill" style="--fill: 68%"></span></span>
-              <span class="memo-nav-note">CTR and CPA diagnostics with direct production fixes.</span>
+              <span class="memo-nav-note">Per-greenlight tree with engagement, reception, sentiment gates.</span>
             </button>
           </div>
 
@@ -168,10 +173,24 @@
         <section class="memo-detail-card">
           <article class="memo-pane is-active" data-memo-pane="executive">
             <h3>Executive Decision</h3>
+            <div class="exec-metrics">
+              <article class="exec-metric">
+                <p class="exec-value">71.9%</p>
+                <p class="exec-label">US queue currently DNS</p>
+              </article>
+              <article class="exec-metric">
+                <p class="exec-value">8.36%</p>
+                <p class="exec-label">DNS median ER (vs 9.12% noise median)</p>
+              </article>
+              <article class="exec-metric">
+                <p class="exec-value">4.71</p>
+                <p class="exec-label">Avg reception score in brief outputs</p>
+              </article>
+            </div>
             <ul>
-              <li><span>Fund (Greenlight 3)</span><strong>Lip Combo Recipe Gate, Texture Proof Loop, Undertone Shade Finder.</strong></li>
-              <li><span>Kill (Do-Not-Shoot)</span><strong>Luxury empties flex, polished KR-ad pacing, payoff-late GRWM opens, launch monologues, multi-CTA framing.</strong></li>
-              <li><span>Biggest risk</span><strong>Ad-feel and trust collapse before proof, followed by hold-time decay and CPA inflation.</strong></li>
+              <li><span>Capital posture</span><strong>Run Greenlight 3 at controlled budget split, block all five DNS patterns until thresholds clear.</strong></li>
+              <li><span>Go signal</span><strong>Promote only when ER >= 9.1%, share-rate >= 0.12%, and velocity-valid coverage holds above floor.</strong></li>
+              <li><span>Known blocker</span><strong>External sentiment coverage is 0 rows. Keep sentiment as risk gate, not score driver, until imported.</strong></li>
             </ul>
           </article>
 
@@ -234,32 +253,155 @@
 
           <article class="memo-pane" data-memo-pane="dns">
             <h3>Do-Not-Shoot Index (5)</h3>
+            <div class="quant-table">
+              <div class="quant-row quant-head">
+                <span>Kill Gate</span><span>Observed</span><span>Direction</span>
+              </div>
+              <div class="quant-row">
+                <span>weak_score_total</span><span>434/434 DNS (100%)</span><span>Auto-kill until score stack rebuilt.</span>
+              </div>
+              <div class="quant-row">
+                <span>macro_gate_passed_posts_lt_10</span><span>434/434 DNS (100%)</span><span>Require >=10 passed posts before scale.</span>
+              </div>
+              <div class="quant-row">
+                <span>micro_outlier_velocity_lt_4x</span><span>434/434 DNS (100%)</span><span>No scale if outlier velocity &lt; 4x.</span>
+              </div>
+              <div class="quant-row">
+                <span>micro_engagement_quality_lt_0_01</span><span>434/434 DNS (100%)</span><span>Force creative rewrite if quality &lt; 0.01.</span>
+              </div>
+              <div class="quant-row">
+                <span>context_transfer_absent</span><span>434/434 DNS (100%)</span><span>No rollout without transfer evidence.</span>
+              </div>
+              <div class="quant-row">
+                <span>micro_velocity_valid_rate_lt_12pct</span><span>249/434 DNS (57.4%)</span><span>Minimum validity gate: 12%.</span>
+              </div>
+            </div>
             <ul>
-              <li><span>Luxury empties flex</span><strong>Status content with low decision proof. Replace with Recipe Gate.</strong></li>
-              <li><span>Polished KR-ad pacing</span><strong>Triggers ad-feel in US paid. Keep sequencing, switch to UGC pacing and hands/lips framing.</strong></li>
-              <li><span>Explanation-first tutorials</span><strong>Proof lands late and hold decays. Start with result or proof.</strong></li>
-              <li><span>Launch/brand monologues</span><strong>Immediate auction-level ad detection. Reframe as current combo routine.</strong></li>
-              <li><span>Multi-CTA framing</span><strong>Rises hostility and lowers intent. Keep one CTA maximum.</strong></li>
+              <li><span>Luxury empties flex</span><strong>Status content with weak decision proof. Replace with Recipe Gate sequence.</strong></li>
+              <li><span>Polished KR-ad pacing</span><strong>US paid flags ad-feel. Keep KR logic, swap to UGC pacing and hands/lips framing.</strong></li>
+              <li><span>Explanation-first flow</span><strong>Late proof and early drop-off. Move proof to first 2s.</strong></li>
+              <li><span>Launch monologue + multi-CTA</span><strong>Raises hostility and suppresses conversion intent. Keep one CTA max.</strong></li>
             </ul>
           </article>
 
           <article class="memo-pane" data-memo-pane="constraints">
             <h3>Constraints (Non-Negotiables)</h3>
+            <div class="quant-table">
+              <div class="quant-row quant-head">
+                <span>Constraint</span><span>Target</span><span>Why</span>
+              </div>
+              <div class="quant-row">
+                <span>Proof arrival</span><span>0-2s</span><span>Prevents hold collapse before value signal.</span>
+              </div>
+              <div class="quant-row">
+                <span>Runtime</span><span>18-25s operating range</span><span>Reduces decay and protects completion proxy.</span>
+              </div>
+              <div class="quant-row">
+                <span>Engagement floor</span><span>ER >= 9.1%</span><span>Noise median benchmark from US queue.</span>
+              </div>
+              <div class="quant-row">
+                <span>Share-rate floor</span><span>&gt;= 0.12%</span><span>Separates pass-through views from transferable hooks.</span>
+              </div>
+              <div class="quant-row">
+                <span>Reception floor</span><span>&gt;= 5.0</span><span>Current avg is 4.71; below 5 risks objection drag.</span>
+              </div>
+              <div class="quant-row">
+                <span>Sentiment readiness</span><span>External coverage >= 70%</span><span>Current external rows: 0. Keep spend capped until imported.</span>
+              </div>
+            </div>
             <ul>
-              <li><span>0-2s proof gate</span><strong>Show one immediately: final lips, tactile proof, or undertone + shade label.</strong></li>
-              <li><span>Story order</span><strong>Result -> proof moment -> explanation. Never explanation-first.</strong></li>
-              <li><span>Ad-feel control</span><strong>UGC pacing and natural framing only; avoid polished product-hold compositions.</strong></li>
-              <li><span>Claim safety</span><strong>No clinical overclaims or universal-performance copy.</strong></li>
+              <li><span>Story order</span><strong>Result -> proof -> explanation only. Never lead with explanation.</strong></li>
+              <li><span>Ad-feel control</span><strong>Natural UGC pacing, no polished product-hold hero shots.</strong></li>
+              <li><span>Claim safety</span><strong>No clinical overclaims or universal-performance language.</strong></li>
+            </ul>
+          </article>
+
+          <article class="memo-pane" data-memo-pane="saturation">
+            <h3>Saturation Map (Timing Risk)</h3>
+            <div class="quant-table">
+              <div class="quant-row quant-head">
+                <span>Signal Band</span><span>Detection Rule</span><span>Spend Direction</span>
+              </div>
+              <div class="quant-row">
+                <span>Trending</span><span>trajectory = accelerating and delta &gt;= +2.0</span><span>Scale test budget +20% with tight guardrails.</span>
+              </div>
+              <div class="quant-row">
+                <span>Stable</span><span>trajectory = stabilizing or delta between -1.0 and +2.0</span><span>Hold spend flat and refresh hook framing.</span>
+              </div>
+              <div class="quant-row">
+                <span>Saturation Risk</span><span>trajectory = declining or delta &lt; -1.0</span><span>Cut spend 30-50%; rotate to next Greenlight variant.</span>
+              </div>
+            </div>
+            <ul>
+              <li><span>Current proof telemetry</span><strong>Proof tiles are 67.3% accelerating, 17.5% declining, 2.3% stabilizing, 13.0% unknown.</strong></li>
+              <li><span>US tactical rule</span><strong>When share-rate drops under 0.12% for two snapshots, treat as early saturation and pivot.</strong></li>
+              <li><span>Memo operating note</span><strong>Saturation is now explicit in allocation, not post-spend hindsight.</strong></li>
             </ul>
           </article>
 
           <article class="memo-pane" data-memo-pane="failure">
-            <h3>Failure Tree (Monitor + Fix)</h3>
-            <ul>
-              <li><span>CTR low</span><strong>Likely proof too late or intro too slow. Move proof to 0-2s, shorten to 18-25s, remove brand intro.</strong></li>
-              <li><span>CTR ok, CPA bad</span><strong>Shade curiosity without intent. Add shade-certainty module and comparator clarity, tighten CTA.</strong></li>
-              <li><span>Sponsored comments rise</span><strong>Polish or over-CTA issue. Switch to reply-to-comment framing and restore proof-first sequence.</strong></li>
-            </ul>
+            <h3>Failure Tree (Per Greenlight)</h3>
+            <div class="tree-suite">
+              <article class="tree-card">
+                <h4>Recipe Gate Tree</h4>
+                <p class="tree-baseline">Guardrails: ER >= 9.1%, share-rate >= 0.12%, reception >= 5.0.</p>
+                <div class="tree-root">Trigger: ER &lt; 9.1% OR share-rate &lt; 0.12%</div>
+                <div class="tree-branches">
+                  <section class="tree-branch">
+                    <div class="tree-node">Proof arrives after 2s + hold proxy weak</div>
+                    <div class="tree-node tree-action">Move final lip reveal into 0-1.2s; apply combo labels before frame 35.</div>
+                  </section>
+                  <section class="tree-branch">
+                    <div class="tree-node">Reception &lt; 5.0 or comment-rate &gt; 0.24%</div>
+                    <div class="tree-node tree-action">Insert objection-response beat before CTA; remove ambiguous claims.</div>
+                  </section>
+                  <section class="tree-branch">
+                    <div class="tree-node">External sentiment missing (current coverage 0%)</div>
+                    <div class="tree-node tree-action">Cap spend to pilot lane and trigger external sentiment import before scale.</div>
+                  </section>
+                </div>
+              </article>
+
+              <article class="tree-card">
+                <h4>Texture Proof Loop Tree</h4>
+                <p class="tree-baseline">Guardrails: tactile proof in 0-3s, ER >= 9.1%, share-rate >= 0.12%.</p>
+                <div class="tree-root">Trigger: comments spike while share-rate stalls</div>
+                <div class="tree-branches">
+                  <section class="tree-branch">
+                    <div class="tree-node">Sticky/dry objection persists and ER drops toward DNS median 8.36%</div>
+                    <div class="tree-node tree-action">Lead with tissue/cup proof in first 2s and show second proof before CTA.</div>
+                  </section>
+                  <section class="tree-branch">
+                    <div class="tree-node">Velocity-valid misses consecutive snapshots</div>
+                    <div class="tree-node tree-action">Run controlled recapture pass; do not scale until validity recovers above 12% floor.</div>
+                  </section>
+                  <section class="tree-branch">
+                    <div class="tree-node">Reception under 5.0 with neutral sentiment unknown</div>
+                    <div class="tree-node tree-action">Trim claim language, tighten tactile framing, and gather external sentiment sample.</div>
+                  </section>
+                </div>
+              </article>
+
+              <article class="tree-card">
+                <h4>Undertone Shade Finder Tree</h4>
+                <p class="tree-baseline">Guardrails: comparator clarity, share-rate >= 0.12%, reception >= 5.0.</p>
+                <div class="tree-root">Trigger: CTR proxy improves but CPA guardrail degrades</div>
+                <div class="tree-branches">
+                  <section class="tree-branch">
+                    <div class="tree-node">High curiosity, low intent (comment-rate up, conversion proxy flat)</div>
+                    <div class="tree-node tree-action">Reduce shades on screen to 2 max and add direct undertone comparator.</div>
+                  </section>
+                  <section class="tree-branch">
+                    <div class="tree-node">Saturation proxy flips to declining delta</div>
+                    <div class="tree-node tree-action">Rotate to adjacent shade narrative and refresh hook structure immediately.</div>
+                  </section>
+                  <section class="tree-branch">
+                    <div class="tree-node">Sentiment source remains none in brief outputs (284/284)</div>
+                    <div class="tree-node tree-action">Hold large-scale rollout until external sentiment coverage reaches readiness threshold.</div>
+                  </section>
+                </div>
+              </article>
+            </div>
           </article>
 
           <article class="memo-pane" data-memo-pane="receipts">
@@ -359,6 +501,15 @@
     <section class="section shell" id="proof">
       <h2>Proof</h2>
       <p class="proof-note">48h window disclaimer: proof feed reflects the latest 48 hours unless a tile is explicitly marked historical. All proof tiles are de-identified. Handles shown are public examples only. Internal cluster IDs available on request.</p>
+      <div class="proof-filters" id="proofFilters" role="tablist" aria-label="Proof segments">
+        <button class="proof-filter is-active" type="button" data-proof-filter="general">General</button>
+        <button class="proof-filter" type="button" data-proof-filter="makeup">Makeup</button>
+        <button class="proof-filter" type="button" data-proof-filter="cosmetics">Cosmetics</button>
+        <button class="proof-filter" type="button" data-proof-filter="jp_derived">JP Derived</button>
+        <button class="proof-filter" type="button" data-proof-filter="kr_derived">KR Derived</button>
+        <button class="proof-filter" type="button" data-proof-filter="trending">Trending</button>
+        <button class="proof-filter" type="button" data-proof-filter="saturations">Saturations</button>
+      </div>
       <div class="proof-summary" id="proofSummary"></div>
       <div class="proof-grid" id="proofGrid"></div>
     </section>

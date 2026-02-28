@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const scrollLinks = document.querySelectorAll("[data-scroll]");
   const proofGrid = document.getElementById("proofGrid");
   const proofSummary = document.getElementById("proofSummary");
+  const proofFilters = document.getElementById("proofFilters");
   const enemyGrid = document.getElementById("enemyGrid");
   const statsSection = document.getElementById("stats");
   const animatedStats = document.getElementById("animatedStats");
@@ -97,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "replying luckylibra blush blindness (general)",
       receipt: "@itslakkam | 8,129 views | strength 50.25 | score 49.40",
       confidence: 78,
+      tags: ["makeup", "cosmetics", "saturations"],
       constraint:
         "DNS triggers: low_velocity_valid_rate + weak_score_total. Missing macro score and gate-depth thresholds.",
     },
@@ -105,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "super quick clean makeup (grwm)",
       receipt: "@fayeknightlyplusmom | 27,955 views | strength 49.90 | accel 0.0204",
       confidence: 74,
+      tags: ["makeup", "trending"],
       constraint:
         "DNS triggers: low_gate_pass_rate + low_velocity_valid_rate + weak_score_total.",
     },
@@ -113,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "53 contour method never (general)",
       receipt: "@poppymarchh | 331,229 views | strength 47.14 | score 40.87",
       confidence: 71,
+      tags: ["makeup", "cosmetics", "saturations"],
       constraint:
         "High view volume still failed decision quality: macro_score_total_lt_62 and micro velocity thresholds.",
     },
@@ -121,6 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "bebot (general)",
       receipt: "@lyrayeyeye | 525,256 views | exploit lane | strength 46.15",
       confidence: 69,
+      tags: ["makeup", "cosmetics", "saturations"],
       constraint:
         "DNS triggers: low_gate_pass_rate + low_velocity_valid_rate + weak_score_total; recapture coverage remains below target.",
     },
@@ -129,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "makeup artist best known (general)",
       receipt: "@voguemagazine | 104,564 views | noise strength 38.31 | readiness 4/12",
       confidence: 63,
+      tags: ["makeup", "trending"],
       constraint:
         "Hold until recapture coverage and gate depth clear. Current row is queue-noise, not production-ready.",
     },
@@ -137,10 +143,49 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "apply new brightening concealer (tutorial)",
       receipt: "@patricktabeauty | 30,705 views | noise strength 37.27 | readiness 4/12",
       confidence: 61,
+      tags: ["makeup", "cosmetics", "trending"],
       constraint:
         "Hold pending stronger core score and one additional validated post before scaling spend.",
     },
+    {
+      decision: "Fund",
+      title: "JP Derived: blush carry-over spike",
+      receipt: "@dearnasya | JP signal 51.47 | accelerating +9.94 delta",
+      confidence: 84,
+      tags: ["jp_derived", "makeup", "trending"],
+      constraint:
+        "Run as transfer candidate only after US proof-first pacing swap; keep two-variant cap on first allocation.",
+    },
+    {
+      decision: "Fund",
+      title: "KR Derived: contour adaptation lane",
+      receipt: "@selenamup | KR signal 41.97 | ER 8.94% | accelerating +2.94",
+      confidence: 81,
+      tags: ["kr_derived", "makeup", "trending"],
+      constraint:
+        "Preserve KR sequence logic but lower polish and add immediate proof beat for US paid context.",
+    },
+    {
+      decision: "Hold",
+      title: "Saturation Risk: texture pattern cooling",
+      receipt: "US tile trajectory stabilizing | delta -1.94 | score 46.06",
+      confidence: 66,
+      tags: ["makeup", "saturations"],
+      constraint:
+        "Cut spend 30-50% and rotate to fresh hook before hard decline confirmation.",
+    },
+    {
+      decision: "Hold",
+      title: "Saturation Risk: payoff-late tutorials",
+      receipt: "US stabilizing lane | repeated late-proof structure",
+      confidence: 62,
+      tags: ["makeup", "cosmetics", "saturations"],
+      constraint:
+        "Move proof to first 2s and collapse runtime to 18-25s before re-approval.",
+    },
   ];
+
+  let activeProofFilter = "general";
 
   const setStatus = (message, type = "") => {
     if (!formStatus) return;
@@ -231,13 +276,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const renderProofTiles = () => {
     if (!proofGrid) return;
 
-    proofGrid.innerHTML = proofTiles
+    const filteredTiles =
+      activeProofFilter === "general"
+        ? proofTiles
+        : proofTiles.filter((tile) => (tile.tags || []).includes(activeProofFilter));
+
+    if (!filteredTiles.length) {
+      proofGrid.innerHTML = `
+        <article class="proof-card proof-empty">
+          <h3>No rows in this segment</h3>
+          <p>Switch segment filters or widen the proof window.</p>
+        </article>
+      `;
+      return;
+    }
+
+    proofGrid.innerHTML = filteredTiles
       .map(
         (tile) => `
           <article class="proof-card">
             <h3 class="decision decision-${tile.decision.toLowerCase()}">${tile.decision}</h3>
             <p class="proof-title">${tile.title}</p>
             <p class="receipt">${tile.receipt}</p>
+            <p class="proof-tags">${(tile.tags || [])
+              .map((tag) => `<span>${tag.replaceAll("_", " ")}</span>`)
+              .join("")}</p>
             <div class="confidence-row confidence-row-proof">
               <span>Confidence</span>
               <strong>${tile.confidence}%</strong>
@@ -310,6 +373,20 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProofTiles();
   initMemoArtifact();
   revealOnView(enemyGrid, "is-live", 0.2);
+
+  if (proofFilters) {
+    proofFilters.addEventListener("click", (event) => {
+      const btn = event.target.closest("[data-proof-filter]");
+      if (!btn) return;
+      activeProofFilter = btn.dataset.proofFilter || "general";
+
+      proofFilters.querySelectorAll("[data-proof-filter]").forEach((filterBtn) => {
+        filterBtn.classList.toggle("is-active", filterBtn === btn);
+      });
+
+      renderProofTiles();
+    });
+  }
 
   const interactiveCards = document.querySelectorAll(".enemy-card-dynamic");
   interactiveCards.forEach((card) => {
