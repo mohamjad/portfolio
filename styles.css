@@ -261,7 +261,7 @@ h1 span {
 
 .hero-visual {
   position: absolute;
-  inset: 0;
+  inset: -8vh -10vw -4vh -10vw;
   pointer-events: none;
   overflow: hidden;
 }
@@ -295,10 +295,10 @@ h1 span {
 }
 
 .hero-base {
-  width: 188vw;
-  max-width: 188vh;
-  left: calc(50% - 88vh);
-  top: -31vh;
+  width: 212vw;
+  max-width: 220vh;
+  left: calc(50% - 100vh);
+  top: -39vh;
   opacity: 0.92;
   z-index: 1;
   filter: contrast(1.03) saturate(1.02);
@@ -306,14 +306,14 @@ h1 span {
 }
 
 .hero-sparks {
-  width: 188vw;
-  max-width: 188vh;
-  left: calc(50% - 88vh);
-  top: -31vh;
+  width: 212vw;
+  max-width: 220vh;
+  left: calc(50% - 100vh);
+  top: -39vh;
   opacity: 0.24;
   z-index: 2;
   mix-blend-mode: screen;
-  clip-path: inset(0 0 52% 0);
+  clip-path: inset(0 0 55% 0);
   filter: saturate(1.12);
   animation: heroSparkDrift 12s ease-in-out infinite;
 }
@@ -840,10 +840,10 @@ textarea:focus {
 
   .hero-base,
   .hero-sparks {
-    width: 178vw;
+    width: 190vw;
     max-width: none;
-    left: -33vw;
-    top: -18vh;
+    left: -40vw;
+    top: -22vh;
   }
 
   .hero-e5 {
@@ -900,9 +900,9 @@ textarea:focus {
 
   .hero-base,
   .hero-sparks {
-    width: 200vw;
-    left: -53vw;
-    top: -14vh;
+    width: 220vw;
+    left: -65vw;
+    top: -18vh;
   }
 
   .hero-e5 {
