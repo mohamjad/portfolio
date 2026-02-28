@@ -3,15 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const proofGrid = document.getElementById("proofGrid");
   const proofSummary = document.getElementById("proofSummary");
   const enemyGrid = document.getElementById("enemyGrid");
+  const statsSection = document.getElementById("stats");
   const animatedStats = document.getElementById("animatedStats");
   const intakeForm = document.getElementById("intakeForm");
   const formStatus = document.getElementById("formStatus");
-
-  const numberFormatter = new Intl.NumberFormat("en-US");
-  const compactFormatter = new Intl.NumberFormat("en-US", {
-    notation: "compact",
-    maximumFractionDigits: 1,
-  });
 
   const heroAnimations = [
     { id: "heroAnimExtraSpark", path: "assets/hero/ExtraSpark.json" },
@@ -28,65 +23,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const statBars = [
     {
-      value: 400000,
+      valueLabel: "400K+",
       label: "POSTS INDEXED",
       height: 300,
-      marginTop: 60,
-      color: "#4cf59d",
-      format: "compact",
-      suffix: "+",
+      offset: -30,
+      color: "#17BF14",
+      offsetText: true,
     },
     {
-      value: 210,
+      valueLabel: "210+",
       label: "CONCEPTS ALLOCATED",
       height: 300,
-      marginTop: 160,
-      color: "#62b7ff",
-      suffix: "+",
+      offset: 70,
+      color: "#43AFDE",
+      offsetText: true,
     },
     {
-      value: 56,
+      valueLabel: "56hr",
       label: "AVG TURNAROUND",
       height: 280,
-      marginTop: 120,
-      color: "#ffe156",
-      suffix: "hr",
+      offset: 20,
+      color: "#EA9D09",
+      offsetText: true,
     },
     {
-      value: 800,
+      valueLabel: "800+",
       label: "DEAD FORMATS BLOCKED",
       height: 260,
-      marginTop: 140,
-      color: "#ef63c4",
-      suffix: "+",
+      offset: 30,
+      color: "#E455BC",
+      offsetText: true,
     },
     {
-      value: 2200000,
+      valueLabel: "$2.2M+",
       label: "LEARNING TAX PREVENTED",
       height: 380,
-      marginTop: 0,
-      color: "#4cf59d",
-      decimals: 1,
-      format: "currencyCompact",
-      prefix: "$",
-      suffix: "+",
+      offset: -50,
+      color: "#17BF14",
+      offsetText: false,
     },
     {
-      value: 1.6,
+      valueLabel: "+1.6s",
       label: "AVG HOLD TIME LIFT",
       height: 380,
-      marginTop: 90,
-      color: "#ef63c4",
-      decimals: 1,
-      prefix: "+",
-      suffix: "s",
+      offset: 40,
+      color: "#E455BC",
+      offsetText: true,
     },
     {
-      value: 124,
+      valueLabel: "124",
       label: "QUANT INPUTS / DECISION",
       height: 280,
-      marginTop: 40,
-      color: "#62b7ff",
+      offset: -60,
+      color: "#EA9D09",
+      offsetText: true,
     },
   ];
 
@@ -146,31 +136,15 @@ document.addEventListener("DOMContentLoaded", () => {
     formStatus.textContent = message;
   };
 
-  const formatValue = (value, decimals = 0, suffix = "", mode = "plain", prefix = "") => {
-    if (mode === "compact") {
-      return `${prefix}${compactFormatter.format(value)}${suffix}`;
-    }
-
-    if (mode === "currencyCompact") {
-      return `${prefix}${compactFormatter.format(value)}${suffix}`;
-    }
-
-    if (decimals > 0) {
-      return `${prefix}${Number(value).toFixed(decimals)}${suffix}`;
-    }
-
-    return `${prefix}${numberFormatter.format(Math.round(Number(value)))}${suffix}`;
-  };
-
   const renderStats = () => {
-    if (!animatedStats) return;
+    if (!animatedStats || !statsSection) return;
 
     animatedStats.innerHTML = statBars
       .map(
-        (stat, index) => `
-          <div class="stat-bar" style="height:${stat.height}px; margin-top:${stat.marginTop}px; border-radius:8px; --bar-color:${stat.color}; --delay:${index * 70}ms;">
+        (stat) => `
+          <div class="stat-bar" style="height:0px; margin-top:240px; border-radius:8px; --bar-color:${stat.color};">
             <div class="stat-inner">
-              <h3 class="stat-value" data-value="${stat.value}" data-decimals="${stat.decimals || 0}" data-suffix="${stat.suffix || ""}" data-format="${stat.format || "plain"}" data-prefix="${stat.prefix || ""}">0</h3>
+              <h3 class="stat-value">${stat.valueLabel}</h3>
               <p class="stat-label">${stat.label}</p>
             </div>
           </div>
@@ -178,56 +152,52 @@ document.addEventListener("DOMContentLoaded", () => {
       )
       .join("");
 
-    const runCountAnimation = () => {
-      const values = animatedStats.querySelectorAll(".stat-value");
-      const bars = animatedStats.querySelectorAll(".stat-bar");
+    const bars = animatedStats.querySelectorAll(".stat-bar");
+    const maxHeight = Math.max(...statBars.map((bar) => bar.height));
+    const VISIBILITY_PADDING = window.innerWidth <= 834 ? 0 : 300;
+    let rafPending = false;
 
-      bars.forEach((bar, index) => {
-        window.setTimeout(() => {
-          bar.classList.add("is-live");
-        }, index * 70);
-      });
+    const applyLayout = () => {
+      rafPending = false;
+      const offsetTop = statsSection.getBoundingClientRect().top;
+      const scrollAmount = window.innerHeight - offsetTop - VISIBILITY_PADDING;
+      const startOffset = scrollAmount > maxHeight;
 
-      values.forEach((element) => {
-        const endValue = Number(element.dataset.value || 0);
-        const decimals = Number(element.dataset.decimals || 0);
-        const suffix = element.dataset.suffix || "";
-        const mode = element.dataset.format || "plain";
-        const prefix = element.dataset.prefix || "";
-        const duration = 900;
-        const started = performance.now();
+      bars.forEach((barNode, index) => {
+        const stat = statBars[index];
+        const barHeight =
+          startOffset || scrollAmount > stat.height
+            ? stat.height
+            : Math.max(scrollAmount, 0);
 
-        const tick = (now) => {
-          const progress = Math.min((now - started) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = endValue * eased;
-          element.textContent = formatValue(current, decimals, suffix, mode, prefix);
+        const offsetAmt =
+          stat.offset > 0
+            ? Math.min(scrollAmount, stat.offset)
+            : Math.max(-scrollAmount, stat.offset);
 
-          if (progress < 1) {
-            requestAnimationFrame(tick);
-          }
-        };
+        const barOffset = startOffset
+          ? 240 - Math.floor(barHeight / 2) + offsetAmt
+          : 240 - Math.floor(barHeight / 2);
 
-        requestAnimationFrame(tick);
+        const valueNode = barNode.querySelector(".stat-value");
+        valueNode.style.paddingTop = stat.offsetText
+          ? `${Math.floor(stat.height / 4)}px`
+          : "0px";
+
+        barNode.style.height = `${Math.max(barHeight, 0)}px`;
+        barNode.style.marginTop = `${barOffset}px`;
       });
     };
 
-    if (!("IntersectionObserver" in window)) {
-      runCountAnimation();
-      return;
-    }
+    const onScroll = () => {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(applyLayout);
+    };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          runCountAnimation();
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(animatedStats);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
   };
 
   const renderProofSummary = () => {
@@ -288,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProofTiles();
   revealOnView(enemyGrid, "is-live", 0.2);
 
-  const interactiveCards = document.querySelectorAll(".enemy-card-dynamic, .stat-bar");
+  const interactiveCards = document.querySelectorAll(".enemy-card-dynamic");
   interactiveCards.forEach((card) => {
     card.addEventListener("pointermove", (event) => {
       const rect = card.getBoundingClientRect();
