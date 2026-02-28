@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("intakeForm");
   const status = document.getElementById("formStatus");
   const scrollLinks = document.querySelectorAll("[data-scroll]");
@@ -36,7 +36,7 @@
       .map(
         (logo) => `
         <span class="trusted-item">
-          <img src="${logo.src}" alt="${logo.name} logo" loading="lazy" />
+          <img src="${logo.src}" alt="${logo.name} logo" loading="eager" decoding="async" />
           <span class="logo-fallback">${logo.name}</span>
         </span>
       `
@@ -72,34 +72,30 @@
     const data = new FormData(form);
     const payload = {
       product: String(data.get("product") || ""),
-      price_point: String(data.get("price_point") || ""),
-      hero_claim: String(data.get("hero_claim") || ""),
       objective: String(data.get("objective") || ""),
-      spend_band: String(data.get("spend_band") || ""),
+      spendBand: String(data.get("spend_band") || ""),
       timeline: String(data.get("timeline") || ""),
       constraints: String(data.get("constraints") || ""),
-      contact_email: String(data.get("contact_email") || ""),
+      contactEmail: String(data.get("contact_email") || ""),
     };
 
     const subject = `Allocation Memo Intake | ${payload.product || "New Request"}`;
     const lines = [
       "Setta Allocation Memo Intake",
       "",
-      `Product: ${payload.product}`,
-      `Price Point: ${payload.price_point}`,
-      `Hero Claim: ${payload.hero_claim}`,
-      `Objective: ${payload.objective}`,
-      `Spend Band: ${payload.spend_band}`,
-      `Timeline: ${payload.timeline}`,
-      `Constraints: ${payload.constraints}`,
-      `Contact Email: ${payload.contact_email}`,
+      `Product: ${payload.product || "n/a"}`,
+      `Objective: ${payload.objective || "n/a"}`,
+      `Spend Band: ${payload.spendBand || "not provided"}`,
+      `Timeline: ${payload.timeline || "not provided"}`,
+      `Constraints: ${payload.constraints || "n/a"}`,
+      `Contact Email: ${payload.contactEmail || "n/a"}`,
     ];
 
     const mailto = `mailto:mohammed@setta.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
     window.location.href = mailto;
 
     if (status) {
-      status.textContent = "Draft opened in your email app. Send it to complete async intake.";
+      status.textContent = "Draft opened to mohammed@setta.ca. Send it to complete intake.";
     }
   });
 });
