@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       decision: "DNS",
       title: "replying luckylibra blush blindness (general)",
-      receipt: "@itslakkam | 8,129 views | strength 50.25 | score 49.40",
+      receipt: "Public beauty proof row | 8,129 views | strength 50.25 | score 49.40",
       confidence: 78,
       tags: ["makeup", "cosmetics", "saturations"],
       constraint:
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       decision: "DNS",
       title: "super quick clean makeup (grwm)",
-      receipt: "@fayeknightlyplusmom | 27,955 views | strength 49.90 | accel 0.0204",
+      receipt: "Public beauty proof row | 27,955 views | strength 49.90 | accel 0.0204",
       confidence: 74,
       tags: ["makeup", "trending"],
       constraint:
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       decision: "DNS",
       title: "53 contour method never (general)",
-      receipt: "@poppymarchh | 331,229 views | strength 47.14 | score 40.87",
+      receipt: "Public beauty proof row | 331,229 views | strength 47.14 | score 40.87",
       confidence: 71,
       tags: ["makeup", "cosmetics", "saturations"],
       constraint:
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       decision: "DNS",
       title: "bebot (general)",
-      receipt: "@lyrayeyeye | 525,256 views | exploit lane | strength 46.15",
+      receipt: "Public beauty proof row | 525,256 views | exploit lane | strength 46.15",
       confidence: 69,
       tags: ["makeup", "cosmetics", "saturations"],
       constraint:
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       decision: "Hold",
       title: "makeup artist best known (general)",
-      receipt: "@voguemagazine | 104,564 views | noise strength 38.31 | readiness 4/12",
+      receipt: "Public beauty proof row | 104,564 views | noise strength 38.31 | readiness 4/12",
       confidence: 63,
       tags: ["makeup", "trending"],
       constraint:
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       decision: "Hold",
       title: "apply new brightening concealer (tutorial)",
-      receipt: "@patricktabeauty | 30,705 views | noise strength 37.27 | readiness 4/12",
+      receipt: "Public beauty proof row | 30,705 views | noise strength 37.27 | readiness 4/12",
       confidence: 61,
       tags: ["makeup", "cosmetics", "trending"],
       constraint:
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       decision: "Fund",
       title: "JP Derived: blush carry-over spike",
-      receipt: "@dearnasya | JP signal 51.47 | accelerating +9.94 delta",
+      receipt: "JP-derived proof row | signal 51.47 | accelerating +9.94 delta",
       confidence: 84,
       tags: ["jp_derived", "makeup", "trending"],
       constraint:
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       decision: "Fund",
       title: "KR Derived: contour adaptation lane",
-      receipt: "@selenamup | KR signal 41.97 | ER 8.94% | accelerating +2.94",
+      receipt: "KR-derived proof row | signal 41.97 | ER 8.94% | accelerating +2.94",
       confidence: 81,
       tags: ["kr_derived", "makeup", "trending"],
       constraint:
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "Hold",
       title: "outfitrepeater (general)",
       receipt:
-        "@mirumune | 2,158,020 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+        "outfitrepeater cluster | 2,158,020 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
       confidence: 72,
       tags: ["apparel_retail_ecommerce", "retail", "trending"],
       constraint:
@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "Hold",
       title: "coquettefashion (general)",
       receipt:
-        "@shottake4 | 1,296,994 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+        "coquettefashion cluster | 1,296,994 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
       confidence: 69,
       tags: ["apparel_retail_ecommerce", "apparel", "trending"],
       constraint:
@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "DNS",
       title: "coquette (general)",
       receipt:
-        "@amberfashion | 612,135 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+        "coquette cluster | 612,135 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
       confidence: 66,
       tags: ["apparel_retail_ecommerce", "apparel", "saturations"],
       constraint:
@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "Hold",
       title: "coquette (general)",
       receipt:
-        "@fashiongxrl | 205,080 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+        "coquette cluster | 205,080 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
       confidence: 64,
       tags: ["apparel_retail_ecommerce", "retail"],
       constraint:
@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "Hold",
       title: "burberry (general)",
       receipt:
-        "@claraswardrobe | 75,675 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+        "burberry cluster | 75,675 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
       confidence: 61,
       tags: ["apparel_retail_ecommerce", "retail"],
       constraint:
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "DNS",
       title: "jfashion (general)",
       receipt:
-        "@h.holeckova | 18,143 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+        "jfashion cluster | 18,143 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
       confidence: 58,
       tags: ["apparel_retail_ecommerce", "apparel", "saturations", "jp_derived"],
       constraint:
