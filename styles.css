@@ -487,6 +487,14 @@ h2 {
   border-color: rgba(159, 196, 255, 0.44);
 }
 
+.where-copy {
+  margin: 0.76rem 0 0;
+  max-width: 62ch;
+  color: var(--text-mid);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
 .memo-meta {
   margin: 0.68rem 0 0;
   color: var(--text-mid);
