@@ -128,78 +128,79 @@
         Objective: speed + save rate (CPA guardrail) | Constraints: first-5-second proof, low ad-feel, no clinical overclaims, ~30s max | Spend band: mid (15 concepts / 21 days) | Saturation mapped via trajectory + delta proxy.
       </p>
 
-      <div class="memo-input-map" aria-label="Client input and Setta mapping">
-        <article class="memo-map-card">
-          <h3>What the client sent</h3>
-          <table class="memo-map-table" role="table">
-            <thead>
-              <tr>
-                <th>Field</th>
-                <th>Input</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Product</td>
-                <td>LAKA Fruity Glam Tint - US paid launch</td>
-              </tr>
-              <tr>
-                <td>Objective</td>
-                <td>Speed + save rate (CPA as guardrail)</td>
-              </tr>
-              <tr>
-                <td>Spend band</td>
-                <td>Mid - 15 concepts over 21 days</td>
-              </tr>
-              <tr>
-                <td>Timeline</td>
-                <td>TikTok-first, 21-day sprint</td>
-              </tr>
-              <tr>
-                <td>Constraints</td>
-                <td>Proof in first 5 seconds, low ad-feel, no clinical overclaims, 30 second max</td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
+      <div class="memo-map-rail-wrap" aria-label="Input to allocation mapping">
+        <div class="memo-map-rail-head">
+          <h3>Input to Allocation Map</h3>
+          <p>Scroll sideways to follow concept movement into Greenlight, Hold, and DNS.</p>
+        </div>
+        <div class="memo-map-rail" role="list">
+          <article class="memo-map-phase is-input" role="listitem">
+            <p class="memo-map-phase-kicker">Phase 1</p>
+            <h4>Client Input</h4>
+            <ul class="memo-map-lines">
+              <li><span>Product</span><strong>LAKA Fruity Glam Tint - US paid launch</strong></li>
+              <li><span>Objective</span><strong>Speed + save rate (CPA as guardrail)</strong></li>
+              <li><span>Spend band</span><strong>Mid - 15 concepts over 21 days</strong></li>
+              <li><span>Timeline</span><strong>TikTok-first, 21-day sprint</strong></li>
+              <li><span>Constraints</span><strong>Proof in first 5s, low ad-feel, no clinical overclaims, 30s max</strong></li>
+            </ul>
+          </article>
 
-        <article class="memo-map-card">
-          <h3>What Setta mapped to</h3>
-          <table class="memo-map-table" role="table">
-            <thead>
-              <tr>
-                <th>Input signal</th>
-                <th>Allocation output</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Objective: save rate</td>
-                <td>Greenlit recipe-style utility formats over awareness formats</td>
-              </tr>
-              <tr>
-                <td>Constraint: low ad-feel</td>
-                <td>Blocked polish-led KR pacing and launch monologue structures</td>
-              </tr>
-              <tr>
-                <td>Constraint: no clinical overclaims</td>
-                <td>Blocked ingredient-lecture formats, flagged compliance risk on texture claims</td>
-              </tr>
-              <tr>
-                <td>Spend band: mid</td>
-                <td>Staged budget release - 30% pilot, 40% holdout, 30% scale after gate checks</td>
-              </tr>
-              <tr>
-                <td>Category: lip tint launch</td>
-                <td>Mapped shade anxiety and texture skepticism as primary objection clusters</td>
-              </tr>
-              <tr>
-                <td>Platform: TikTok-first</td>
-                <td>Enforced 18-25 second runtime, single CTA, UGC-native pacing rules</td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
+          <article class="memo-map-phase" role="listitem">
+            <p class="memo-map-phase-kicker">Phase 2</p>
+            <h4>Signal Mapping</h4>
+            <ul class="memo-flow-list">
+              <li><span class="concept-chip c-recipe">Lip Combo Recipe</span><p>Objective mapped to utility-first format over awareness-first framing.</p></li>
+              <li><span class="concept-chip c-texture">Texture Proof Loop</span><p>Texture skepticism marked as primary objection cluster to solve early.</p></li>
+              <li><span class="concept-chip c-shade">Undertone Shade Finder</span><p>Shade anxiety mapped as conversion blocker requiring explicit clarity module.</p></li>
+              <li><span class="concept-chip c-kr">KR Polish Pacing</span><p>Low ad-feel constraint triggered structure downgrade risk.</p></li>
+              <li><span class="concept-chip c-launch">Launch Monologue</span><p>Constraint + pacing mismatch flagged as high DNS risk.</p></li>
+            </ul>
+          </article>
+
+          <article class="memo-map-phase" role="listitem">
+            <p class="memo-map-phase-kicker">Phase 3</p>
+            <h4>Structure Shaping</h4>
+            <ul class="memo-flow-list">
+              <li><span class="concept-chip c-recipe">Lip Combo Recipe</span><p>Drafted with payoff-first hook and one-CTA caption logic.</p></li>
+              <li><span class="concept-chip c-texture">Texture Proof Loop</span><p>Drafted tactile proof in first 0-3s with second proof before CTA.</p></li>
+              <li><span class="concept-chip c-shade">Undertone Shade Finder</span><p>Drafted comparator clarity sequence for lower mismatch risk.</p></li>
+              <li><span class="concept-chip c-kr">KR Polish Pacing</span><p>Reframed to UGC-native pacing, retained as hold candidate only.</p></li>
+              <li><span class="concept-chip c-launch">Launch Monologue</span><p>Removed from candidate set due late proof and ad-feel risk.</p></li>
+            </ul>
+          </article>
+
+          <article class="memo-map-phase" role="listitem">
+            <p class="memo-map-phase-kicker">Phase 4</p>
+            <h4>Gate Checks</h4>
+            <ul class="memo-flow-list">
+              <li><span class="concept-chip c-recipe">Lip Combo Recipe</span><p><span class="status-pill pass">Pass</span> cleared hook timing + caption utility gates.</p></li>
+              <li><span class="concept-chip c-texture">Texture Proof Loop</span><p><span class="status-pill pass">Pass</span> cleared objection-response gate.</p></li>
+              <li><span class="concept-chip c-shade">Undertone Shade Finder</span><p><span class="status-pill pass">Pass</span> cleared clarity and conversion-intent gate.</p></li>
+              <li><span class="concept-chip c-kr">KR Polish Pacing</span><p><span class="status-pill hold">Hold</span> quality transfer uncertain without US pacing rewrite.</p></li>
+              <li><span class="concept-chip c-launch">Launch Monologue</span><p><span class="status-pill dns">Fail</span> late-proof + ad-feel gate failure.</p></li>
+            </ul>
+          </article>
+
+          <article class="memo-map-phase is-decision" role="listitem">
+            <p class="memo-map-phase-kicker">Phase 5</p>
+            <h4>Executive Decision</h4>
+            <div class="memo-decision-groups">
+              <div>
+                <h5>Greenlight 3</h5>
+                <p><span class="concept-chip c-recipe">Lip Combo Recipe</span> <span class="concept-chip c-texture">Texture Proof Loop</span> <span class="concept-chip c-shade">Undertone Shade Finder</span></p>
+              </div>
+              <div>
+                <h5>Hold</h5>
+                <p><span class="concept-chip c-kr">KR Polish Pacing</span></p>
+              </div>
+              <div>
+                <h5>DNS</h5>
+                <p><span class="concept-chip c-launch">Launch Monologue</span></p>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
 
       <details class="memo-view-toggle" id="memoViewToggle">
