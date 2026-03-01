@@ -191,7 +191,6 @@ a {
   opacity: 0;
   transition: opacity 0.45s ease;
   z-index: 2;
-  mix-blend-mode: screen;
 }
 
 .scene-e5-anim svg {
@@ -200,11 +199,11 @@ a {
 }
 
 .scene-building-layer.scene-building-ready .scene-e5-anim {
-  opacity: 0.88;
+  opacity: 1;
 }
 
 .scene-building-layer.scene-building-ready .scene-building-fallback {
-  opacity: 1;
+  opacity: 0;
 }
 
 .scene-anim {
