@@ -651,21 +651,55 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const payload = new FormData(intakeForm);
-    const endpoint = "https://formsubmit.co/ajax/mohammed@setta.ca";
+    const endpoint = "https://api.staticforms.xyz/submit";
+    const staticFormsAccessKey = "sf_98m8g7d6b84dmbejlefd6l3c";
 
     setStatus("Submitting intake...", "");
 
     try {
+      const subject = `Setta Intake | ${payload.get("product") || "New Request"}`;
+      const message = [
+        "Setta Allocation Memo Intake",
+        "",
+        `Product + claim: ${payload.get("product") || "n/a"}`,
+        `Objective: ${payload.get("objective") || "n/a"}`,
+        `Timeline: ${payload.get("timeline") || "n/a"}`,
+        `Spend band: ${payload.get("spend_band") || "n/a"}`,
+        `Constraints: ${payload.get("constraints") || "n/a"}`,
+        `Contact email: ${payload.get("contact_email") || "n/a"}`,
+        `Call notes: ${payload.get("call_notes") || "n/a"}`,
+      ].join("\n");
+
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: payload,
+        body: JSON.stringify({
+          accessKey: staticFormsAccessKey,
+          subject,
+          name: "Setta Site Intake",
+          email: payload.get("contact_email") || "mohammed@setta.ca",
+          replyTo: payload.get("contact_email") || "",
+          message,
+          product: payload.get("product") || "",
+          objective: payload.get("objective") || "",
+          timeline: payload.get("timeline") || "",
+          spend_band: payload.get("spend_band") || "",
+          constraints: payload.get("constraints") || "",
+          call_notes: payload.get("call_notes") || "",
+          to: "mohammed@setta.ca",
+        }),
       });
 
       if (!response.ok) {
         throw new Error(`Submit failed (${response.status})`);
+      }
+
+      const result = await response.json().catch(() => null);
+      if (result && result.success === false) {
+        throw new Error(result.message || "Submit failed");
       }
 
       setStatus("Intake sent. You should receive a reply at the contact email provided.", "success");
