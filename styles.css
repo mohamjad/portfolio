@@ -158,14 +158,48 @@ a {
   animation: sceneDrift 22s ease-in-out infinite;
 }
 
-.scene-building {
+.scene-building-layer {
   position: absolute;
-  right: max(-6vw, -92px);
-  bottom: max(-7vw, -98px);
-  width: clamp(460px, 45vw, 980px);
-  max-width: none;
+  top: 15%;
+  left: 60%;
+  width: 100%;
+  height: 100%;
+  max-width: 80vh;
   transform-origin: 76% 84%;
   animation: buildingFloat 10s ease-in-out infinite;
+  z-index: -10;
+}
+
+.scene-building-fallback,
+.scene-e5-anim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scene-building-fallback {
+  object-fit: contain;
+  opacity: 0.96;
+  transition: opacity 0.45s ease;
+}
+
+.scene-e5-anim {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.scene-e5-anim svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.scene-building-layer.scene-building-ready .scene-e5-anim {
+  opacity: 1;
+}
+
+.scene-building-layer.scene-building-ready .scene-building-fallback {
+  opacity: 0;
 }
 
 .scene-anim {
@@ -190,6 +224,28 @@ a {
 .scene-anim-green-yellow { top: 2%; left: 74%; max-width: 18vh; }
 .scene-anim-green-star { top: 18%; left: 80%; max-width: 16vh; }
 .scene-anim-small-green { top: 36%; left: 52%; max-width: 8vh; }
+
+.scene-glow {
+  position: absolute;
+  pointer-events: none;
+  filter: blur(8px);
+}
+
+.scene-glow-green {
+  top: 0;
+  left: 0;
+  width: min(560px, 42vw);
+  height: min(560px, 42vw);
+  background: radial-gradient(circle at 18% 18%, rgba(29, 157, 27, 0.24) 0%, rgba(29, 157, 27, 0.1) 38%, rgba(29, 157, 27, 0) 74%);
+}
+
+.scene-glow-pink {
+  right: 19%;
+  bottom: 9%;
+  width: min(360px, 28vw);
+  height: min(360px, 28vw);
+  background: radial-gradient(circle at 52% 62%, rgba(253, 115, 197, 0.22) 0%, rgba(253, 115, 197, 0.08) 42%, rgba(253, 115, 197, 0) 76%);
+}
 
 .hero-shade {
   position: absolute;
@@ -1663,8 +1719,10 @@ textarea:focus {
     width: clamp(1320px, 180vw, 2600px);
   }
 
-  .scene-building {
-    width: clamp(380px, 42vw, 760px);
+  .scene-building-layer {
+    top: 24%;
+    left: 31%;
+    max-width: 56vh;
   }
 
   .animated-stats {
@@ -1725,10 +1783,10 @@ textarea:focus {
     transform: translate(-56%, -54%);
   }
 
-  .scene-building {
-    width: clamp(330px, 58vw, 560px);
-    right: -74px;
-    bottom: -78px;
+  .scene-building-layer {
+    top: 12%;
+    left: 18%;
+    max-width: 46vh;
   }
 
   .scene-anim-extra { top: -2%; left: 10%; max-width: 22vh; }
@@ -1741,6 +1799,18 @@ textarea:focus {
   .scene-anim-green-yellow { top: 10%; left: 30%; max-width: 10vh; }
   .scene-anim-green-star { top: 26%; left: 64%; max-width: 12vh; }
   .scene-anim-small-green { display: none; }
+  .scene-glow-green {
+    width: 50vw;
+    height: 50vw;
+    opacity: 0.84;
+  }
+  .scene-glow-pink {
+    width: 44vw;
+    height: 44vw;
+    right: 8%;
+    bottom: 14%;
+    opacity: 0.75;
+  }
 
   .hero-cta {
     flex-direction: column;

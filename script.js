@@ -7,10 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const statsSection = document.getElementById("stats");
   const animatedStats = document.getElementById("animatedStats");
   const memoArtifact = document.getElementById("memoArtifact");
+  const heroE5Layer = document.getElementById("heroE5Layer");
   const intakeForm = document.getElementById("intakeForm");
   const formStatus = document.getElementById("formStatus");
 
   const heroAnimations = [
+    { id: "heroAnimE5", path: "assets/hero/E5Building.json", isBuilding: true, loop: true },
     { id: "heroAnimExtraSpark", path: "assets/hero/ExtraSpark.json" },
     { id: "heroAnimPinkSpark", path: "assets/hero/PinkSpark.json" },
     { id: "heroAnimYellowSpark", path: "assets/hero/YellowSpark.json" },
@@ -471,10 +473,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!container) return;
 
       try {
-        window.lottie.loadAnimation({
+        const player = window.lottie.loadAnimation({
           container,
           renderer: "svg",
-          loop: true,
+          loop: animation.loop ?? true,
           autoplay: true,
           path: animation.path,
           rendererSettings: {
@@ -483,6 +485,12 @@ document.addEventListener("DOMContentLoaded", () => {
             hideOnTransparent: true,
           },
         });
+
+        if (animation.isBuilding && heroE5Layer && player) {
+          player.addEventListener("DOMLoaded", () => {
+            heroE5Layer.classList.add("scene-building-ready");
+          });
+        }
       } catch (error) {
         console.error(`Failed to load animation: ${animation.id}`, error);
       }

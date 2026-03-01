@@ -31,7 +31,10 @@
     <section class="hero-stage" aria-label="Hero">
       <div class="hero-scene" aria-hidden="true">
         <img class="scene-base" src="assets/hero/hero_ultrawide.png" alt="" />
-        <img class="scene-building" src="assets/hero/hero_e5.png" alt="" />
+        <div class="scene-building-layer" id="heroE5Layer">
+          <img class="scene-building-fallback" src="assets/hero/hero_e5.png" alt="" />
+          <div class="scene-e5-anim" id="heroAnimE5"></div>
+        </div>
         <div class="scene-anim scene-anim-extra" id="heroAnimExtraSpark"></div>
         <div class="scene-anim scene-anim-pink" id="heroAnimPinkSpark"></div>
         <div class="scene-anim scene-anim-yellow" id="heroAnimYellowSpark"></div>
@@ -42,6 +45,8 @@
         <div class="scene-anim scene-anim-green-yellow" id="heroAnimGreenYellowStar"></div>
         <div class="scene-anim scene-anim-green-star" id="heroAnimGreenStar"></div>
         <div class="scene-anim scene-anim-small-green" id="heroAnimSmallGreenStar"></div>
+        <div class="scene-glow scene-glow-green"></div>
+        <div class="scene-glow scene-glow-pink"></div>
       </div>
       <div class="hero-shade" aria-hidden="true"></div>
 
