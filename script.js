@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       valueLabel: "400K+",
       label: "POSTS INDEXED",
+      tooltip:
+        "400K+ posts indexed - reception mapped across 124 signals - backtested against live and historical campaign outcomes",
       height: 340,
       offset: -30,
       color: "#17BF14",
@@ -41,14 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
       offsetText: true,
     },
     {
-      valueLabel: "56hr",
-      label: "AVG TURNAROUND",
-      height: 320,
-      offset: 20,
-      color: "#EA9D09",
-      offsetText: true,
-    },
-    {
       valueLabel: "800+",
       label: "DEAD FORMATS BLOCKED",
       height: 300,
@@ -57,20 +51,19 @@ document.addEventListener("DOMContentLoaded", () => {
       offsetText: true,
     },
     {
-      valueLabel: "$1.6M+",
-      label: "LEARNING TAX PREVENTED",
-      height: 420,
-      offset: -50,
-      color: "#17BF14",
-      offsetText: false,
-      compactValue: true,
-    },
-    {
-      valueLabel: "+1.6s",
-      label: "AVG HOLD TIME LIFT",
+      valueLabel: "520+",
+      label: "CREATORS WATCHLISTED",
       height: 420,
       offset: 40,
       color: "#E455BC",
+      offsetText: true,
+    },
+    {
+      valueLabel: "56hr",
+      label: "AVG TURNAROUND",
+      height: 320,
+      offset: 20,
+      color: "#EA9D09",
       offsetText: true,
     },
     {
@@ -78,7 +71,17 @@ document.addEventListener("DOMContentLoaded", () => {
       label: "QUANT INPUTS / DECISION",
       height: 320,
       offset: -60,
-      color: "#EA9D09",
+      color: "#43AFDE",
+      offsetText: true,
+    },
+    {
+      valueLabel: "100K+",
+      label: "INTERNATIONAL SIGNALS",
+      tooltip:
+        "JP, KR, UK, AU -> US transfer and campaign reception/engagement patterns tracked for early format identification",
+      height: 360,
+      offset: -20,
+      color: "#17BF14",
       offsetText: true,
     },
   ];
@@ -183,6 +186,66 @@ document.addEventListener("DOMContentLoaded", () => {
       constraint:
         "Move proof to first 2s and collapse runtime to 18-25s before re-approval.",
     },
+    {
+      decision: "Hold",
+      title: "outfitrepeater (general)",
+      receipt:
+        "@mirumune | 2,158,020 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+      confidence: 72,
+      tags: ["apparel_retail_ecommerce", "retail", "trending"],
+      constraint:
+        "Mapped from live exploit export; historical tile with age/velocity decay risk. Use structure for hook transfer, not direct scale.",
+    },
+    {
+      decision: "Hold",
+      title: "coquettefashion (general)",
+      receipt:
+        "@shottake4 | 1,296,994 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+      confidence: 69,
+      tags: ["apparel_retail_ecommerce", "apparel", "trending"],
+      constraint:
+        "Strong view proof but stale lane risk. Re-test with fresh creator and first-2s proof to confirm current relevance.",
+    },
+    {
+      decision: "DNS",
+      title: "coquette (general)",
+      receipt:
+        "@amberfashion | 612,135 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+      confidence: 66,
+      tags: ["apparel_retail_ecommerce", "apparel", "saturations"],
+      constraint:
+        "Pattern flagged as historical in current window; treat as saturation-prone unless new momentum clears gate thresholds.",
+    },
+    {
+      decision: "Hold",
+      title: "coquette (general)",
+      receipt:
+        "@fashiongxrl | 205,080 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+      confidence: 64,
+      tags: ["apparel_retail_ecommerce", "retail"],
+      constraint:
+        "Retail-style aesthetic transfer candidate. Keep spend capped until modern recapture proves velocity validity.",
+    },
+    {
+      decision: "Hold",
+      title: "burberry (general)",
+      receipt:
+        "@claraswardrobe | 75,675 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+      confidence: 61,
+      tags: ["apparel_retail_ecommerce", "retail"],
+      constraint:
+        "Brand/retail cue is useful for framing, but live gate depth is insufficient for immediate budget expansion.",
+    },
+    {
+      decision: "DNS",
+      title: "jfashion (general)",
+      receipt:
+        "@h.holeckova | 18,143 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+      confidence: 58,
+      tags: ["apparel_retail_ecommerce", "apparel", "saturations", "jp_derived"],
+      constraint:
+        "Cross-market style signal is present, but current US readiness is weak. Hold until fresh transfer proof clears quality gates.",
+    },
   ];
 
   let activeProofFilter = "general";
@@ -200,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
     animatedStats.innerHTML = statBars
       .map(
         (stat) => `
-          <div class="stat-bar" style="height:0px; margin-top:200px; border-radius:8px; --bar-color:${stat.color};">
+          <div class="stat-bar" ${stat.tooltip ? `title="${stat.tooltip}"` : ""} style="height:0px; margin-top:200px; border-radius:8px; --bar-color:${stat.color};">
             <div class="stat-inner">
               <h3 class="stat-value${stat.compactValue ? " stat-value-compact" : ""}">${stat.valueLabel}</h3>
               <p class="stat-label">${stat.label}</p>
