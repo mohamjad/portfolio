@@ -240,7 +240,7 @@
                     <span>Sharing weakness</span><span>DNS median share-rate 0.104% vs noise 0.121%</span><span>Low transferability increases saturation risk.</span>
                   </div>
                   <div class="quant-row">
-                    <span>Reception baseline</span><span>Brief output average 4.71</span><span>Reception remains below preferred safety floor of 5.0.</span>
+                    <span>Reception policy</span><span>Risk gate, not headline score</span><span>If objections cluster, allocation shifts to Hold until re-cut.</span>
                   </div>
                   <div class="quant-row">
                     <span>Sentiment policy</span><span>Risk gate when available</span><span>Sentiment informs risk handling, not headline ranking claims.</span>
@@ -312,7 +312,7 @@
                           <span>Velocity validity gate</span><span>>= 12%</span><span>Below this, keep in hold and recapture first.</span>
                         </div>
                         <div class="quant-row">
-                          <span>Reception floor</span><span>>= 5.0 target</span><span>Current average 4.71 signals objection drag risk.</span>
+                          <span>Reception risk gate</span><span>Objection clusters trigger Hold</span><span>Pause scale, re-cut proof sequence, then re-test.</span>
                         </div>
                         <div class="quant-row">
                           <span>DNS overlap warning</span><span>57.4% failed velocity-valid-rate gate</span><span>Do not over-scale until validity stabilizes.</span>
@@ -383,6 +383,29 @@
                   </div>
                   <div class="quant-row">
                     <span>context_transfer_absent</span><span>434/434 DNS (100%)</span><span>No rollout without transfer evidence.</span>
+                  </div>
+                </div>
+              </div>
+            </details>
+            <details class="memo-expander">
+              <summary>Why DNS fires (engagement / sentiment / reception / velocity)</summary>
+              <div class="memo-expander-body">
+                <p class="memo-intro memo-intro-tight">DNS is a proof failure, not a view failure. Concepts are blocked when quality signals decay after reach and no risk-gate recovery appears.</p>
+                <div class="quant-table">
+                  <div class="quant-row quant-head">
+                    <span>Dimension</span><span>Observed trigger</span><span>DNS rationale</span>
+                  </div>
+                  <div class="quant-row">
+                    <span>Engagement quality</span><span>434/434 DNS below 0.01 quality gate</span><span>High impressions without quality interaction do not scale profitably.</span>
+                  </div>
+                  <div class="quant-row">
+                    <span>Reception falloff</span><span>Objection clustering + weak proof comments</span><span>Allocation shifts to Hold until proof order is re-cut and objections decline.</span>
+                  </div>
+                  <div class="quant-row">
+                    <span>Sentiment confidence</span><span>Low-confidence or unresolved polarity</span><span>No aggressive budget expansion without reliable sentiment confirmation.</span>
+                  </div>
+                  <div class="quant-row">
+                    <span>Velocity decay after reach</span><span>Velocity flattens past 100K views without share-rate recovery</span><span>Viewed as saturation drift; DNS stays active until a new hook re-accelerates.</span>
                   </div>
                 </div>
               </div>
@@ -468,7 +491,7 @@
                     <span>Share-rate floor</span><span>>= 0.12%</span><span>Separates scalable hooks from one-off views.</span>
                   </div>
                   <div class="quant-row">
-                    <span>Reception floor</span><span>>= 5.0 target</span><span>Current 4.71 average indicates objection pressure.</span>
+                    <span>Reception risk gate</span><span>Objection clusters trigger Hold</span><span>Re-cut narrative and proof order before budget expands.</span>
                   </div>
                   <div class="quant-row">
                     <span>Sentiment provenance</span><span>External import required</span><span>No high-confidence sentiment claims without imported rows.</span>
@@ -569,7 +592,12 @@
 
           <article class="memo-pane" data-memo-pane="failure">
             <h3>Failure Tree</h3>
-            <p class="memo-intro">Open a Greenlight to inspect trigger -> diagnosis -> action. Each branch includes engagement, reception, sentiment, watch-time, and conversion checks.</p>
+            <p class="memo-intro">Open a Greenlight and follow one path: Trigger -> Diagnosis -> Action. If any branch repeats in two consecutive checks, shift to Hold and re-cut before scale resumes.</p>
+            <div class="tree-guide">
+              <div class="tree-guide-item"><strong>Trigger</strong><span>First measurable failure signal.</span></div>
+              <div class="tree-guide-item"><strong>Diagnosis</strong><span>Most likely execution cause.</span></div>
+              <div class="tree-guide-item"><strong>Action</strong><span>Exact fix before budget is unlocked.</span></div>
+            </div>
             <div class="memo-accordion-group">
               <details class="memo-expander">
                 <summary><span>Recipe Gate failure tree</span><em>interactive</em></summary>
@@ -577,7 +605,7 @@
                   <div class="tree-root">Root trigger: engagement dips (ER under 9.1% OR share-rate under 0.12%).</div>
                   <div class="tree-branches tree-branches-interactive">
                     <details class="tree-branch-detail">
-                      <summary>Watch-time dip branch</summary>
+                      <summary>1) Watch-time dip</summary>
                       <div class="tree-branch-body">
                         <div class="tree-node">Signal: 3s hold proxy or avg watch-time drops >= 15% (client-side).</div>
                         <div class="tree-node">Cause: proof reveal is late or label clutter delays payoff.</div>
@@ -585,7 +613,7 @@
                       </div>
                     </details>
                     <details class="tree-branch-detail">
-                      <summary>Reception drag branch</summary>
+                      <summary>2) Reception drag</summary>
                       <div class="tree-branch-body">
                         <div class="tree-node">Signal: reception under 5.0 or objection-heavy comments.</div>
                         <div class="tree-node">Cause: claims read promotional, proof perceived as weak.</div>
@@ -593,7 +621,7 @@
                       </div>
                     </details>
                     <details class="tree-branch-detail">
-                      <summary>Conversion drag branch</summary>
+                      <summary>3) Conversion drag</summary>
                       <div class="tree-branch-body">
                         <div class="tree-node">Signal: CPA up >= 20% with stable CPM (client-side).</div>
                         <div class="tree-node">Cause: curiosity clicks without purchase clarity.</div>
@@ -609,7 +637,7 @@
                   <div class="tree-root">Root trigger: comments rise while shares and saves stall.</div>
                   <div class="tree-branches tree-branches-interactive">
                     <details class="tree-branch-detail">
-                      <summary>Engagement falloff branch</summary>
+                      <summary>1) Engagement falloff</summary>
                       <div class="tree-branch-body">
                         <div class="tree-node">Signal: ER trends toward DNS median (8.36%) and share-rate weakens.</div>
                         <div class="tree-node">Cause: tactile proof appears too late or only once.</div>
@@ -617,7 +645,7 @@
                       </div>
                     </details>
                     <details class="tree-branch-detail">
-                      <summary>Velocity validity branch</summary>
+                      <summary>2) Velocity validity</summary>
                       <div class="tree-branch-body">
                         <div class="tree-node">Signal: validity fails below 12% floor.</div>
                         <div class="tree-node">Cause: snapshot cadence mismatch or concept volatility.</div>
@@ -625,7 +653,7 @@
                       </div>
                     </details>
                     <details class="tree-branch-detail">
-                      <summary>Sentiment provenance branch</summary>
+                      <summary>3) Sentiment provenance</summary>
                       <div class="tree-branch-body">
                         <div class="tree-node">Signal: sentiment confidence is unavailable or low-confidence.</div>
                         <div class="tree-node">Cause: audience polarity is not yet decision-grade.</div>
@@ -641,7 +669,7 @@
                   <div class="tree-root">Root trigger: CTR proxy improves but conversion efficiency degrades.</div>
                   <div class="tree-branches tree-branches-interactive">
                     <details class="tree-branch-detail">
-                      <summary>Curiosity without intent branch</summary>
+                      <summary>1) Curiosity without intent</summary>
                       <div class="tree-branch-body">
                         <div class="tree-node">Signal: comment-rate rises while share-rate and CPA trend weaken.</div>
                         <div class="tree-node">Cause: too many shades shown, unclear comparator.</div>
@@ -649,7 +677,7 @@
                       </div>
                     </details>
                     <details class="tree-branch-detail">
-                      <summary>Saturation drift branch</summary>
+                      <summary>2) Saturation drift</summary>
                       <div class="tree-branch-body">
                         <div class="tree-node">Signal: trajectory flips to declining with delta below -1.0.</div>
                         <div class="tree-node">Cause: caption fatigue and repeated narrative frame.</div>
@@ -657,7 +685,7 @@
                       </div>
                     </details>
                     <details class="tree-branch-detail">
-                      <summary>Reception + sentiment ambiguity branch</summary>
+                      <summary>3) Reception + sentiment ambiguity</summary>
                       <div class="tree-branch-body">
                         <div class="tree-node">Signal: reception under target and sentiment confidence unresolved.</div>
                         <div class="tree-node">Cause: unverified audience polarity on shade certainty claims.</div>
