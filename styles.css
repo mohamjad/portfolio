@@ -228,21 +228,9 @@ h1 {
   max-width: 11ch;
 }
 
-.hero-word {
-  display: inline;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-size: 220% 220%;
-  animation: heroWordShift 8s ease-in-out infinite;
-}
-
-.hero-word-cyan {
-  background-image: linear-gradient(105deg, #57c8ff 0%, #9ed8ff 45%, #5d85ff 100%);
-}
-
-.hero-word-lime {
-  background-image: linear-gradient(105deg, #7cff5a 0%, #d9ff6b 45%, #6cf0c6 100%);
+.hero-tax {
+  color: #ffe156;
+  font-weight: 700;
 }
 
 .hero-lead {
@@ -1594,18 +1582,6 @@ textarea:focus {
   }
   to {
     width: var(--confidence, 0%);
-  }
-}
-
-@keyframes heroWordShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
   }
 }
 
