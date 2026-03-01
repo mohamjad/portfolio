@@ -1359,14 +1359,48 @@ h2 {
 }
 
 .stat-bar {
+  position: relative;
   display: inline-block;
   vertical-align: top;
-  overflow: hidden;
+  overflow: visible;
   background: var(--bar-color, #43afde);
   margin: 8px;
   padding: 9px;
   width: clamp(132px, 13vw, 178px);
   transition: height 120ms linear, margin-top 120ms linear;
+}
+
+.stat-bar:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+.stat-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translate(-50%, 6px);
+  width: min(240px, 72vw);
+  padding: 0.52rem 0.6rem;
+  border: 1px solid rgba(196, 222, 255, 0.5);
+  background: rgba(7, 14, 30, 0.95);
+  color: #eaf3ff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.74rem;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.34);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 12;
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.stat-bar.has-tooltip:hover .stat-tooltip,
+.stat-bar.has-tooltip:focus-visible .stat-tooltip,
+.stat-bar.has-tooltip:focus-within .stat-tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 .stat-inner {

@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const statBars = [
     {
-      valueLabel: "56hr",
+      valueLabel: "68hr",
       label: "AVG TURNAROUND",
       tooltip: 'Intake -> memo delivery.',
       height: 340,
@@ -279,17 +279,28 @@ document.addEventListener("DOMContentLoaded", () => {
     formStatus.textContent = message;
   };
 
+  const escapeHtml = (value) =>
+    String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;");
+
   const renderStats = () => {
     if (!animatedStats || !statsSection) return;
 
     animatedStats.innerHTML = statBars
       .map(
         (stat) => `
-          <div class="stat-bar" ${stat.tooltip ? `title="${stat.tooltip}"` : ""} style="height:0px; margin-top:200px; border-radius:8px; --bar-color:${stat.color};">
+          <div class="stat-bar${stat.tooltip ? " has-tooltip" : ""}"${
+            stat.tooltip ? ` tabindex="0" aria-label="${escapeHtml(`${stat.label}. ${stat.tooltip}`)}"` : ""
+          } style="height:0px; margin-top:200px; border-radius:8px; --bar-color:${stat.color};">
             <div class="stat-inner">
               <h3 class="stat-value${stat.compactValue ? " stat-value-compact" : ""}">${stat.valueLabel}</h3>
               <p class="stat-label">${stat.label}</p>
             </div>
+            ${stat.tooltip ? `<span class="stat-tooltip" role="tooltip">${escapeHtml(stat.tooltip)}</span>` : ""}
           </div>
         `
       )
