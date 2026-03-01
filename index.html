@@ -20,7 +20,7 @@
       </a>
       <nav class="site-nav" aria-label="Primary">
         <a href="#memo" data-scroll>Memo</a>
-        <a href="#proof" data-scroll>Proof</a>
+        <a href="#receipts" data-scroll>Receipts</a>
         <a href="#pricing" data-scroll>Pricing</a>
         <a href="#intake" data-scroll>Intake</a>
       </nav>
@@ -786,9 +786,10 @@
       </form>
     </section>
 
-    <section class="section shell" id="proof">
-      <h2>Proof</h2>
-      <p class="proof-note">48h window disclaimer: proof feed reflects the latest 48 hours unless a tile is explicitly marked historical. All proof tiles are de-identified; creator handles and internal cluster IDs are withheld on the public page.</p>
+    <section class="section shell" id="receipts">
+      <h2>Receipts</h2>
+      <p class="proof-note">48h window disclaimer: receipts reflect the latest 48 hours unless marked historical. Public receipts are de-identified: no creator handles, direct URLs, or internal cluster IDs are rendered.</p>
+      <p class="proof-note proof-source" id="receiptsSource">Source: secure server-side map from Control Room DB. Public output is privacy-redacted.</p>
       <div class="proof-filters" id="proofFilters" role="tablist" aria-label="Proof segments">
         <button class="proof-filter is-active" type="button" data-proof-filter="general">General</button>
         <button class="proof-filter" type="button" data-proof-filter="makeup">Makeup</button>
@@ -801,6 +802,11 @@
       </div>
       <div class="proof-summary" id="proofSummary"></div>
       <div class="proof-grid" id="proofGrid"></div>
+      <div class="receipts-appendix">
+        <h3>Receipts Appendix</h3>
+        <p class="proof-note">Momentum / Decay / Reception risk gates are mapped from Control Room bundle outputs and shown as public-safe summaries.</p>
+        <div class="receipts-appendix-grid" id="receiptsAppendix"></div>
+      </div>
     </section>
   </main>
 

@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const proofGrid = document.getElementById("proofGrid");
   const proofSummary = document.getElementById("proofSummary");
   const proofFilters = document.getElementById("proofFilters");
+  const receiptsAppendix = document.getElementById("receiptsAppendix");
+  const receiptsSource = document.getElementById("receiptsSource");
   const enemyGrid = document.getElementById("enemyGrid");
   const statsSection = document.getElementById("stats");
   const animatedStats = document.getElementById("animatedStats");
@@ -88,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
-  const summaryMetrics = [
+  let summaryMetrics = [
     { value: "28,313", label: "posts analyzed (full-intel export)" },
     { value: "11,148", label: "gate-passed posts" },
     { value: "10,111", label: "velocity-valid posts" },
@@ -97,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { value: "532", label: "proof tiles generated" },
   ];
 
-  const proofTiles = [
+  let proofTiles = [
     {
       decision: "DNS",
       title: "replying luckylibra blush blindness (general)",
@@ -250,6 +252,39 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
+  let appendixCards = [
+    {
+      key: "momentum",
+      title: "Momentum",
+      status: "Fallback",
+      headline: "Momentum receipts are shown from the latest available proof rows.",
+      gates: [
+        "Track delta acceleration and velocity-valid density before moving to full scale.",
+        "Promote only when both growth pace and quality gates are stable.",
+      ],
+    },
+    {
+      key: "decay",
+      title: "Decay",
+      status: "Fallback",
+      headline: "Decay receipts focus on saturation and diminishing transfer quality.",
+      gates: [
+        "If trajectory stabilizes or declines, rotate first-frame structure before budget expansion.",
+        "Use 48h refresh windows to avoid over-scaling stale structures.",
+      ],
+    },
+    {
+      key: "reception",
+      title: "Reception",
+      status: "Risk gate",
+      headline: "Reception is monitored as a risk gate when external evidence is available.",
+      gates: [
+        "If objection clusters rise, allocation shifts to Hold until re-cut and re-test.",
+        "Sentiment/reception are not used as synthetic score inflation.",
+      ],
+    },
+  ];
+
   let activeProofFilter = "general";
 
   const setStatus = (message, type = "") => {
@@ -336,6 +371,113 @@ document.addEventListener("DOMContentLoaded", () => {
         `
       )
       .join("");
+  };
+
+  const renderReceiptsAppendix = () => {
+    if (!receiptsAppendix) return;
+
+    if (!Array.isArray(appendixCards) || appendixCards.length === 0) {
+      receiptsAppendix.innerHTML = `
+        <article class="appendix-card">
+          <h4>Receipts unavailable</h4>
+          <p>Could not load Momentum / Decay / Reception cards for this scope.</p>
+        </article>
+      `;
+      return;
+    }
+
+    receiptsAppendix.innerHTML = appendixCards
+      .map(
+        (card) => `
+          <article class="appendix-card">
+            <div class="appendix-card-top">
+              <h4>${card.title}</h4>
+              <span>${card.status || "Live"}</span>
+            </div>
+            <p>${card.headline || ""}</p>
+            <ul>
+              ${(card.gates || []).map((gate) => `<li>${gate}</li>`).join("")}
+            </ul>
+          </article>
+        `
+      )
+      .join("");
+  };
+
+  const toDecision = (value, fallbackDns = false) => {
+    const text = String(value || "").toLowerCase();
+    if (text.includes("high_conviction") || text === "shoot" || text === "fund") return "Fund";
+    if (text.includes("watch") || text === "hold") return "Hold";
+    if (text.includes("do_not_shoot") || text === "dns") return "DNS";
+    return fallbackDns ? "DNS" : "Hold";
+  };
+
+  const asNumber = (value, fallback = 0) => {
+    const n = Number(value);
+    return Number.isFinite(n) ? n : fallback;
+  };
+
+  const hydrateReceiptsFromDb = (payload) => {
+    if (!payload || typeof payload !== "object") return false;
+
+    if (Array.isArray(payload.summaryMetrics) && payload.summaryMetrics.length > 0) {
+      summaryMetrics = payload.summaryMetrics.slice(0, 6).map((metric) => ({
+        value: String(metric.value || "0"),
+        label: String(metric.label || "metric"),
+      }));
+    }
+
+    if (Array.isArray(payload.proofTiles) && payload.proofTiles.length > 0) {
+      proofTiles = payload.proofTiles.map((tile) => ({
+        decision: toDecision(tile.decision, true),
+        title: String(tile.title || "Unlabeled row"),
+        receipt: String(tile.receipt || "Receipt unavailable"),
+        confidence: Math.max(1, Math.min(99, Math.round(asNumber(tile.confidence, 50)))),
+        tags: Array.isArray(tile.tags) && tile.tags.length ? tile.tags.map((tag) => String(tag)) : ["general"],
+        constraint: String(tile.constraint || "No constraint details available."),
+      }));
+    }
+
+    if (Array.isArray(payload.appendix) && payload.appendix.length > 0) {
+      appendixCards = payload.appendix.slice(0, 3).map((card) => ({
+        key: String(card.key || ""),
+        title: String(card.title || "Receipt"),
+        status: String(card.status || "Live"),
+        headline: String(card.headline || ""),
+        gates: Array.isArray(card.gates) ? card.gates.map((gate) => String(gate)) : [],
+      }));
+    }
+
+    if (receiptsSource && payload.meta) {
+      const market = String(payload.meta.market || "US");
+      const mode = String(payload.meta.mode || "exploit");
+      const asOf = payload.meta.asOf ? new Date(payload.meta.asOf).toLocaleString() : "n/a";
+      const source = String(payload.meta.source || "control-room-db");
+      receiptsSource.textContent = `Source: ${source} | Scope ${market}/${mode} | As of ${asOf} | Public rows are de-identified.`;
+    }
+
+    return true;
+  };
+
+  const loadReceiptsFromDb = async () => {
+    try {
+      const response = await fetch("/api/receipts?market=US&mode=exploit&limit=24", {
+        headers: { Accept: "application/json" },
+      });
+      if (!response.ok) throw new Error(`receipts fetch failed (${response.status})`);
+      const payload = await response.json();
+      const hydrated = hydrateReceiptsFromDb(payload);
+      if (!hydrated) return;
+      renderProofSummary();
+      renderProofTiles();
+      renderReceiptsAppendix();
+    } catch (error) {
+      if (receiptsSource) {
+        receiptsSource.textContent =
+          "Source: fallback public-safe receipts (DB unavailable for this request window).";
+      }
+      console.warn("Using fallback receipts data.", error);
+    }
   };
 
   const renderProofTiles = () => {
@@ -436,6 +578,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderStats();
   renderProofSummary();
   renderProofTiles();
+  renderReceiptsAppendix();
+  loadReceiptsFromDb();
   initMemoArtifact();
   revealOnView(enemyGrid, "is-live", 0.2);
 
