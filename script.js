@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroE5Layer = document.getElementById("heroE5Layer");
   const intakeForm = document.getElementById("intakeForm");
   const formStatus = document.getElementById("formStatus");
+  const callPreference = document.getElementById("callPreference");
+  const callNotesWrap = document.getElementById("callNotesWrap");
 
   const heroAnimations = [
     { id: "heroAnimE5", path: "assets/hero/E5Building.json", isBuilding: true, loop: true },
@@ -277,6 +279,23 @@ document.addEventListener("DOMContentLoaded", () => {
     formStatus.className = "form-status";
     if (type) formStatus.classList.add(type);
     formStatus.textContent = message;
+  };
+
+  const initCallPreference = () => {
+    if (!callPreference || !callNotesWrap) return;
+    const callNotesInput = callNotesWrap.querySelector('input[name="call_notes"]');
+
+    const syncCallFields = () => {
+      const wantsCall = callPreference.value === "call";
+      callNotesWrap.hidden = !wantsCall;
+      if (callNotesInput) {
+        callNotesInput.required = wantsCall;
+        if (!wantsCall) callNotesInput.value = "";
+      }
+    };
+
+    callPreference.addEventListener("change", syncCallFields);
+    syncCallFields();
   };
 
   const escapeHtml = (value) =>
@@ -577,6 +596,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderReceiptsAppendix();
   loadReceiptsFromDb();
   initMemoArtifact();
+  initCallPreference();
   revealOnView(enemyGrid, "is-live", 0.2);
 
   if (proofFilters) {
@@ -678,6 +698,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `Spend band: ${payload.get("spend_band") || "n/a"}`,
         `Constraints: ${payload.get("constraints") || "n/a"}`,
         `Contact email: ${payload.get("contact_email") || "n/a"}`,
+        `Call preference: ${payload.get("call_preference") || "async"}`,
         `Call notes: ${payload.get("call_notes") || "n/a"}`,
       ].join("\n");
 
@@ -699,6 +720,7 @@ document.addEventListener("DOMContentLoaded", () => {
           timeline: payload.get("timeline") || "",
           spend_band: payload.get("spend_band") || "",
           constraints: payload.get("constraints") || "",
+          call_preference: payload.get("call_preference") || "async",
           call_notes: payload.get("call_notes") || "",
           to: "mohammed@setta.ca",
         }),
@@ -713,8 +735,10 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error(result.message || "Submit failed");
       }
 
-      setStatus("Intake sent. You should receive a reply at the contact email provided.", "success");
+      setStatus("Intake sent successfully. Email delivered to mohammed@setta.ca. We will reply at your contact email.", "success");
       intakeForm.reset();
+      if (callPreference) callPreference.value = "async";
+      if (callNotesWrap) callNotesWrap.hidden = true;
       return;
     } catch (error) {
       const subject = `Setta Intake | ${payload.get("product") || "New Request"}`;
@@ -727,6 +751,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `Spend band: ${payload.get("spend_band") || "n/a"}`,
         `Constraints: ${payload.get("constraints") || "n/a"}`,
         `Contact email: ${payload.get("contact_email") || "n/a"}`,
+        `Call preference: ${payload.get("call_preference") || "async"}`,
         `Call notes: ${payload.get("call_notes") || "n/a"}`,
       ].join("\n");
 

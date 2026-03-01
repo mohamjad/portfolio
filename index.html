@@ -772,7 +772,14 @@
             Contact email
             <input type="email" name="contact_email" required />
           </label>
-          <label class="span-2">
+          <label>
+            Call preference
+            <select name="call_preference" id="callPreference">
+              <option value="async" selected>No call (async default)</option>
+              <option value="call">Call requested</option>
+            </select>
+          </label>
+          <label class="span-2" id="callNotesWrap">
             Call windows (optional)
             <input type="text" name="call_notes" placeholder="Timezone + preferred windows" />
           </label>

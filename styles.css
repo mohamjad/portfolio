@@ -1845,7 +1845,14 @@ textarea:focus {
 }
 
 .form-status.success {
-  color: #52ff9f;
+  color: #c8ffd9;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  border: 1px solid rgba(82, 255, 159, 0.45);
+  background: rgba(19, 53, 37, 0.55);
+  padding: 0.7rem 0.8rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 .form-status.warn {
