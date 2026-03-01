@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const statsSection = document.getElementById("stats");
   const animatedStats = document.getElementById("animatedStats");
   const memoArtifact = document.getElementById("memoArtifact");
+  const memoMapRailScroll = document.getElementById("memoMapRailScroll");
+  const memoMapRailSticky = document.getElementById("memoMapRailSticky");
+  const memoMapRail = document.getElementById("memoMapRail");
   const heroE5Layer = document.getElementById("heroE5Layer");
   const intakeForm = document.getElementById("intakeForm");
   const formStatus = document.getElementById("formStatus");
@@ -296,6 +299,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
     callPreference.addEventListener("change", syncCallFields);
     syncCallFields();
+  };
+
+  const initMemoMapRailAutoScroll = () => {
+    if (!memoMapRailScroll || !memoMapRailSticky || !memoMapRail) return;
+
+    const mobileQuery = window.matchMedia("(max-width: 860px)");
+    let enabled = false;
+    let maxShift = 0;
+    let startY = 0;
+    let endY = 0;
+    let rafPending = false;
+
+    const applyTransform = () => {
+      if (!enabled) return;
+      const progress = endY <= startY
+        ? 0
+        : Math.min(1, Math.max(0, (window.scrollY - startY) / (endY - startY)));
+      const shiftX = -maxShift * progress;
+      memoMapRail.style.setProperty("--memo-rail-x", `${shiftX.toFixed(2)}px`);
+    };
+
+    const computeLayout = () => {
+      enabled = mobileQuery.matches;
+      memoMapRailScroll.classList.toggle("is-mobile-auto", enabled);
+      memoMapRail.style.setProperty("--memo-rail-x", "0px");
+
+      if (!enabled) {
+        memoMapRailScroll.style.removeProperty("--rail-scroll-height");
+        return;
+      }
+
+      const railWidth = memoMapRail.scrollWidth;
+      const stickyWidth = memoMapRailSticky.clientWidth || memoMapRailScroll.clientWidth;
+      maxShift = Math.max(0, railWidth - stickyWidth);
+
+      const baseRect = memoMapRailScroll.getBoundingClientRect();
+      const pageTop = window.scrollY + baseRect.top;
+      const stickyTravel = Math.max(maxShift, window.innerHeight * 0.65);
+      const estimatedHeight = stickyTravel + memoMapRailSticky.offsetHeight + 18;
+      memoMapRailScroll.style.setProperty("--rail-scroll-height", `${estimatedHeight}px`);
+
+      startY = pageTop;
+      endY = pageTop + stickyTravel;
+      applyTransform();
+    };
+
+    const onScroll = () => {
+      if (!enabled || rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(() => {
+        rafPending = false;
+        applyTransform();
+      });
+    };
+
+    computeLayout();
+    window.addEventListener("resize", computeLayout);
+    window.addEventListener("orientationchange", computeLayout);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    if (mobileQuery.addEventListener) {
+      mobileQuery.addEventListener("change", computeLayout);
+    } else if (mobileQuery.addListener) {
+      mobileQuery.addListener(computeLayout);
+    }
   };
 
   const escapeHtml = (value) =>
@@ -597,6 +665,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadReceiptsFromDb();
   initMemoArtifact();
   initCallPreference();
+  initMemoMapRailAutoScroll();
   revealOnView(enemyGrid, "is-live", 0.2);
 
   if (proofFilters) {

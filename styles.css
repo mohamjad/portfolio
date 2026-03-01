@@ -536,6 +536,14 @@ h2 {
   color: #c8dcfb;
 }
 
+.memo-map-rail-scroll {
+  margin-top: 0.56rem;
+}
+
+.memo-map-rail-sticky {
+  position: relative;
+}
+
 .memo-map-rail {
   display: grid;
   grid-auto-flow: column;
@@ -545,6 +553,13 @@ h2 {
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   padding-bottom: 0.15rem;
+  scrollbar-width: none;
+}
+
+.memo-map-rail::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .memo-map-phase {
@@ -2272,7 +2287,25 @@ textarea:focus {
     align-items: flex-start;
   }
 
-  .memo-map-rail {
+  .memo-map-rail-scroll.is-mobile-auto {
+    height: var(--rail-scroll-height, auto);
+  }
+
+  .memo-map-rail-scroll.is-mobile-auto .memo-map-rail-sticky {
+    position: sticky;
+    top: 86px;
+    overflow: hidden;
+  }
+
+  .memo-map-rail-scroll.is-mobile-auto .memo-map-rail {
+    grid-auto-columns: minmax(240px, 82vw);
+    overflow: visible;
+    scroll-snap-type: none;
+    transform: translate3d(var(--memo-rail-x, 0px), 0, 0);
+    will-change: transform;
+  }
+
+  .memo-map-rail-scroll:not(.is-mobile-auto) .memo-map-rail {
     grid-auto-columns: minmax(240px, 86vw);
   }
 

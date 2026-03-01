@@ -133,8 +133,10 @@
           <h3>Input to Allocation Map</h3>
           <p>Scroll sideways to follow concept movement into Greenlight, Hold, and DNS.</p>
         </div>
-        <div class="memo-map-rail" role="list">
-          <article class="memo-map-phase is-input" role="listitem">
+        <div class="memo-map-rail-scroll" id="memoMapRailScroll">
+          <div class="memo-map-rail-sticky" id="memoMapRailSticky">
+            <div class="memo-map-rail" id="memoMapRail" role="list">
+              <article class="memo-map-phase is-input" role="listitem">
             <p class="memo-map-phase-kicker">Phase 1</p>
             <h4>Client Input</h4>
             <ul class="memo-map-lines">
@@ -144,9 +146,9 @@
               <li><span>Timeline</span><strong>TikTok-first, 21-day sprint</strong></li>
               <li><span>Constraints</span><strong>Proof in first 5s, low ad-feel, no clinical overclaims, 30s max</strong></li>
             </ul>
-          </article>
+              </article>
 
-          <article class="memo-map-phase" role="listitem">
+              <article class="memo-map-phase" role="listitem">
             <p class="memo-map-phase-kicker">Phase 2</p>
             <h4>Signal Mapping</h4>
             <ul class="memo-flow-list">
@@ -156,9 +158,9 @@
               <li><span class="concept-chip c-kr">KR Polish Pacing</span><p>Low ad-feel constraint triggered structure downgrade risk.</p></li>
               <li><span class="concept-chip c-launch">Launch Monologue</span><p>Constraint + pacing mismatch flagged as high DNS risk.</p></li>
             </ul>
-          </article>
+              </article>
 
-          <article class="memo-map-phase" role="listitem">
+              <article class="memo-map-phase" role="listitem">
             <p class="memo-map-phase-kicker">Phase 3</p>
             <h4>Structure Shaping</h4>
             <ul class="memo-flow-list">
@@ -168,9 +170,9 @@
               <li><span class="concept-chip c-kr">KR Polish Pacing</span><p>Reframed to UGC-native pacing, retained as hold candidate only.</p></li>
               <li><span class="concept-chip c-launch">Launch Monologue</span><p>Removed from candidate set due late proof and ad-feel risk.</p></li>
             </ul>
-          </article>
+              </article>
 
-          <article class="memo-map-phase" role="listitem">
+              <article class="memo-map-phase" role="listitem">
             <p class="memo-map-phase-kicker">Phase 4</p>
             <h4>Gate Checks</h4>
             <ul class="memo-flow-list">
@@ -180,9 +182,9 @@
               <li><span class="concept-chip c-kr">KR Polish Pacing</span><p><span class="status-pill hold">Hold</span> quality transfer uncertain without US pacing rewrite.</p></li>
               <li><span class="concept-chip c-launch">Launch Monologue</span><p><span class="status-pill dns">Fail</span> late-proof + ad-feel gate failure.</p></li>
             </ul>
-          </article>
+              </article>
 
-          <article class="memo-map-phase is-decision" role="listitem">
+              <article class="memo-map-phase is-decision" role="listitem">
             <p class="memo-map-phase-kicker">Phase 5</p>
             <h4>Executive Decision</h4>
             <div class="memo-decision-groups">
@@ -199,7 +201,9 @@
                 <p><span class="concept-chip c-launch">Launch Monologue</span></p>
               </div>
             </div>
-          </article>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
 
