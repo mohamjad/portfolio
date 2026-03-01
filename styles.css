@@ -651,6 +651,15 @@ h2 {
   line-height: 1.33;
 }
 
+.flow-metrics {
+  margin-top: 0.22rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.03em;
+  color: #9bc3fb;
+  line-height: 1.34;
+}
+
 .concept-chip {
   display: inline-flex;
   align-items: center;
@@ -706,6 +715,14 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.28rem;
+}
+
+.memo-decision-groups .decision-capital {
+  display: block;
+  margin-top: 0.24rem;
+  font-size: 0.74rem;
+  line-height: 1.33;
+  color: #cde0ff;
 }
 
 .memo-view-toggle {
