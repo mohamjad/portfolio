@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const memoMapRailScroll = document.getElementById("memoMapRailScroll");
   const memoMapRailSticky = document.getElementById("memoMapRailSticky");
   const memoMapRail = document.getElementById("memoMapRail");
-  const memoMapLink = document.getElementById("memoMapLink");
   const memoMapNow = document.getElementById("memoMapNow");
   const memoMapNext = document.getElementById("memoMapNext");
   const heroE5Layer = document.getElementById("heroE5Layer");
@@ -345,34 +344,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return Math.max(1, phaseNodes[1].offsetLeft - phaseNodes[0].offsetLeft);
     };
 
-    const updateFlowLink = (activeNode, nextNode) => {
-      if (!memoMapLink || !memoMapRailSticky || !activeNode || !nextNode) {
-        if (memoMapLink) memoMapLink.classList.remove("is-visible");
-        return;
-      }
-
-      const stickyRect = memoMapRailSticky.getBoundingClientRect();
-      const activeRect = activeNode.getBoundingClientRect();
-      const nextRect = nextNode.getBoundingClientRect();
-
-      const left = activeRect.right - stickyRect.left + 8;
-      const right = nextRect.left - stickyRect.left - 8;
-      const width = Math.max(22, right - left);
-      const top = activeRect.top - stickyRect.top + Math.min(activeRect.height * 0.34, 120);
-
-      memoMapLink.style.setProperty("--map-link-left", `${left.toFixed(2)}px`);
-      memoMapLink.style.setProperty("--map-link-top", `${top.toFixed(2)}px`);
-      memoMapLink.style.setProperty("--map-link-width", `${width.toFixed(2)}px`);
-      memoMapLink.classList.add("is-visible");
-    };
-
     const updatePhaseFocus = () => {
       if (!phaseNodes.length) return;
 
       const nextIndex = Math.min(phaseNodes.length - 1, activePhaseIndex + 1);
       const hasNext = activePhaseIndex < phaseNodes.length - 1;
       const activeNode = phaseNodes[activePhaseIndex];
-      let nextVisibleNode = null;
 
       phaseNodes.forEach((node, index) => {
         const inWindow = index === windowStartIndex || index === windowStartIndex + 1;
@@ -383,13 +360,11 @@ document.addEventListener("DOMContentLoaded", () => {
         node.classList.toggle("is-hidden-phase", !inWindow);
         node.classList.toggle("is-near", inWindow);
         node.classList.toggle("is-terminal", isActive && !hasNext);
-        if (isNext) nextVisibleNode = node;
       });
 
       if (memoMapNow) memoMapNow.textContent = getPhaseLabel(activeNode);
       if (memoMapNext) memoMapNext.textContent = hasNext ? getPhaseLabel(phaseNodes[nextIndex]) : "Complete \u00b7 Executive Decision";
       memoMapRail.classList.toggle("is-terminal-flow", !hasNext);
-      updateFlowLink(activeNode, nextVisibleNode);
     };
 
     const animateToTarget = () => {
@@ -449,7 +424,6 @@ document.addEventListener("DOMContentLoaded", () => {
         phaseNodes.forEach((node) =>
           node.classList.remove("is-active", "is-near", "is-next", "is-hidden-phase", "is-terminal")
         );
-        if (memoMapLink) memoMapLink.classList.remove("is-visible");
         return;
       }
 
@@ -465,7 +439,6 @@ document.addEventListener("DOMContentLoaded", () => {
           node.classList.remove("is-terminal");
         });
         memoMapRail.classList.remove("is-terminal-flow");
-        if (memoMapLink) memoMapLink.classList.remove("is-visible");
         return;
       }
 
