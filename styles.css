@@ -584,6 +584,7 @@ h2 {
   position: sticky;
   top: clamp(78px, 11vh, 116px);
   overflow: hidden;
+  isolation: isolate;
 }
 
 .memo-map-rail {
@@ -605,6 +606,8 @@ h2 {
   transform: translate3d(var(--memo-rail-x, 0px), 0, 0);
   will-change: transform;
   align-items: stretch;
+  position: relative;
+  z-index: 2;
 }
 
 .memo-map-rail::-webkit-scrollbar {
@@ -620,11 +623,20 @@ h2 {
   background: linear-gradient(180deg, rgba(14, 32, 66, 0.82) 0%, rgba(9, 22, 47, 0.82) 100%);
   box-shadow: 0 10px 30px rgba(3, 10, 24, 0.32);
   padding: 0.62rem;
+  clip-path: polygon(2.4% 0, 100% 0, 97.8% 100%, 0 100%);
   transition:
     transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 420ms ease,
     box-shadow 360ms ease,
     background-color 360ms ease;
+}
+
+.memo-map-phase:nth-child(odd) {
+  clip-path: polygon(0 0, 97.4% 0, 100% 96%, 2.6% 100%);
+}
+
+.memo-map-phase:nth-child(even) {
+  clip-path: polygon(2.8% 0, 100% 3.8%, 97.2% 100%, 0 96.2%);
 }
 
 .memo-map-rail-scroll.is-smooth-rail .memo-map-phase {
@@ -642,7 +654,7 @@ h2 {
 
 .memo-map-rail-scroll.is-smooth-rail .memo-map-phase.is-active {
   opacity: 1;
-  transform: translate3d(0, -4px, 0) scale(1);
+  transform: translate3d(0, -5px, 0) scale(1.01);
   box-shadow: 0 16px 40px rgba(4, 12, 28, 0.48);
   background: linear-gradient(180deg, rgba(20, 44, 86, 0.9) 0%, rgba(12, 31, 62, 0.9) 100%);
   pointer-events: auto;
@@ -650,6 +662,25 @@ h2 {
 
 .memo-map-rail-scroll.is-smooth-rail .memo-map-phase.is-next {
   pointer-events: auto;
+}
+
+.memo-map-rail-scroll.is-smooth-rail .memo-map-phase::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(176, 206, 255, 0.36);
+  background: linear-gradient(145deg, rgba(112, 173, 255, 0.2), rgba(156, 112, 255, 0.16));
+  transform: rotate(22deg);
+  opacity: 0.72;
+  transition: transform 420ms ease, opacity 420ms ease;
+}
+
+.memo-map-rail-scroll.is-smooth-rail .memo-map-phase.is-active::before {
+  transform: rotate(36deg) scale(1.06);
+  opacity: 1;
 }
 
 .memo-map-rail-scroll.is-smooth-rail .memo-map-phase.is-hidden-phase {
@@ -683,6 +714,41 @@ h2 {
 
 .memo-map-rail-scroll.is-smooth-rail .memo-map-phase.is-terminal::after {
   opacity: 0;
+}
+
+.memo-map-link {
+  position: absolute;
+  left: var(--map-link-left, 0px);
+  top: var(--map-link-top, 0px);
+  width: var(--map-link-width, 42px);
+  height: 14px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 220ms ease;
+  z-index: 1;
+}
+
+.memo-map-link.is-visible {
+  opacity: 1;
+}
+
+.memo-map-link-line {
+  position: absolute;
+  inset: 6px 8px 6px 0;
+  border-top: 1px dashed rgba(165, 200, 255, 0.66);
+}
+
+.memo-map-link-arrow {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #ffe171;
+  border-top: 2px solid #ffe171;
+  transform: rotate(45deg);
+  filter: drop-shadow(0 0 8px rgba(255, 225, 113, 0.3));
 }
 
 .memo-map-phase:last-child::after {
