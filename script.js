@@ -15,10 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const memoMapNow = document.getElementById("memoMapNow");
   const memoMapNext = document.getElementById("memoMapNext");
   const heroE5Layer = document.getElementById("heroE5Layer");
+  const checkoutButtons = document.querySelectorAll("[data-buy-checkout]");
+  const checkoutStatus = document.getElementById("checkoutStatus");
+  const intentTriggers = document.querySelectorAll("[data-intent-target]");
   const intakeForm = document.getElementById("intakeForm");
+  const intentField = document.getElementById("intentField");
   const formStatus = document.getElementById("formStatus");
-  const callPreference = document.getElementById("callPreference");
-  const callNotesWrap = document.getElementById("callNotesWrap");
 
   const heroAnimations = [
     { id: "heroAnimE5", path: "assets/hero/E5Building.json", isBuilding: true, loop: true },
@@ -286,21 +288,80 @@ document.addEventListener("DOMContentLoaded", () => {
     formStatus.textContent = message;
   };
 
-  const initCallPreference = () => {
-    if (!callPreference || !callNotesWrap) return;
-    const callNotesInput = callNotesWrap.querySelector('input[name="call_notes"]');
+  const setCheckoutStatus = (message, type = "", allowHtml = false) => {
+    if (!checkoutStatus) return;
+    checkoutStatus.className = "checkout-status";
+    if (type) checkoutStatus.classList.add(type);
+    if (allowHtml) {
+      checkoutStatus.innerHTML = message;
+    } else {
+      checkoutStatus.textContent = message;
+    }
+  };
 
-    const syncCallFields = () => {
-      const wantsCall = callPreference.value === "call";
-      callNotesWrap.hidden = !wantsCall;
-      if (callNotesInput) {
-        callNotesInput.required = wantsCall;
-        if (!wantsCall) callNotesInput.value = "";
+  let stripeJsLoadPromise = null;
+  const ensureStripeJs = () => {
+    if (window.Stripe) return Promise.resolve(window.Stripe);
+    if (stripeJsLoadPromise) return stripeJsLoadPromise;
+    stripeJsLoadPromise = new Promise((resolve, reject) => {
+      const existing = document.querySelector('script[src="https://js.stripe.com/v3/"]');
+      if (existing) {
+        existing.addEventListener("load", () => resolve(window.Stripe), { once: true });
+        existing.addEventListener("error", () => reject(new Error("Stripe.js failed to load")), { once: true });
+        return;
       }
-    };
+      const script = document.createElement("script");
+      script.src = "https://js.stripe.com/v3/";
+      script.async = true;
+      script.onload = () => resolve(window.Stripe);
+      script.onerror = () => reject(new Error("Stripe.js failed to load"));
+      document.head.appendChild(script);
+    });
+    return stripeJsLoadPromise;
+  };
 
-    callPreference.addEventListener("change", syncCallFields);
-    syncCallFields();
+  const setIntent = (intent) => {
+    if (!intentField) return;
+    intentField.value = intent || "allocation_memo";
+  };
+
+  const startCheckout = async (button) => {
+    if (!button) return;
+    const originalLabel = button.textContent;
+    checkoutButtons.forEach((node) => {
+      node.disabled = true;
+    });
+    button.textContent = "Redirecting...";
+    setCheckoutStatus("Creating secure checkout session...", "");
+
+    try {
+      await ensureStripeJs().catch(() => null);
+
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ product: "allocation_memo" }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || !payload?.url) {
+        throw new Error(payload?.error || `Checkout failed (${response.status})`);
+      }
+
+      window.location.href = payload.url;
+      return;
+    } catch (error) {
+      console.error(error);
+      setCheckoutStatus('Checkout is unavailable right now. <a href="#intake">Use intake instead</a>.', "warn", true);
+    } finally {
+      checkoutButtons.forEach((node) => {
+        node.disabled = false;
+      });
+      button.textContent = originalLabel;
+    }
   };
 
   const initMemoMapRailAutoScroll = () => {
@@ -766,9 +827,18 @@ document.addEventListener("DOMContentLoaded", () => {
   renderReceiptsAppendix();
   loadReceiptsFromDb();
   initMemoArtifact();
-  initCallPreference();
   initMemoMapRailAutoScroll();
   revealOnView(enemyGrid, "is-live", 0.2);
+
+  checkoutButtons.forEach((button) => {
+    button.addEventListener("click", () => startCheckout(button));
+  });
+
+  intentTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      setIntent(trigger.dataset.intentTarget || "allocation_memo");
+    });
+  });
 
   if (proofFilters) {
     proofFilters.addEventListener("click", (event) => {
@@ -867,10 +937,10 @@ document.addEventListener("DOMContentLoaded", () => {
         `Objective: ${payload.get("objective") || "n/a"}`,
         `Timeline: ${payload.get("timeline") || "n/a"}`,
         `Spend band: ${payload.get("spend_band") || "n/a"}`,
+        `Concept volume: ${payload.get("concepts_per_month") || "n/a"}`,
+        `Intent: ${payload.get("intent") || "allocation_memo"}`,
         `Constraints: ${payload.get("constraints") || "n/a"}`,
         `Contact email: ${payload.get("contact_email") || "n/a"}`,
-        `Call preference: ${payload.get("call_preference") || "async"}`,
-        `Call notes: ${payload.get("call_notes") || "n/a"}`,
       ].join("\n");
 
       const response = await fetch(endpoint, {
@@ -890,9 +960,9 @@ document.addEventListener("DOMContentLoaded", () => {
           objective: payload.get("objective") || "",
           timeline: payload.get("timeline") || "",
           spend_band: payload.get("spend_band") || "",
+          concepts_per_month: payload.get("concepts_per_month") || "",
+          intent: payload.get("intent") || "allocation_memo",
           constraints: payload.get("constraints") || "",
-          call_preference: payload.get("call_preference") || "async",
-          call_notes: payload.get("call_notes") || "",
           to: "mohammed@setta.ca",
         }),
       });
@@ -908,8 +978,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setStatus("Intake sent successfully. Email delivered to mohammed@setta.ca. We will reply at your contact email.", "success");
       intakeForm.reset();
-      if (callPreference) callPreference.value = "async";
-      if (callNotesWrap) callNotesWrap.hidden = true;
+      setIntent("allocation_memo");
       return;
     } catch (error) {
       const subject = `Setta Intake | ${payload.get("product") || "New Request"}`;
@@ -920,10 +989,10 @@ document.addEventListener("DOMContentLoaded", () => {
         `Objective: ${payload.get("objective") || "n/a"}`,
         `Timeline: ${payload.get("timeline") || "n/a"}`,
         `Spend band: ${payload.get("spend_band") || "n/a"}`,
+        `Concept volume: ${payload.get("concepts_per_month") || "n/a"}`,
+        `Intent: ${payload.get("intent") || "allocation_memo"}`,
         `Constraints: ${payload.get("constraints") || "n/a"}`,
         `Contact email: ${payload.get("contact_email") || "n/a"}`,
-        `Call preference: ${payload.get("call_preference") || "async"}`,
-        `Call notes: ${payload.get("call_notes") || "n/a"}`,
       ].join("\n");
 
       window.location.href = `mailto:mohammed@setta.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;

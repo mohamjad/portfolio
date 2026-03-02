@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Setta is a pre-spend creative allocation layer for paid social teams." />
+  <meta name="description" content="Setta is the pre-spend allocation gate for paid social teams. Buy a 1-page Allocation Memo with Greenlight 3, DNS list, constraints, and failure tree." />
   <title>Setta | Pre-Spend Allocation</title>
   <link rel="icon" type="image/png" href="assets/logos/10.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,9 +20,9 @@
       </a>
       <nav class="site-nav" aria-label="Primary">
         <a href="#memo" data-scroll>Memo</a>
-        <a href="#receipts" data-scroll>Receipts</a>
+        <a href="#proof" data-scroll>Proof</a>
         <a href="#pricing" data-scroll>Pricing</a>
-        <a href="#intake" data-scroll>Intake</a>
+        <a href="#buy" data-scroll>Buy</a>
       </nav>
     </div>
   </header>
@@ -52,39 +52,15 @@
 
       <div class="shell hero-layout">
         <h1>Stop paying to learn what we already know.</h1>
-        <p class="hero-lead">Pre-spend allocation that kills the <span class="hero-tax">learning tax</span>. Funds what scales and cuts what won’t before production.</p>
+        <p class="hero-lead">We block structurally doomed concepts before you shoot. You get a 1-page Allocation Memo in 72 hours: Greenlight 3, Do-Not-Shoot list, constraints, failure tree, and replacements.</p>
+        <p class="hero-governance">Allocation is a governance problem, not a creative problem.</p>
 
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#intake" data-scroll>Apply now</a>
+          <button class="btn btn-primary" type="button" data-buy-checkout>Buy Allocation Memo — $500 / 72h</button>
+          <a class="btn btn-secondary" href="#memo" data-scroll>View redacted memo</a>
         </div>
-      </div>
-    </section>
-
-    <section class="trust-band" aria-label="Trusted by">
-      <div class="shell trust-inner">
-        <p class="trust-title">Used by 20+ agency teams</p>
-        <div class="trust-carousel" aria-hidden="true">
-          <div class="trust-track">
-            <img src="assets/logos-white/1.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/2.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/3.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/4.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/5.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/6.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/7.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/8.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/9.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/1.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/2.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/3.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/4.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/5.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/6.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/7.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/8.png" alt="" loading="lazy" />
-            <img src="assets/logos-white/9.png" alt="" loading="lazy" />
-          </div>
-        </div>
+        <p class="hero-cred">Built for teams who already run volume. If you need opinions, don't buy this.</p>
+        <p class="checkout-status" id="checkoutStatus" aria-live="polite"></p>
       </div>
     </section>
 
@@ -112,6 +88,25 @@
     <section class="section shell section-where" id="where">
       <h2>Where Setta fits</h2>
       <p class="where-copy">Setta moves the allocation decision upstream. Before production. Before spend. Before the tax starts.</p>
+      <p class="where-copy where-copy-strong">If you ship 15 concepts and 5 were structurally dead on arrival, you didn't test. You paid tuition. The gate prevents that.</p>
+    </section>
+
+    <section class="section shell" id="mechanism">
+      <h2>How the product works</h2>
+      <div class="mechanism-grid">
+        <article class="mechanism-card">
+          <h3>Structural Disqualification</h3>
+          <p>Filters out structurally weak concepts before production spend starts.</p>
+        </article>
+        <article class="mechanism-card">
+          <h3>Allocation Memo</h3>
+          <p>Delivers Greenlight 3, DNS list, constraints, failure tree, and replacements.</p>
+        </article>
+        <article class="mechanism-card">
+          <h3>Governance Report</h3>
+          <p>Tracks blocked waste and weekly policy shifts for allocation meetings.</p>
+        </article>
+      </div>
     </section>
 
     <section class="section shell" id="stats">
@@ -122,11 +117,13 @@
 
     <section class="section shell" id="memo">
       <p class="section-kicker">Allocation Memo</p>
+      <p class="memo-framing">This is not a report. It is a decision record that replaces a weekly allocation meeting.</p>
       <h2>LAKA Fruity Glam Tint (US paid launch, TikTok-first)</h2>
       <p class="memo-defensibility"><strong>Defensibility:</strong> Allocation Memo = decision record + receipts you can forward to a client, boss, or buying team.</p>
       <p class="memo-meta">
         Objective: speed + save rate (CPA guardrail) | Constraints: first-5-second proof, low ad-feel, no clinical overclaims, ~30s max | Spend band: mid (15 concepts / 21 days) | Saturation mapped via trajectory + delta proxy.
       </p>
+      <p class="memo-risk-line">Reception is monitored as a risk gate. When objections cluster, allocation shifts to Hold until re-cut.</p>
 
       <div class="memo-map-rail-wrap" aria-label="Input to allocation mapping">
         <div class="memo-map-rail-head">
@@ -797,37 +794,47 @@
       </details>
     </section>
 
+    <section class="section shell" id="weekly-gate">
+      <h2>Weekly Allocation Gate</h2>
+      <p class="weekly-subhead">Same memo, delivered every week. Becomes the input to your allocation meeting. Renewal is based on prevented waste, not relationship.</p>
+      <ul class="weekly-list">
+        <li>Weekly 1-page Allocation Memo, same format, same day</li>
+        <li>Updated Do-Not-Shoot Index — top formats to stop funding now</li>
+        <li>Updated Format Decay Radar — top 3 shifts in your vertical</li>
+        <li>Monthly governance report: concepts blocked, shoots avoided, production cost prevented</li>
+      </ul>
+      <p class="weekly-fit-line">If you can name the weekly meeting this replaces, you are the right client.</p>
+      <a class="btn btn-secondary" href="#intake" data-scroll data-intent-target="weekly_gate">Apply for Weekly Gate</a>
+    </section>
+
     <section class="section shell" id="pricing">
       <h2>Pricing</h2>
+      <p class="pricing-confront">Do you have a written policy for what gets funded next week? If not, you don't have allocation. You have taste.</p>
       <div class="pricing-grid">
-        <article class="price-card featured">
+        <article class="price-card featured" id="buy">
           <p class="price">$500</p>
-          <h3>POC Pilot (Application)</h3>
-          <p>Only public entry point. Apply for the pilot and we qualify scope from there.</p>
-          <a class="tier-cta" href="#intake" data-scroll>Apply now</a>
-        </article>
-        <article class="price-card">
-          <p class="price">$700</p>
-          <h3>Allocation Brief</h3>
-          <p>Post-pilot only. Not available for direct purchase.</p>
-          <span class="tier-cta tier-cta-locked" aria-disabled="true">Unlocked after approved pilot</span>
+          <h3>Allocation Memo</h3>
+          <p>One 1-page decision record. Greenlight 3, Do-Not-Shoot Index, constraints, failure tree, receipts appendix. Delivered in 72 hours.</p>
+          <button class="tier-cta" type="button" data-buy-checkout>Buy Now</button>
         </article>
         <article class="price-card">
           <p class="price">$1,300/mo</p>
-          <h3>Weekly Retainer</h3>
-          <p>Post-pilot only. Not available for direct purchase.</p>
-          <span class="tier-cta tier-cta-locked" aria-disabled="true">Unlocked after approved pilot</span>
+          <h3>Weekly Allocation Gate</h3>
+          <p>Weekly memo, DNS index update, format decay radar, monthly governance report. Fixed format, fixed SLA, fixed scope.</p>
+          <a class="tier-cta" href="#intake" data-scroll data-intent-target="weekly_gate">Apply for Weekly Gate</a>
         </article>
       </div>
     </section>
 
     <section class="section shell" id="intake">
-      <h2>Intake</h2>
+      <h2>Buy Allocation Memo</h2>
+      <p class="intake-copy">Submit your brief after purchase. We deliver in 72 hours.</p>
 
       <form id="intakeForm" class="intake-form" novalidate>
         <input type="hidden" name="_subject" value="Setta Allocation Memo Intake" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="intent" id="intentField" value="allocation_memo" />
 
         <div class="form-grid">
           <label>
@@ -861,28 +868,27 @@
             <input type="email" name="contact_email" required />
           </label>
           <label>
-            Call preference
-            <select name="call_preference" id="callPreference">
-              <option value="async" selected>No call (async default)</option>
-              <option value="call">Call requested</option>
+            How many concepts are you testing per month?
+            <select name="concepts_per_month" required>
+              <option value="">Select</option>
+              <option value="1-9">1-9</option>
+              <option value="10-19">10-19</option>
+              <option value="20-39">20-39</option>
+              <option value="40+">40+</option>
             </select>
-          </label>
-          <label class="span-2" id="callNotesWrap">
-            Call windows (optional)
-            <input type="text" name="call_notes" placeholder="Timezone + preferred windows" />
           </label>
         </div>
 
         <div class="form-actions">
           <button class="btn btn-primary" type="submit">Submit Intake</button>
-          <a class="btn btn-secondary" href="mailto:mohammed@setta.ca?subject=Setta%20Call%20Request">Request Call by Email</a>
         </div>
         <p class="form-status" id="formStatus" aria-live="polite"></p>
       </form>
     </section>
 
     <section class="section shell" id="receipts">
-      <h2>Receipts</h2>
+      <span id="proof" aria-hidden="true"></span>
+      <h2>Receipts. Blocked spend, not opinions.</h2>
       <p class="proof-note">48h window disclaimer: receipts reflect the latest 48 hours unless marked historical. Public receipts are de-identified: no creator handles, direct URLs, or internal cluster IDs are rendered.</p>
       <p class="proof-note proof-source" id="receiptsSource">Source: secure server-side map from Control Room DB. Public output is privacy-redacted.</p>
       <div class="proof-filters" id="proofFilters" role="tablist" aria-label="Proof segments">
@@ -906,7 +912,7 @@
   </main>
 
   <footer class="site-footer shell">
-    <p>Built and operated by Mohammed Amjad.</p>
+    <p>Built and operated by Mohammed Amjad. Setta is a pre-production allocation gate, not a creative agency.</p>
     <p>
       <a href="mailto:mohammed@setta.ca">mohammed@setta.ca</a>
       |

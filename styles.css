@@ -315,10 +315,20 @@ h1 {
   color: var(--text-mid);
 }
 
+.hero-governance {
+  margin: 0.62rem 0 0;
+  max-width: 58ch;
+  font-family: "Sora", sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  color: #d9e8ff;
+}
+
 .hero-cta {
   margin-top: 1.42rem;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 0.7rem;
 }
 
@@ -344,6 +354,32 @@ h1 {
   color: var(--text-high);
   border-color: rgba(230, 239, 255, 0.34);
   background: rgba(12, 21, 43, 0.4);
+}
+
+.hero-cred {
+  margin: 0.9rem 0 0;
+  color: #c6d8f7;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.checkout-status {
+  margin: 0.5rem 0 0;
+  min-height: 1.24rem;
+  color: var(--text-low);
+  font-size: 0.86rem;
+}
+
+.checkout-status.warn {
+  color: #ffd780;
+}
+
+.checkout-status.error {
+  color: #ff8585;
+}
+
+.checkout-status a {
+  color: #ffe899;
 }
 
 .trust-band {
@@ -495,6 +531,36 @@ h2 {
   line-height: 1.45;
 }
 
+.where-copy-strong {
+  color: #dceaff;
+  max-width: 72ch;
+}
+
+.mechanism-grid {
+  margin-top: 1.14rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.mechanism-card {
+  border: 1px solid var(--line);
+  background: rgba(11, 20, 42, 0.58);
+  padding: 1rem;
+}
+
+.mechanism-card h3 {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-size: 1.06rem;
+}
+
+.mechanism-card p {
+  margin: 0.5rem 0 0;
+  color: var(--text-low);
+  line-height: 1.42;
+}
+
 .memo-meta {
   margin: 0.68rem 0 0;
   color: var(--text-mid);
@@ -502,11 +568,56 @@ h2 {
   line-height: 1.45;
 }
 
+.memo-framing {
+  margin: 0.72rem 0 0;
+  max-width: 26ch;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.18rem, 2.1vw, 1.7rem);
+  line-height: 1.22;
+  color: #eff6ff;
+}
+
 .memo-defensibility {
   margin: 0.64rem 0 0;
   color: #dceaff;
   font-size: 0.96rem;
   line-height: 1.45;
+}
+
+.memo-risk-line {
+  margin: 0.58rem 0 0;
+  max-width: 74ch;
+  color: #cfe0ff;
+  font-size: 0.92rem;
+  line-height: 1.42;
+}
+
+.weekly-subhead {
+  margin: 0.74rem 0 0;
+  max-width: 70ch;
+  color: var(--text-mid);
+  font-size: 0.97rem;
+  line-height: 1.45;
+}
+
+.weekly-list {
+  margin: 0.94rem 0 0;
+  padding-left: 1.14rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.weekly-list li {
+  color: #d6e6ff;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.weekly-fit-line {
+  margin: 0.82rem 0 0.86rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  color: #ffea9a;
 }
 
 .memo-map-rail-wrap {
@@ -2051,7 +2162,15 @@ h2 {
 }
 
 .pricing-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pricing-confront {
+  margin: 0.72rem 0 0;
+  max-width: 70ch;
+  color: #d8e8ff;
+  font-size: 0.95rem;
+  line-height: 1.45;
 }
 
 .price-card.featured {
@@ -2077,8 +2196,16 @@ h2 {
   border: 1px solid rgba(230, 239, 255, 0.34);
   color: #f2f8ff;
   font-weight: 700;
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
   text-decoration: none;
   background: rgba(12, 21, 43, 0.38);
+}
+
+.tier-cta:disabled {
+  opacity: 0.65;
+  cursor: wait;
 }
 
 .tier-cta-locked {
@@ -2092,6 +2219,20 @@ h2 {
 .intake-form {
   margin-top: 1.15rem;
   padding: 1rem;
+}
+
+.intake-copy {
+  margin: 0.74rem 0 0;
+  color: var(--text-mid);
+  font-size: 0.95rem;
+  line-height: 1.42;
+}
+
+#proof {
+  display: block;
+  position: relative;
+  top: -84px;
+  visibility: hidden;
 }
 
 .form-grid {
@@ -2226,6 +2367,7 @@ textarea:focus {
   }
 
   .enemy-grid,
+  .mechanism-grid,
   .where-grid,
   .receipt-chips,
   .proof-summary,
@@ -2341,6 +2483,7 @@ textarea:focus {
   .form-grid,
   .memo-artifact,
   .enemy-grid,
+  .mechanism-grid,
   .where-grid,
   .receipt-chips,
   .proof-summary,
