@@ -304,65 +304,128 @@ document.addEventListener("DOMContentLoaded", () => {
   const initMemoMapRailAutoScroll = () => {
     if (!memoMapRailScroll || !memoMapRailSticky || !memoMapRail) return;
 
-    const mobileQuery = window.matchMedia("(max-width: 860px)");
-    let enabled = false;
+    const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const phaseNodes = Array.from(memoMapRail.querySelectorAll(".memo-map-phase"));
+    const lerp = (from, to, alpha) => from + (to - from) * alpha;
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+    let enabled = true;
     let maxShift = 0;
     let startY = 0;
     let endY = 0;
-    let rafPending = false;
+    let targetX = 0;
+    let currentX = 0;
+    let stickyWidth = 0;
+    let rafId = 0;
 
-    const applyTransform = () => {
+    const setRailX = (value) => {
+      memoMapRail.style.setProperty("--memo-rail-x", `${value.toFixed(2)}px`);
+    };
+
+    const updatePhaseFocus = () => {
+      if (!phaseNodes.length) return;
+
+      const viewportCenter = -currentX + stickyWidth * 0.5;
+      let nearestIndex = 0;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+
+      phaseNodes.forEach((node, index) => {
+        const nodeCenter = node.offsetLeft + node.offsetWidth * 0.5;
+        const distance = Math.abs(nodeCenter - viewportCenter);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+        node.classList.toggle("is-near", distance <= node.offsetWidth * 0.72);
+      });
+
+      phaseNodes.forEach((node, index) => {
+        node.classList.toggle("is-active", index === nearestIndex);
+      });
+    };
+
+    const animateToTarget = () => {
+      if (!enabled) {
+        rafId = 0;
+        return;
+      }
+
+      currentX = lerp(currentX, targetX, 0.14);
+      if (Math.abs(targetX - currentX) < 0.18) currentX = targetX;
+
+      setRailX(currentX);
+      updatePhaseFocus();
+
+      if (currentX !== targetX) {
+        rafId = requestAnimationFrame(animateToTarget);
+      } else {
+        rafId = 0;
+      }
+    };
+
+    const queueAnimation = () => {
+      if (rafId || !enabled) return;
+      rafId = requestAnimationFrame(animateToTarget);
+    };
+
+    const syncTargetFromScroll = () => {
       if (!enabled) return;
       const progress = endY <= startY
         ? 0
-        : Math.min(1, Math.max(0, (window.scrollY - startY) / (endY - startY)));
-      const shiftX = -maxShift * progress;
-      memoMapRail.style.setProperty("--memo-rail-x", `${shiftX.toFixed(2)}px`);
+        : clamp((window.scrollY - startY) / (endY - startY), 0, 1);
+      targetX = -maxShift * progress;
+      queueAnimation();
     };
 
     const computeLayout = () => {
-      enabled = mobileQuery.matches;
-      memoMapRailScroll.classList.toggle("is-mobile-auto", enabled);
-      memoMapRail.style.setProperty("--memo-rail-x", "0px");
+      enabled = !reduceMotionQuery.matches;
+      memoMapRailScroll.classList.toggle("is-smooth-rail", enabled);
+      targetX = 0;
+      currentX = 0;
+      setRailX(0);
+      stickyWidth = memoMapRailSticky.clientWidth || memoMapRailScroll.clientWidth || 0;
 
       if (!enabled) {
         memoMapRailScroll.style.removeProperty("--rail-scroll-height");
+        phaseNodes.forEach((node) => node.classList.remove("is-active", "is-near"));
         return;
       }
 
       const railWidth = memoMapRail.scrollWidth;
-      const stickyWidth = memoMapRailSticky.clientWidth || memoMapRailScroll.clientWidth;
       maxShift = Math.max(0, railWidth - stickyWidth);
+      if (maxShift <= 0) {
+        memoMapRailScroll.classList.remove("is-smooth-rail");
+        memoMapRailScroll.style.removeProperty("--rail-scroll-height");
+        phaseNodes.forEach((node, index) => {
+          node.classList.toggle("is-active", index === 0);
+          node.classList.remove("is-near");
+        });
+        return;
+      }
 
       const baseRect = memoMapRailScroll.getBoundingClientRect();
       const pageTop = window.scrollY + baseRect.top;
-      const stickyTravel = Math.max(maxShift, window.innerHeight * 0.65);
+      const stickyTravel = Math.max(maxShift * 1.22, window.innerHeight * 0.82);
       const estimatedHeight = stickyTravel + memoMapRailSticky.offsetHeight + 18;
       memoMapRailScroll.style.setProperty("--rail-scroll-height", `${estimatedHeight}px`);
 
       startY = pageTop;
       endY = pageTop + stickyTravel;
-      applyTransform();
+      syncTargetFromScroll();
+      updatePhaseFocus();
     };
 
-    const onScroll = () => {
-      if (!enabled || rafPending) return;
-      rafPending = true;
-      requestAnimationFrame(() => {
-        rafPending = false;
-        applyTransform();
-      });
-    };
+    const onScroll = () => syncTargetFromScroll();
 
     computeLayout();
     window.addEventListener("resize", computeLayout);
     window.addEventListener("orientationchange", computeLayout);
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    if (mobileQuery.addEventListener) {
-      mobileQuery.addEventListener("change", computeLayout);
-    } else if (mobileQuery.addListener) {
-      mobileQuery.addListener(computeLayout);
+    if (reduceMotionQuery.addEventListener) {
+      reduceMotionQuery.addEventListener("change", computeLayout);
+    } else if (reduceMotionQuery.addListener) {
+      reduceMotionQuery.addListener(computeLayout);
     }
   };
 
