@@ -536,6 +536,38 @@ h2 {
   color: #c8dcfb;
 }
 
+.memo-map-progress {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.46rem;
+  border: 1px solid rgba(148, 185, 243, 0.34);
+  background: rgba(8, 21, 44, 0.64);
+  padding: 0.34rem 0.52rem;
+}
+
+.memo-map-progress-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9cc0f9;
+}
+
+.memo-map-progress-phase {
+  font-family: "Sora", sans-serif;
+  font-size: 0.74rem;
+  color: #eaf3ff;
+  font-weight: 600;
+}
+
+.memo-map-progress-sep {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  color: #ffdf6b;
+  letter-spacing: 0.08em;
+}
+
 .memo-map-rail-scroll {
   margin-top: 0.56rem;
 }
@@ -567,10 +599,12 @@ h2 {
 }
 
 .memo-map-rail-scroll.is-smooth-rail .memo-map-rail {
+  grid-auto-columns: minmax(280px, calc((100% - 0.62rem) / 2));
   overflow: visible;
   scroll-snap-type: none;
   transform: translate3d(var(--memo-rail-x, 0px), 0, 0);
   will-change: transform;
+  align-items: stretch;
 }
 
 .memo-map-rail::-webkit-scrollbar {
@@ -594,13 +628,16 @@ h2 {
 }
 
 .memo-map-rail-scroll.is-smooth-rail .memo-map-phase {
-  opacity: 0.56;
-  transform: translate3d(0, 0, 0) scale(0.966);
+  opacity: 0;
+  transform: translate3d(0, 22px, 0) scale(0.92);
+  filter: blur(1.8px);
+  pointer-events: none;
 }
 
 .memo-map-rail-scroll.is-smooth-rail .memo-map-phase.is-near {
-  opacity: 0.88;
-  transform: translate3d(0, 0, 0) scale(0.986);
+  opacity: 0.92;
+  transform: translate3d(0, 2px, 0) scale(0.984);
+  filter: blur(0);
 }
 
 .memo-map-rail-scroll.is-smooth-rail .memo-map-phase.is-active {
@@ -609,10 +646,21 @@ h2 {
   border-color: rgba(161, 196, 252, 0.68);
   box-shadow: 0 14px 36px rgba(6, 15, 34, 0.42), inset 0 0 0 1px rgba(193, 224, 255, 0.18);
   background: rgba(18, 40, 82, 0.9);
+  pointer-events: auto;
 }
 
 .memo-map-rail-scroll.is-smooth-rail .memo-map-phase.is-decision.is-active {
   border-color: rgba(255, 225, 86, 0.74);
+}
+
+.memo-map-rail-scroll.is-smooth-rail .memo-map-phase.is-next {
+  pointer-events: auto;
+}
+
+.memo-map-rail-scroll.is-smooth-rail .memo-map-phase.is-hidden-phase {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0) scale(0.9);
+  filter: blur(2.6px);
 }
 
 .memo-map-phase::after {
@@ -624,6 +672,22 @@ h2 {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.72rem;
   color: #b8cff7;
+}
+
+.memo-map-rail-scroll.is-smooth-rail .memo-map-phase::after {
+  opacity: 0;
+  transform: translateY(-50%) translateX(-6px);
+  transition: opacity 340ms ease, transform 340ms ease;
+}
+
+.memo-map-rail-scroll.is-smooth-rail .memo-map-phase.is-active::after {
+  opacity: 1;
+  color: #ffe171;
+  transform: translateY(-50%) translateX(0);
+}
+
+.memo-map-rail-scroll.is-smooth-rail .memo-map-phase.is-terminal::after {
+  opacity: 0;
 }
 
 .memo-map-phase:last-child::after {
@@ -2347,6 +2411,10 @@ textarea:focus {
   .memo-map-rail-head {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .memo-map-progress {
+    width: 100%;
   }
 
   .memo-map-rail-scroll.is-smooth-rail {

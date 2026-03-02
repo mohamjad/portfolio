@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const memoMapRailScroll = document.getElementById("memoMapRailScroll");
   const memoMapRailSticky = document.getElementById("memoMapRailSticky");
   const memoMapRail = document.getElementById("memoMapRail");
+  const memoMapNow = document.getElementById("memoMapNow");
+  const memoMapNext = document.getElementById("memoMapNext");
   const heroE5Layer = document.getElementById("heroE5Layer");
   const intakeForm = document.getElementById("intakeForm");
   const formStatus = document.getElementById("formStatus");
@@ -322,6 +324,12 @@ document.addEventListener("DOMContentLoaded", () => {
       memoMapRail.style.setProperty("--memo-rail-x", `${value.toFixed(2)}px`);
     };
 
+    const getPhaseLabel = (node) => {
+      const kicker = node.querySelector(".memo-map-phase-kicker")?.textContent?.trim() || "";
+      const title = node.querySelector("h4")?.textContent?.trim() || "";
+      return `${kicker} \u00b7 ${title}`.replace(/\s+/g, " ").trim();
+    };
+
     const updatePhaseFocus = () => {
       if (!phaseNodes.length) return;
 
@@ -336,12 +344,24 @@ document.addEventListener("DOMContentLoaded", () => {
           nearestDistance = distance;
           nearestIndex = index;
         }
-        node.classList.toggle("is-near", distance <= node.offsetWidth * 0.72);
       });
 
+      const nextIndex = Math.min(phaseNodes.length - 1, nearestIndex + 1);
+      const hasNext = nextIndex !== nearestIndex;
+
       phaseNodes.forEach((node, index) => {
-        node.classList.toggle("is-active", index === nearestIndex);
+        const isActive = index === nearestIndex;
+        const isNext = hasNext && index === nextIndex;
+        node.classList.toggle("is-active", isActive);
+        node.classList.toggle("is-next", isNext);
+        node.classList.toggle("is-hidden-phase", !isActive && !isNext);
+        node.classList.toggle("is-near", isActive || isNext);
+        node.classList.toggle("is-terminal", isActive && !hasNext);
       });
+
+      if (memoMapNow) memoMapNow.textContent = getPhaseLabel(phaseNodes[nearestIndex]);
+      if (memoMapNext) memoMapNext.textContent = hasNext ? getPhaseLabel(phaseNodes[nextIndex]) : "Complete \u00b7 Executive Decision";
+      memoMapRail.classList.toggle("is-terminal-flow", !hasNext);
     };
 
     const animateToTarget = () => {
@@ -387,7 +407,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!enabled) {
         memoMapRailScroll.style.removeProperty("--rail-scroll-height");
-        phaseNodes.forEach((node) => node.classList.remove("is-active", "is-near"));
+        phaseNodes.forEach((node) =>
+          node.classList.remove("is-active", "is-near", "is-next", "is-hidden-phase", "is-terminal")
+        );
         return;
       }
 
@@ -398,8 +420,12 @@ document.addEventListener("DOMContentLoaded", () => {
         memoMapRailScroll.style.removeProperty("--rail-scroll-height");
         phaseNodes.forEach((node, index) => {
           node.classList.toggle("is-active", index === 0);
-          node.classList.remove("is-near");
+          node.classList.toggle("is-next", index === 1);
+          node.classList.toggle("is-hidden-phase", index > 1);
+          node.classList.toggle("is-near", index <= 1);
+          node.classList.remove("is-terminal");
         });
+        memoMapRail.classList.remove("is-terminal-flow");
         return;
       }
 
