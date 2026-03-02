@@ -114,58 +114,6 @@
       <p class="where-copy">Setta moves the allocation decision upstream. Before production. Before spend. Before the tax starts.</p>
     </section>
 
-    <section class="section shell section-funnel" id="funnel">
-      <p class="section-kicker">Signal Funnel</p>
-      <h2>Most content is noise. We only allocate budget to the surviving edge.</h2>
-      <p class="funnel-copy">Every stage cuts volume on purpose: relevance, clustering, velocity quality, then allocation gates.</p>
-      <div class="signal-funnel" id="signalFunnel" aria-label="Noise to allocation funnel">
-        <article class="funnel-stage" style="--ratio:1;--delay:0ms;">
-          <div class="funnel-head">
-            <h3>Raw indexed stream</h3>
-            <strong class="funnel-count">400K+</strong>
-          </div>
-          <div class="funnel-track" aria-hidden="true"><span class="funnel-fill"></span></div>
-          <p class="funnel-meta"><span>Baseline volume</span><span>Pass-through: 100%</span></p>
-        </article>
-
-        <article class="funnel-stage" style="--ratio:0.238;--delay:80ms;">
-          <div class="funnel-head">
-            <h3>Gate-passed candidates</h3>
-            <strong class="funnel-count">95.2K</strong>
-          </div>
-          <div class="funnel-track" aria-hidden="true"><span class="funnel-fill"></span></div>
-          <p class="funnel-meta"><span>Noise removed: 76.2%</span><span>After relevance + baseline quality filters</span></p>
-        </article>
-
-        <article class="funnel-stage" style="--ratio:0.082;--delay:160ms;">
-          <div class="funnel-head">
-            <h3>Cluster-attached signals</h3>
-            <strong class="funnel-count">32.8K</strong>
-          </div>
-          <div class="funnel-track" aria-hidden="true"><span class="funnel-fill"></span></div>
-          <p class="funnel-meta"><span>Noise removed: 91.8%</span><span>After dedupe + theme coherence</span></p>
-        </article>
-
-        <article class="funnel-stage" style="--ratio:0.026;--delay:240ms;">
-          <div class="funnel-head">
-            <h3>Velocity-valid snapshots</h3>
-            <strong class="funnel-count">10.4K</strong>
-          </div>
-          <div class="funnel-track" aria-hidden="true"><span class="funnel-fill"></span></div>
-          <p class="funnel-meta"><span>Noise removed: 97.4%</span><span>After acceleration + hold-time quality checks</span></p>
-        </article>
-
-        <article class="funnel-stage funnel-stage-outcome" style="--ratio:0.0046;--delay:320ms;">
-          <div class="funnel-head">
-            <h3>Allocation-ready decisions</h3>
-            <strong class="funnel-count">1.84K</strong>
-          </div>
-          <div class="funnel-track" aria-hidden="true"><span class="funnel-fill"></span></div>
-          <p class="funnel-meta"><span>Noise removed: 99.5%</span><span>Only this layer gets Greenlight/Hold/DNS budget action</span></p>
-        </article>
-      </div>
-    </section>
-
     <section class="section shell" id="stats">
       <div class="stats-stage">
         <div class="animated-stats" id="animatedStats" aria-label="Allocation statistics"></div>

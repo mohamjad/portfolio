@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const receiptsAppendix = document.getElementById("receiptsAppendix");
   const receiptsSource = document.getElementById("receiptsSource");
   const enemyGrid = document.getElementById("enemyGrid");
-  const signalFunnel = document.getElementById("signalFunnel");
   const statsSection = document.getElementById("stats");
   const animatedStats = document.getElementById("animatedStats");
   const memoArtifact = document.getElementById("memoArtifact");
@@ -311,6 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const phaseNodes = Array.from(memoMapRail.querySelectorAll(".memo-map-phase"));
     const lerp = (from, to, alpha) => from + (to - from) * alpha;
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+    const windowSize = 2;
 
     let enabled = true;
     let maxShift = 0;
@@ -318,7 +318,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let endY = 0;
     let targetX = 0;
     let currentX = 0;
-    let stickyWidth = 0;
+    let phaseStep = 0;
+    let activePhaseIndex = 0;
+    let windowStartIndex = 0;
     let rafId = 0;
 
     const setRailX = (value) => {
@@ -331,36 +333,33 @@ document.addEventListener("DOMContentLoaded", () => {
       return `${kicker} \u00b7 ${title}`.replace(/\s+/g, " ").trim();
     };
 
+    const getMaxWindowStart = () => Math.max(0, phaseNodes.length - windowSize);
+
+    const measurePhaseStep = () => {
+      if (phaseNodes.length < 2) {
+        return phaseNodes[0]?.offsetWidth || 0;
+      }
+      return Math.max(1, phaseNodes[1].offsetLeft - phaseNodes[0].offsetLeft);
+    };
+
     const updatePhaseFocus = () => {
       if (!phaseNodes.length) return;
 
-      const viewportCenter = -currentX + stickyWidth * 0.5;
-      let nearestIndex = 0;
-      let nearestDistance = Number.POSITIVE_INFINITY;
+      const nextIndex = Math.min(phaseNodes.length - 1, activePhaseIndex + 1);
+      const hasNext = activePhaseIndex < phaseNodes.length - 1;
 
       phaseNodes.forEach((node, index) => {
-        const nodeCenter = node.offsetLeft + node.offsetWidth * 0.5;
-        const distance = Math.abs(nodeCenter - viewportCenter);
-        if (distance < nearestDistance) {
-          nearestDistance = distance;
-          nearestIndex = index;
-        }
-      });
-
-      const nextIndex = Math.min(phaseNodes.length - 1, nearestIndex + 1);
-      const hasNext = nextIndex !== nearestIndex;
-
-      phaseNodes.forEach((node, index) => {
-        const isActive = index === nearestIndex;
-        const isNext = hasNext && index === nextIndex;
+        const inWindow = index === windowStartIndex || index === windowStartIndex + 1;
+        const isActive = index === activePhaseIndex;
+        const isNext = hasNext && index === nextIndex && inWindow;
         node.classList.toggle("is-active", isActive);
         node.classList.toggle("is-next", isNext);
-        node.classList.toggle("is-hidden-phase", !isActive && !isNext);
-        node.classList.toggle("is-near", isActive || isNext);
+        node.classList.toggle("is-hidden-phase", !inWindow);
+        node.classList.toggle("is-near", inWindow);
         node.classList.toggle("is-terminal", isActive && !hasNext);
       });
 
-      if (memoMapNow) memoMapNow.textContent = getPhaseLabel(phaseNodes[nearestIndex]);
+      if (memoMapNow) memoMapNow.textContent = getPhaseLabel(phaseNodes[activePhaseIndex]);
       if (memoMapNext) memoMapNext.textContent = hasNext ? getPhaseLabel(phaseNodes[nextIndex]) : "Complete \u00b7 Executive Decision";
       memoMapRail.classList.toggle("is-terminal-flow", !hasNext);
     };
@@ -375,7 +374,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (Math.abs(targetX - currentX) < 0.18) currentX = targetX;
 
       setRailX(currentX);
-      updatePhaseFocus();
 
       if (currentX !== targetX) {
         rafId = requestAnimationFrame(animateToTarget);
@@ -394,7 +392,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const progress = endY <= startY
         ? 0
         : clamp((window.scrollY - startY) / (endY - startY), 0, 1);
-      targetX = -maxShift * progress;
+      const phaseCursor = progress * Math.max(phaseNodes.length - 1, 0);
+      activePhaseIndex = clamp(Math.round(phaseCursor), 0, Math.max(phaseNodes.length - 1, 0));
+      windowStartIndex = Math.min(getMaxWindowStart(), Math.max(0, activePhaseIndex));
+      targetX = -(phaseStep * windowStartIndex);
+      updatePhaseFocus();
       queueAnimation();
     };
 
@@ -404,7 +406,9 @@ document.addEventListener("DOMContentLoaded", () => {
       targetX = 0;
       currentX = 0;
       setRailX(0);
-      stickyWidth = memoMapRailSticky.clientWidth || memoMapRailScroll.clientWidth || 0;
+      phaseStep = measurePhaseStep();
+      activePhaseIndex = 0;
+      windowStartIndex = 0;
 
       if (!enabled) {
         memoMapRailScroll.style.removeProperty("--rail-scroll-height");
@@ -414,8 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const railWidth = memoMapRail.scrollWidth;
-      maxShift = Math.max(0, railWidth - stickyWidth);
+      maxShift = Math.max(0, phaseStep * getMaxWindowStart());
       if (maxShift <= 0) {
         memoMapRailScroll.classList.remove("is-smooth-rail");
         memoMapRailScroll.style.removeProperty("--rail-scroll-height");
@@ -432,7 +435,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const baseRect = memoMapRailScroll.getBoundingClientRect();
       const pageTop = window.scrollY + baseRect.top;
-      const stickyTravel = Math.max(maxShift * 1.22, window.innerHeight * 0.82);
+      const stickyTravel = Math.max(window.innerHeight * 0.88, (getMaxWindowStart() + 0.8) * phaseStep);
       const estimatedHeight = stickyTravel + memoMapRailSticky.offsetHeight + 18;
       memoMapRailScroll.style.setProperty("--rail-scroll-height", `${estimatedHeight}px`);
 
@@ -757,7 +760,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initCallPreference();
   initMemoMapRailAutoScroll();
   revealOnView(enemyGrid, "is-live", 0.2);
-  revealOnView(signalFunnel, "is-live", 0.16);
 
   if (proofFilters) {
     proofFilters.addEventListener("click", (event) => {
