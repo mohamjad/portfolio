@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const receiptsAppendix = document.getElementById("receiptsAppendix");
   const receiptsSource = document.getElementById("receiptsSource");
   const enemyGrid = document.getElementById("enemyGrid");
+  const signalFunnel = document.getElementById("signalFunnel");
   const statsSection = document.getElementById("stats");
   const animatedStats = document.getElementById("animatedStats");
   const memoArtifact = document.getElementById("memoArtifact");
@@ -756,6 +757,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCallPreference();
   initMemoMapRailAutoScroll();
   revealOnView(enemyGrid, "is-live", 0.2);
+  revealOnView(signalFunnel, "is-live", 0.16);
 
   if (proofFilters) {
     proofFilters.addEventListener("click", (event) => {
