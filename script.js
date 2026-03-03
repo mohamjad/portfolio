@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const memoMapRail = document.getElementById("memoMapRail");
   const memoMapNow = document.getElementById("memoMapNow");
   const memoMapNext = document.getElementById("memoMapNext");
+  const caseStudyNav = document.getElementById("caseStudyNav");
+  const caseStudyPanels = document.querySelectorAll("[data-case-panel]");
   const heroE5Layer = document.getElementById("heroE5Layer");
   const checkoutButtons = document.querySelectorAll("[data-buy-checkout]");
   const checkoutStatus = document.getElementById("checkoutStatus");
@@ -43,9 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const statBars = [
     {
-      valueLabel: "68hr",
-      label: "AVG TURNAROUND",
-      tooltip: 'Intake -> memo delivery.',
+      valueLabel: "72%",
+      label: "OF CONCEPT FAMILIES ELIMINATED BEFORE FUNDING",
+      tooltip: "Share of concept families disqualified before budget allocation.",
       height: 340,
       offset: -20,
       color: "#EA9D09",
@@ -909,12 +911,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const initCaseStudyTabs = () => {
+    if (!caseStudyNav || !caseStudyPanels.length) return;
+
+    const tabs = caseStudyNav.querySelectorAll("[data-case-target]");
+    const activate = (target) => {
+      tabs.forEach((tab) => {
+        const isActive = tab.dataset.caseTarget === target;
+        tab.classList.toggle("is-active", isActive);
+        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+
+      caseStudyPanels.forEach((panel) => {
+        const isActive = panel.dataset.casePanel === target;
+        panel.classList.toggle("is-active", isActive);
+      });
+    };
+
+    caseStudyNav.addEventListener("click", (event) => {
+      const tab = event.target.closest("[data-case-target]");
+      if (!tab) return;
+      activate(tab.dataset.caseTarget);
+    });
+  };
+
   renderStats();
   renderProofSummary();
   renderProofTiles();
   renderReceiptsAppendix();
   loadReceiptsFromDb();
   initMemoArtifact();
+  initCaseStudyTabs();
   initMemoMapRailAutoScroll();
   initLeaksFlow();
 

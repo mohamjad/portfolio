@@ -699,6 +699,170 @@ h2 {
   line-height: 1.45;
 }
 
+.case-study-nav {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.case-study-tab {
+  border: 1px solid var(--line-soft);
+  background: rgba(12, 28, 60, 0.52);
+  color: #d2e4ff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.52rem 0.72rem;
+  cursor: pointer;
+}
+
+.case-study-tab:hover,
+.case-study-tab:focus-visible,
+.case-study-tab.is-active {
+  border-color: rgba(255, 225, 86, 0.55);
+  background: rgba(24, 42, 77, 0.9);
+  color: #f6fbff;
+  outline: none;
+}
+
+.case-study-panels {
+  margin-top: 0.88rem;
+}
+
+.case-study-panel {
+  display: none;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(9, 23, 51, 0.88) 0%, rgba(7, 18, 40, 0.84) 100%);
+  padding: 1rem;
+}
+
+.case-study-panel.is-active {
+  display: block;
+}
+
+.case-study-head h3 {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-size: 1.28rem;
+}
+
+.case-study-head p {
+  margin: 0.36rem 0 0;
+  color: var(--text-mid);
+  font-size: 0.92rem;
+}
+
+.case-study-kpis {
+  margin-top: 0.74rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.case-study-kpis > div {
+  border: 1px solid var(--line-soft);
+  background: rgba(11, 26, 54, 0.72);
+  padding: 0.56rem;
+}
+
+.case-study-kpis span {
+  display: block;
+  color: #adc8f5;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.case-study-kpis strong {
+  display: block;
+  margin-top: 0.26rem;
+  color: #eef6ff;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.case-study-copy {
+  margin: 0.74rem 0 0;
+  color: #d4e6ff;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  max-width: 74ch;
+}
+
+.case-study-decision-grid {
+  margin-top: 0.76rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.case-study-decision-grid article {
+  border: 1px solid var(--line-soft);
+  background: rgba(12, 28, 60, 0.62);
+  padding: 0.56rem;
+}
+
+.case-study-decision-grid h4 {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-size: 0.9rem;
+  color: #f8fbff;
+}
+
+.case-study-decision-grid ul {
+  margin: 0.36rem 0 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.24rem;
+}
+
+.case-study-decision-grid li {
+  color: #d1e3ff;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.case-study-details {
+  margin-top: 0.84rem;
+  border: 1px solid var(--line-soft);
+  background: rgba(11, 26, 54, 0.7);
+}
+
+.case-study-details > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.56rem 0.64rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #d4e7ff;
+}
+
+.case-study-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.case-study-details[open] > summary {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.case-study-details ul {
+  margin: 0;
+  padding: 0.62rem 1.32rem 0.72rem;
+  display: grid;
+  gap: 0.34rem;
+}
+
+.case-study-details li {
+  color: #cbe0ff;
+  font-size: 0.84rem;
+  line-height: 1.42;
+}
+
 .memo-risk-line {
   margin: 0.58rem 0 0;
   max-width: 74ch;
@@ -2484,6 +2648,8 @@ textarea:focus {
   .enemy-grid,
   .mechanism-grid,
   .where-grid,
+  .case-study-kpis,
+  .case-study-decision-grid,
   .receipt-chips,
   .proof-summary,
   .proof-grid,
@@ -2600,6 +2766,8 @@ textarea:focus {
   .enemy-grid,
   .mechanism-grid,
   .where-grid,
+  .case-study-kpis,
+  .case-study-decision-grid,
   .receipt-chips,
   .proof-summary,
   .proof-grid,
