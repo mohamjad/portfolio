@@ -498,12 +498,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const baseRect = mechanismRailScroll.getBoundingClientRect();
       const pageTop = window.scrollY + baseRect.top;
-      const stickyTravel = Math.max(window.innerHeight * 0.74, (getMaxWindowStart() + 0.96) * phaseStep);
-      const estimatedHeight = stickyTravel + mechanismRailSticky.offsetHeight + 12;
+      const pinStartDelay = Math.min(220, Math.max(120, window.innerHeight * 0.18));
+      const stickyTravel = Math.max(window.innerHeight * 0.66, (getMaxWindowStart() + 0.9) * phaseStep);
+      const estimatedHeight = pinStartDelay + stickyTravel + mechanismRailSticky.offsetHeight + 12;
       mechanismRailScroll.style.setProperty("--mechanism-scroll-height", `${estimatedHeight}px`);
 
-      startY = pageTop;
-      endY = pageTop + stickyTravel;
+      startY = pageTop + pinStartDelay;
+      endY = startY + stickyTravel;
       syncTargetFromScroll();
       updateCardFocus();
     };

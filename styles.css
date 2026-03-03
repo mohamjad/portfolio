@@ -457,6 +457,10 @@ h1 {
   padding-top: 3.2rem;
 }
 
+#mechanism {
+  padding-top: 4.35rem;
+}
+
 .section-where {
   padding-top: 2.2rem;
 }
@@ -607,8 +611,8 @@ h2 {
 
 .mechanism-rail-scroll.is-smooth-rail .mechanism-rail-sticky {
   position: sticky;
-  top: clamp(108px, 14vh, 152px);
-  overflow: hidden;
+  top: clamp(150px, 20vh, 220px);
+  overflow: visible;
   isolation: isolate;
 }
 
