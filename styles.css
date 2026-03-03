@@ -544,7 +544,7 @@ h2 {
 }
 
 .mechanism-rail-wrap {
-  margin-top: 1rem;
+  margin-top: 0.82rem;
 }
 
 .mechanism-rail-head {
@@ -594,7 +594,7 @@ h2 {
 }
 
 .mechanism-rail-scroll {
-  margin-top: 0.58rem;
+  margin-top: 0.46rem;
 }
 
 .mechanism-rail-scroll.is-smooth-rail {
@@ -607,7 +607,7 @@ h2 {
 
 .mechanism-rail-scroll.is-smooth-rail .mechanism-rail-sticky {
   position: sticky;
-  top: clamp(78px, 11vh, 120px);
+  top: clamp(108px, 14vh, 152px);
   overflow: hidden;
   isolation: isolate;
 }

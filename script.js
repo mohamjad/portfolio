@@ -498,8 +498,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const baseRect = mechanismRailScroll.getBoundingClientRect();
       const pageTop = window.scrollY + baseRect.top;
-      const stickyTravel = Math.max(window.innerHeight * 0.95, (getMaxWindowStart() + 1.1) * phaseStep);
-      const estimatedHeight = stickyTravel + mechanismRailSticky.offsetHeight + 24;
+      const stickyTravel = Math.max(window.innerHeight * 0.74, (getMaxWindowStart() + 0.96) * phaseStep);
+      const estimatedHeight = stickyTravel + mechanismRailSticky.offsetHeight + 12;
       mechanismRailScroll.style.setProperty("--mechanism-scroll-height", `${estimatedHeight}px`);
 
       startY = pageTop;
