@@ -66,22 +66,33 @@
 
     <section class="section shell" id="enemy">
       <h2>Where paid creative leaks budget</h2>
-      <div class="enemy-grid enemy-grid-dynamic" id="enemyGrid">
-        <article class="enemy-card enemy-card-dynamic tone-pink">
-          <h3>The brief is static. The channel isn’t.</h3>
-          <p>AI changed what gets attention and what gets filtered. Most briefs didn’t.</p>
-          <span class="enemy-pulse" aria-hidden="true"></span>
-        </article>
-        <article class="enemy-card enemy-card-dynamic tone-yellow">
-          <h3>You only learn after you’ve already paid.</h3>
-          <p>You book production, spend, then discover what works, and then you’re left explaining why that batch got funded.</p>
-          <span class="enemy-pulse" aria-hidden="true"></span>
-        </article>
-        <article class="enemy-card enemy-card-dynamic tone-blue">
-          <h3>Meta-as-Allocator.</h3>
-          <p>If you don’t gate allocation pre-spend, the auction does it for you.</p>
-          <span class="enemy-pulse" aria-hidden="true"></span>
-        </article>
+      <div class="leaks-flow" id="leaksFlow" aria-label="Leak sequence">
+        <div class="leaks-flow-sticky" id="leaksFlowSticky">
+          <div class="leaks-flow-head">
+            <p class="leaks-flow-kicker">Allocation risk stream</p>
+            <div class="leaks-progress" aria-hidden="true">
+              <span class="leaks-progress-track"></span>
+              <span class="leaks-progress-fill" id="leaksProgressFill"></span>
+            </div>
+          </div>
+          <div class="leaks-flow-window">
+            <div class="leaks-track" id="leaksTrack">
+              <article class="leaks-step" data-leaks-step>
+                <h3>The brief is static. The channel isn’t.</h3>
+                <p>AI changed what gets attention and what gets filtered. Most briefs didn’t.</p>
+              </article>
+              <article class="leaks-step" data-leaks-step>
+                <h3>You only learn after you’ve already paid.</h3>
+                <p>You book production, spend, then discover what works, and then you’re left explaining why that batch got funded.</p>
+              </article>
+              <article class="leaks-step" data-leaks-step>
+                <h3>Meta-as-Allocator.</h3>
+                <p>If you don’t gate allocation pre-spend, the auction does it for you.</p>
+              </article>
+            </div>
+          </div>
+          <div class="leaks-flow-index" id="leaksFlowIndex">01 / 03</div>
+        </div>
       </div>
     </section>
 

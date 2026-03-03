@@ -5,7 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const proofFilters = document.getElementById("proofFilters");
   const receiptsAppendix = document.getElementById("receiptsAppendix");
   const receiptsSource = document.getElementById("receiptsSource");
-  const enemyGrid = document.getElementById("enemyGrid");
+  const leaksFlow = document.getElementById("leaksFlow");
+  const leaksFlowSticky = document.getElementById("leaksFlowSticky");
+  const leaksTrack = document.getElementById("leaksTrack");
+  const leaksSteps = leaksTrack ? Array.from(leaksTrack.querySelectorAll("[data-leaks-step]")) : [];
+  const leaksProgressFill = document.getElementById("leaksProgressFill");
+  const leaksFlowIndex = document.getElementById("leaksFlowIndex");
   const statsSection = document.getElementById("stats");
   const animatedStats = document.getElementById("animatedStats");
   const memoArtifact = document.getElementById("memoArtifact");
@@ -529,6 +534,89 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const initLeaksFlow = () => {
+    if (!leaksFlow || !leaksFlowSticky || !leaksTrack || leaksSteps.length === 0) return;
+
+    const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+    const isMobile = () => window.matchMedia("(max-width: 860px)").matches;
+
+    let startY = 0;
+    let endY = 0;
+    let stepHeight = 320;
+    let enabled = true;
+
+    const setActive = (progress) => {
+      const count = leaksSteps.length;
+      const position = progress * (count - 1);
+      const activeIndex = Math.round(position);
+      const shift = -position * stepHeight;
+
+      leaksTrack.style.setProperty("--leaks-shift", `${shift.toFixed(2)}px`);
+      leaksTrack.style.setProperty("--leaks-step-height", `${stepHeight}px`);
+      leaksFlow.style.setProperty("--leaks-step-height", `${stepHeight}px`);
+      leaksFlow.style.setProperty("--leaks-progress", `${(progress * 100).toFixed(2)}%`);
+
+      leaksSteps.forEach((step, index) => {
+        const isActive = index === activeIndex;
+        const isNear = Math.abs(index - position) < 1.05;
+        step.classList.toggle("is-active", isActive);
+        step.classList.toggle("is-near", !isActive && isNear);
+      });
+
+      if (leaksProgressFill) leaksProgressFill.style.width = `${(progress * 100).toFixed(2)}%`;
+      if (leaksFlowIndex) {
+        leaksFlowIndex.textContent = `${String(activeIndex + 1).padStart(2, "0")} / ${String(count).padStart(2, "0")}`;
+      }
+    };
+
+    const onScroll = () => {
+      if (!enabled) return;
+      const progress = endY <= startY
+        ? 0
+        : clamp((window.scrollY - startY) / (endY - startY), 0, 1);
+      setActive(progress);
+    };
+
+    const computeLayout = () => {
+      enabled = !(reduceMotionQuery.matches || isMobile());
+
+      if (!enabled) {
+        leaksFlow.style.removeProperty("--leaks-flow-height");
+        leaksFlow.style.removeProperty("--leaks-progress");
+        leaksTrack.style.removeProperty("--leaks-shift");
+        leaksTrack.style.removeProperty("--leaks-step-height");
+        leaksFlow.style.removeProperty("--leaks-step-height");
+        leaksSteps.forEach((step) => {
+          step.classList.remove("is-active", "is-near");
+        });
+        if (leaksFlowIndex) leaksFlowIndex.textContent = `01 / ${String(leaksSteps.length).padStart(2, "0")}`;
+        return;
+      }
+
+      stepHeight = Math.max(300, Math.round(window.innerHeight * 0.46));
+      const stickyHeight = leaksFlowSticky.offsetHeight;
+      const travel = Math.max(window.innerHeight * 1.6, stepHeight * (leaksSteps.length - 1));
+      leaksFlow.style.setProperty("--leaks-flow-height", `${stickyHeight + travel}px`);
+
+      const rect = leaksFlow.getBoundingClientRect();
+      startY = window.scrollY + rect.top;
+      endY = startY + travel;
+      onScroll();
+    };
+
+    computeLayout();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", computeLayout);
+    window.addEventListener("orientationchange", computeLayout);
+
+    if (reduceMotionQuery.addEventListener) {
+      reduceMotionQuery.addEventListener("change", computeLayout);
+    } else if (reduceMotionQuery.addListener) {
+      reduceMotionQuery.addListener(computeLayout);
+    }
+  };
+
   const escapeHtml = (value) =>
     String(value ?? "")
       .replaceAll("&", "&amp;")
@@ -828,7 +916,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadReceiptsFromDb();
   initMemoArtifact();
   initMemoMapRailAutoScroll();
-  revealOnView(enemyGrid, "is-live", 0.2);
+  initLeaksFlow();
 
   checkoutButtons.forEach((button) => {
     button.addEventListener("click", () => startCheckout(button));
@@ -853,20 +941,6 @@ document.addEventListener("DOMContentLoaded", () => {
       renderProofTiles();
     });
   }
-
-  const interactiveCards = document.querySelectorAll(".enemy-card-dynamic");
-  interactiveCards.forEach((card) => {
-    card.addEventListener("pointermove", (event) => {
-      const rect = card.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `perspective(900px) rotateX(${(-y * 3).toFixed(2)}deg) rotateY(${(x * 4).toFixed(2)}deg) translateY(-2px)`;
-    });
-
-    card.addEventListener("pointerleave", () => {
-      card.style.transform = "";
-    });
-  });
 
   if (window.lottie) {
     heroAnimations.forEach((animation) => {

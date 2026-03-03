@@ -531,6 +531,121 @@ h2 {
   line-height: 1.45;
 }
 
+.leaks-flow {
+  position: relative;
+  margin-top: 1.14rem;
+  height: var(--leaks-flow-height, auto);
+}
+
+.leaks-flow-sticky {
+  position: sticky;
+  top: clamp(80px, 11vh, 120px);
+  display: grid;
+  gap: 0.74rem;
+}
+
+.leaks-flow-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.leaks-flow-kicker {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.7rem;
+  color: #a8c8ff;
+}
+
+.leaks-progress {
+  position: relative;
+  width: min(340px, 46vw);
+  height: 4px;
+}
+
+.leaks-progress-track,
+.leaks-progress-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+}
+
+.leaks-progress-track {
+  background: rgba(128, 160, 220, 0.28);
+}
+
+.leaks-progress-fill {
+  width: var(--leaks-progress, 0%);
+  background: linear-gradient(90deg, #54b8ff 0%, #ffe156 54%, #ef63c4 100%);
+  transition: width 160ms ease;
+}
+
+.leaks-flow-window {
+  min-height: var(--leaks-step-height, 320px);
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+}
+
+.leaks-track {
+  display: grid;
+  grid-auto-rows: var(--leaks-step-height, 320px);
+  transform: translate3d(0, var(--leaks-shift, 0px), 0);
+  will-change: transform;
+}
+
+.leaks-step {
+  display: grid;
+  align-content: center;
+  gap: 0.5rem;
+  max-width: 64ch;
+  opacity: 0.28;
+  transform: scale(0.96) translateY(10px);
+  transition: opacity 220ms ease, transform 260ms ease, filter 260ms ease;
+  filter: blur(1px);
+}
+
+.leaks-step h3 {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.45rem, 2.3vw, 2.2rem);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  color: #f6fbff;
+}
+
+.leaks-step p {
+  margin: 0;
+  color: #c7dafb;
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  line-height: 1.45;
+  max-width: 56ch;
+}
+
+.leaks-step.is-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+.leaks-step.is-near {
+  opacity: 0.68;
+  transform: scale(0.985) translateY(2px);
+  filter: blur(0);
+}
+
+.leaks-flow-index {
+  justify-self: end;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b6cef8;
+}
+
 .where-copy-strong {
   color: #dceaff;
   max-width: 72ch;
@@ -2536,6 +2651,40 @@ textarea:focus {
 
   .memo-map-progress {
     width: 100%;
+  }
+
+  .leaks-flow {
+    height: auto !important;
+  }
+
+  .leaks-flow-sticky {
+    position: static;
+  }
+
+  .leaks-flow-window {
+    min-height: 0;
+    overflow: visible;
+    mask-image: none;
+  }
+
+  .leaks-track {
+    display: grid;
+    grid-auto-rows: auto;
+    gap: 0.72rem;
+    transform: none !important;
+  }
+
+  .leaks-step,
+  .leaks-step.is-active,
+  .leaks-step.is-near {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .leaks-progress,
+  .leaks-flow-index {
+    display: none;
   }
 
   .memo-map-rail-scroll.is-smooth-rail {
