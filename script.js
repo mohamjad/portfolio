@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const statsSection = document.getElementById("stats");
   const animatedStats = document.getElementById("animatedStats");
   const memoArtifact = document.getElementById("memoArtifact");
-  const memoMapRailScroll = document.getElementById("memoMapRailScroll");
-  const memoMapRailSticky = document.getElementById("memoMapRailSticky");
-  const memoMapRail = document.getElementById("memoMapRail");
-  const memoMapNow = document.getElementById("memoMapNow");
-  const memoMapNext = document.getElementById("memoMapNext");
+  const mechanismRailScroll = document.getElementById("mechanismRailScroll");
+  const mechanismRailSticky = document.getElementById("mechanismRailSticky");
+  const mechanismRail = document.getElementById("mechanismRail");
+  const mechanismNow = document.getElementById("mechanismNow");
+  const mechanismNext = document.getElementById("mechanismNext");
   const caseStudyNav = document.getElementById("caseStudyNav");
   const caseStudyPanels = document.querySelectorAll("[data-case-panel]");
   const heroE5Layer = document.getElementById("heroE5Layer");
@@ -365,68 +365,64 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const initMemoMapRailAutoScroll = () => {
-    if (!memoMapRailScroll || !memoMapRailSticky || !memoMapRail) return;
+  const initMechanismRailAutoScroll = () => {
+    if (!mechanismRailScroll || !mechanismRailSticky || !mechanismRail) return;
 
     const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const phaseNodes = Array.from(memoMapRail.querySelectorAll(".memo-map-phase"));
+    const cards = Array.from(mechanismRail.querySelectorAll(".mechanism-card"));
+    if (!cards.length) return;
+
     const lerp = (from, to, alpha) => from + (to - from) * alpha;
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
     const windowSize = 2;
 
     let enabled = true;
-    let maxShift = 0;
     let startY = 0;
     let endY = 0;
     let targetX = 0;
     let currentX = 0;
     let phaseStep = 0;
-    let stickyWidth = 0;
     let centerOffset = 0;
-    let activePhaseIndex = 0;
+    let activeCardIndex = 0;
     let windowStartIndex = 0;
     let rafId = 0;
 
     const setRailX = (value) => {
-      memoMapRail.style.setProperty("--memo-rail-x", `${value.toFixed(2)}px`);
+      mechanismRail.style.setProperty("--mechanism-rail-x", `${value.toFixed(2)}px`);
     };
 
     const getPhaseLabel = (node) => {
-      const kicker = node.querySelector(".memo-map-phase-kicker")?.textContent?.trim() || "";
-      const title = node.querySelector("h4")?.textContent?.trim() || "";
-      return `${kicker} \u00b7 ${title}`.replace(/\s+/g, " ").trim();
+      const kicker = node.querySelector(".mechanism-card-kicker")?.textContent?.trim() || "";
+      const title = node.querySelector("h3")?.textContent?.trim() || "";
+      return `${kicker} - ${title}`.replace(/\s+/g, " ").trim();
     };
 
-    const getMaxWindowStart = () => Math.max(0, phaseNodes.length - windowSize);
+    const getMaxWindowStart = () => Math.max(0, cards.length - windowSize);
 
     const measurePhaseStep = () => {
-      if (phaseNodes.length < 2) {
-        return phaseNodes[0]?.offsetWidth || 0;
-      }
-      return Math.max(1, phaseNodes[1].offsetLeft - phaseNodes[0].offsetLeft);
+      if (cards.length < 2) return cards[0]?.offsetWidth || 0;
+      return Math.max(1, cards[1].offsetLeft - cards[0].offsetLeft);
     };
 
-    const updatePhaseFocus = () => {
-      if (!phaseNodes.length) return;
+    const updateCardFocus = () => {
+      const nextIndex = Math.min(cards.length - 1, activeCardIndex + 1);
+      const hasNext = activeCardIndex < cards.length - 1;
+      const activeNode = cards[activeCardIndex];
 
-      const nextIndex = Math.min(phaseNodes.length - 1, activePhaseIndex + 1);
-      const hasNext = activePhaseIndex < phaseNodes.length - 1;
-      const activeNode = phaseNodes[activePhaseIndex];
-
-      phaseNodes.forEach((node, index) => {
+      cards.forEach((card, index) => {
         const inWindow = index === windowStartIndex || index === windowStartIndex + 1;
-        const isActive = index === activePhaseIndex;
+        const isActive = index === activeCardIndex;
         const isNext = hasNext && index === nextIndex && inWindow;
-        node.classList.toggle("is-active", isActive);
-        node.classList.toggle("is-next", isNext);
-        node.classList.toggle("is-hidden-phase", !inWindow);
-        node.classList.toggle("is-near", inWindow);
-        node.classList.toggle("is-terminal", isActive && !hasNext);
+        card.classList.toggle("is-active", isActive);
+        card.classList.toggle("is-next", isNext);
+        card.classList.toggle("is-hidden-phase", !inWindow);
+        card.classList.toggle("is-near", inWindow);
       });
 
-      if (memoMapNow) memoMapNow.textContent = getPhaseLabel(activeNode);
-      if (memoMapNext) memoMapNext.textContent = hasNext ? getPhaseLabel(phaseNodes[nextIndex]) : "Complete \u00b7 Executive Decision";
-      memoMapRail.classList.toggle("is-terminal-flow", !hasNext);
+      if (mechanismNow) mechanismNow.textContent = getPhaseLabel(activeNode);
+      if (mechanismNext) {
+        mechanismNext.textContent = hasNext ? getPhaseLabel(cards[nextIndex]) : "Complete - Governance in motion";
+      }
     };
 
     const animateToTarget = () => {
@@ -437,7 +433,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       currentX = lerp(currentX, targetX, 0.14);
       if (Math.abs(targetX - currentX) < 0.18) currentX = targetX;
-
       setRailX(currentX);
 
       if (currentX !== targetX) {
@@ -454,66 +449,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const syncTargetFromScroll = () => {
       if (!enabled) return;
-      const progress = endY <= startY
-        ? 0
-        : clamp((window.scrollY - startY) / (endY - startY), 0, 1);
-      const phaseCursor = progress * Math.max(phaseNodes.length - 1, 0);
-      activePhaseIndex = clamp(Math.round(phaseCursor), 0, Math.max(phaseNodes.length - 1, 0));
-      windowStartIndex = Math.min(getMaxWindowStart(), Math.max(0, activePhaseIndex));
-      targetX = centerOffset - (phaseStep * windowStartIndex);
-      updatePhaseFocus();
+      const progress = endY <= startY ? 0 : clamp((window.scrollY - startY) / (endY - startY), 0, 1);
+      const cardCursor = progress * Math.max(cards.length - 1, 0);
+      activeCardIndex = clamp(Math.round(cardCursor), 0, Math.max(cards.length - 1, 0));
+      windowStartIndex = Math.min(getMaxWindowStart(), Math.max(0, activeCardIndex));
+      targetX = centerOffset - phaseStep * windowStartIndex;
+      updateCardFocus();
       queueAnimation();
     };
 
     const computeLayout = () => {
-      enabled = !reduceMotionQuery.matches;
-      memoMapRailScroll.classList.toggle("is-smooth-rail", enabled);
-      targetX = 0;
-      currentX = 0;
+      enabled = !reduceMotionQuery.matches && window.innerWidth > 860;
+      mechanismRailScroll.classList.toggle("is-smooth-rail", enabled);
       phaseStep = measurePhaseStep();
-      stickyWidth = memoMapRailSticky.clientWidth || memoMapRailScroll.clientWidth || 0;
-      const cardWidth = phaseNodes[0]?.offsetWidth || 0;
+      const stickyWidth = mechanismRailSticky.clientWidth || mechanismRailScroll.clientWidth || 0;
+      const cardWidth = cards[0]?.offsetWidth || 0;
       const visibleWidth = (windowSize > 1 ? phaseStep : 0) + cardWidth;
       centerOffset = Math.max(0, (stickyWidth - visibleWidth) / 2);
       targetX = centerOffset;
       currentX = centerOffset;
       setRailX(centerOffset);
-      activePhaseIndex = 0;
+      activeCardIndex = 0;
       windowStartIndex = 0;
 
       if (!enabled) {
-        memoMapRailScroll.style.removeProperty("--rail-scroll-height");
-        phaseNodes.forEach((node) =>
-          node.classList.remove("is-active", "is-near", "is-next", "is-hidden-phase", "is-terminal")
-        );
-        return;
-      }
-
-      maxShift = Math.max(0, phaseStep * getMaxWindowStart());
-      if (maxShift <= 0) {
-        memoMapRailScroll.classList.remove("is-smooth-rail");
-        memoMapRailScroll.style.removeProperty("--rail-scroll-height");
-        phaseNodes.forEach((node, index) => {
-          node.classList.toggle("is-active", index === 0);
-          node.classList.toggle("is-next", index === 1);
-          node.classList.toggle("is-hidden-phase", index > 1);
-          node.classList.toggle("is-near", index <= 1);
-          node.classList.remove("is-terminal");
+        mechanismRailScroll.style.removeProperty("--mechanism-scroll-height");
+        cards.forEach((card, index) => {
+          card.classList.remove("is-hidden-phase", "is-near", "is-next");
+          card.classList.toggle("is-active", index === 0);
         });
-        memoMapRail.classList.remove("is-terminal-flow");
+        if (mechanismNow) mechanismNow.textContent = getPhaseLabel(cards[0]);
+        if (mechanismNext) mechanismNext.textContent = cards[1] ? getPhaseLabel(cards[1]) : "Complete";
         return;
       }
 
-      const baseRect = memoMapRailScroll.getBoundingClientRect();
+      const maxShift = Math.max(0, phaseStep * getMaxWindowStart());
+      if (maxShift <= 0) {
+        mechanismRailScroll.classList.remove("is-smooth-rail");
+        mechanismRailScroll.style.removeProperty("--mechanism-scroll-height");
+        cards.forEach((card, index) => {
+          card.classList.toggle("is-active", index === 0);
+          card.classList.toggle("is-next", index === 1);
+          card.classList.toggle("is-near", index <= 1);
+          card.classList.toggle("is-hidden-phase", index > 1);
+        });
+        return;
+      }
+
+      const baseRect = mechanismRailScroll.getBoundingClientRect();
       const pageTop = window.scrollY + baseRect.top;
-      const stickyTravel = Math.max(window.innerHeight * 0.88, (getMaxWindowStart() + 0.8) * phaseStep);
-      const estimatedHeight = stickyTravel + memoMapRailSticky.offsetHeight + 18;
-      memoMapRailScroll.style.setProperty("--rail-scroll-height", `${estimatedHeight}px`);
+      const stickyTravel = Math.max(window.innerHeight * 0.95, (getMaxWindowStart() + 1.1) * phaseStep);
+      const estimatedHeight = stickyTravel + mechanismRailSticky.offsetHeight + 24;
+      mechanismRailScroll.style.setProperty("--mechanism-scroll-height", `${estimatedHeight}px`);
 
       startY = pageTop;
       endY = pageTop + stickyTravel;
       syncTargetFromScroll();
-      updatePhaseFocus();
+      updateCardFocus();
     };
 
     const onScroll = () => syncTargetFromScroll();
@@ -696,11 +688,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (receiptsSource && payload.meta) {
-      const market = String(payload.meta.market || "US");
-      const mode = String(payload.meta.mode || "exploit");
-      const asOf = payload.meta.asOf ? new Date(payload.meta.asOf).toLocaleString() : "n/a";
-      const source = String(payload.meta.source || "control-room-db");
-      receiptsSource.textContent = `Source: ${source} | Scope ${market}/${mode} | As of ${asOf} | Public rows are de-identified.`;
+      receiptsSource.textContent = "Signal data updated every 48 hours. Public output is de-identified and underlying source data remains private.";
     }
 
     return true;
@@ -721,7 +709,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       if (receiptsSource) {
         receiptsSource.textContent =
-          "Source: fallback public-safe receipts (DB unavailable for this request window).";
+          "Signal data updated every 48 hours. Public output is de-identified and underlying source data remains private.";
       }
       console.warn("Using fallback receipts data.", error);
     }
@@ -853,7 +841,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadReceiptsFromDb();
   initMemoArtifact();
   initCaseStudyTabs();
-  initMemoMapRailAutoScroll();
+  initMechanismRailAutoScroll();
 
   checkoutButtons.forEach((button) => {
     button.addEventListener("click", () => startCheckout(button));
