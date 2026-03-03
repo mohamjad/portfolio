@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       valueLabel: "62",
-      label: "MEMOS W/ RECEPTION APPENDIX",
+      label: "GATES W/ RECEPTION APPENDIX",
       tooltip: "Includes objection themes as receipts.",
       height: 420,
       offset: -30,
@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const setIntent = (intent) => {
     if (!intentField) return;
-    intentField.value = intent || "allocation_memo";
+    intentField.value = intent || "allocation_gate";
   };
 
   const startCheckout = async (button) => {
@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({ product: "allocation_memo" }),
+        body: JSON.stringify({ product: "allocation_gate" }),
       });
 
       const payload = await response.json().catch(() => ({}));
@@ -849,7 +849,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   intentTriggers.forEach((trigger) => {
     trigger.addEventListener("click", () => {
-      setIntent(trigger.dataset.intentTarget || "allocation_memo");
+      setIntent(trigger.dataset.intentTarget || "allocation_gate");
     });
   });
 
@@ -930,14 +930,14 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const subject = `Setta Intake | ${payload.get("product") || "New Request"}`;
       const message = [
-        "Setta Allocation Memo Intake",
+        "Setta Allocation Gate Intake",
         "",
         `Product + claim: ${payload.get("product") || "n/a"}`,
         `Objective: ${payload.get("objective") || "n/a"}`,
         `Timeline: ${payload.get("timeline") || "n/a"}`,
         `Spend band: ${payload.get("spend_band") || "n/a"}`,
         `Concept volume: ${payload.get("concepts_per_month") || "n/a"}`,
-        `Intent: ${payload.get("intent") || "allocation_memo"}`,
+        `Intent: ${payload.get("intent") || "allocation_gate"}`,
         `Constraints: ${payload.get("constraints") || "n/a"}`,
         `Contact email: ${payload.get("contact_email") || "n/a"}`,
       ].join("\n");
@@ -960,7 +960,7 @@ document.addEventListener("DOMContentLoaded", () => {
           timeline: payload.get("timeline") || "",
           spend_band: payload.get("spend_band") || "",
           concepts_per_month: payload.get("concepts_per_month") || "",
-          intent: payload.get("intent") || "allocation_memo",
+          intent: payload.get("intent") || "allocation_gate",
           constraints: payload.get("constraints") || "",
           to: "mohammed@setta.ca",
         }),
@@ -977,19 +977,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setStatus("Intake sent successfully. Email delivered to mohammed@setta.ca. We will reply at your contact email.", "success");
       intakeForm.reset();
-      setIntent("allocation_memo");
+      setIntent("allocation_gate");
       return;
     } catch (error) {
       const subject = `Setta Intake | ${payload.get("product") || "New Request"}`;
       const body = [
-        "Setta Allocation Memo Intake",
+        "Setta Allocation Gate Intake",
         "",
         `Product + claim: ${payload.get("product") || "n/a"}`,
         `Objective: ${payload.get("objective") || "n/a"}`,
         `Timeline: ${payload.get("timeline") || "n/a"}`,
         `Spend band: ${payload.get("spend_band") || "n/a"}`,
         `Concept volume: ${payload.get("concepts_per_month") || "n/a"}`,
-        `Intent: ${payload.get("intent") || "allocation_memo"}`,
+        `Intent: ${payload.get("intent") || "allocation_gate"}`,
         `Constraints: ${payload.get("constraints") || "n/a"}`,
         `Contact email: ${payload.get("contact_email") || "n/a"}`,
       ].join("\n");

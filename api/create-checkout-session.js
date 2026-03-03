@@ -39,7 +39,8 @@ module.exports = async (req, res) => {
   const body = await readJsonBody(req);
   const product = String(body?.product || "").trim();
 
-  if (product !== "allocation_memo") {
+  const supportedProducts = new Set(["allocation_gate", "allocation_memo"]);
+  if (!supportedProducts.has(product)) {
     res.status(400).json({ error: "Invalid product" });
     return;
   }
