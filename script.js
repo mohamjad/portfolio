@@ -375,6 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lerp = (from, to, alpha) => from + (to - from) * alpha;
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
     let windowSize = 2;
+    let mode = "smooth";
 
     let enabled = true;
     let startY = 0;
@@ -386,6 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let activeCardIndex = 0;
     let windowStartIndex = 0;
     let rafId = 0;
+    let swipeRafId = 0;
 
     const setRailX = (value) => {
       mechanismRail.style.setProperty("--mechanism-rail-x", `${value.toFixed(2)}px`);
@@ -410,19 +412,43 @@ document.addEventListener("DOMContentLoaded", () => {
       const activeNode = cards[activeCardIndex];
 
       cards.forEach((card, index) => {
-        const inWindow = index >= windowStartIndex && index < windowStartIndex + windowSize;
+        const inWindow =
+          mode === "smooth"
+            ? index >= windowStartIndex && index < windowStartIndex + windowSize
+            : true;
         const isActive = index === activeCardIndex;
         const isNext = hasNext && index === nextIndex && inWindow;
         card.classList.toggle("is-active", isActive);
         card.classList.toggle("is-next", isNext);
-        card.classList.toggle("is-hidden-phase", !inWindow);
-        card.classList.toggle("is-near", inWindow);
+        card.classList.toggle("is-hidden-phase", mode === "smooth" ? !inWindow : false);
+        card.classList.toggle("is-near", mode === "smooth" ? inWindow : Math.abs(index - activeCardIndex) <= 1);
       });
 
       if (mechanismNow) mechanismNow.textContent = getPhaseLabel(activeNode);
       if (mechanismNext) {
         mechanismNext.textContent = hasNext ? getPhaseLabel(cards[nextIndex]) : "Complete - Governance in motion";
       }
+    };
+
+    const syncFromRailSwipe = () => {
+      if (mode !== "swipe") return;
+      const railLeft = mechanismRail.scrollLeft;
+      const railCenter = railLeft + mechanismRail.clientWidth / 2;
+
+      let nearestIndex = 0;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+      cards.forEach((card, index) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const distance = Math.abs(cardCenter - railCenter);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+      });
+
+      activeCardIndex = nearestIndex;
+      windowStartIndex = nearestIndex;
+      updateCardFocus();
     };
 
     const animateToTarget = () => {
@@ -459,9 +485,12 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const computeLayout = () => {
-      enabled = !reduceMotionQuery.matches;
-      windowSize = window.innerWidth <= 860 ? 1 : 2;
+      const isMobileSwipe = window.innerWidth <= 860;
+      mode = isMobileSwipe ? "swipe" : (!reduceMotionQuery.matches ? "smooth" : "static");
+      enabled = mode === "smooth";
+      windowSize = mode === "smooth" ? 2 : 1;
       mechanismRailScroll.classList.toggle("is-smooth-rail", enabled);
+      mechanismRail.classList.toggle("is-mobile-swipe", mode === "swipe");
       phaseStep = measurePhaseStep();
       const stickyWidth = mechanismRailSticky.clientWidth || mechanismRailScroll.clientWidth || 0;
       const cardWidth = cards[0]?.offsetWidth || 0;
@@ -469,11 +498,21 @@ document.addEventListener("DOMContentLoaded", () => {
       centerOffset = Math.max(0, (stickyWidth - visibleWidth) / 2);
       targetX = centerOffset;
       currentX = centerOffset;
-      setRailX(centerOffset);
+      if (mode === "smooth") {
+        setRailX(centerOffset);
+      } else {
+        mechanismRail.style.removeProperty("--mechanism-rail-x");
+      }
       activeCardIndex = 0;
       windowStartIndex = 0;
 
-      if (!enabled) {
+      if (mode === "swipe") {
+        mechanismRailScroll.style.removeProperty("--mechanism-scroll-height");
+        requestAnimationFrame(syncFromRailSwipe);
+        return;
+      }
+
+      if (mode === "static") {
         mechanismRailScroll.style.removeProperty("--mechanism-scroll-height");
         cards.forEach((card, index) => {
           card.classList.remove("is-hidden-phase", "is-near", "is-next");
@@ -514,11 +553,20 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const onScroll = () => syncTargetFromScroll();
+    const onRailScroll = () => {
+      if (mode !== "swipe") return;
+      if (swipeRafId) return;
+      swipeRafId = requestAnimationFrame(() => {
+        swipeRafId = 0;
+        syncFromRailSwipe();
+      });
+    };
 
     computeLayout();
     window.addEventListener("resize", computeLayout);
     window.addEventListener("orientationchange", computeLayout);
     window.addEventListener("scroll", onScroll, { passive: true });
+    mechanismRail.addEventListener("scroll", onRailScroll, { passive: true });
 
     if (reduceMotionQuery.addEventListener) {
       reduceMotionQuery.addEventListener("change", computeLayout);

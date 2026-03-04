@@ -737,6 +737,27 @@ h2 {
   filter: blur(2.2px);
 }
 
+.mechanism-rail.is-mobile-swipe .mechanism-card {
+  opacity: 0.74;
+  transform: scale(0.965);
+  transition:
+    transform 280ms ease,
+    opacity 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.mechanism-rail.is-mobile-swipe .mechanism-card.is-active {
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(255, 225, 86, 0.52);
+  box-shadow: 0 14px 34px rgba(2, 8, 22, 0.44);
+}
+
+.mechanism-rail.is-mobile-swipe .mechanism-card.is-next {
+  opacity: 0.9;
+}
+
 .memo-meta {
   margin: 0.68rem 0 0;
   color: var(--text-mid);
@@ -2833,37 +2854,46 @@ textarea:focus {
   }
 
   .mechanism-rail-scroll.is-smooth-rail {
-    height: var(--mechanism-scroll-height, auto);
+    height: auto;
   }
 
   .mechanism-rail-scroll.is-smooth-rail .mechanism-rail-sticky {
-    position: sticky;
-    top: clamp(112px, 16vh, 176px);
+    position: relative;
+    top: auto;
     overflow: visible;
   }
 
   .mechanism-rail,
   .mechanism-rail-scroll:not(.is-smooth-rail) .mechanism-rail {
-    grid-auto-flow: row;
-    grid-auto-columns: 1fr;
-    gap: 0.42rem;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(250px, 84vw, 390px);
+    gap: 0.56rem;
     transform: none;
-    overflow: visible;
-    scroll-snap-type: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-left: 0.16rem;
+    padding-bottom: 0.32rem;
   }
 
   .mechanism-rail-scroll.is-smooth-rail .mechanism-rail {
     grid-auto-flow: column;
-    grid-auto-columns: minmax(0, 100%);
-    gap: 0.42rem;
-    transform: translate3d(var(--mechanism-rail-x, 0px), 0, 0);
-    overflow: visible;
-    scroll-snap-type: none;
+    grid-auto-columns: clamp(250px, 84vw, 390px);
+    gap: 0.56rem;
+    transform: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-left: 0.16rem;
+    padding-bottom: 0.32rem;
   }
 
   .mechanism-card {
     border-radius: 14px;
-    min-height: 200px;
+    min-height: 220px;
+    max-width: 90vw;
   }
 
   .form-grid,
