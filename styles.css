@@ -646,7 +646,7 @@ h2 {
   border-radius: 16px;
   background: linear-gradient(180deg, rgba(12, 29, 60, 0.86) 0%, rgba(8, 20, 43, 0.84) 100%);
   box-shadow: 0 12px 34px rgba(2, 8, 22, 0.38);
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   min-height: 236px;
   padding: 0.78rem;
   transition:
@@ -2844,13 +2844,41 @@ textarea:focus {
 
   .mechanism-rail-head {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 0.44rem;
+  }
+
+  .mechanism-rail-context {
+    font-size: 0.84rem;
   }
 
   .mechanism-rail-progress {
     width: 100%;
-    border-radius: 16px;
-    padding: 0.4rem 0.56rem;
+    border-radius: 14px;
+    padding: 0.42rem 0.52rem;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 0.42rem;
+    row-gap: 0.2rem;
+    align-items: center;
+  }
+
+  .mechanism-rail-label {
+    font-size: 0.57rem;
+    letter-spacing: 0.07em;
+  }
+
+  .mechanism-rail-progress strong {
+    min-width: 0;
+    max-width: 100%;
+    font-size: 0.66rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mechanism-rail-sep {
+    display: none;
   }
 
   .mechanism-rail-scroll.is-smooth-rail {
@@ -2865,35 +2893,55 @@ textarea:focus {
 
   .mechanism-rail,
   .mechanism-rail-scroll:not(.is-smooth-rail) .mechanism-rail {
+    --mechanism-mobile-card-size: clamp(224px, 76vw, 312px);
     grid-auto-flow: column;
-    grid-auto-columns: clamp(250px, 84vw, 390px);
-    gap: 0.56rem;
+    grid-auto-columns: var(--mechanism-mobile-card-size);
+    gap: 0.48rem;
     transform: none;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    scroll-padding-left: 0.16rem;
-    padding-bottom: 0.32rem;
+    scroll-padding-inline: calc((100% - var(--mechanism-mobile-card-size)) / 2);
+    padding-inline: calc((100% - var(--mechanism-mobile-card-size)) / 2);
+    padding-bottom: 0.24rem;
   }
 
   .mechanism-rail-scroll.is-smooth-rail .mechanism-rail {
+    --mechanism-mobile-card-size: clamp(224px, 76vw, 312px);
     grid-auto-flow: column;
-    grid-auto-columns: clamp(250px, 84vw, 390px);
-    gap: 0.56rem;
+    grid-auto-columns: var(--mechanism-mobile-card-size);
+    gap: 0.48rem;
     transform: none;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    scroll-padding-left: 0.16rem;
-    padding-bottom: 0.32rem;
+    scroll-padding-inline: calc((100% - var(--mechanism-mobile-card-size)) / 2);
+    padding-inline: calc((100% - var(--mechanism-mobile-card-size)) / 2);
+    padding-bottom: 0.24rem;
   }
 
   .mechanism-card {
-    border-radius: 14px;
-    min-height: 220px;
+    border-radius: 13px;
+    min-height: 188px;
     max-width: 90vw;
+    padding: 0.62rem;
+  }
+
+  .mechanism-card-kicker {
+    font-size: 0.58rem;
+  }
+
+  .mechanism-card h3 {
+    font-size: 0.86rem;
+    margin-top: 0.28rem;
+  }
+
+  .mechanism-card-copy {
+    margin-top: 0.34rem;
+    font-size: 0.78rem;
+    line-height: 1.3;
   }
 
   .form-grid,
@@ -2991,27 +3039,38 @@ textarea:focus {
   }
 
   .animated-stats {
-    margin-top: 44px;
+    margin-top: 28px;
     min-height: auto;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 6px;
   }
 
   .stat-bar {
+    grid-column: span 2;
     width: 100%;
     margin: 0;
-    padding: 6px;
+    padding: 5px;
     margin-top: 0 !important;
-    height: 200px !important;
+    height: 152px !important;
+  }
+
+  .animated-stats .stat-bar:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  .animated-stats .stat-bar:nth-child(5) {
+    grid-column: 4 / span 2;
   }
 
   .stat-value {
-    font-size: 2.2rem;
+    font-size: 1.46rem;
   }
 
   .stat-label {
-    font-size: 0.9rem;
+    margin-top: 0.24rem;
+    font-size: 0.65rem;
+    line-height: 1.15;
   }
 
   .trust-track {

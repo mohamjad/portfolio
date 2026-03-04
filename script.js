@@ -451,6 +451,17 @@ document.addEventListener("DOMContentLoaded", () => {
       updateCardFocus();
     };
 
+    const centerSwipeCard = (index, behavior = "auto") => {
+      if (mode !== "swipe") return;
+      const card = cards[index];
+      if (!card) return;
+      const targetLeft = card.offsetLeft - (mechanismRail.clientWidth - card.offsetWidth) / 2;
+      mechanismRail.scrollTo({
+        left: Math.max(0, targetLeft),
+        behavior,
+      });
+    };
+
     const animateToTarget = () => {
       if (!enabled) {
         rafId = 0;
@@ -486,6 +497,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const computeLayout = () => {
       const isMobileSwipe = window.innerWidth <= 860;
+      const previousIndex = activeCardIndex;
       mode = isMobileSwipe ? "swipe" : (!reduceMotionQuery.matches ? "smooth" : "static");
       enabled = mode === "smooth";
       windowSize = mode === "smooth" ? 2 : 1;
@@ -503,12 +515,15 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         mechanismRail.style.removeProperty("--mechanism-rail-x");
       }
-      activeCardIndex = 0;
-      windowStartIndex = 0;
+      activeCardIndex = clamp(previousIndex, 0, Math.max(cards.length - 1, 0));
+      windowStartIndex = activeCardIndex;
 
       if (mode === "swipe") {
         mechanismRailScroll.style.removeProperty("--mechanism-scroll-height");
-        requestAnimationFrame(syncFromRailSwipe);
+        requestAnimationFrame(() => {
+          centerSwipeCard(activeCardIndex, "auto");
+          requestAnimationFrame(syncFromRailSwipe);
+        });
         return;
       }
 
