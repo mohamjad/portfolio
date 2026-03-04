@@ -374,7 +374,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const lerp = (from, to, alpha) => from + (to - from) * alpha;
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-    const windowSize = 2;
+    let windowSize = 2;
 
     let enabled = true;
     let startY = 0;
@@ -410,7 +410,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const activeNode = cards[activeCardIndex];
 
       cards.forEach((card, index) => {
-        const inWindow = index === windowStartIndex || index === windowStartIndex + 1;
+        const inWindow = index >= windowStartIndex && index < windowStartIndex + windowSize;
         const isActive = index === activeCardIndex;
         const isNext = hasNext && index === nextIndex && inWindow;
         card.classList.toggle("is-active", isActive);
@@ -459,7 +459,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const computeLayout = () => {
-      enabled = !reduceMotionQuery.matches && window.innerWidth > 860;
+      enabled = !reduceMotionQuery.matches;
+      windowSize = window.innerWidth <= 860 ? 1 : 2;
       mechanismRailScroll.classList.toggle("is-smooth-rail", enabled);
       phaseStep = measurePhaseStep();
       const stickyWidth = mechanismRailSticky.clientWidth || mechanismRailScroll.clientWidth || 0;
@@ -499,7 +500,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const baseRect = mechanismRailScroll.getBoundingClientRect();
       const pageTop = window.scrollY + baseRect.top;
       const pinStartDelay = Math.min(220, Math.max(120, window.innerHeight * 0.18));
-      const stickyTravel = Math.max(window.innerHeight * 0.66, (getMaxWindowStart() + 0.9) * phaseStep);
+      const stickyTravel = Math.max(
+        window.innerHeight * (windowSize === 1 ? 0.92 : 0.66),
+        (getMaxWindowStart() + (windowSize === 1 ? 1.12 : 0.9)) * phaseStep
+      );
       const estimatedHeight = pinStartDelay + stickyTravel + mechanismRailSticky.offsetHeight + 12;
       mechanismRailScroll.style.setProperty("--mechanism-scroll-height", `${estimatedHeight}px`);
 

@@ -2833,29 +2833,37 @@ textarea:focus {
   }
 
   .mechanism-rail-scroll.is-smooth-rail {
-    height: auto;
+    height: var(--mechanism-scroll-height, auto);
   }
 
   .mechanism-rail-scroll.is-smooth-rail .mechanism-rail-sticky {
-    position: relative;
-    top: auto;
+    position: sticky;
+    top: clamp(112px, 16vh, 176px);
     overflow: visible;
   }
 
   .mechanism-rail,
+  .mechanism-rail-scroll:not(.is-smooth-rail) .mechanism-rail {
+    grid-auto-flow: row;
+    grid-auto-columns: 1fr;
+    gap: 0.42rem;
+    transform: none;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
   .mechanism-rail-scroll.is-smooth-rail .mechanism-rail {
     grid-auto-flow: column;
-    grid-auto-columns: minmax(220px, 76vw);
-    gap: 0.48rem;
-    transform: none;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    grid-auto-columns: minmax(0, 100%);
+    gap: 0.42rem;
+    transform: translate3d(var(--mechanism-rail-x, 0px), 0, 0);
+    overflow: visible;
+    scroll-snap-type: none;
   }
 
   .mechanism-card {
     border-radius: 14px;
-    min-height: 210px;
+    min-height: 200px;
   }
 
   .form-grid,
