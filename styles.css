@@ -619,8 +619,8 @@ h2 {
 .mechanism-rail {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(260px, 330px);
-  gap: 0.58rem;
+  grid-auto-columns: minmax(300px, 380px);
+  gap: 0.74rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
@@ -634,7 +634,7 @@ h2 {
 }
 
 .mechanism-rail-scroll.is-smooth-rail .mechanism-rail {
-  grid-auto-columns: minmax(250px, calc((100% - 0.58rem) / 2));
+  grid-auto-columns: minmax(300px, calc((100% - 0.74rem) / 2));
   overflow: visible;
   scroll-snap-type: none;
   transform: translate3d(var(--mechanism-rail-x, 0px), 0, 0);
@@ -643,12 +643,12 @@ h2 {
 
 .mechanism-card {
   border: 1px solid rgba(146, 182, 247, 0.34);
-  border-radius: 16px;
+  border-radius: 18px;
   background: linear-gradient(180deg, rgba(12, 29, 60, 0.86) 0%, rgba(8, 20, 43, 0.84) 100%);
   box-shadow: 0 12px 34px rgba(2, 8, 22, 0.38);
   scroll-snap-align: center;
-  min-height: 236px;
-  padding: 0.78rem;
+  min-height: 272px;
+  padding: 0.96rem;
   transition:
     transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 360ms ease,
@@ -659,7 +659,7 @@ h2 {
 .mechanism-card-kicker {
   margin: 0;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.64rem;
+  font-size: 0.68rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: #acc8f8;
@@ -668,13 +668,13 @@ h2 {
 .mechanism-card h3 {
   margin: 0.34rem 0 0;
   font-family: "Sora", sans-serif;
-  font-size: 0.96rem;
+  font-size: 1.08rem;
 }
 
 .mechanism-card-copy {
   margin: 0.44rem 0 0;
   color: #d3e6ff;
-  font-size: 0.88rem;
+  font-size: 0.94rem;
   line-height: 1.42;
 }
 
