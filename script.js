@@ -468,7 +468,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      currentX = lerp(currentX, targetX, 0.14);
+      currentX = lerp(currentX, targetX, 0.19);
       if (Math.abs(targetX - currentX) < 0.18) currentX = targetX;
       setRailX(currentX);
 
@@ -553,10 +553,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const baseRect = mechanismRailScroll.getBoundingClientRect();
       const pageTop = window.scrollY + baseRect.top;
-      const pinStartDelay = Math.min(220, Math.max(120, window.innerHeight * 0.18));
+      const pinStartDelay = Math.min(120, Math.max(42, window.innerHeight * 0.08));
       const stickyTravel = Math.max(
-        window.innerHeight * (windowSize === 1 ? 0.92 : 0.66),
-        (getMaxWindowStart() + (windowSize === 1 ? 1.12 : 0.9)) * phaseStep
+        window.innerHeight * (windowSize === 1 ? 0.8 : 0.5),
+        (getMaxWindowStart() + (windowSize === 1 ? 0.95 : 0.68)) * phaseStep
       );
       const estimatedHeight = pinStartDelay + stickyTravel + mechanismRailSticky.offsetHeight + 12;
       mechanismRailScroll.style.setProperty("--mechanism-scroll-height", `${estimatedHeight}px`);
@@ -627,6 +627,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const offsetTop = statsSection.getBoundingClientRect().top;
       const scrollAmount = window.innerHeight - offsetTop - VISIBILITY_PADDING;
       const startOffset = scrollAmount > maxHeight;
+      const isCompactStats = window.innerWidth <= 860;
+      const baseOffset = isCompactStats ? 136 : 164;
 
       bars.forEach((barNode, index) => {
         const stat = statBars[index];
@@ -641,12 +643,12 @@ document.addEventListener("DOMContentLoaded", () => {
             : Math.max(-scrollAmount, stat.offset);
 
         const barOffset = startOffset
-          ? 200 - Math.floor(barHeight / 2) + offsetAmt
-          : 200 - Math.floor(barHeight / 2);
+          ? baseOffset - Math.floor(barHeight / 2) + offsetAmt
+          : baseOffset - Math.floor(barHeight / 2);
 
         const valueNode = barNode.querySelector(".stat-value");
         valueNode.style.paddingTop = stat.offsetText
-          ? `${Math.floor(stat.height / 4)}px`
+          ? `${isCompactStats ? 0 : Math.floor(stat.height / 4)}px`
           : "0px";
 
         barNode.style.height = `${Math.max(barHeight, 0)}px`;
