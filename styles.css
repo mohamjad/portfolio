@@ -284,6 +284,10 @@ a {
   padding-bottom: 2.4rem;
 }
 
+.hero-layout h1 {
+  max-width: 14ch;
+}
+
 .eyebrow {
   margin: 0;
   font-family: "IBM Plex Mono", monospace;
@@ -358,6 +362,7 @@ h1 {
 
 .hero-cred {
   margin: 0.9rem 0 0;
+  max-width: 62ch;
   color: #c6d8f7;
   font-size: 0.9rem;
   line-height: 1.4;
@@ -2801,6 +2806,10 @@ textarea:focus {
 
   h1 {
     max-width: 9.2ch;
+  }
+
+  .hero-layout h1 {
+    max-width: 11.2ch;
   }
 
   .scene-base {
