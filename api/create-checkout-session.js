@@ -47,9 +47,10 @@ module.exports = async (req, res) => {
 
   const secretKey = process.env.STRIPE_SECRET_KEY;
   const priceId =
+    process.env.STRIPE_PRICE_ID_ALLOCATION_GATE_500 ||
+    process.env.STRIPE_PRICE_ID_ALLOCATION_MEMO_500 ||
     process.env.STRIPE_PRICE_ID_ALLOCATION_GATE ||
-    process.env.STRIPE_PRICE_ID_ALLOCATION_MEMO_1500 ||
-    process.env.STRIPE_PRICE_ID_ALLOCATION_MEMO_500;
+    process.env.STRIPE_PRICE_ID_ALLOCATION_MEMO_1500;
   const successUrl = process.env.STRIPE_SUCCESS_URL;
   const cancelUrl = process.env.STRIPE_CANCEL_URL;
 
