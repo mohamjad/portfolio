@@ -1,107 +1,92 @@
-# Automation Projects Portfolio
+# Setta
 
-A modern, responsive portfolio website showcasing three automation projects.
+Marketing site and lightweight commerce layer for `setta.ca`.
 
+Setta is positioned as allocation infrastructure for paid social teams. The site is a static landing page with proof sections, pricing, intake flow, and supporting serverless endpoints for checkout and public receipt data.
 
+## What Is In This Repo
 
+- `index.html`: main homepage for Setta
+- `styles.css`: full site styling and responsive layout
+- `script.js`: homepage interactions, intake flow, proof UI, and checkout wiring
+- `signal-spec.html`: supporting product/spec page
+- `privacy.html` and `terms.html`: legal pages
+- `api/create-checkout-session.js`: serverless Stripe checkout session endpoint
+- `api/receipts.js`: serverless public receipts endpoint backed by Supabase
+- `assets/`: logos, hero art, memo art, fonts, and showcase assets
 
-3. Navigate to `http://localhost:8000` in your browser
+## Local Development
 
-## Customization
+This repo is served as a static site.
 
-### Updating Project Information
-
-Edit the `projects` object in `script.js` to update project details:
-
-```javascript
-const projects = {
-    1: {
-        title: 'Your Project Title',
-        description: 'Your project description...',
-        features: ['Feature 1', 'Feature 2', ...],
-        technologies: ['Python', 'JavaScript', ...],
-        github: 'https://github.com/yourusername/project',
-        demo: 'https://your-demo-url.com'
-    },
-    // ... more projects
-};
+```bash
+npm install
+npm run dev
 ```
 
-### Changing Colors
+That starts a local server on `http://localhost:8080`.
 
-Update the CSS variables in `styles.css`:
+If you only need to preview markup changes, any static file server will work.
 
-```css
-:root {
-    --primary-color: #6366f1;
-    --secondary-color: #8b5cf6;
-    /* ... other colors */
-}
-```
+## Environment Variables
 
-### Updating Contact Information
+The homepage itself is static, but the API routes depend on external services.
 
-Edit the contact section in `index.html`:
+### Stripe checkout
 
-```html
-<div class="contact-item">
-    <span>your.email@example.com</span>
-</div>
-```
+Required by `api/create-checkout-session.js`:
 
-### Adding Project Images
+- `STRIPE_SECRET_KEY`
+- `STRIPE_SUCCESS_URL`
+- `STRIPE_CANCEL_URL`
+- `STRIPE_PRICE_ID_ALLOCATION_GATE_500`
 
-Replace the placeholder SVG icons in the project cards with actual images:
+The code also supports legacy fallback names:
 
-```html
-<div class="project-image">
-    <img src="path/to/your/image.jpg" alt="Project 1">
-</div>
-```
+- `STRIPE_PRICE_ID_ALLOCATION_MEMO_500`
+- `STRIPE_PRICE_ID_ALLOCATION_GATE`
+- `STRIPE_PRICE_ID_ALLOCATION_MEMO_1500`
 
-## Project Structure
+### Supabase receipts
 
-```
-portfolio/
-├── index.html      # Main HTML file
-├── styles.css      # Stylesheet
-├── script.js       # JavaScript functionality
-└── README.md       # This file
-```
+Required by `api/receipts.js`:
+
+- `SETTA_SUPABASE_URL` or `SUPABASE_URL`
+- `SETTA_SUPABASE_SERVICE_ROLE_KEY` or `SUPABASE_SERVICE_ROLE_KEY`
+
+The receipts endpoint calls the `export_control_room_bundle` RPC and returns a de-identified public payload for the site.
+
+## Editing The Site
+
+Most homepage copy lives directly in `index.html`.
+
+Common sections:
+
+- Hero: top of `index.html`
+- Phase ladder / mechanism rail: `#mechanism`
+- Market-read bullets: `#thinking`
+- Proof cases: `#gate`
+- Positioning thesis: `#moat`
+- Pricing: `#pricing`
+- Intake / buy flow: `#intake`
+
+Interactive behavior for the phase rail, proof cases, intake state, checkout requests, and receipts rendering lives in `script.js`.
 
 ## Deployment
 
-### GitHub Pages
+This repo is configured for Vercel via `vercel.json`.
 
-1. Push your code to GitHub
-2. Go to repository Settings > Pages
-3. Select the branch (usually `main` or `master`)
-4. Your site will be available at `https://yourusername.github.io/portfolio`
+Typical flow:
 
-### Netlify
+1. Push to `main`
+2. Vercel deploys the static site and serverless functions
+3. The live domain serves the updated homepage and API routes
 
-1. Drag and drop the `portfolio` folder to [Netlify Drop](https://app.netlify.com/drop)
-2. Your site will be live instantly
+## Notes
 
-### Vercel
-
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run `vercel` in the project directory
-3. Follow the prompts
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+- The site includes public-facing receipt data, but the API is designed to keep handles, direct URLs, and internal IDs out of the public payload.
+- There are local backup/reference files in some working copies of this repo; they are not part of the production site unless explicitly committed.
 
 ## License
 
-This project is open source and available under the MIT License.
-
-## Contact
-
-For questions or suggestions, please open an issue on GitHub or contact me directly.
-
-
+MIT
