@@ -372,7 +372,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const cards = Array.from(mechanismRail.querySelectorAll(".mechanism-card"));
     if (!cards.length) return;
 
-    const lerp = (from, to, alpha) => from + (to - from) * alpha;
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
     let windowSize = 2;
     let mode = "smooth";
@@ -380,16 +379,18 @@ document.addEventListener("DOMContentLoaded", () => {
     let enabled = true;
     let startY = 0;
     let endY = 0;
-    let targetX = 0;
-    let currentX = 0;
     let phaseStep = 0;
     let centerOffset = 0;
     let activeCardIndex = 0;
     let windowStartIndex = 0;
-    let rafId = 0;
+    let scrollRafId = 0;
     let swipeRafId = 0;
+    let lastRailX = Number.NaN;
+    let lastFocusSignature = "";
 
     const setRailX = (value) => {
+      if (Math.abs(value - lastRailX) < 0.1) return;
+      lastRailX = value;
       mechanismRail.style.setProperty("--mechanism-rail-x", `${value.toFixed(2)}px`);
     };
 
@@ -406,16 +407,21 @@ document.addEventListener("DOMContentLoaded", () => {
       return Math.max(1, cards[1].offsetLeft - cards[0].offsetLeft);
     };
 
-    const updateCardFocus = () => {
+    const updateCardFocus = (windowCursor = activeCardIndex) => {
       const nextIndex = Math.min(cards.length - 1, activeCardIndex + 1);
       const hasNext = activeCardIndex < cards.length - 1;
       const activeNode = cards[activeCardIndex];
+      const smoothFocusCursor = windowCursor + (windowSize - 1) / 2;
+      const focusSignature =
+        mode === "smooth"
+          ? `${mode}:${activeCardIndex}:${nextIndex}:${Math.round(smoothFocusCursor * 4)}`
+          : `${mode}:${activeCardIndex}:${nextIndex}`;
+
+      if (focusSignature === lastFocusSignature) return;
+      lastFocusSignature = focusSignature;
 
       cards.forEach((card, index) => {
-        const inWindow =
-          mode === "smooth"
-            ? index >= windowStartIndex && index < windowStartIndex + windowSize
-            : true;
+        const inWindow = mode === "smooth" ? Math.abs(index - smoothFocusCursor) <= 1.25 : true;
         const isActive = index === activeCardIndex;
         const isNext = hasNext && index === nextIndex && inWindow;
         card.classList.toggle("is-active", isActive);
@@ -462,37 +468,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     };
 
-    const animateToTarget = () => {
-      if (!enabled) {
-        rafId = 0;
-        return;
-      }
-
-      currentX = lerp(currentX, targetX, 0.19);
-      if (Math.abs(targetX - currentX) < 0.18) currentX = targetX;
-      setRailX(currentX);
-
-      if (currentX !== targetX) {
-        rafId = requestAnimationFrame(animateToTarget);
-      } else {
-        rafId = 0;
-      }
-    };
-
-    const queueAnimation = () => {
-      if (rafId || !enabled) return;
-      rafId = requestAnimationFrame(animateToTarget);
-    };
-
     const syncTargetFromScroll = () => {
       if (!enabled) return;
       const progress = endY <= startY ? 0 : clamp((window.scrollY - startY) / (endY - startY), 0, 1);
-      const cardCursor = progress * Math.max(cards.length - 1, 0);
-      activeCardIndex = clamp(Math.round(cardCursor), 0, Math.max(cards.length - 1, 0));
-      windowStartIndex = Math.min(getMaxWindowStart(), Math.max(0, activeCardIndex));
-      targetX = centerOffset - phaseStep * windowStartIndex;
-      updateCardFocus();
-      queueAnimation();
+      const maxActiveIndex = Math.max(cards.length - 1, 0);
+      const maxWindowStart = getMaxWindowStart();
+      const cardCursor = progress * maxActiveIndex;
+      const windowCursor = progress * maxWindowStart;
+      activeCardIndex = clamp(Math.round(cardCursor), 0, maxActiveIndex);
+      windowStartIndex = clamp(Math.floor(windowCursor), 0, maxWindowStart);
+      setRailX(centerOffset - phaseStep * windowCursor);
+      updateCardFocus(windowCursor);
     };
 
     const computeLayout = () => {
@@ -508,8 +494,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const cardWidth = cards[0]?.offsetWidth || 0;
       const visibleWidth = (windowSize > 1 ? phaseStep : 0) + cardWidth;
       centerOffset = Math.max(0, (stickyWidth - visibleWidth) / 2);
-      targetX = centerOffset;
-      currentX = centerOffset;
+      lastRailX = Number.NaN;
+      lastFocusSignature = "";
       if (mode === "smooth") {
         setRailX(centerOffset);
       } else {
@@ -567,7 +553,14 @@ document.addEventListener("DOMContentLoaded", () => {
       updateCardFocus();
     };
 
-    const onScroll = () => syncTargetFromScroll();
+    const onScroll = () => {
+      if (!enabled) return;
+      if (scrollRafId) return;
+      scrollRafId = requestAnimationFrame(() => {
+        scrollRafId = 0;
+        syncTargetFromScroll();
+      });
+    };
     const onRailScroll = () => {
       if (mode !== "swipe") return;
       if (swipeRafId) return;
