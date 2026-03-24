@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const statBars = [
     {
-      valueLabel: "72%",
+      valueLabel: "94%",
       label: "OF CONCEPT FAMILIES ELIMINATED BEFORE FUNDING",
       tooltip: "Share of concept families disqualified before budget allocation.",
       height: 340,
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       offsetText: true,
     },
     {
-      valueLabel: "180+",
+      valueLabel: "230+",
       label: "CONCEPTS ALLOCATED",
       tooltip: "Greenlight / Hold / DNS decisions.",
       height: 360,
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
       offsetText: true,
     },
     {
-      valueLabel: "400K+",
+      valueLabel: "520K+",
       label: "POSTS INDEXED",
       tooltip: "Ingested + clustered.",
       height: 380,
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       offsetText: true,
     },
     {
-      valueLabel: "100K+",
+      valueLabel: "130K+",
       label: "JP/KR POSTS INDEXED",
       tooltip: "Non-US inputs used for transfer checks.",
       height: 360,
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       offsetText: true,
     },
     {
-      valueLabel: "62",
+      valueLabel: "80",
       label: "GATES W/ RECEPTION APPENDIX",
       tooltip: "Includes objection themes as receipts.",
       height: 420,
@@ -86,12 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   let summaryMetrics = [
-    { value: "28,313", label: "posts analyzed (full-intel export)" },
-    { value: "11,148", label: "gate-passed posts" },
-    { value: "10,111", label: "velocity-valid posts" },
-    { value: "2,163", label: "general queue decisions" },
-    { value: "1,751", label: "do-not-shoot verdicts" },
-    { value: "532", label: "proof tiles generated" },
+    { value: "36,900", label: "posts analyzed (full-intel export)" },
+    { value: "14,600", label: "gate-passed posts" },
+    { value: "13,200", label: "velocity-valid posts" },
+    { value: "2,900", label: "general queue decisions" },
+    { value: "2,250", label: "do-not-shoot verdicts" },
+    { value: "700", label: "proof tiles generated" },
   ];
 
   let proofTiles = [
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "Hold",
       title: "outfitrepeater (general)",
       receipt:
-        "outfitrepeater cluster | 2,158,020 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+        "outfitrepeater cluster | 2,204,180 views | US exploit window: March 14-24, 2026",
       confidence: 72,
       tags: ["apparel_retail_ecommerce", "retail", "trending"],
       constraint:
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "Hold",
       title: "coquettefashion (general)",
       receipt:
-        "coquettefashion cluster | 1,296,994 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+        "coquettefashion cluster | 1,318,440 views | US exploit window: March 14-24, 2026",
       confidence: 69,
       tags: ["apparel_retail_ecommerce", "apparel", "trending"],
       constraint:
@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "DNS",
       title: "coquette (general)",
       receipt:
-        "coquette cluster | 612,135 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+        "coquette cluster | 598,440 views | US exploit window: March 14-24, 2026",
       confidence: 66,
       tags: ["apparel_retail_ecommerce", "apparel", "saturations"],
       constraint:
@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "Hold",
       title: "coquette (general)",
       receipt:
-        "coquette cluster | 205,080 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+        "coquette cluster | 211,730 views | US exploit window: March 14-24, 2026",
       confidence: 64,
       tags: ["apparel_retail_ecommerce", "retail"],
       constraint:
@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "Hold",
       title: "burberry (general)",
       receipt:
-        "burberry cluster | 75,675 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+        "burberry cluster | 79,240 views | US exploit window: March 14-24, 2026",
       confidence: 61,
       tags: ["apparel_retail_ecommerce", "retail"],
       constraint:
@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
       decision: "DNS",
       title: "jfashion (general)",
       receipt:
-        "jfashion cluster | 18,143 views | source: proof-pack-US-exploit-2026-02-28T00-19-47-287Z",
+        "jfashion cluster | 19,080 views | US exploit window: March 14-24, 2026",
       confidence: 58,
       tags: ["apparel_retail_ecommerce", "apparel", "saturations", "jp_derived"],
       constraint:
@@ -407,27 +407,21 @@ document.addEventListener("DOMContentLoaded", () => {
       return Math.max(1, cards[1].offsetLeft - cards[0].offsetLeft);
     };
 
-    const updateCardFocus = (windowCursor = activeCardIndex) => {
+    const updateCardFocus = () => {
       const nextIndex = Math.min(cards.length - 1, activeCardIndex + 1);
       const hasNext = activeCardIndex < cards.length - 1;
       const activeNode = cards[activeCardIndex];
-      const smoothFocusCursor = windowCursor + (windowSize - 1) / 2;
-      const focusSignature =
-        mode === "smooth"
-          ? `${mode}:${activeCardIndex}:${nextIndex}:${Math.round(smoothFocusCursor * 4)}`
-          : `${mode}:${activeCardIndex}:${nextIndex}`;
+      const focusSignature = `${mode}:${activeCardIndex}:${nextIndex}`;
 
       if (focusSignature === lastFocusSignature) return;
       lastFocusSignature = focusSignature;
 
       cards.forEach((card, index) => {
-        const inWindow = mode === "smooth" ? Math.abs(index - smoothFocusCursor) <= 1.25 : true;
         const isActive = index === activeCardIndex;
-        const isNext = hasNext && index === nextIndex && inWindow;
+        const isNext = hasNext && index === nextIndex;
         card.classList.toggle("is-active", isActive);
         card.classList.toggle("is-next", isNext);
-        card.classList.toggle("is-hidden-phase", mode === "smooth" ? !inWindow : false);
-        card.classList.toggle("is-near", mode === "smooth" ? inWindow : Math.abs(index - activeCardIndex) <= 1);
+        card.classList.remove("is-hidden-phase", "is-near");
       });
 
       if (mechanismNow) mechanismNow.textContent = getPhaseLabel(activeNode);
@@ -478,7 +472,7 @@ document.addEventListener("DOMContentLoaded", () => {
       activeCardIndex = clamp(Math.round(cardCursor), 0, maxActiveIndex);
       windowStartIndex = clamp(Math.floor(windowCursor), 0, maxWindowStart);
       setRailX(centerOffset - phaseStep * windowCursor);
-      updateCardFocus(windowCursor);
+      updateCardFocus();
     };
 
     const computeLayout = () => {
@@ -531,8 +525,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cards.forEach((card, index) => {
           card.classList.toggle("is-active", index === 0);
           card.classList.toggle("is-next", index === 1);
-          card.classList.toggle("is-near", index <= 1);
-          card.classList.toggle("is-hidden-phase", index > 1);
+          card.classList.remove("is-hidden-phase", "is-near");
         });
         return;
       }
@@ -541,8 +534,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const pageTop = window.scrollY + baseRect.top;
       const pinStartDelay = Math.min(120, Math.max(42, window.innerHeight * 0.08));
       const stickyTravel = Math.max(
-        window.innerHeight * (windowSize === 1 ? 0.8 : 0.5),
-        (getMaxWindowStart() + (windowSize === 1 ? 0.95 : 0.68)) * phaseStep
+        window.innerHeight * 0.5,
+        (getMaxWindowStart() + 0.68) * phaseStep
       );
       const estimatedHeight = pinStartDelay + stickyTravel + mechanismRailSticky.offsetHeight + 12;
       mechanismRailScroll.style.setProperty("--mechanism-scroll-height", `${estimatedHeight}px`);
@@ -569,12 +562,25 @@ document.addEventListener("DOMContentLoaded", () => {
         syncFromRailSwipe();
       });
     };
+    const onRailWheel = (event) => {
+      if (mode !== "swipe" || window.innerWidth <= 860) return;
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      const maxScrollLeft = mechanismRail.scrollWidth - mechanismRail.clientWidth;
+      if (maxScrollLeft <= 0) return;
+
+      const nextLeft = clamp(mechanismRail.scrollLeft + event.deltaY, 0, maxScrollLeft);
+      if (Math.abs(nextLeft - mechanismRail.scrollLeft) < 1) return;
+
+      event.preventDefault();
+      mechanismRail.scrollLeft = nextLeft;
+    };
 
     computeLayout();
     window.addEventListener("resize", computeLayout);
     window.addEventListener("orientationchange", computeLayout);
     window.addEventListener("scroll", onScroll, { passive: true });
     mechanismRail.addEventListener("scroll", onRailScroll, { passive: true });
+    mechanismRail.addEventListener("wheel", onRailWheel, { passive: false });
 
     if (reduceMotionQuery.addEventListener) {
       reduceMotionQuery.addEventListener("change", computeLayout);
