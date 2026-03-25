@@ -994,6 +994,118 @@ h2 {
   line-height: 1.45;
 }
 
+.problem-slider-meta {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9dbef4;
+}
+
+.problem-slider-meta strong {
+  color: #eef6ff;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+}
+
+.problem-slider {
+  margin-top: 0.72rem;
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y pinch-zoom;
+}
+
+.problem-slider::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.problem-slider.is-enhanced {
+  overflow: hidden;
+}
+
+.problem-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 100%;
+  padding-inline: 0.4rem;
+  scroll-snap-align: center;
+}
+
+.problem-card {
+  min-height: 372px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  border: 1px solid rgba(159, 196, 255, 0.28);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 225, 86, 0.12), rgba(255, 225, 86, 0) 34%),
+    linear-gradient(180deg, rgba(13, 30, 62, 0.9) 0%, rgba(8, 18, 39, 0.92) 100%);
+  box-shadow: 0 20px 48px rgba(2, 8, 22, 0.34);
+  padding: clamp(1.35rem, 3vw, 2.15rem);
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    opacity 220ms ease;
+}
+
+.problem-slide.is-active .problem-card {
+  border-color: rgba(255, 225, 86, 0.5);
+  box-shadow: 0 24px 56px rgba(2, 8, 22, 0.46);
+  transform: translateY(-4px);
+}
+
+.problem-card-outro {
+  justify-content: center;
+  background: #020304;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.problem-card-index {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9bbff7;
+}
+
+.problem-card h3 {
+  margin: 0;
+  max-width: 18ch;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.problem-card p:last-child {
+  margin: 0;
+  max-width: 36ch;
+  color: #d5e7ff;
+  font-size: clamp(1rem, 1.6vw, 1.22rem);
+  line-height: 1.34;
+}
+
+.problem-card-outro h3 {
+  max-width: 22ch;
+}
+
 .weekly-list {
   margin: 0.94rem 0 0;
   padding-left: 1.14rem;
@@ -2617,6 +2729,7 @@ h2 {
 
 .intake-copy {
   margin: 0.74rem 0 0;
+  max-width: 76ch;
   color: var(--text-mid);
   font-size: 0.95rem;
   line-height: 1.42;
@@ -2979,6 +3092,38 @@ textarea:focus {
     margin-top: 0.34rem;
     font-size: 0.78rem;
     line-height: 1.3;
+  }
+
+  .problem-slider-meta {
+    margin-top: 0.82rem;
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+  }
+
+  .problem-slider-meta strong {
+    font-size: 0.68rem;
+  }
+
+  .problem-slide {
+    padding-inline: 0.12rem;
+  }
+
+  .problem-card {
+    min-height: 300px;
+    border-radius: 16px;
+    gap: 0.88rem;
+    padding: 1rem;
+  }
+
+  .problem-card h3 {
+    max-width: 14ch;
+    font-size: clamp(1.5rem, 9vw, 2.5rem);
+    line-height: 1.02;
+  }
+
+  .problem-card p:last-child {
+    max-width: 28ch;
+    font-size: 0.94rem;
   }
 
   .form-grid,

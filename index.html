@@ -64,13 +64,57 @@
 
     <section class="section shell" id="problem">
       <h2>False confidence is where allocation goes wrong.</h2>
-      <p class="weekly-subhead">A hero post creates urgency. A seasonal spike creates false safety. A concept that looks like an ad gets approved because it feels legible in the room. A breakout from one creator gets treated like category proof before anyone checks whether the mechanic actually travels.</p>
+      <div class="problem-slider-meta" aria-hidden="true">
+        <span>Failure mode</span>
+        <strong id="problemSliderStatus">01 / 05</strong>
+      </div>
+      <div
+        class="problem-slider"
+        id="problemSlider"
+        data-slider
+        tabindex="0"
+        aria-label="False confidence failure modes"
+      >
+        <article class="problem-slide is-active">
+          <div class="problem-card">
+            <p class="problem-card-index">01</p>
+            <h3>A hero post creates urgency.</h3>
+            <p>One breakout doesn't mean the mechanic travels.</p>
+          </div>
+        </article>
+        <article class="problem-slide">
+          <div class="problem-card">
+            <p class="problem-card-index">02</p>
+            <h3>A seasonal spike creates false safety.</h3>
+            <p>Timing pressure gets mistaken for signal.</p>
+          </div>
+        </article>
+        <article class="problem-slide">
+          <div class="problem-card">
+            <p class="problem-card-index">03</p>
+            <h3>A concept that looks like an ad gets approved.</h3>
+            <p>Legibility in the room is not the same as legibility in the feed.</p>
+          </div>
+        </article>
+        <article class="problem-slide">
+          <div class="problem-card">
+            <p class="problem-card-index">04</p>
+            <h3>A breakout from one creator gets treated as category proof.</h3>
+            <p>Reception patterns don't transfer by default.</p>
+          </div>
+        </article>
+        <article class="problem-slide">
+          <div class="problem-card problem-card-outro">
+            <p class="problem-card-index">05</p>
+            <h3>Most tools tell you what already worked. Setta is built to change the decision before the money moves.</h3>
+          </div>
+        </article>
+      </div>
       <p class="weekly-subhead">Usually the signal shows up before the brief is written. It arrives scattered across reception patterns, transfer clues, and timing pressure. Setta pulls that apart before production starts.</p>
     </section>
 
     <section class="section shell" id="mechanism">
       <p class="mechanism-intro"><strong>Most tools tell you what already worked. Setta is built to change the decision before the money moves.</strong></p>
-      <p class="weekly-subhead">Today, Setta helps teams make cleaner pre-production calls. Over time, it becomes the live system behind creative allocation: signal clusters, concept viability, transfer strength, saturation warnings, decay tracking, and allocation history.</p>
       <div class="mechanism-rail-wrap" aria-label="Product flow rail">
         <div class="mechanism-rail-scroll" id="mechanismRailScroll">
           <div class="mechanism-rail-sticky" id="mechanismRailSticky">
@@ -277,8 +321,8 @@
     </section>
 
     <section class="section shell" id="intake">
-      <h2>Start your first cycle</h2>
-      <p class="intake-copy">Start with a short intake. If it looks like a fit, we'll send the next step to begin your first cycle.</p>
+      <h2>Work with us</h2>
+      <p class="intake-copy">We are testing decision infrastructure across a small number of active campaigns. We are looking for partners who want to be close to that process, not just receive an output. If that sounds like you, start here.</p>
 
       <form id="intakeForm" class="intake-form" novalidate>
         <input type="hidden" name="_subject" value="Setta Allocation Gate Intake" />
@@ -338,7 +382,7 @@
 
     <section class="section shell" id="receipts">
       <span id="proof" aria-hidden="true"></span>
-      <h2>Receipts from the calls that shaped the decision.</h2>
+      <h2>The system, running live.</h2>
       <p class="proof-note">Signal data updated every 48 hours. Creator handles and direct URLs are removed from public output. The underlying data stays private.</p>
       <p class="proof-note proof-source" id="receiptsSource">Underlying source is private and public receipts are de-identified.</p>
       <div class="proof-filters" id="proofFilters" role="tablist" aria-label="Proof segments">
@@ -371,6 +415,7 @@
   </footer>
 
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <script defer src="https://unpkg.com/smooothy@0.0.35/dist/smooothy.min.js"></script>
   <script defer src="script.js"></script>
 </body>
 </html>

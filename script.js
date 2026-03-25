@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const statsSection = document.getElementById("stats");
   const animatedStats = document.getElementById("animatedStats");
   const memoArtifact = document.getElementById("memoArtifact");
+  const problemSlider = document.getElementById("problemSlider");
+  const problemSliderStatus = document.getElementById("problemSliderStatus");
   const mechanismRailScroll = document.getElementById("mechanismRailScroll");
   const mechanismRailSticky = document.getElementById("mechanismRailSticky");
   const mechanismRail = document.getElementById("mechanismRail");
@@ -589,6 +591,91 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const initProblemSlider = () => {
+    if (!problemSlider) return;
+
+    const slides = Array.from(problemSlider.querySelectorAll(".problem-slide"));
+    if (!slides.length) return;
+
+    const total = slides.length;
+    let fallbackRafId = 0;
+
+    const setActiveSlide = (index) => {
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-active", slideIndex === index);
+      });
+
+      if (problemSliderStatus) {
+        problemSliderStatus.textContent = `${String(index + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+      }
+    };
+
+    const syncFallbackState = () => {
+      fallbackRafId = 0;
+
+      const sliderCenter = problemSlider.scrollLeft + problemSlider.clientWidth / 2;
+      let nearestIndex = 0;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+
+      slides.forEach((slide, index) => {
+        const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+        const distance = Math.abs(slideCenter - sliderCenter);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+      });
+
+      setActiveSlide(nearestIndex);
+    };
+
+    problemSlider.addEventListener("scroll", () => {
+      if (window.Smooothy && problemSlider.classList.contains("is-enhanced")) return;
+      if (fallbackRafId) return;
+      fallbackRafId = requestAnimationFrame(syncFallbackState);
+    }, { passive: true });
+
+    window.addEventListener("resize", () => {
+      if (window.Smooothy && problemSlider.classList.contains("is-enhanced")) return;
+      if (fallbackRafId) cancelAnimationFrame(fallbackRafId);
+      fallbackRafId = requestAnimationFrame(syncFallbackState);
+    });
+
+    setActiveSlide(0);
+    requestAnimationFrame(syncFallbackState);
+
+    const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reduceMotionQuery.matches || typeof window.Smooothy !== "function") return;
+
+    problemSlider.classList.add("is-enhanced");
+
+    const slider = new window.Smooothy(problemSlider, {
+      infinite: false,
+      snap: true,
+      variableWidth: false,
+      scrollInput: true,
+      dragSensitivity: 0.006,
+      lerpFactor: 0.16,
+      snapStrength: 0.18,
+      bounceLimit: 0.2,
+      onSlideChange: (current) => {
+        setActiveSlide(current);
+      },
+      onResize: (instance) => {
+        setActiveSlide(instance.currentSlide || 0);
+      },
+    });
+
+    slider.init();
+
+    const tick = () => {
+      slider.update();
+      requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+  };
+
   const escapeHtml = (value) =>
     String(value ?? "")
       .replaceAll("&", "&amp;")
@@ -910,6 +997,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadReceiptsFromDb();
   initMemoArtifact();
   initCaseStudyTabs();
+  initProblemSlider();
   initMechanismRailAutoScroll();
 
   checkoutButtons.forEach((button) => {
