@@ -2830,6 +2830,18 @@ textarea:focus {
   margin: 0;
 }
 
+.site-footer-legal {
+  flex-basis: 100%;
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  color: rgba(245, 238, 230, 0.58);
+  text-align: right;
+}
+
+.site-footer-legal a {
+  color: inherit;
+}
+
 @keyframes sceneDrift {
   0% { transform: translate(-50%, -51%) scale(1); }
   50% { transform: translate(-50.5%, -50.2%) scale(1.01); }
@@ -3269,6 +3281,10 @@ textarea:focus {
 
   .site-footer {
     flex-direction: column;
+  }
+
+  .site-footer-legal {
+    text-align: left;
   }
 }
 
