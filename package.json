@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Portfolio website showcasing automation projects",
   "dependencies": {
-    "@vercel/oidc": "^1.0.0",
+    "@vercel/oidc": "^2.0.2",
     "google-auth-library": "^9.15.1"
   },
   "scripts": {
