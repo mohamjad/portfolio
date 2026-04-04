@@ -2,6 +2,10 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "Portfolio website showcasing automation projects",
+  "dependencies": {
+    "@vercel/oidc": "^1.0.0",
+    "google-auth-library": "^9.15.1"
+  },
   "scripts": {
     "dev": "npx http-server . -p 8080 -o",
     "start": "npx http-server . -p 8080 -o"

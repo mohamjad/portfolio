@@ -1,13 +1,12 @@
-const GOOGLE_STS_TOKEN_URL = "https://sts.googleapis.com/v1/token";
-const GOOGLE_SERVICE_ACCOUNT_IMPERSONATION_BASE_URL = "https://iamcredentials.googleapis.com/v1";
 const SECRET_MANAGER_BASE_URL = "https://secretmanager.googleapis.com/v1";
 const ACCESS_TOKEN_SCOPE = "https://www.googleapis.com/auth/cloud-platform";
 const DEFAULT_GCP_PROJECT_ID = "persona1-staging";
+const DEFAULT_GCP_PROJECT_NUMBER = "1037265499405";
 const DEFAULT_GCP_SERVICE_ACCOUNT_EMAIL = "setta-tiktok-oauth@persona1-staging.iam.gserviceaccount.com";
-const DEFAULT_GCP_WORKLOAD_IDENTITY_AUDIENCE =
-  "//iam.googleapis.com/projects/1037265499405/locations/global/workloadIdentityPools/vercel-oidc/providers/vercel-portfolio1";
+const DEFAULT_GCP_WORKLOAD_IDENTITY_POOL_ID = "vercel-oidc";
+const DEFAULT_GCP_WORKLOAD_IDENTITY_POOL_PROVIDER_ID = "vercel-portfolio1";
 
-let cachedAccessToken = null;
+let dependencyPromise = null;
 
 function readRequiredEnv(name) {
   const value = process.env[name];
@@ -18,140 +17,94 @@ function readRequiredEnv(name) {
   return String(value).trim();
 }
 
-function readOidcTokenFromRequest(req) {
-  const header = req.headers["x-vercel-oidc-token"];
-  const token = Array.isArray(header) ? header[0] : header;
-
-  if (!token || !String(token).trim()) {
-    throw new Error("Missing x-vercel-oidc-token header. Ensure Vercel OIDC is enabled for the project.");
-  }
-
-  return String(token).trim();
+function readProjectId() {
+  return (process.env.GCP_PROJECT_ID || DEFAULT_GCP_PROJECT_ID).trim();
 }
 
-function readAudience() {
-  const value = DEFAULT_GCP_WORKLOAD_IDENTITY_AUDIENCE;
-
-  if (value.startsWith("//iam.googleapis.com/")) {
-    return value;
-  }
-
-  if (value.startsWith("projects/")) {
-    return `//iam.googleapis.com/${value}`;
-  }
-
-  if (value.startsWith("iam.googleapis.com/projects/")) {
-    return `//${value}`;
-  }
-
-  throw new Error(
-    "Invalid GCP_WORKLOAD_IDENTITY_AUDIENCE format. Use the full provider resource name, for example //iam.googleapis.com/projects/1037265499405/locations/global/workloadIdentityPools/vercel-oidc/providers/vercel-portfolio1."
-  );
-}
-
-function deriveAudienceCandidates() {
-  const normalized = readAudience();
-
-  if (normalized.startsWith("//iam.googleapis.com/")) {
-    return [normalized, normalized.replace(/^\/\/iam\.googleapis\.com\//, "")];
-  }
-
-  return [normalized, `//iam.googleapis.com/${normalized}`];
+function readProjectNumber() {
+  return (process.env.GCP_PROJECT_NUMBER || DEFAULT_GCP_PROJECT_NUMBER).trim();
 }
 
 function readServiceAccountEmail() {
   return (process.env.GCP_SERVICE_ACCOUNT_EMAIL || DEFAULT_GCP_SERVICE_ACCOUNT_EMAIL).trim();
 }
 
-function readProjectId() {
-  return (process.env.GCP_PROJECT_ID || DEFAULT_GCP_PROJECT_ID).trim();
+function readWorkloadIdentityPoolId() {
+  return (process.env.GCP_WORKLOAD_IDENTITY_POOL_ID || DEFAULT_GCP_WORKLOAD_IDENTITY_POOL_ID).trim();
 }
 
-async function exchangeOidcForFederatedToken(subjectToken) {
-  const audiences = deriveAudienceCandidates();
-  let lastError = null;
+function readWorkloadIdentityProviderId() {
+  return (process.env.GCP_WORKLOAD_IDENTITY_POOL_PROVIDER_ID || DEFAULT_GCP_WORKLOAD_IDENTITY_POOL_PROVIDER_ID).trim();
+}
 
-  for (const audience of audiences) {
-    const body = {
-      audience,
-      grantType: "urn:ietf:params:oauth:grant-type:token-exchange",
-      requestedTokenType: "urn:ietf:params:oauth:token-type:access_token",
-      scope: ACCESS_TOKEN_SCOPE,
-      subjectTokenType: "urn:ietf:params:oauth:token-type:jwt",
-      subjectToken
-    };
-    const response = await fetch(GOOGLE_STS_TOKEN_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
-    });
-    const payload = await response.json().catch(() => ({}));
+function buildAudience() {
+  return `//iam.googleapis.com/projects/${readProjectNumber()}/locations/global/workloadIdentityPools/${readWorkloadIdentityPoolId()}/providers/${readWorkloadIdentityProviderId()}`;
+}
 
-    if (response.ok && payload.access_token) {
-      return payload.access_token;
+function readOidcTokenFromRequest(req) {
+  const header = req?.headers?.["x-vercel-oidc-token"];
+  const token = Array.isArray(header) ? header[0] : header;
+
+  return token && String(token).trim() ? String(token).trim() : null;
+}
+
+async function loadAuthDependencies() {
+  if (!dependencyPromise) {
+    dependencyPromise = Promise.all([
+      import("@vercel/oidc"),
+      import("google-auth-library")
+    ]).then(([oidcModule, googleAuthModule]) => ({
+      getVercelOidcToken: oidcModule.getVercelOidcToken,
+      ExternalAccountClient: googleAuthModule.ExternalAccountClient
+    }));
+  }
+
+  return dependencyPromise;
+}
+
+async function getSubjectToken(req) {
+  const { getVercelOidcToken } = await loadAuthDependencies();
+
+  try {
+    const token = await getVercelOidcToken();
+    if (token) {
+      return token;
     }
-
-    lastError = payload.error_description || payload.error || response.status;
+  } catch {
+    // Fall back to the runtime-injected header for environments where the helper is unavailable.
   }
 
-  throw new Error(`Failed to exchange Vercel OIDC token: ${lastError || "unknown error"}`);
+  const fallback = readOidcTokenFromRequest(req);
+  if (fallback) {
+    return fallback;
+  }
+
+  throw new Error("Missing Vercel OIDC token. Ensure OIDC is enabled for the project and the function is running on Vercel.");
 }
 
-async function impersonateServiceAccount(federatedAccessToken) {
-  const serviceAccountEmail = readServiceAccountEmail();
-  const response = await fetch(
-    `${GOOGLE_SERVICE_ACCOUNT_IMPERSONATION_BASE_URL}/projects/-/serviceAccounts/${encodeURIComponent(serviceAccountEmail)}:generateAccessToken`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${federatedAccessToken}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        scope: [ACCESS_TOKEN_SCOPE]
-      })
+async function getGoogleAuthHeaders(req) {
+  const { ExternalAccountClient } = await loadAuthDependencies();
+  const authClient = ExternalAccountClient.fromJSON({
+    type: "external_account",
+    audience: buildAudience(),
+    subject_token_type: "urn:ietf:params:oauth:token-type:jwt",
+    token_url: "https://sts.googleapis.com/v1/token",
+    service_account_impersonation_url: `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/${readServiceAccountEmail()}:generateAccessToken`,
+    subject_token_supplier: {
+      getSubjectToken: () => getSubjectToken(req)
     }
-  );
-  const payload = await response.json().catch(() => ({}));
+  });
 
-  if (!response.ok || !payload.accessToken) {
-    throw new Error(
-      `Failed to impersonate service account '${serviceAccountEmail}': ${payload.error?.message || response.status}`
-    );
-  }
-
-  return {
-    accessToken: payload.accessToken,
-    expiresAt: Date.parse(payload.expireTime || "") || Date.now() + 3600 * 1000
-  };
-}
-
-async function getGoogleAccessToken(req) {
-  if (cachedAccessToken && cachedAccessToken.expiresAt > Date.now() + 60_000) {
-    return cachedAccessToken.value;
-  }
-
-  const oidcToken = readOidcTokenFromRequest(req);
-  const federatedAccessToken = await exchangeOidcForFederatedToken(oidcToken);
-  const impersonated = await impersonateServiceAccount(federatedAccessToken);
-
-  cachedAccessToken = {
-    value: impersonated.accessToken,
-    expiresAt: impersonated.expiresAt
-  };
-
-  return cachedAccessToken.value;
+  return authClient.getRequestHeaders();
 }
 
 async function requestSecretManager(path, options = {}) {
   const { req, headers, ...requestInit } = options;
-  const token = await getGoogleAccessToken(req);
+  const authHeaders = await getGoogleAuthHeaders(req);
   const response = await fetch(`${SECRET_MANAGER_BASE_URL}${path}`, {
     ...requestInit,
     headers: {
-      Authorization: `Bearer ${token}`,
+      ...authHeaders,
       "Content-Type": "application/json",
       ...(headers || {})
     }

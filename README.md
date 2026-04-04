@@ -66,8 +66,10 @@ Required by `api/tiktok/connect.js` and `api/tiktok/callback.js`:
 Optional GCP overrides:
 
 - `GCP_PROJECT_ID`
+- `GCP_PROJECT_NUMBER`
 - `GCP_SERVICE_ACCOUNT_EMAIL`
-- `GCP_WORKLOAD_IDENTITY_AUDIENCE`
+- `GCP_WORKLOAD_IDENTITY_POOL_ID`
+- `GCP_WORKLOAD_IDENTITY_POOL_PROVIDER_ID`
 
 Optional overrides:
 
