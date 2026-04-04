@@ -30,7 +30,7 @@ function readOidcTokenFromRequest(req) {
 }
 
 function readAudience() {
-  const value = (process.env.GCP_WORKLOAD_IDENTITY_AUDIENCE || DEFAULT_GCP_WORKLOAD_IDENTITY_AUDIENCE).trim();
+  const value = DEFAULT_GCP_WORKLOAD_IDENTITY_AUDIENCE;
 
   if (value.startsWith("//iam.googleapis.com/")) {
     return value;
