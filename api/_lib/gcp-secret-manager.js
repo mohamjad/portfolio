@@ -49,6 +49,16 @@ function readAudience() {
   );
 }
 
+function deriveAudienceCandidates() {
+  const normalized = readAudience();
+
+  if (normalized.startsWith("//iam.googleapis.com/")) {
+    return [normalized, normalized.replace(/^\/\/iam\.googleapis\.com\//, "")];
+  }
+
+  return [normalized, `//iam.googleapis.com/${normalized}`];
+}
+
 function readServiceAccountEmail() {
   return (process.env.GCP_SERVICE_ACCOUNT_EMAIL || DEFAULT_GCP_SERVICE_ACCOUNT_EMAIL).trim();
 }
@@ -58,28 +68,35 @@ function readProjectId() {
 }
 
 async function exchangeOidcForFederatedToken(subjectToken) {
-  const body = {
-    audience: readAudience(),
-    grantType: "urn:ietf:params:oauth:grant-type:token-exchange",
-    requestedTokenType: "urn:ietf:params:oauth:token-type:access_token",
-    scope: ACCESS_TOKEN_SCOPE,
-    subjectTokenType: "urn:ietf:params:oauth:token-type:jwt",
-    subjectToken
-  };
-  const response = await fetch(GOOGLE_STS_TOKEN_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(body)
-  });
-  const payload = await response.json().catch(() => ({}));
+  const audiences = deriveAudienceCandidates();
+  let lastError = null;
 
-  if (!response.ok || !payload.access_token) {
-    throw new Error(`Failed to exchange Vercel OIDC token: ${payload.error_description || payload.error || response.status}`);
+  for (const audience of audiences) {
+    const body = {
+      audience,
+      grantType: "urn:ietf:params:oauth:grant-type:token-exchange",
+      requestedTokenType: "urn:ietf:params:oauth:token-type:access_token",
+      scope: ACCESS_TOKEN_SCOPE,
+      subjectTokenType: "urn:ietf:params:oauth:token-type:jwt",
+      subjectToken
+    };
+    const response = await fetch(GOOGLE_STS_TOKEN_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    });
+    const payload = await response.json().catch(() => ({}));
+
+    if (response.ok && payload.access_token) {
+      return payload.access_token;
+    }
+
+    lastError = payload.error_description || payload.error || response.status;
   }
 
-  return payload.access_token;
+  throw new Error(`Failed to exchange Vercel OIDC token: ${lastError || "unknown error"}`);
 }
 
 async function impersonateServiceAccount(federatedAccessToken) {
