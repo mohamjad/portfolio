@@ -26,7 +26,23 @@ function readOidcTokenFromRequest(req) {
 }
 
 function readAudience() {
-  return readRequiredEnv("GCP_WORKLOAD_IDENTITY_AUDIENCE");
+  const value = readRequiredEnv("GCP_WORKLOAD_IDENTITY_AUDIENCE");
+
+  if (value.startsWith("//iam.googleapis.com/")) {
+    return value;
+  }
+
+  if (value.startsWith("projects/")) {
+    return `//iam.googleapis.com/${value}`;
+  }
+
+  if (value.startsWith("iam.googleapis.com/projects/")) {
+    return `//${value}`;
+  }
+
+  throw new Error(
+    "Invalid GCP_WORKLOAD_IDENTITY_AUDIENCE format. Use the full provider resource name, for example //iam.googleapis.com/projects/1037265499405/locations/global/workloadIdentityPools/vercel-oidc/providers/vercel-portfolio1."
+  );
 }
 
 function readServiceAccountEmail() {
