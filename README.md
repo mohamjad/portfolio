@@ -56,6 +56,37 @@ Required by `api/receipts.js`:
 
 The receipts endpoint calls the `export_control_room_bundle` RPC and returns a de-identified public payload for the site.
 
+### TikTok OAuth bridge
+
+Required by `api/tiktok/connect.js` and `api/tiktok/callback.js`:
+
+- `SETTA_PUBLIC_BASE_URL`
+- `TIKTOK_OAUTH_STATE_SECRET`
+- `GCP_PROJECT_ID`
+- `GCP_SERVICE_ACCOUNT_EMAIL`
+- `GCP_WORKLOAD_IDENTITY_AUDIENCE`
+
+Optional overrides:
+
+- `TIKTOK_SANDBOX_CLIENT_KEY_SECRET_NAME`
+- `TIKTOK_SANDBOX_CLIENT_SECRET_SECRET_NAME`
+- `TIKTOK_SANDBOX_ACCOUNT_SECRET_NAME`
+- `TIKTOK_MAIN_CLIENT_KEY_SECRET_NAME`
+- `TIKTOK_MAIN_CLIENT_SECRET_SECRET_NAME`
+- `TIKTOK_MAIN_ACCOUNT_SECRET_NAME`
+- `TIKTOK_DEFAULT_BUSINESS_ID`
+- `TIKTOK_DEFAULT_ACCOUNT_ID`
+- `TIKTOK_DEFAULT_ACCOUNT_HANDLE`
+
+Default callback routes:
+
+- `https://setta.ca/tiktok/sandbox/connect`
+- `https://setta.ca/tiktok/sandbox/callback`
+- `https://setta.ca/tiktok/connect`
+- `https://setta.ca/tiktok/callback`
+
+The callback exchanges the TikTok auth code server-side and stores the resulting token bundle in GCP Secret Manager for `world1` to consume.
+
 ## Editing The Site
 
 Most homepage copy lives directly in `index.html`.

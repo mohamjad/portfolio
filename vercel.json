@@ -8,6 +8,22 @@
     {
       "source": "/privacy",
       "destination": "/privacy.html"
+    },
+    {
+      "source": "/tiktok/sandbox/connect",
+      "destination": "/api/tiktok/connect?mode=sandbox"
+    },
+    {
+      "source": "/tiktok/sandbox/callback",
+      "destination": "/api/tiktok/callback?mode=sandbox"
+    },
+    {
+      "source": "/tiktok/connect",
+      "destination": "/api/tiktok/connect?mode=main"
+    },
+    {
+      "source": "/tiktok/callback",
+      "destination": "/api/tiktok/callback?mode=main"
     }
   ]
 }
