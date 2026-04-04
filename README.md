@@ -62,6 +62,9 @@ Required by `api/tiktok/connect.js` and `api/tiktok/callback.js`:
 
 - `SETTA_PUBLIC_BASE_URL`
 - `TIKTOK_OAUTH_STATE_SECRET`
+
+Optional GCP overrides:
+
 - `GCP_PROJECT_ID`
 - `GCP_SERVICE_ACCOUNT_EMAIL`
 - `GCP_WORKLOAD_IDENTITY_AUDIENCE`

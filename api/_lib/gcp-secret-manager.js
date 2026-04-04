@@ -2,6 +2,10 @@ const GOOGLE_STS_TOKEN_URL = "https://sts.googleapis.com/v1/token";
 const GOOGLE_SERVICE_ACCOUNT_IMPERSONATION_BASE_URL = "https://iamcredentials.googleapis.com/v1";
 const SECRET_MANAGER_BASE_URL = "https://secretmanager.googleapis.com/v1";
 const ACCESS_TOKEN_SCOPE = "https://www.googleapis.com/auth/cloud-platform";
+const DEFAULT_GCP_PROJECT_ID = "persona1-staging";
+const DEFAULT_GCP_SERVICE_ACCOUNT_EMAIL = "setta-tiktok-oauth@persona1-staging.iam.gserviceaccount.com";
+const DEFAULT_GCP_WORKLOAD_IDENTITY_AUDIENCE =
+  "//iam.googleapis.com/projects/1037265499405/locations/global/workloadIdentityPools/vercel-oidc/providers/vercel-portfolio1";
 
 let cachedAccessToken = null;
 
@@ -26,7 +30,7 @@ function readOidcTokenFromRequest(req) {
 }
 
 function readAudience() {
-  const value = readRequiredEnv("GCP_WORKLOAD_IDENTITY_AUDIENCE");
+  const value = (process.env.GCP_WORKLOAD_IDENTITY_AUDIENCE || DEFAULT_GCP_WORKLOAD_IDENTITY_AUDIENCE).trim();
 
   if (value.startsWith("//iam.googleapis.com/")) {
     return value;
@@ -46,7 +50,11 @@ function readAudience() {
 }
 
 function readServiceAccountEmail() {
-  return readRequiredEnv("GCP_SERVICE_ACCOUNT_EMAIL");
+  return (process.env.GCP_SERVICE_ACCOUNT_EMAIL || DEFAULT_GCP_SERVICE_ACCOUNT_EMAIL).trim();
+}
+
+function readProjectId() {
+  return (process.env.GCP_PROJECT_ID || DEFAULT_GCP_PROJECT_ID).trim();
 }
 
 async function exchangeOidcForFederatedToken(subjectToken) {
@@ -154,7 +162,7 @@ async function requestSecretManager(path, options = {}) {
   };
 }
 
-async function accessSecretVersion(secretName, projectId = readRequiredEnv("GCP_PROJECT_ID"), req) {
+async function accessSecretVersion(secretName, projectId = readProjectId(), req) {
   const result = await requestSecretManager(
     `/projects/${encodeURIComponent(projectId)}/secrets/${encodeURIComponent(secretName)}/versions/latest:access`,
     {
@@ -178,7 +186,7 @@ async function accessSecretVersion(secretName, projectId = readRequiredEnv("GCP_
   return Buffer.from(encoded, "base64").toString("utf8");
 }
 
-async function ensureSecretExists(secretName, projectId = readRequiredEnv("GCP_PROJECT_ID"), req) {
+async function ensureSecretExists(secretName, projectId = readProjectId(), req) {
   const existing = await requestSecretManager(
     `/projects/${encodeURIComponent(projectId)}/secrets/${encodeURIComponent(secretName)}`,
     {
@@ -208,7 +216,7 @@ async function ensureSecretExists(secretName, projectId = readRequiredEnv("GCP_P
   );
 }
 
-async function addSecretVersion(secretName, value, projectId = readRequiredEnv("GCP_PROJECT_ID"), req) {
+async function addSecretVersion(secretName, value, projectId = readProjectId(), req) {
   await ensureSecretExists(secretName, projectId, req);
   const encodedPayload = Buffer.from(String(value), "utf8").toString("base64");
 
